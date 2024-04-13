@@ -1,9 +1,13 @@
 import Header from "../components/Header/Header";
+import Body from "../components/Body/Body"
+import Footer from "../components/Footer/Footer"
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col ">
+    <main className="flex flex-col h-screen overflow-hidden">
       <Header/>
+      <Body/>
+      <Footer/>
     </main>
   );
 }
