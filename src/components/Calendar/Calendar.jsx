@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Images from 'next/image'
 
 const Calendar = () => {
     return(

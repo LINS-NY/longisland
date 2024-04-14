@@ -10,8 +10,8 @@ const Header = () => {
             <div class= "flex flex-row justify-between p-4">
             <Image class="mx-1"
             src="/LINS.png"
-            width={30}
-            height={30}
+            width={100}
+            height={100}
             alt="Lins logo"
             />
             <span class="self-center text-sm md:text-lg font-semibold whitespace-nowrap dark:text-white">Long Island Nepalese Society- NY</span>
