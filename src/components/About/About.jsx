@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const About = () => {
     return(
-        <div class="bg-white flex">
+        <div class="h-svh  bg-white flex">
             <div class="max-w-screen-xl flex flex-row justify-between  p-4">
                 <span class="text-sm md:text-lg font-semibold text-black dark:text-gray-400 flex:1; overflow-y: scroll">
                     <p class = "text-center">Current Elected Members</p>
@@ -33,7 +33,7 @@ const About = () => {
                     </ul>
                 </span>
             </div>
-
+            
         </div>
     )
 }
