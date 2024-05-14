@@ -7,7 +7,7 @@ const Member = () => {
             <div class="grid grid-cols-4 gap-4 lex flex-col text-center font-bold">
             <div>Members
                 <ul class="flex flex-col px-10 font-normal text-base text-left">
-                    <li>1. Aaditya Thapa</li>
+                    <li>1. Aaditya Thapa </li>
                     <li>2. Aakar Pant</li>
                     <li>3. Aashish Shakya</li>
                     <li>4. Aayusha Pandey</li>
