@@ -2,13 +2,13 @@ import * as React from 'react';
 
 const About = () => {
     return(
-        <div class="h-svh  bg-white flex">
+        <div class="bg-white flex">
             <div class="max-w-screen-xl flex flex-row justify-between  p-4">
                 <span class="text-sm md:text-lg font-semibold text-black dark:text-gray-400 flex:1; overflow-y: scroll">
-                    <p>Current Elected Members</p>
-                    <p>कार्यसमिति सदस्य</p>
+                    <p class = "text-center">Current Elected Members</p>
+                    <p class = "text-center">कार्यसमिति सदस्य</p>
                     <ul class="flex flex-col px-10 font-normal text-base">
-                        <li class="font-bold text-rose-900"> 1. Board Of Directors (कार्यसमिति सदस्य):</li><ul class="flex flex-col px-10 text-sky-700"> <li>Kul Prasad Gouli (Rajan) (कुल प्रसाद गौली (राजन))</li></ul>  
+                        <li class="font-bold text-rose-900"> 1. President (अघ्यक्ष):</li><ul class="flex flex-col px-10 text-sky-700"> <li>Kul Prasad Gouli (Rajan) (कुल प्रसाद गौली (राजन))</li></ul>  
                         <li class="font-bold text-rose-900"> 2. Senior Vice President (बरिस्ट उपाध्यक्ष):</li><ul class="flex flex-col px-10 text-sky-700"> <li>Sabitra Siwakoti (सावित्रा सिवाकोटी)</li></ul>  
                         <li class="font-bold text-rose-900"> 3. Vice President (उपाध्यक्ष):</li><ul class="flex flex-col px-10 text-sky-700"> <li>Indira simkhada (Pande) इन्दिरा सिंखडा (पाण्डे)</li></ul>  
                         <li class="font-bold text-rose-900"> 4. Vice President (उपाध्यक्ष):</li><ul class="flex flex-col px-10 text-sky-700"> <li>Gokul Sapkota (गोकुल सापकोटा)</li></ul>  
@@ -33,6 +33,7 @@ const About = () => {
                     </ul>
                 </span>
             </div>
+
         </div>
     )
 }
