@@ -31,10 +31,9 @@ function Member(){
         members.push(<GeneralMember key={index} name={v[1][0]} expiration={v[1][1]} id={index+1} />)
         }
     })
-    console.log(member)
     return(
-        <div class="flex flex-col">
-            <div class="mx-auto p-4 font-bold text-2xl text-red-600">Membership List</div>
+        <div class="flex bg-white g9flex-col">
+            <div class="mx-auto p-4 font-bold text-2xl bg-white text-red-600">Membership List</div>
             <div class="overflow-x-auto sm:-mx-1 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 sm:px-1 lg:px-8">
                     <div class="overflow-hidden">
