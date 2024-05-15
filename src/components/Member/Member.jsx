@@ -1,12 +1,59 @@
-import * as React from 'react';
+'use client'
+import LifeTimeMember from './LifeTimeMember';
+import GeneralMember from './GeneralMember';
+import { useEffect, useState } from 'react';
+import { usePapaParse } from 'react-papaparse';
 
-const Member = () => {
+
+function Member(){
+    const [ member, setMember ] = useState([{}]);
+    const { readString } = usePapaParse();
+
+    useEffect(() => {
+        fetch( './AllMembers.csv' )
+        .then( response => response.text() )
+        .then( csvText => {
+            readString(csvText, {
+                worker: true,
+                complete: (results) => {
+                  setMember(results["data"]);
+                },
+              })
+        })
+      }, []);
+    let members = []
+    Object.entries(member).map((v,index)=>{
+        if (v[1][1] == ""){
+            members.push(<LifeTimeMember name={v[1][0]} key={index} id={index+1}/>)
+        }else if(v[1] == ""){
+            return;
+        }else{
+        members.push(<GeneralMember key={index} name={v[1][0]} expiration={v[1][1]} id={index+1} />)
+        }
+    })
     return(
-        <div class="h-svh  bg-white flex">
-            <div class="max-w-screen-xl flex flex-row justify-between mx-auto p-4">
-                <span class="text-sm md:text-lg font-semibold whitespace-nowrap text-gray-500 dark:text-gray-400">Info on being members and manage membership</span>
+        <div class=" bg-white flex flex-col lg:w-2/3  sm:p-1 p-10 mx-auto ">
+            
+            <div class="font-bold text-xs lg:text-2xl bg-white mx-auto">Membership List</div>
+            <div class=" lg:px-2 px-1 lg:py-8 shadow-lg shadow-cyan-500/50 ">
+                <div class="overflow-hidden">
+                    <table class="min-w-full text-left text-sm font-light dark:text-white border-collapse ">
+                        <thead class="shadow-lg shadow-cyan-500/50 hover:bg-cyan-600 bg-sky-500/100 rounded-3xl">                                    
+                            <tr class="rounded-3xl">    
+                                <th scope="col" class="font-bold md:px-6 px-1 py-1 md:py-4">ID.</th>
+                                <th scope="col" class=" font-bold md:px-6 px-1 py-1 md:py-4">Member Name</th>
+                                <th scope="col" class="font-bold md:px-6 px-1 py-1 md:py-4">Membership Expiration Date</th>
+                                <th scope="col" class="font-bold md:px-6 px-1 py-1 md:py-4">Membership Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>  
+                                {members}            
+                        </tbody>
+                    </table>
+            </div>
             </div>
         </div>
+  
     )
 }
 
