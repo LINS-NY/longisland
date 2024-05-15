@@ -32,28 +32,24 @@ function Member(){
         }
     })
     return(
-        <div class="flex bg-white flex-col">
-            <div class="mx-auto p-4 font-bold text-2xl bg-white text-red-600">Membership List</div>
-            <div class="overflow-x-auto sm:-mx-1 lg:-mx-8">
-                <div class="inline-block min-w-full py-2 sm:px-1 lg:px-8">
-                    <div class="overflow-hidden">
-                        <table 
-                            class="min-w-full text-left text-sm font-light text-surface dark:text-white">
-                            <thead
-                                class="border-b">                                    
-                                <tr>    
-                                    <th scope="col" class="px-6 py-4">ID.</th>
-                                    <th scope="col" class="px-6 py-4">Member Name</th>
-                                    <th scope="col" class="px-6 py-4">Membership Expiration Date</th>
-                                    <th scope="col" class="px-6 py-4">Membership Type</th>
-                                </tr>
-                            </thead>
-                            <tbody>  
-                                 {members}            
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        <div class=" bg-white flex flex-col lg:w-2/3  sm:p-1 p-10 mx-auto ">
+            <div class="font-bold text-xs lg:text-2xl bg-white mx-auto">Membership List</div>
+            <div class=" lg:px-2 px-1 lg:py-8 shadow-lg shadow-cyan-500/50 ">
+                <div class="overflow-hidden">
+                    <table class="min-w-full text-left text-sm font-light dark:text-white border-collapse ">
+                        <thead class="shadow-lg shadow-cyan-500/50 hover:bg-cyan-600 bg-sky-500/100 rounded-3xl">                                    
+                            <tr class="rounded-3xl">    
+                                <th scope="col" class="font-medium md:px-6 px-1 py-1 md:py-4">ID.</th>
+                                <th scope="col" class=" font-medium md:px-6 px-1 py-1 md:py-4">Member Name</th>
+                                <th scope="col" class="font-medium md:px-6 px-1 py-1 md:py-4">Membership Expiration Date</th>
+                                <th scope="col" class="font-medium md:px-6 px-1 py-1 md:py-4">Membership Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>  
+                                {members}            
+                        </tbody>
+                    </table>
+            </div>
             </div>
         </div>
   
