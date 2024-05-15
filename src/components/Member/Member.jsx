@@ -31,6 +31,7 @@ function Member(){
         members.push(<GeneralMember key={index} name={v[1][0]} expiration={v[1][1]} id={index+1} />)
         }
     })
+    console.log(member)
     return(
         <div class="flex flex-col">
             <div class="mx-auto p-4 font-bold text-2xl text-red-600">Membership List</div>
