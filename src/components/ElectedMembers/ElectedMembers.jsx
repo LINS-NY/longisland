@@ -5,7 +5,7 @@ const ElectedMembers = () => {
     return(
         <div class=" flex flex-row justify-start bg-white p-10 mx-auto w-2/3">
                 <div class=" bg-white flex flex-col lg:w-2/3  sm:p-1 p-10 mx-auto ">
-                    <p class = "font-bold text-xs lg:text-2xl mx-auto">Current Elected Members</p>
+                    <p class = "font-bold text-xs lg:text-2xl mx-auto">2024-2025 Elected Members</p>
                     <p class = "font-bold text-xs lg:text-2xl mx-auto">कार्यसमिति सदस्य</p>
                     <ul class="font-normal text-base overflow-auto">
                         <div class="max-w-screen-xl flex flex-row justify-between mx-auto p-4">
