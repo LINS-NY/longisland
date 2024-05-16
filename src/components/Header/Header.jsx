@@ -6,22 +6,35 @@ const Header = () => {
     return (
         <header>
         <nav class="bg-white border-gray-200 dark:bg-gray-900">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <div class= "flex flex-row justify-between p-4">
-            <Image class="mx-1"
-            src="/LINS.png"
-            width={100}
-            height={100}
-            alt="Lins logo"
-            />
-            <span class="self-center text-sm md:text-lg font-extrabold whitespace-nowrap dark:text-white text-blue-900">Long Island Nepalese Society, New York<p>लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क</p></span>
+        <div class="max-w-screen-xl flex flex-wrap xl:flex-row flex-col items-center md:justify-between mx-auto p-4">
+            <div class= "flex sm:flex-row justify-between p-4">
+                <Image class="mx-1"
+                src="/LINS.png"
+                width={100}
+                height={100}
+                alt="Lins logo"
+                />
+                <span class="self-center text-sm md:text-lg font-extrabold whitespace-nowrap dark:text-white text-blue-900">Long Island Nepalese Society, New York<p>लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क</p></span>
             </div>
-            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-                </svg>
-            </button>
+            <div class="md:hidden">
+                <ul class="font-medium text-sm flex flex-row p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 rtl:space-x-reverse    dark:bg-gray-800  dark:border-gray-700">
+                    <li>
+                    <Link href="/" class="block py-2 px-3  text-gray-900 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Home</Link>
+                    </li>
+                    <li>
+                    <Link href="/Resources" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white ">Resources</Link>
+                    </li>
+                    <li>
+                    <Link href="/Members" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white ">Members</Link>
+                    </li>
+                    <li>
+                    <Link href="/Donations" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white ">Donation</Link>
+                    </li>
+                    <li>
+                    <Link href="/Calendar" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white ">Calendar</Link>
+                    </li>
+                </ul>
+            </div>
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
