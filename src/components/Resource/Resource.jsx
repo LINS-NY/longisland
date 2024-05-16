@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Image from 'next/image';
-import Link from 'next/link'
 
 const Resource = () => {
     return(
@@ -28,32 +27,32 @@ const Resource = () => {
                             {/* Home Page */}
                             <p class = "whitespace-pre">  </p>
                             <p class = "flex text-bold whitespace-pre">LINK: </p>
-                            <Link href="#" class="font-medium text-white-600 dark:text-blue-500 hover:underline">https://www.uscis.gov/</Link>
+                            <a href="https://www.uscis.gov" class="font-medium text-white-600 dark:text-blue-500 hover:underline">https://www.uscis.gov/</a>
                             
                             {/* ALL Florm */}
                             <p class = "whitespace-pre">  </p>
                             <p class = "flex text-bold whitespace-pre">All Forms: </p>
-                            <Link href="#" class="font-medium text-white-600 dark:text-blue-500 hover:underline">https://www.uscis.gov/forms/all-forms</Link>
+                            <a href="https://www.uscis.gov/forms/all-forms" class="font-medium text-white-600 dark:text-blue-500 hover:underline">https://www.uscis.gov/forms/all-forms</a>
 
                             {/* Case Status Online */}
                             <p class = "whitespace-pre">  </p>
                             <p class = "flex text-bold whitespace-pre">Case Status Online: </p>
-                            <Link href="#" class="font-medium text-white-600 dark:text-blue-500 hover:underline">https://egov.uscis.gov/</Link>
+                            <a href="https://egov.uscis.gov/" class="font-medium text-white-600 dark:text-blue-500 hover:underline">https://egov.uscis.gov/</a>
 
                             {/* Check Case Processing Times */}
                             <p class = "whitespace-pre">  </p>
                             <p class = "flex text-bold whitespace-pre">Check Case Processing Times: </p>
-                            <Link href="#" class="font-medium text-white-600 dark:text-blue-500 hover:underline">https://egov.uscis.gov/processing-times/</Link>
+                            <a href="https://egov.uscis.gov/processing-times/" class="font-medium text-white-600 dark:text-blue-500 hover:underline">https://egov.uscis.gov/processing-times/</a>
                             
                             {/* How to Change Your Address */}
                             <p class = "whitespace-pre">  </p>
                             <p class = "flex text-bold whitespace-pre">How to Change Your Address: </p>
                             <p class = "flex whitespace-pre px-5">Paper Format: </p>
-                            <Link href="#" class="font-medium px-5 text-white-600 dark:text-blue-500 hover:underline">https://www.uscis.gov/ar-11</Link>
-                            
+                            <a href="https://www.uscis.gov/ar-11" class="font-medium px-5 text-white-600 dark:text-blue-500 hover:underline">https://www.uscis.gov/ar-11</a>
+
                             <p class = "whitespace-pre">  </p>
                             <p class = "flex whitespace-pre px-5">Online through a USCIS online account: </p>
-                            <Link href="#" class="font-medium px-5 text-white-600 dark:text-blue-500 hover:underline">https://www.uscis.gov/addresschange</Link>
+                            <a href="https://www.uscis.gov/addresschange" class="font-medium px-5 text-white-600 dark:text-blue-500 hover:underline">https://www.uscis.gov/addresschange</a>
 
                         </th>
                     </tr>
