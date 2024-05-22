@@ -4,7 +4,7 @@ import Footer from "../../components/Footer/Footer"
 
 export default function Ab() {
   return (
-    <main className="flex flex-col h-screen overflow-hidden">
+    <main class="flex flex-col h-screen overflow-hidden">
       <Header/>
       <Donation/>
       <Footer/>

@@ -5,11 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "react-app-rewired start",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "gray-matter": "^4.0.3",
     "next": "^14.2.1",
     "react": "^18",
     "react-app-rewired": "^1.6.2",
