@@ -16,14 +16,14 @@ export default async function Post({params}) {
   )
 }
 
-export async function generateStaticParams() {
+async function generateStaticParams() {
   const posts = getAllPostIds()
   return posts.map((post) => ({
     id: post.params.id
   }))
 }
 
-export async function getPosts(id) {
+async function getPosts(id) {
   const postData = await getPostData(id);
   return {
       postData,
