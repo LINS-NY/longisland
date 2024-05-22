@@ -1,6 +1,7 @@
 import { getAllPostIds, getPostData } from '../../lib/resource';
 import Item from './Item'
 
+
 export default async function Resources(){
     const posts = await getAllPostIds()
     let AllPostData = await Promise.all(posts.map(async (post)=>{
