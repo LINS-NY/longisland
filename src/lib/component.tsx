@@ -4,11 +4,11 @@ import Link from "next/link";
 
 export const components = {
   h1: (props: ComponentPropsWithoutRef<"h1">) => {
-    return <h1 {...props} class="text-3xl text-pale-yellow mt-8 mb-6" />;
+    return <h1 {...props} className="text-3xl text-pale-yellow mt-8 mb-6" />;
   },
 
   h2: (props: ComponentPropsWithoutRef<"h2">) => {
-    return <h2 {...props} class="text-2xl text-pale-yellow mt-8 mb-6" />;
+    return <h2 {...props} className="text-2xl text-pale-yellow mt-8 mb-6" />;
   },
 
   h3: (props: ComponentPropsWithoutRef<"h3">) => {
@@ -29,13 +29,13 @@ export const components = {
 
   p: (props: ComponentPropsWithoutRef<"p">) => {
     return (
-      <p {...props} class="py-2 text-left text-sm md:text-lg font-semibold text-gray-500 dark:text-gray-400" />
+      <p {...props} className="py-2 text-left text-sm md:text-lg font-semibold text-gray-500 dark:text-gray-400" />
     );
   },
 
   a: (props: ComponentPropsWithoutRef<"a">) => {
     return (
-      <span class="decoration-sky-500">
+      <span className="decoration-sky-500">
         {props.href ? (
           <Link
             href={props.href}
@@ -43,10 +43,10 @@ export const components = {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span class="decoration-sky-500 underline text-blue-600" {...props} />
+            <span className="decoration-sky-500 underline text-blue-600" {...props} />
           </Link>
         ) : (
-          <a {...props} class="decoration-sky-500 " />
+          <a {...props} className="decoration-sky-500 " />
         )}
       </span>
     );
