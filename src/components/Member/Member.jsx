@@ -36,7 +36,8 @@ function Member(){
         <div class=" bg-white flex flex-col ">
             <ElectedMembers/>
             <div class="w-96 sm:w-5/6 justify-center mx-auto">
-                <h4 class="font-bold text-center text-md lg:text-2xl bg-white mx-auto py-2">Membership List</h4>
+                <h4 class="font-bold text-center text-md lg:text-2xl bg-white mx-auto py-2 ">Long Island Nepalese Society - New York</h4>
+                <h4 class="font-bold text-center text-md lg:text-2xl bg-white mx-auto py-2">Registered Membership List</h4>
             <div class=" lg:px-2 px-1 lg:py-8 shadow-lg shadow-cyan-500/50 ">
                 <div class="overflow-hidden ">
                     <table class="w-full text-center text-sm font-light dark:text-white border-collapse ">
