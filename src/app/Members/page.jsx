@@ -1,12 +1,12 @@
 import Header from "../../components/Header/Header";
-import Donation from "../../components/Donation/Donation"
+import Member from "../../components/Member/Member"
 import Footer from "../../components/Footer/Footer"
 
 export default function Ab() {
   return (
-    <main className="flex flex-col h-screen overflow-hidden">
+    <main class="flex flex-col h-screen ">
       <Header/>
-      <Donation/>
+      <Member/>
       <Footer/>
     </main>
   );

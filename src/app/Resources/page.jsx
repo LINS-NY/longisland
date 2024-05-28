@@ -1,12 +1,12 @@
 import Header from "../../components/Header/Header";
-import About from "../../components/About/About"
+import Resource from "../../components/Resources/Resources"
 import Footer from "../../components/Footer/Footer"
 
 export default function Ab() {
   return (
-    <main className="flex flex-col h-dvh ">
+    <main class="flex flex-col h-screen">
       <Header/>
-      <About/>
+      <Resource/>
       <Footer/>
     </main>
   );

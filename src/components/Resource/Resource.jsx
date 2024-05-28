@@ -1,12 +1,15 @@
 import * as React from 'react';
 
-const Resource = () => {
+const Resource = ({item}) => {
     return(
-        <div class="h-svh  bg-white flex">
-            <div class="max-w-screen-xl flex flex-row justify-between mx-auto p-4">
-                <span class="text-sm md:text-lg font-semibold whitespace-nowrap text-gray-500 dark:text-gray-400">This page will hold Resources</span>
-            </div>
+      <div class="flex flex-col">
+        <div class="py-2 justify-center mx-auto">
+            <h1 class="text-sm md:text-lg font-semibold whitespace-nowrap text-gray-500 dark:text-gray-400">{item.Title}</h1>
         </div>
+        <div class="py-2 justify-center mx-auto w-5/6 lg:w-2/3">
+            {item.contentRd}
+        </div>
+      </div> 
     )
 }
 
