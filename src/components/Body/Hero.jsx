@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Hero =()=>{
    return(
@@ -18,19 +19,19 @@ const Hero =()=>{
                     From Planning To Progress
                     </p>
                     <br/>
-                    <div class="flex space-x-2">
-                        <a href="/FinancialReport" class="hover:underline me-4 md:me-6">
+                    <div class="space-x-2">
+                        <Link href="/FinancialReport">
                             <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-3 border-b-4 
                                     border-blue-700 hover:border-blue-500 rounded">Financial Report</button>
-                        </a>
-                        <a href="/About" class="hover:underline me-4 md:me-6" target="_blank" rel="noopener noreferrer">
+                        </Link>
+                        <Link href="/About">
                             <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-3 border-b-4 
                                     border-blue-700 hover:border-blue-500 rounded">Membership Form</button>
-                        </a>
-                        <a href="/About" class="hover:underline me-4 md:me-6" target="_blank" rel="noopener noreferrer">
+                        </Link>
+                        <Link href="/About">
                             <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-3 border-b-4 
                                     border-blue-700 hover:border-blue-500 rounded">Donation Form</button>
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 
