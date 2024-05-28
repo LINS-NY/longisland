@@ -18,13 +18,19 @@ const Hero =()=>{
                     From Planning To Progress
                     </p>
                     <br/>
-                    <div class="space-x-2">
-                        <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-3 border-b-4 
-                                border-blue-700 hover:border-blue-500 rounded">Financial Report</button>
-                        <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-3 border-b-4 
-                                border-blue-700 hover:border-blue-500 rounded">Membership Form</button>
-                        <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-3 border-b-4 
-                                border-blue-700 hover:border-blue-500 rounded">Donation Form</button>
+                    <div class="flex space-x-2">
+                        <a href="/FinancialReport" class="hover:underline me-4 md:me-6">
+                            <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-3 border-b-4 
+                                    border-blue-700 hover:border-blue-500 rounded">Financial Report</button>
+                        </a>
+                        <a href="/About" class="hover:underline me-4 md:me-6" target="_blank" rel="noopener noreferrer">
+                            <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-3 border-b-4 
+                                    border-blue-700 hover:border-blue-500 rounded">Membership Form</button>
+                        </a>
+                        <a href="/About" class="hover:underline me-4 md:me-6" target="_blank" rel="noopener noreferrer">
+                            <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-3 border-b-4 
+                                    border-blue-700 hover:border-blue-500 rounded">Donation Form</button>
+                        </a>
                     </div>
                 </div>
                 
