@@ -17,8 +17,23 @@ const Hero =()=>{
                     लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क
                     </p>
                     <p class="max-w-2xl mb-4 text-sm fond-sm tracking-tight leading-none text-blue-900 xl:text-2xl dark:text-white">
-                    To Serve, Unite and move toward progress
+                    From Planning To Progress
                     </p>
+                    <br/>
+                    <div class="-space-x-1">
+                        <Link href="/FinancialReport">class='btn'
+                            <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 
+                                    border-blue-700 hover:border-blue-500 rounded">Financial Report</button>
+                        </Link>
+                        <Link href="/About">class='btn'
+                            <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-3 border-b-4 
+                                    border-blue-700 hover:border-blue-500 rounded">Membership Form</button>
+                        </Link>
+                        <Link href="/About">class='btn'
+                            <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-3 border-b-4 
+                                    border-blue-700 hover:border-blue-500 rounded">Donation Form</button>
+                        </Link>
+                </div>
                 </div>
             </div>
             </div>
