@@ -68,8 +68,7 @@ function Member(){
                 <div class="overflow-hidden ">
                     <table class="w-full text-center text-sm font-light dark:text-white border-collapse ">
                         <thead class="shadow-lg shadow-cyan-500/50 hover:bg-cyan-600 bg-sky-500/100 rounded-3xl">                                    
-                            <tr class="rounded-3xl">
-                            <th scope="col" class=" font-bold md:px-6 px-1 py-1 md:py-4">S.No</th>    
+                            <tr class="rounded-3xl">   
                                 <th scope="col" class=" font-bold md:px-6 px-1 py-1 md:py-4">Member Name</th>
                                 <th scope="col" class="font-bold md:px-6 px-1 py-1 md:py-4">Membership Expiration Date</th>
                                 <th scope="col" class="font-bold md:px-6 px-1 py-1 md:py-4">
