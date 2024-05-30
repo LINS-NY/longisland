@@ -66,7 +66,7 @@ function Member(){
                 <h4 class="font-bold text-center text-md lg:text-2xl bg-white mx-auto py-2">Registered Membership List</h4>
                 <h1 class="font-bold whitespace-pre">
                     Life Time Members: {lifeMember.length}<br/>
-                    General Members:    {yearlyMember.length}<br/>  
+                    General Members: {yearlyMember.length}<br/>  
                     <button class="bg-lime-400 hover:bg-lime-300 text-black font-medium md:font-bold md:py-2 md:px-4 border-b-4 my-1
                                     border-blue-700 hover:border-red-500">Total Members:   {all.length}</button>            
                 </h1>
