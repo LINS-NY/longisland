@@ -60,6 +60,14 @@ function Member(){
     }
     return(
         <div class=" bg-white flex flex-col ">
+            <div class="mx:auto text-center font-bold text-xl py-5">
+                <h1 >
+                    Total Members
+                </h1>
+                <span>
+                    {all.length}
+                </span>
+            </div>
             <ElectedMembers/>
             <div class="w-96 sm:w-5/6 justify-center mx-auto">
                 <h4 class="font-bold text-center text-md lg:text-2xl bg-white mx-auto py-2 ">Long Island Nepalese Society - New York</h4>
