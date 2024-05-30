@@ -38,11 +38,12 @@ function Member(){
             <div class="w-96 sm:w-5/6 justify-center mx-auto">
                 <h4 class="font-bold text-center text-md lg:text-2xl bg-white mx-auto py-2 ">Long Island Nepalese Society - New York</h4>
                 <h4 class="font-bold text-center text-md lg:text-2xl bg-white mx-auto py-2">Registered Membership List</h4>
-            <div class=" lg:px-2 px-1 lg:py-8 shadow-lg shadow-cyan-500/50 ">
+            <div class=" lg:px-2 px-1 lg:py-6 shadow-lg shadow-cyan-500/50 ">
                 <div class="overflow-hidden ">
                     <table class="w-full text-center text-sm font-light dark:text-white border-collapse ">
                         <thead class="shadow-lg shadow-cyan-500/50 hover:bg-cyan-600 bg-sky-500/100 rounded-3xl">                                    
-                            <tr class="rounded-3xl">    
+                            <tr class="rounded-3xl">
+                            <th scope="col" class=" font-bold md:px-6 px-1 py-1 md:py-4">S.No</th>    
                                 <th scope="col" class=" font-bold md:px-6 px-1 py-1 md:py-4">Member Name</th>
                                 <th scope="col" class="font-bold md:px-6 px-1 py-1 md:py-4">Membership Expiration Date</th>
                                 <th scope="col" class="font-bold md:px-6 px-1 py-1 md:py-4">Membership Type</th>
