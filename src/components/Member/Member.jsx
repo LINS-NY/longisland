@@ -9,8 +9,9 @@ import { usePapaParse } from 'react-papaparse';
 function Member(){
     const [ lifeMember, setLifeMember ] = useState([{}]);
     const [ yearlyMember, setYearlyMember ] = useState([{}]);
+    const [ all, setAll ] = useState([{}]);
     const [displayMember, setDisplayMember] = useState([])
-    const [membership, setMembership] = useState("Life Time");
+    const [membership, setMembership] = useState("All");
     const [popup, setPopup] = useState(false)
     const [selected, setSelected] = useState(membership)
     const { readString } = usePapaParse();
@@ -26,7 +27,6 @@ function Member(){
                     const regularMember = []
                     Object.entries(results["data"]).map((v,index)=>{
                         if (v[1][1] == ""){
-                            console.log(v[1][0])
                             lifeTimeMember.push(<LifeTimeMember name={v[1][0]} key={`${index}_${v[1][0]}`} id={index+1}/>)
                         }else if(v[1] == ""){
                             return
@@ -34,9 +34,10 @@ function Member(){
                             regularMember.push(<GeneralMember key={`${index}_${v[1][0]}`} name={v[1][0]} expiration={v[1][1]} id={index+1} />)
                         }
                     });
-                    setDisplayMember(lifeTimeMember)
+                    setDisplayMember([...lifeTimeMember,...regularMember])
                     setLifeMember(lifeTimeMember)
                     setYearlyMember(regularMember)
+                    setAll([...lifeTimeMember,...regularMember])
                 },
               })
         })
@@ -48,10 +49,11 @@ function Member(){
     const handleSelection = (value) => {
         setPopup(!popup)
         setMembership(value.target.innerText)
-        console.log(value.target.innerText)
         setSelected(value.target.innerText)
         if (value.target.innerText == "Life Time"){
             setDisplayMember(lifeMember)
+        }else if (value.target.innerText=="All"){
+            setDisplayMember(all)
         }else{
             setDisplayMember(yearlyMember)
         }
@@ -105,6 +107,18 @@ function Member(){
                                             <span class="font-normal ml-3 block truncate">Yearly</span>
                                             </div>
                                             { selected == "Yearly" &&(
+                                            <span class="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4">
+                                            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                            </svg>
+                                            </span>
+                                            )}
+                                        </li>
+                                        <li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9" onClick={e => handleSelection(e)} id="listbox-option-0" role="option">
+                                            <div class="flex items-center">
+                                            <span class="font-normal ml-3 block truncate">All</span>
+                                            </div>
+                                            { selected == "All" &&(
                                             <span class="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4">
                                             <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                 <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
