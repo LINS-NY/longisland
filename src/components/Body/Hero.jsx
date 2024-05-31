@@ -51,18 +51,15 @@ const Hero =()=>{
                     From Planning To Progress
                     </p>
 
-                    <div class="space-x-2">
+                    <div class="flex flex-wrap item-center justify-center">
                         <Link href="/FinancialReport">
-                            <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-3 border-b-4 
-                                    border-blue-700 hover:border-blue-500 rounded">Financial Report</button>
+                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Financial Report</button>
                         </Link>
                         <Link href="/About">
-                            <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-3 border-b-4 
-                                    border-blue-700 hover:border-blue-500 rounded">Membership Form</button>
+                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Membership Form</button>
                         </Link>
                         <Link href="/About">
-                            <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-3 border-b-4 
-                                    border-blue-700 hover:border-blue-500 rounded">Donation Form</button>
+                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Donation Form</button>
                         </Link>
                     </div>
                 </div>
