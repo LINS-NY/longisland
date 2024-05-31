@@ -19,20 +19,17 @@ const Hero =()=>{
                     <p class="max-w-2xl mb-4 text-sm fond-sm tracking-tight leading-none text-blue-900 xl:text-2xl dark:text-white">
                     From Planning To Progress
                     </p>
-                    <div class="flex flex-col">
-                        <Link href="/FinancialReport">
-                            <button class="bg-blue-500 hover:bg-blue-400 text-white font-small md:font-bold md:p-4 border-b-4 my-2
-                                    border-blue-700 hover:border-blue-500 rounded">
+                    <div class="flex  flex-wrap text-sm font-light item-center justify-center">
+                        <Link href="/FinancialReport" >
+                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">
                                         Financial Report
-                                        </button>
+                            </button>
                         </Link>
                         <Link href="/About">
-                            <button class="bg-blue-500 hover:bg-blue-400 text-white font-medium md:font-bold md:py-2 md:px-4 border-b-4 my-2
-                                    border-blue-700 hover:border-blue-500 rounded">Membership Form</button>
+                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950 shadow-lg rounded-lg p-2 dark:text-white text-white m-2 drop-shadow-2xl">Membership Form</button>
                         </Link>
                         <Link href="/About">
-                            <button class="bg-blue-500 hover:bg-blue-400 text-white font-medium md:font-bold md:py-2 md:px-4 border-b-4 my-2
-                                    border-blue-700 hover:border-blue-500 rounded">Donation Form</button>
+                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white dark:shadow-slate-950   shadow-lg rounded-lg p-2 text-white m-2 drop-shadow-2xl">Donation Form</button>
                         </Link>
                     </div>
                 </div>
