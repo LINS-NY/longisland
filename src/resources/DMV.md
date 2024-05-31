@@ -4,7 +4,7 @@ Description: Department of motor vehicles
 Date: 2024/05/19
 ---
 
-A **Department of Motor Vehicles (DMV)** is a government agency that administers motor vehicle registration and driver licensing. In countries with federal states such as in North America, these agencies are generally administered by subnational entities governments, while in unitary states such as many of those in Europe, DMVs are organized nationally by the central government. **Wikipedia**
+A **Department of Motor Vehicles (DMV)** is a government agency that administers motor vehicle registration and driver licensing. In countries with federal states such as in North America, these agencies are generally administered by subnational entities governments, while in unitary states such as many of those in Europe, DMVs are organized nationally by the central government.
 <br/>
 **मोटर वाहन विभाग (DMV)** एक सरकारी एजेन्सी हो जसले मोटर वाहन दर्ता र चालक अनुमतिपत्र व्यवस्थापन गर्दछ। उत्तरी अमेरिका जस्ता संघीय राज्यहरू भएका देशहरूमा, यी एजेन्सीहरू सामान्यतया उप-राष्ट्रिय निकाय सरकारहरूद्वारा प्रशासित हुन्छन्, जबकि एकात्मक राज्यहरूमा जस्तै युरोपका धेरै जसो, DMV हरू केन्द्रीय सरकारद्वारा राष्ट्रिय रूपमा व्यवस्थित हुन्छन्। विकिपिडिया
 
@@ -44,4 +44,6 @@ For Online<br/>
 You need a [MyDMV](https://dmv.ny.gov/mydmv/mydmv) account to change your address online.<br/>
 तपाइँलाई तपाइँको अनलाइन ठेगाना परिवर्तन गर्न [MyDMV](https://dmv.ny.gov/mydmv/mydmv) खाता चाहिन्छ।
 
+
+<br/><br/><br/><br/><br/><br/>Sources: DMV Official site and Wikipedia.
 
