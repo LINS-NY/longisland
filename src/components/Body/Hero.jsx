@@ -37,7 +37,7 @@ const Hero =()=>{
             </div>
         </div>
         </section>
-        <section class="hidden sm:flex relative container sm:h-80 rounded-xl mx-auto  my-5 sm:my-10  w-5/6  h-96 shadow-sm dark:bg-gray-900 bg-gradient-to-r from-purple-500 to-red-500 ">
+        <section class="hidden sm:flex relative container sm:h-80 rounded-xl mx-auto  my-5 sm:my-10  w-5/6  h-96 shadow-sm dark:bg-gray-900 bg-gradient-to-r from-purple-500 to-red-500 dark:from-slate-500 dark:to-slate-900">
         <div class="relative flex justify-between m-2 sm:w-5/6 h-full mx-auto">
             <div class="flex justify-center ">
                 <div class="flex flex-col sm:mx-15 mx-4 justify-center item-center">
