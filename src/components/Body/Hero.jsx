@@ -6,7 +6,7 @@ const Hero =()=>{
    return(
     <div>
         <section class="sm:hidden relative container rounded-xl mx-auto  my-5  w-5/6  h-96 shadow-sm dark:bg-gray-900 bg-cover bg-no-repeat bg-center" style={{backgroundImage: `url('./Designer.jpeg')`}}>
-        <div class="relative flex justify-between m-2  h-full mx-auto backdrop-blur-md bg-white/60 dark:bg-slate-700/60">
+        <div class="relative flex justify-between m-2 rounded-xl  h-full mx-auto backdrop-blur-md bg-white/60 dark:bg-slate-700/60">
             <div class="flex flex-grow justify-center font-bold">
                 <div class="flex flex-col text-center mx-5 justify-center item-center">
                     <h1 class="sm:max-w-2xl mb-2 text-md tracking-tight leading-none text-blue-900  dark:text-white">
