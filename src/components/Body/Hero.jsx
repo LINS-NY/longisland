@@ -22,7 +22,7 @@ const Hero =()=>{
                     <div class="flex  flex-wrap text-sm font-light item-center justify-center">
                         <Link href="/FinancialReport" >
                             <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">
-                                        Financial Report
+                                Financial Report
                             </button>
                         </Link>
                         <Link href="/About">
@@ -37,7 +37,7 @@ const Hero =()=>{
             </div>
         </div>
         </section>
-        <section class="hidden sm:flex relative container rounded-xl mx-auto  my-5 sm:my-10 sm:w-3/5 w-5/6 sm:h-64 h-96 shadow-sm dark:bg-gray-900 bg-gradient-to-r from-purple-500 to-red-500 ">
+        <section class="hidden sm:flex relative container sm:h-80 rounded-xl mx-auto  my-5 sm:my-10  w-5/6  h-96 shadow-sm dark:bg-gray-900 bg-gradient-to-r from-purple-500 to-red-500 ">
         <div class="relative flex justify-between m-2 sm:w-5/6 h-full mx-auto">
             <div class="flex justify-center ">
                 <div class="flex flex-col sm:mx-15 mx-4 justify-center item-center">
@@ -50,7 +50,7 @@ const Hero =()=>{
                     <p class="max-w-2xl mb-4 text-sm fond-sm tracking-tight leading-none text-white xl:text-xl font-bold">
                     From Planning To Progress
                     </p>
-                    <br/>
+
                     <div class="space-x-2">
                         <Link href="/FinancialReport">
                             <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-3 border-b-4 
