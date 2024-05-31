@@ -21,15 +21,15 @@ const Hero =()=>{
                     </p>
                     <div class="flex  flex-wrap text-sm font-light item-center justify-center">
                         <Link href="/FinancialReport" >
-                            <button class="bg-cyan-500 dark:bg-slate-400 shadow-gray-700  dark:shadow-white  shadow-xl dark:text-black rounded-lg p-1 text-white m-2 drop-shadow-lg">
+                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-gray-700   shadow-xl dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-lg">
                                         Financial Report
                             </button>
                         </Link>
                         <Link href="/About">
-                            <button class="bg-cyan-500 dark:bg-slate-400 shadow-gray-700  dark:shadow-white shadow-xl rounded-lg p-1 dark:text-black text-white m-2 drop-shadow-lg">Membership Form</button>
+                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-gray-700 shadow-xl rounded-lg p-2 dark:text-white text-white m-2 drop-shadow-lg">Membership Form</button>
                         </Link>
                         <Link href="/About">
-                            <button class="bg-cyan-500 dark:bg-slate-400 shadow-gray-700 dark:text-black dark:shadow-white  shadow-xl rounded-lg p-2 text-white m-2 drop-shadow-lg">Donation Form</button>
+                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white dark:shadow-gray-700  shadow-xl rounded-lg p-2 text-white m-2 drop-shadow-lg">Donation Form</button>
                         </Link>
                     </div>
                 </div>
