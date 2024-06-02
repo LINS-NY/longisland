@@ -48,11 +48,12 @@ function Member(){
     }
     const handleSelection = (value) => {
         setPopup(!popup)
-        setMembership(value.target.innerText)
-        setSelected(value.target.innerText)
-        if (value.target.innerText == "Life Time"){
+        setMembership(value.target.innerText.trim())
+        setSelected(value.target.innerText.trim())
+        if (value.target.innerText.trim() == "Life Time"){
+            console.log(lifeMember,"jere")
             setDisplayMember(lifeMember)
-        }else if (value.target.innerText=="All"){
+        }else if (value.target.innerText.trim() == "All"){
             setDisplayMember(all)
         }else{
             setDisplayMember(yearlyMember)
@@ -68,7 +69,7 @@ function Member(){
                     Life Time Members: {lifeMember.length}<br/>
                     General Members:    {yearlyMember.length}<br/>  
                     <button class="bg-lime-400 hover:bg-lime-300 text-black font-medium md:font-bold md:py-2 md:px-4 border-b-4 my-1
-                                    border-blue-700 hover:border-red-500">Total Members:   {all.length}</button>            
+                                    border-blue-700 hover:border-red-500">Total Members: {all.length}</button>            
                 </h1>
             <div class=" lg:px-2 px-1 lg:py-6 shadow-lg shadow-cyan-500/50 ">
                 <div class="overflow-hidden ">
@@ -100,14 +101,14 @@ function Member(){
                                             <span class="font-normal ml-3 block truncate">Life Time</span>
                                             </div>
                                             { selected == "Life Time" &&
-                                            (<span class="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4">
+                                            (<span class="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-1 sm:pr-4">
                                             <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                 <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
                                             </svg>
                                             </span>)
                                             }
                                         </li>
-                                        <li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9" onClick={e => handleSelection(e)} id="listbox-option-0" role="option">
+                                        <li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9" onClick={e => handleSelection(e)} id="listbox-option-1" role="option">
                                             <div class="flex items-center">
                                             <span class="font-normal ml-3 block truncate">Yearly</span>
                                             </div>
@@ -119,7 +120,7 @@ function Member(){
                                             </span>
                                             )}
                                         </li>
-                                        <li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9" onClick={e => handleSelection(e)} id="listbox-option-0" role="option">
+                                        <li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9" onClick={e => handleSelection(e)} id="listbox-option-2" role="option">
                                             <div class="flex items-center">
                                             <span class="font-normal ml-3 block truncate">All</span>
                                             </div>
