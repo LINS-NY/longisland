@@ -29,11 +29,11 @@ function Today({isNepali,currentNepaliDate,monthInfo}){
     return (
         <div>
             <h1 class="text-center font-bold text-4xl">Today</h1>
-            <div class="flex flex-col container border-2 drop-shadow-2xl border-stone-300 shadow-slate-900 bg-orange-200 w-48 sm:w-96 h-52 md:h-96 mt-2 dark:bg-slate-400">
-                    <div class="p-2 text-xl md:text-9xl dark:bg-slate-900  shadow-slate-900 bg-orange-300 border-stone-300 ">
+            <div class="flex flex-col container border-2 rounded-xl border-stone-300 shadow-slate-900 bg-orange-200 w-48 sm:w-96 h-52 md:h-96 mt-2 dark:bg-slate-400">
+                    <div class="p-2  rounded-t-xl text-5xl md:text-9xl dark:bg-slate-900  shadow-slate-900 bg-orange-300 border-stone-300 ">
                     {month}
                     </div>
-                    <div class=" p-2 text-lg md:text-4xl py-2">
+                    <div class=" p-2 text-2xl md:text-4xl py-2">
                         {day}
                     </div>
                     <div class="p-2 text-3xl py-2">
@@ -80,8 +80,8 @@ export default function Calendar(){
     },[])
     return(
         <div class="bg-white flex flex-col">
-            <div>
-            <Switch nepali={isNepali} changeNepali={setIsNepali}/>
+            <div class="mt-3"> 
+            <Switch nepali={isNepali} changeNepali={setIsNepali} />
             </div>
             <div class="flex flex-row justify-between mx-auto p-4">
                 <Today isNepali={isNepali} currentNepaliDate={currentNepaliDate} monthInfo={monthInfo}/>
