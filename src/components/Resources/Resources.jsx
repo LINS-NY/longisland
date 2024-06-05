@@ -1,14 +1,14 @@
-import { getAllPostIds, getPostData } from '../../lib/resource';
+import { getAllPostIds, getPostData, googleDocsGet, getAllResources, getAllResourcesID } from '../../lib/resource';
 import Item from './Item'
 
 
 export default async function Resources(){
-    const posts = await getAllPostIds()
-    let AllPostData = await Promise.all(posts.map(async (post)=>{
-            return (await getPostData(post.params.id))
-        }))
+    const id = await getAllResourcesID()
+    let docsData = await Promise.all(id.map(async (document)=>{
+        return (await googleDocsGet(document.params.documentId))
+    }))
     let item = []
-    AllPostData.map((i)=> {
+    docsData.map((i)=> {
        item.push(<Item items={i} key={i.id}/>)
     })
     return(
@@ -20,13 +20,5 @@ export default async function Resources(){
                 </div>
             </div>
         </div>
-
     )
 }
-
-export async function generateStaticParams() {
-    const posts = getAllPostIds()
-    return posts.map((post) => ({
-      id: post.params.id
-    }))
-  }

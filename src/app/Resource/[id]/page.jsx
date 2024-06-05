@@ -3,7 +3,7 @@
 import Header from '@/components/Header/Header';
 import Resource from '@/components/Resource/Resource';
 import Footer from '@/components/Footer/Footer';
-import { getAllPostIds, getPostData } from '../../../lib/resource';
+import { getAllResourcesID, googleDocsGet } from '../../../lib/resource';
 
 export default async function Post({params}) {
   const data = await getPosts(params.id)
@@ -16,15 +16,15 @@ export default async function Post({params}) {
   )
 }
 
-async function generateStaticParams() {
-  const posts = getAllPostIds()
-  return posts.map((post) => ({
-    id: post.params.id
-  }))
+export async function generateStaticParams() {
+  const posts = await getAllResourcesID()
+  return (posts.map((post) => ({
+    id: post.params.documentId,
+  })))
 }
 
 async function getPosts(id) {
-  const postData = await getPostData(id);
+  const postData = await googleDocsGet(id);
   return {
       postData,
     };
