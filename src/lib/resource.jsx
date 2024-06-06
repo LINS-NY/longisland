@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path'
 import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { components } from './component';
@@ -7,7 +5,7 @@ const { google } = require('googleapis');
 
 const credential =  JSON.parse(atob(process.env.GOOGLE_SERVICE_KEY))
 
-export async function getAllResourcesID(folder){
+export async function getAllResourcesID(location){
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: credential.client_email,
@@ -17,7 +15,7 @@ export async function getAllResourcesID(folder){
   })
   const client = google.drive({version: "v3", auth: auth})
   const res = await client.files.list({
-    files: folder
+    q: `'${location}' in parents and trashed=false`
   })
   const resourcesRemoved = res.data.files.filter((name)=>name.name != "Resources")
   return resourcesRemoved.map((name) =>{
@@ -37,13 +35,10 @@ export async function getFinancialDocs(location){
     },
     scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
   })
-  console.log(location)
-  console.log("finish")
   const client = google.sheets({version: "v4", auth: auth})
   const res = await client.spreadsheets.get({
     spreadsheetId: location,
   });
-  console.log(res.data.sheets, "this")
 }
 
 
@@ -60,7 +55,6 @@ export async function getAllFinances(location){
     files: location
   })
   const resourcesRemoved = res.data.files.filter((name)=>name.mimeType == "application/vnd.google-apps.spreadsheet")
-  console.log(resourcesRemoved)
   return resourcesRemoved.map((name) =>{
     return {
       params: {
