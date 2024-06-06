@@ -7,18 +7,7 @@ const { google } = require('googleapis');
 
 const credential =  JSON.parse(atob(process.env.GOOGLE_SERVICE_KEY))
 
-export function getAllPostIds() {
-    const fileNames = fs.readdirSync(path.join(process.cwd(), 'src/resources'));
-    return fileNames.map((fileName) => {
-      return {
-        params: {
-          id: fileName.replace(/\.md$/, ''),
-        },
-      };
-    });
-  }
-
-export async function getAllResourcesID(){
+export async function getAllResourcesID(folder){
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: credential.client_email,
@@ -28,7 +17,7 @@ export async function getAllResourcesID(){
   })
   const client = google.drive({version: "v3", auth: auth})
   const res = await client.files.list({
-    files: '1Z3iLf79gKWsyFVqEh1xAyUUuz4gRAozI'
+    files: folder
   })
   const resourcesRemoved = res.data.files.filter((name)=>name.name != "Resources")
   return resourcesRemoved.map((name) =>{
@@ -40,7 +29,25 @@ export async function getAllResourcesID(){
 });
 }
 
-export async function getAllResources(){
+export async function getFinancialDocs(location){
+  const auth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: credential.client_email,
+      private_key: credential.private_key,
+    },
+    scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
+  })
+  console.log(location)
+  console.log("finish")
+  const client = google.sheets({version: "v4", auth: auth})
+  const res = await client.spreadsheets.get({
+    spreadsheetId: location,
+  });
+  console.log(res.data.sheets, "this")
+}
+
+
+export async function getAllFinances(location){
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: credential.client_email,
@@ -50,7 +57,31 @@ export async function getAllResources(){
   })
   const client = google.drive({version: "v3", auth: auth})
   const res = await client.files.list({
-    files: '1Z3iLf79gKWsyFVqEh1xAyUUuz4gRAozI'
+    files: location
+  })
+  const resourcesRemoved = res.data.files.filter((name)=>name.mimeType == "application/vnd.google-apps.spreadsheet")
+  console.log(resourcesRemoved)
+  return resourcesRemoved.map((name) =>{
+    return {
+      params: {
+        documentId: name.id,
+    },
+  }
+});
+}
+
+
+export async function getAllResources(location){
+  const auth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: credential.client_email,
+      private_key: credential.private_key,
+    },
+    scopes: 'https://www.googleapis.com/auth/drive.metadata.readonly',
+  })
+  const client = google.drive({version: "v3", auth: auth})
+  const res = await client.files.list({
+    files: location
   })
   const resourcesRemoved = res.data.files.filter((name)=>name.name != "Resources")
   return resourcesRemoved.map((name) =>{
@@ -87,27 +118,6 @@ export async function googleDocsGet(id) {
     },"")
     const {data, content} = matter(Buffer.from(text).toString());
     const contentRd = <MDXRemote source={content} components={components}/>
-    return {
-      id,
-      contentRd,
-      content,
-      ...data,
-    };
-  }
-
-
-  export async function getPostData(id) {
-    const resourceFolder = path.join(process.cwd(), 'src/resources')
-    //google docs folder linsny.gmail/webartive
-    const fullPath = path.join(resourceFolder, `${id}.md`)
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-  
-    // Use gray-matter to parse the post metadata section
-    const {data, content} = matter(fileContents);
-     const contentRd = <MDXRemote source={content} components={components}/>
-      
-  
-    // Combine the data with the id
     return {
       id,
       contentRd,
