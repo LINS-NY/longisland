@@ -1,6 +1,7 @@
 import Header from "../../../components/Header/Header";
 import FinancialReport from "../../../components/FinancialReport/FinancialReport"
 import Footer from "../../../components/Footer/Footer"
+import {getAllFinances} from '../../../lib/resource'
 
 export default function FinancialReports() {
   return (
