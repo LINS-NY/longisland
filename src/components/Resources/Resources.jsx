@@ -1,9 +1,9 @@
-import { getAllPostIds, getPostData, googleDocsGet, getAllResources, getAllResourcesID } from '../../lib/resource';
+import {  googleDocsGet, getAllResourcesID } from '../../lib/resource';
 import Item from './Item'
 
 
 export default async function Resources(){
-    const id = await getAllResourcesID()
+    const id = await getAllResourcesID('1Z3iLf79gKWsyFVqEh1xAyUUuz4gRAozI')
     let docsData = await Promise.all(id.map(async (document)=>{
         return (await googleDocsGet(document.params.documentId))
     }))

@@ -17,7 +17,7 @@ export default async function Post({params}) {
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllResourcesID()
+  const posts = await getAllResourcesID('1Z3iLf79gKWsyFVqEh1xAyUUuz4gRAozI')
   return (posts.map((post) => ({
     id: post.params.documentId,
   })))
