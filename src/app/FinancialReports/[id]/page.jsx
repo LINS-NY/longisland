@@ -8,7 +8,7 @@ export default async  function FinancialReports({params}) {
   return (
     <main class="flex flex-col h-dvh ">
       <Header/>
-      <FinancialReport key={data.location} title={data.title} content={data.content} heading={data.rowHeading}/>
+      <FinancialReport key={data.location} title={data.title} content={data.content} heading={data.rowHeading} balanceHeading={data.balanceHeading}/>
       <Footer/>
     </main>
   );

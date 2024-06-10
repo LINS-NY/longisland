@@ -1,8 +1,21 @@
 import * as React from 'react';
 
-const FinancialReport = ({title,content,heading}) => {
+const FinancialReport = ({title,content,heading,balanceHeading}) => {
     const contTable = []
+    const bHeading = 
+        <thead class=" hover:bg-cyan-600 bg-sky-500/100 rounded-3xl">    
+            <tr class="rounded-3xl">   
+                <th scope="col" class="font-small md:px-6  md:py-4 ">
+                    <span class="text-sm">{balanceHeading[0]}</span></th>
+                <th scope="col" class="font-small sm:font-bold md:px-6  md:py-4 text-sm">{balanceHeading[1]}</th>
+                <th scope="col" class="font-small sm:font-bold md:px-6  md:py-4 text-sm">{balanceHeading[2]}</th>
+                <th scope="col" class="font-small sm:font-bold md:px-6  md:py-4 text-sm">{balanceHeading[3]}</th>
+                <th scope="col" class="font-small sm:font-bold md:px-6  md:py-4 text-sm">{balanceHeading[4]}</th>
+                
+            </tr>
+        </thead>
     const headItem = 
+    <thead class=" hover:bg-cyan-600 bg-sky-500/100 rounded-3xl"> 
         <tr class="rounded-3xl">   
             <th scope="col" class="font-small md:px-6  md:py-4 ">
                 <span class="text-sm">{heading[0]}</span></th>
@@ -11,6 +24,7 @@ const FinancialReport = ({title,content,heading}) => {
             <th scope="col" class="font-small sm:font-bold md:px-6  md:py-4 text-sm">{heading[3]}</th>
             <th scope="col" class="font-small sm:font-bold md:px-6  md:py-4 text-sm">{heading[4]}</th>
         </tr>
+        </thead>
 
    content.map((val,index) => {
         contTable.push(
@@ -32,9 +46,11 @@ const FinancialReport = ({title,content,heading}) => {
                 <div class="mt-5 sm:mt-20 shadow-lg shadow-cyan-500/50 rounded-3xl">
                     <div class="overflow-hidden ">
                         <table class="w-full text-center text-sm font-light dark:text-white border-collapse rounded-3xl">
-                            <thead class=" hover:bg-cyan-600 bg-sky-500/100 rounded-3xl">                                    
-                                {headItem}
-                            </thead>
+                                { (title.includes("Checking"))
+                                ? 
+                                bHeading:
+                                headItem
+                            }
                             <tbody> 
                                 {contTable}
                             </tbody>

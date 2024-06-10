@@ -51,7 +51,8 @@ function getDocValue(response,title,location){
     title : title,
     rowHeading: rowRegular,
     content: content,
-    location: location
+    location: location,
+    balanceHeading: rowBank
   })
 }
 
