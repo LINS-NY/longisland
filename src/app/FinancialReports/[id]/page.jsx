@@ -1,13 +1,14 @@
 import Header from "../../../components/Header/Header";
 import FinancialReport from "../../../components/FinancialReport/FinancialReport"
 import Footer from "../../../components/Footer/Footer"
-import {getAllFinances} from '../../../lib/resource'
+import {getAllFinances,getFinancialDocs} from '../../../lib/resource'
 
-export default function FinancialReports() {
+export default async  function FinancialReports({params}) {
+  const data = await getFinancialDocs(params.id)
   return (
     <main class="flex flex-col h-dvh ">
       <Header/>
-      <FinancialReport/>
+      <FinancialReport key={data.location} title={data.title} content={data.content} heading={data.rowHeading}/>
       <Footer/>
     </main>
   );
@@ -20,3 +21,5 @@ export async function generateStaticParams() {
     id: post.params.documentId,
   })))
 }
+
+

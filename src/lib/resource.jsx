@@ -27,6 +27,35 @@ export async function getAllResourcesID(location){
 });
 }
 
+
+function getDocValue(response,title,location){
+  let startingPoint = response.filter((name) => response.indexOf(name) > 10)
+  const rowRegular = [
+    'Description',
+    'Receipt Number',
+    'Income (Cash)',
+    'Income (Cheque)',
+    'Expenses'
+  ]
+  const rowBank = ['Description','Begining Balance','Deposit','Withdraw','Ending Balance']
+  const content = startingPoint.map((value => 
+      {
+        let totalItems = ["", "", "" ,"" ,""]
+        value.map((item,index)=>{
+              totalItems[index] = item
+        })
+      return totalItems
+    }
+  ))
+  return ({
+    title : title,
+    rowHeading: rowRegular,
+    content: content,
+    location: location
+  })
+}
+
+
 export async function getFinancialDocs(location){
   const auth = new google.auth.GoogleAuth({
     credentials: {
@@ -39,6 +68,12 @@ export async function getFinancialDocs(location){
   const res = await client.spreadsheets.get({
     spreadsheetId: location,
   });
+  const title = res.data.sheets[0].properties.title
+  const value = await client.spreadsheets.values.get({
+    spreadsheetId: location,
+    range: `${title}!A1:E86`
+  });
+  return getDocValue(value.data.values, title, location)
 }
 
 
