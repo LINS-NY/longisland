@@ -61,7 +61,6 @@ function getDocValue(response,title,location, month,year,sheetId){
 
 
 export async function getFinancialDocs(location){
-  console.log(location)
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: credential.client_email,
