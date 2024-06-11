@@ -1,9 +1,11 @@
 import * as React from 'react';
 
-const FinancialReport = ({title,content,heading,balanceHeading}) => {
+
+
+function FinancialReporting ({title,content,heading,balanceHeading}){
     const contTable = []
     const bHeading = 
-        <thead class=" hover:bg-cyan-600 bg-sky-500/100 rounded-3xl">    
+    <thead class=" hover:bg-cyan-600 bg-sky-500/100 rounded-3xl">    
             <tr class="rounded-3xl">   
                 <th scope="col" class="font-small md:px-6  md:py-4 ">
                     <span class="text-sm">{balanceHeading[0]}</span></th>
@@ -26,9 +28,9 @@ const FinancialReport = ({title,content,heading,balanceHeading}) => {
         </tr>
         </thead>
 
-   content.map((val,index) => {
-        contTable.push(
-            <tr class="border-b border-neutral-00 bg-black/[0.02] dark:border-white/10 hover:bg-cyan-200 " key={index}>
+content.map((val,index) => {
+    contTable.push(
+        <tr class="border-b border-neutral-00 bg-black/[0.02] dark:border-white/10 hover:bg-cyan-200 " key={index}>
                 <td class=" text-black lg:whitespace-nowrap lg:px-6 px-1 lg:py-4 text-sm sm:font-medium" key={index}>{val[0]}</td>
                 <td class="lg:whitespace-nowrap text-black lg:px-6  lg:py-4 text-sm sm:font-medium" key={index}>{val[1]}</td>
                 <td class="lg:whitespace-nowrap text-black lg:px-6  lg:py-4 text-sm sm:font-medium" key={index}>{val[2]}</td>
@@ -59,6 +61,22 @@ const FinancialReport = ({title,content,heading,balanceHeading}) => {
                 </div>
             </div>
         </div>    
+    )
+}
+
+const FinancialReport = ({content}) => {
+    let totalData = []
+    if (Array.isArray(content)){
+        totalData = content.map((item)=> {
+            return <FinancialReporting key={item.title} title={item.title} content={item.content} heading={item.rowHeading} balanceHeading={item.balanceHeading}/>
+        })
+    }else{
+        totalData = <FinancialReporting  key={content.title} title={content.title} content={content.content} heading={content.rowHeading} balanceHeading={content.balanceHeading}/>
+    }
+    return(
+        <>
+        {totalData}
+        </>
     )
 }
 
