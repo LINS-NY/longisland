@@ -12,7 +12,7 @@ const electedMember = [
     },
     {
         name: "Sabitra Siwakoti",
-        nepaliName: "सावित्रा सिवाकोट",
+        nepaliName: "सावित्रा सिवाकोटी",
         imageLocation: "/Members/SabitraSiwakoti.png",
         position: "Senior Vice President",
         nepaliPostion: "बरिस्ट उपाध्यक्ष"
