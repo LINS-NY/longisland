@@ -4,7 +4,6 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 
 export default async function IndividualItem({items}){
     let source = await RemoteMdxPage(items.content)
-    console.log(source)
     return(
       <article class="p-4 flex flex-col justify-between gap-2 border rounded-lg shadow-md bg-white dark:bg-gray-700 dark:border-gray-400/40 text-align: left;  leading-4">
         <Link  href={`/Resource/${encodeURIComponent(items.id)}`}>
