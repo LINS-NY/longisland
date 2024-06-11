@@ -5,8 +5,8 @@ import * as React from 'react';
 function FinancialReporting ({title,content,heading,balanceHeading}){
     const contTable = []
     const bHeading = 
-    <thead class=" hover:bg-cyan-600 bg-sky-500/100 rounded-3xl">    
-            <tr class="rounded-3xl">   
+    <thead class=" hover:bg-cyan-600 bg-sky-500/100 ">    
+            <tr class="">   
                 <th scope="col" class="font-small md:px-6  md:py-4 ">
                     <span class="text-sm">{balanceHeading[0]}</span></th>
                 <th scope="col" class="font-small sm:font-bold md:px-6  md:py-4 text-sm">{balanceHeading[1]}</th>
@@ -17,8 +17,8 @@ function FinancialReporting ({title,content,heading,balanceHeading}){
             </tr>
         </thead>
     const headItem = 
-    <thead class=" hover:bg-cyan-600 bg-sky-500/100 rounded-3xl"> 
-        <tr class="rounded-3xl">   
+    <thead class=" hover:bg-cyan-600 bg-sky-500/100 "> 
+        <tr class="">   
             <th scope="col" class="font-small md:px-6  md:py-4 ">
                 <span class="text-sm">{heading[0]}</span></th>
             <th scope="col" class="font-small sm:font-bold md:px-6  md:py-4 text-sm">{heading[1]}</th>
@@ -45,9 +45,9 @@ content.map((val,index) => {
                 <h1 class="text-lg sm:text-xl font-semibold whitespace-nowrap text-gray-500 mx-auto text-center dark:text-gray-400">
                     {title}
                 </h1>
-                <div class="mt-5 sm:mt-20 shadow-lg shadow-cyan-500/50 rounded-3xl">
+                <div class="mt-5 sm:mt-20 shadow-lg shadow-cyan-500/50 ">
                     <div class="overflow-hidden ">
-                        <table class="w-full text-center text-sm font-light dark:text-white border-collapse rounded-3xl">
+                        <table class="w-full text-center text-sm font-light dark:text-white border-collapse ">
                                 { (title.includes("Checking"))
                                 ? 
                                 bHeading:
