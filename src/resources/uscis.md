@@ -1,6 +1,6 @@
 ---
 Title: USCIS Info
-Description: Lets take this to next level for 2
+Description: U.S. Citizenship and Immigration Services (USCIS)
 Date: 2024/05/20
 ---
 **USCIS** stands for U.S. Citizenship and Immigration Services, an agency of the Department of Homeland Security (DHS).<br/>

@@ -118,7 +118,7 @@ const electedMember = [
     {
         name: "Roshni Sitaula",
         nepaliName: "रोश्नी सिटौला",
-        imageLocation: "/Members/RajKumarTamang.png",
+        imageLocation: "/Members/RoshniSitaula.png",
         position: "Board Of Directors",
         nepaliPostion: "कार्यसमिति सदस्य"
     },
