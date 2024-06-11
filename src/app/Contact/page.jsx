@@ -1,12 +1,12 @@
 import Header from "../../components/Header/Header";
-import Calendar from "../../components/Calendar/Calendar"
+import Contact from "../../components/Contact/Contact"
 import Footer from "../../components/Footer/Footer"
 
-export default function Calendars() {
+export default function Ab() {
   return (
-    <main class="flex flex-col overflow-hidden">
+    <main class="flex flex-col h-dvh ">
       <Header/>
-      <Calendar/>
+      <Contact/>
       <Footer/>
     </main>
   );

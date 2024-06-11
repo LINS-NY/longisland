@@ -29,7 +29,7 @@ export const components = {
 
   p: (props: ComponentPropsWithoutRef<"p">) => {
     return (
-      <p {...props} className="py-2 text-left text-sm md:text-lg font-semibold text-gray-500 dark:text-gray-400" />
+      <p {...props} className="py-2 text-left text-sm md:text-lg font-semibold text-gray-500 dark:text-white" />
     );
   },
 

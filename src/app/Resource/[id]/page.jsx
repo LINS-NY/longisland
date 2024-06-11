@@ -8,7 +8,7 @@ import { getAllPostIds, getPostData } from '../../../lib/resource';
 export default async function Post({params}) {
   const data = await getPosts(params.id)
   return (
-    <main class="flex flex-col h-dvh ">
+    <main class="flex flex-col h-dvh relative">
     <Header/>
     <Resource class="dark:text-dark" key={data.postData.id} item={data.postData}/>
     <Footer/>

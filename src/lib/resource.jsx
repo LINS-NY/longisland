@@ -17,6 +17,7 @@ export function getAllPostIds() {
 
   export async function getPostData(id) {
     const resourceFolder = path.join(process.cwd(), 'src/resources')
+    //google docs folder linsny.gmail/webartive
     const fullPath = path.join(resourceFolder, `${id}.md`)
     const fileContents = fs.readFileSync(fullPath, 'utf8');
   

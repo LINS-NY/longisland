@@ -4,26 +4,23 @@ Description: Department of motor vehicles
 Date: 2024/05/19
 ---
 
-A **Department of Motor Vehicles (DMV)** is a government agency that administers motor vehicle registration and driver licensing. In countries with federal states such as in North America, these agencies are generally administered by subnational entities governments, while in unitary states such as many of those in Europe, DMVs are organized nationally by the central government. **Wikipedia**
+A **Department of Motor Vehicles (DMV)** is a government agency that administers motor vehicle registration and driver licensing. In countries with federal states such as in North America, these agencies are generally administered by subnational entities governments, while in unitary states such as many of those in Europe, DMVs are organized nationally by the central government.
 <br/>
-**मोटर वाहन विभाग (DMV)** एक सरकारी एजेन्सी हो जसले मोटर वाहन दर्ता र चालक अनुमतिपत्र व्यवस्थापन गर्दछ। उत्तरी अमेरिका जस्ता संघीय राज्यहरू भएका देशहरूमा, यी एजेन्सीहरू सामान्यतया उप-राष्ट्रिय निकाय सरकारहरूद्वारा प्रशासित हुन्छन्, जबकि एकात्मक राज्यहरूमा जस्तै युरोपका धेरै जसो, DMV हरू केन्द्रीय सरकारद्वारा राष्ट्रिय रूपमा व्यवस्थित हुन्छन्। विकिपिडिया
+**मोटर वाहन विभाग (DMV)** एक सरकारी एजेन्सी हो जसले मोटर वाहन दर्ता र चालक अनुमतिपत्र व्यवस्थापन गर्दछ। उत्तरी अमेरिका जस्ता संघीय राज्यहरू भएका देशहरूमा, यी एजेन्सीहरू सामान्यतया उप-राष्ट्रिय निकाय सरकारहरूद्वारा प्रशासित हुन्छन्, जबकि एकात्मक राज्यहरूमा जस्तै युरोपका धेरै जसो, DMV हरू केन्द्रीय सरकारद्वारा राष्ट्रिय रूपमा व्यवस्थित हुन्छन्।
 
 <br/>
 Click below link to open<br/>पेज खोल्नको लागि तलको लिङ्कमा क्लिक गर्नुहोस्
 <br/>
-**DMV Home Page**<br/>DMV गृह पृष्ठ
-
+**DMV Home Page** (DMV गृह पृष्ठ)
 [https://dmv.ny.gov/](https://dmv.ny.gov/)
 <br/>
-**Nassau DMV Office Locations and Reservations**<br/>नसाउ DMV कार्यालय स्थान र आरक्षण
-
+**Nassau DMV Office Locations and Reservations** (नसाउ DMV कार्यालय स्थान र आरक्षण)
 [https://dmv.ny.gov/offices/county-offices?field_county_name_value=NASSAU](https://dmv.ny.gov/offices/county-offices?field_county_name_value=NASSAU)
 <br/>
-**Suffolk DMV Office Locations and Reservations**<br/>सफोल्क DMV कार्यालय स्थान र आरक्षण
-
+**Suffolk DMV Office Locations and Reservations** (सफोल्क DMV कार्यालय स्थान र आरक्षण)
 [https://dmv.ny.gov/offices/county-offices?field_county_name_value=SUFFOLK](https://dmv.ny.gov/offices/county-offices?field_county_name_value=SUFFOLK)
 <br/>
-**Change Your Address**<br/>ठेगाना परिवर्तन 
+**Change Your Address**(ठेगाना परिवर्तन)
 <br/>
 Guidance
 <br/>
@@ -44,4 +41,6 @@ For Online<br/>
 You need a [MyDMV](https://dmv.ny.gov/mydmv/mydmv) account to change your address online.<br/>
 तपाइँलाई तपाइँको अनलाइन ठेगाना परिवर्तन गर्न [MyDMV](https://dmv.ny.gov/mydmv/mydmv) खाता चाहिन्छ।
 
+
+<br/><br/><br/><br/><br/><br/>Sources: DMV Official site and Wikipedia.
 
