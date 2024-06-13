@@ -29,7 +29,8 @@ export async function getAllResourcesID(location){
 
 
 function getDocValue(response,title,location, month,year,sheetId){
-  let startingPoint = response.filter((name) => response.indexOf(name) > 10)
+  // console.log(response,title,location, month,year,sheetId)
+  let startingPoint = response.filter((name) => response.indexOf(name) > 9)
   const rowRegular = [
     'Description',
     'Receipt Number',
