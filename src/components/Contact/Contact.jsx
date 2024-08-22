@@ -32,7 +32,7 @@ const Contact = () => {
               dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 
               dark:focus:border-primary-500" placeholder="Leave a comment..."></textarea>
           </div>
-            <button class="bg-sky-800 hover:bg-sky-950 text-white font-bold py-2 px-5 rounded">Send message</button>
+            <button class="bg-sky-800 hover:bg-sky-950 text-white font-bold py-2 px-5 rounded">Send message ✉</button>
       </form>
   </div>
 </section>
