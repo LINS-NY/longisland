@@ -3,7 +3,7 @@ import * as React from 'react';
 const Donation = () => {
     return(
         <div class="flex w-96 sm:w-5/6 mx-auto">
-            <div class="flex flex-row justify-between mx-auto p-4">
+            <div class="flex-row justify-between mx-auto p-4">
                 <form class="w-full max-w-lg ">
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
