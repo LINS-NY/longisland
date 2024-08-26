@@ -2,9 +2,9 @@ import * as React from 'react';
 
 const Contact = () => {
     return(
-<div class="h-svh  bg-white flex max-w-screen-xl flex flex-row justify-between mx-auto p-4">
-            <section class="bg-white dark:bg-gray-900">
-  <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+<div class="bg-white flex max-w-screen-xl flex flex-row justify-between mx-auto p-4">
+  <section class="bg-white dark:bg-gray-900">
+    <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
       <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Us</h2>
       <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
         Got a technical issue? Want to send comment/feedback? <br/>Please Let us know.</p>
@@ -34,9 +34,9 @@ const Contact = () => {
           </div>
             <button class="bg-sky-800 hover:bg-sky-950 text-white font-bold py-2 px-5 rounded">Send message ✉</button>
       </form>
-  </div>
-</section>
-  </div>    
+    </div>
+  </section>
+</div>    
   
   
 
