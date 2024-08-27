@@ -21,15 +21,19 @@ const Hero =()=>{
                     </p>
                     <div class="flex  flex-wrap text-sm font-light item-center justify-center">
                         <Link href="/FinancialReport" >
-                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">
+                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   
+                            shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">
                                 Financial Report
                             </button>
                         </Link>
                         <Link href="/About">
-                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950 shadow-lg rounded-lg p-2 dark:text-white text-white m-2 drop-shadow-2xl">Membership Form</button>
+                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  
+                            dark:shadow-slate-950 shadow-lg rounded-lg p-2 dark:text-white text-white m-2 
+                            drop-shadow-2xl">Membership Form</button>
                         </Link>
-                        <Link href="/About">
-                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white dark:shadow-slate-950   shadow-lg rounded-lg p-2 text-white m-2 drop-shadow-2xl">Donation Form</button>
+                        <Link href="/News">
+                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white 
+                            dark:shadow-slate-950   shadow-lg rounded-lg p-2 text-white m-2 drop-shadow-2xl">LINS News</button>
                         </Link>
                     </div>
                 </div>
@@ -52,13 +56,16 @@ const Hero =()=>{
                     </p>
                     <div class="flex flex-wrap item-center justify-center max-[800px]:text-sm ">
                         <Link href="/FinancialReport">
-                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Financial Report</button>
+                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   
+                            shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Financial Report</button>
                         </Link>
-                        <Link href="/About">
-                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Membership Form</button>
+                        <Link href="/MembershipForm">
+                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   
+                            shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Membership Form</button>
                         </Link>
-                        <Link href="/About">
-                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Donation Form</button>
+                        <Link href="/News">
+                            <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950  
+                             shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">LINS News</button>
                         </Link>
                     </div>
                 </div>
