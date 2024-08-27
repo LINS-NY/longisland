@@ -3,7 +3,7 @@
 import Header from '@/components/Header/Header';
 import News from '@/components/News/News';
 import Footer from '@/components/Footer/Footer';
-import { getAllResourcesID, googleDocsGet } from '../../../lib/Website News';
+import { getAllResourcesID, googleDocsGet } from '../../../lib/resource';
 
 export default async function Post({params}) {
   const data = await getPosts(params.id)
