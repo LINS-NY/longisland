@@ -87,8 +87,8 @@ function MonthView({ isNepali, currentNepaliDate, monthInfo }) {
               }`} // Add conditional styling
               style={{
                 border: isToday ? "4px solid #FF6347" : "1px solid #ddd", // Highlight current day
-                backgroundColor: isToday ? "#eee1c7" : "transparent",
-                borderRadius: isToday ? "20px" : "0",
+                backgroundColor: isToday ? "#e6d2ab" : "",
+                borderRadius: isToday ? "5px" : "0",
                 padding: "10px",
               }}
             >

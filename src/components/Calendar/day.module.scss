@@ -19,6 +19,8 @@
   color: #333;
   font-size: 30px; /* Default font size */
 
+  align-items: center;
+  justify-content: center;
   /* For iPhones in portrait and landscape */
   @media (max-width: 375px) {
     margin: 10px 0; /* For small screens like iPhones */
@@ -26,14 +28,13 @@
   }
 
   @media (min-width: 376px) and (max-width: 667px) {
-    margin: 5px; /* For small screens like iPhones */
-    font-size: small;
+    // margin: 5px; /* For small screens like iPhones */
+    font-size: 10px;
     margin-left: -7px;
   }
 
   /* For iPads */
   @media (min-width: 668px) and (max-width: 1024px) {
-    margin: 30px 0; /* For iPads in portrait */
     font-size: 20px;
   }
 
@@ -59,17 +60,18 @@
   margin-top: -20px;
   /* For iPhones in portrait and landscape */
   @media (max-width: 375px) {
-    margin-top: -10px;
-    font-size: 14px;
+    margin-top: -15px;
+    font-size: 10px;
   }
 
   @media (min-width: 376px) and (max-width: 667px) {
-    margin-top: -15px;
+    margin-top: 1px;
     font-size: 25px;
   }
 
   /* For iPads */
   @media (min-width: 668px) and (max-width: 1024px) {
+    margin-top: 5px;
     font-size: 30px;
   }
 }
@@ -90,7 +92,7 @@
 
   /* For iPads */
   @media (min-width: 668px) and (max-width: 1024px) {
-    margin: 20px 0; /* For iPads in portrait */
+    margin: 0px 0; /* For iPads in portrait */
   }
 
   /* For laptops */
@@ -104,9 +106,14 @@
   }
 }
 
+.today {
+  color: #8b6e60; /* Muted color for subtle actions */
+  font-size: 30px;
+}
+
 .leftAction {
   color: #607d8b; /* Muted color for subtle actions */
-  font-size: 20px;
+  font-size: 25px;
   margin-left: 10px;
   margin-right: 10px;
   font-weight: bold;
@@ -119,8 +126,9 @@
 
   /* For iPads */
   @media (min-width: 668px) and (max-width: 1024px) {
-    align-content: baseline;
-    align-items: center;
+    // align-content: baseline;
+    text-align: center;
+    justify-content: center;
     font-size: large;
   }
 
@@ -137,6 +145,7 @@
 .rightAction {
   color: #607d8b; /* Muted color for subtle actions */
   font-size: 25px;
+
   @media (min-width: 376px) and (max-width: 667px) {
     display: none;
   }
@@ -149,6 +158,7 @@
   /* For laptops */
   @media (min-width: 1025px) and (max-width: 1280px) {
     margin: -10px 0; /* For laptops */
+    // font-weight: 600;
   }
 
   /* For larger laptops/desktops */
@@ -163,10 +173,7 @@
   color: #455a64; /* Darker text color for better readability */
   margin-top: 50px;
   text-align: center;
-  @media (width <= 480px) {
-    margin-top: 20px;
-    display: none;
-  }
+
   @media (width <= 1100px) {
     margin-top: 20px;
     max-lines: 3;
@@ -174,10 +181,31 @@
   @media (width <= 1400px) {
     margin-top: 30px;
   }
+
+  @media (min-width: 376px) and (max-width: 667px) {
+    margin-top: 20px;
+    display: none;
+  }
+
+  /* For iPads */
+  @media (min-width: 668px) and (max-width: 1024px) {
+    margin-top: 20px;
+  }
+
+  /* For laptops */
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    margin: 20px 0; /* For laptops */
+  }
+
+  /* For larger laptops/desktops */
+  @media (min-width: 1281px) {
+    margin: -10px 0; /* For larger screens */
+  }
 }
-.englishDay {
-  font-size: 1.2rem;
-}
+// .englishDay {
+//   // font-size: 1.2rem;
+//   font-weight: bold;
+// }
 .info {
   color: #607d8b;
 }
@@ -190,7 +218,6 @@
   @media (min-width: 376px) and (max-width: 667px) {
     font-size: 15px;
     padding-left: 0px;
-
     margin-bottom: -20px;
   }
 }
