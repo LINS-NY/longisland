@@ -17,12 +17,34 @@
 .dayName {
   font-weight: bold;
   color: #333;
-  font-size: 30px;
-  @media (width <= 480px) {
-    font-size: 15px;
+  font-size: 30px; /* Default font size */
+
+  /* For iPhones in portrait and landscape */
+  @media (max-width: 375px) {
+    margin: 10px 0; /* For small screens like iPhones */
+    font-size: small;
   }
-  @media (width <= 800px) {
+
+  @media (min-width: 376px) and (max-width: 667px) {
+    margin: 10px 0; /* For small screens like iPhones */
+    font-size: small;
+    margin-left: -7px;
+  }
+
+  /* For iPads */
+  @media (min-width: 668px) and (max-width: 1024px) {
+    margin: 30px 0; /* For iPads in portrait */
     font-size: 20px;
+  }
+
+  /* For laptops */
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    margin: 10px 0; /* For laptops */
+  }
+
+  /* For larger laptops/desktops */
+  @media (min-width: 1281px) {
+    margin: 20px 0; /* For larger screens */
   }
 }
 
@@ -35,11 +57,20 @@
   top: 6px;
   font-size: 80px;
   margin-top: -20px;
-  @media (width <= 480px) {
-    font-size: 40px;
+  /* For iPhones in portrait and landscape */
+  @media (max-width: 375px) {
+    margin-top: -10px;
+    font-size: 14px;
   }
-  @media (width <= 800px) {
-    font-size: 50px;
+
+  @media (min-width: 376px) and (max-width: 667px) {
+    margin-top: 0px;
+    font-size: 30px;
+  }
+
+  /* For iPads */
+  @media (min-width: 668px) and (max-width: 1024px) {
+    font-size: 30px;
   }
 }
 
@@ -64,7 +95,7 @@
 
   /* For laptops */
   @media (min-width: 1025px) and (max-width: 1280px) {
-    margin: -10px 0; /* For laptops */
+    margin: 10px 0; /* For laptops */
   }
 
   /* For larger laptops/desktops */
@@ -79,25 +110,50 @@
   margin-left: 10px;
   margin-right: 10px;
   font-weight: bold;
-  @media (width <= 480px) {
-    align-content: baseline;
+
+  @media (min-width: 376px) and (max-width: 667px) {
     align-items: center;
+    font-size: small;
+    margin-left: -7px;
   }
-  @media (width <= 1100px) {
+
+  /* For iPads */
+  @media (min-width: 668px) and (max-width: 1024px) {
     align-content: baseline;
     align-items: center;
+    font-size: large;
+  }
+
+  /* For laptops */
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    margin: -10px 0; /* For laptops */
+  }
+
+  /* For larger laptops/desktops */
+  @media (min-width: 1281px) {
+    margin: -10px 0; /* For larger screens */
   }
 }
 .rightAction {
   color: #607d8b; /* Muted color for subtle actions */
   font-size: 25px;
-  margin-left: 10px;
-  margin-right: 10px;
-  @media (width <= 480px) {
+  @media (min-width: 376px) and (max-width: 667px) {
     display: none;
   }
-  @media (width <= 1100px) {
+
+  /* For iPads */
+  @media (min-width: 668px) and (max-width: 1024px) {
     display: none;
+  }
+
+  /* For laptops */
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    margin: -10px 0; /* For laptops */
+  }
+
+  /* For larger laptops/desktops */
+  @media (min-width: 1281px) {
+    margin: -10px 0; /* For larger screens */
   }
 }
 
@@ -109,7 +165,7 @@
   text-align: center;
   @media (width <= 480px) {
     margin-top: 20px;
-    max-lines: 2;
+    display: none;
   }
   @media (width <= 1100px) {
     margin-top: 20px;
@@ -148,12 +204,28 @@
   height: 300px; // Adjust height based on your GIF size
 }
 .container {
-  max-width: 1800px;
+  max-width: 1800px; /* Maximum width */
+  width: 100%; /* Allow the container to take full width */
   margin: 0 auto; /* Center the container horizontally */
   display: flex; /* Enable flexbox for alignment */
   flex-direction: column; /* Stack items vertically */
   justify-content: center; /* Center items vertically */
   align-items: center; /* Center items horizontally */
   min-height: 100vh; /* Make it full height */
-  padding: 20px; /* Optional: Add some padding */
+  // padding: 20px; /* Optional: Add some padding */
+  box-sizing: border-box; /* Ensure padding is included in total width */
+
+  @media (max-width: 375px) {
+    font-size: small; /* Adjust font size */
+  }
+
+  @media (min-width: 376px) and (max-width: 667px) {
+    margin-top: 0px; /* Set appropriate margins */
+    font-size: medium; /* Adjust font size */
+  }
+
+  /* For iPads */
+  @media (min-width: 668px) and (max-width: 1024px) {
+    font-size: large; /* Adjust font size */
+  }
 }

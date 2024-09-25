@@ -165,7 +165,7 @@ export default function Calendar() {
     <div className={`${styles.container}`}>
       <div className="flex flex-row justify-between items-center w-full p-4">
         <span
-          className={`text-sm md:text-3xl font-semibold whitespace-nowrap text-gray-9500 dark:text-gray-900 ${styles.span1}`}
+          className={`text-sm md:text-3xl sd:text-sm font-semibold whitespace-nowrap text-gray-9500 dark:text-gray-900 ${styles.span1}`}
         >
           {extraInformation.metadata?.en || ""}
         </span>
