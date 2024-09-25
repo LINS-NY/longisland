@@ -47,15 +47,29 @@
 .actions {
   display: flex;
   justify-content: space-between;
-  margin: -40px 0;
-  @media (width <= 480px) {
-    margin: 10px 0;
+  margin: -20px 0;
+  /* For iPhones in portrait and landscape */
+  @media (max-width: 375px) {
+    margin: 10px 0; /* For small screens like iPhones */
   }
-  @media (width <= 1100px) {
-    margin: 30px 0;
+
+  @media (min-width: 376px) and (max-width: 667px) {
+    margin: 15px 0; /* For larger iPhones */
   }
-  @media (width <= 1500px) {
-    margin: 20px 0;
+
+  /* For iPads */
+  @media (min-width: 668px) and (max-width: 1024px) {
+    margin: 20px 0; /* For iPads in portrait */
+  }
+
+  /* For laptops */
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    margin: -10px 0; /* For laptops */
+  }
+
+  /* For larger laptops/desktops */
+  @media (min-width: 1281px) {
+    margin: -20px 0; /* For larger screens */
   }
 }
 
@@ -65,6 +79,14 @@
   margin-left: 10px;
   margin-right: 10px;
   font-weight: bold;
+  @media (width <= 480px) {
+    align-content: baseline;
+    align-items: center;
+  }
+  @media (width <= 1100px) {
+    align-content: baseline;
+    align-items: center;
+  }
 }
 .rightAction {
   color: #607d8b; /* Muted color for subtle actions */
@@ -87,9 +109,11 @@
   text-align: center;
   @media (width <= 480px) {
     margin-top: 20px;
+    max-lines: 2;
   }
   @media (width <= 1100px) {
     margin-top: 20px;
+    max-lines: 3;
   }
   @media (width <= 1400px) {
     margin-top: 30px;
