@@ -188,14 +188,14 @@ export default function Calendar() {
         {/* Bratabandha Section */}
         <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-md">
           <span className="text-md md:text-xl font-semibold text-gray-700">
-            ब्रताबन्ध: {extraInformation.bratabandha}
+            ब्रताबन्ध : {extraInformation.bratabandha}
           </span>
         </div>
 
         {/* Marriage Events Section */}
         <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-md">
           <span className="text-md md:text-xl font-semibold text-gray-700">
-            विवाह:{" "}
+            विवाह :
             {extraInformation.marriage &&
             extraInformation.marriage.length > 0 ? (
               extraInformation.marriage.map((event, index) => (
@@ -212,7 +212,7 @@ export default function Calendar() {
         {/* Important Dates Section */}
         <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-md">
           <span className="text-md md:text-xl font-semibold text-gray-700">
-            Important dates:{" "}
+            महत्त्वपूर्ण मितिहरू :
             {extraInformation.holiFest &&
             extraInformation.holiFest.length > 0 ? (
               extraInformation.holiFest.map((fest, index) => (

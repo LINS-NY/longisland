@@ -26,7 +26,7 @@
   }
 
   @media (min-width: 376px) and (max-width: 667px) {
-    margin: 10px 0; /* For small screens like iPhones */
+    margin: 5px; /* For small screens like iPhones */
     font-size: small;
     margin-left: -7px;
   }
@@ -64,8 +64,8 @@
   }
 
   @media (min-width: 376px) and (max-width: 667px) {
-    margin-top: 0px;
-    font-size: 30px;
+    margin-top: -15px;
+    font-size: 25px;
   }
 
   /* For iPads */
@@ -85,7 +85,7 @@
   }
 
   @media (min-width: 376px) and (max-width: 667px) {
-    margin: 15px 0; /* For larger iPhones */
+    margin: 1px 0; /* For larger iPhones */
   }
 
   /* For iPads */
@@ -181,16 +181,31 @@
 .info {
   color: #607d8b;
 }
+
 .span1 {
   color: #607d8b;
   padding-left: 30px; /* Muted color for subtle actions */
   font-size: 30px;
+
+  @media (min-width: 376px) and (max-width: 667px) {
+    font-size: 15px;
+    padding-left: 0px;
+
+    margin-bottom: -20px;
+  }
 }
 
 .span2 {
   color: #607d8b; /* Muted color for subtle actions */
   padding-right: 30px; /* Muted color for subtle actions */
   font-size: 30px;
+
+  @media (min-width: 376px) and (max-width: 667px) {
+    font-size: 15px;
+    padding-right: 0px;
+
+    margin-bottom: -20px;
+  }
 }
 .loadingContainer {
   display: flex;
