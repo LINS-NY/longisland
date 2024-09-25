@@ -56,7 +56,7 @@
   margin-bottom: 8px;
   position: relative;
   top: 6px;
-  font-size: 80px;
+  font-size: 60px;
   margin-top: -20px;
   /* For iPhones in portrait and landscape */
   @media (max-width: 375px) {
@@ -73,6 +73,15 @@
   @media (min-width: 668px) and (max-width: 1024px) {
     margin-top: 5px;
     font-size: 30px;
+  }
+  /* For laptops */
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    margin-top: -30px;
+  }
+
+  /* For larger laptops/desktops */
+  @media (min-width: 1281px) {
+    margin-top: -30px;
   }
 }
 
@@ -102,7 +111,7 @@
 
   /* For larger laptops/desktops */
   @media (min-width: 1281px) {
-    margin: -20px 0; /* For larger screens */
+    margin: 10px 0; /* For larger screens */
   }
 }
 
@@ -173,14 +182,7 @@
   color: #455a64; /* Darker text color for better readability */
   margin-top: 50px;
   text-align: center;
-
-  @media (width <= 1100px) {
-    margin-top: 20px;
-    max-lines: 3;
-  }
-  @media (width <= 1400px) {
-    margin-top: 30px;
-  }
+  margin-bottom: 10px;
 
   @media (min-width: 376px) and (max-width: 667px) {
     margin-top: 20px;
@@ -189,17 +191,20 @@
 
   /* For iPads */
   @media (min-width: 668px) and (max-width: 1024px) {
-    margin-top: 20px;
+    margin-top: 10px;
+    // padding: auto;
   }
 
   /* For laptops */
   @media (min-width: 1025px) and (max-width: 1280px) {
-    margin: 20px 0; /* For laptops */
+    margin: 20px; /* For laptops */
+    font-size: 15px;
   }
 
   /* For larger laptops/desktops */
   @media (min-width: 1281px) {
-    margin: -10px 0; /* For larger screens */
+    margin: 20px; /* For larger screens */
+    font-size: 20px;
   }
 }
 // .englishDay {
@@ -246,14 +251,14 @@
   height: 300px; // Adjust height based on your GIF size
 }
 .container {
-  max-width: 1800px; /* Maximum width */
+  max-width: 1200px; /* Maximum width */
   width: 100%; /* Allow the container to take full width */
   margin: 0 auto; /* Center the container horizontally */
   display: flex; /* Enable flexbox for alignment */
   flex-direction: column; /* Stack items vertically */
   justify-content: center; /* Center items vertically */
   align-items: center; /* Center items horizontally */
-  min-height: 100vh; /* Make it full height */
+  // min-height: 100vh; /* Make it full height */
   // padding: 20px; /* Optional: Add some padding */
   box-sizing: border-box; /* Ensure padding is included in total width */
 
@@ -269,5 +274,16 @@
   /* For iPads */
   @media (min-width: 668px) and (max-width: 1024px) {
     font-size: large; /* Adjust font size */
+  }
+  /* For laptops */
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    // margin: 20px; /* For laptops */
+    font-size: 15px;
+  }
+
+  /* For larger laptops/desktops */
+  @media (min-width: 1281px) {
+    // margin: 20px; /* For larger screens */
+    // font-size: 20px;
   }
 }
