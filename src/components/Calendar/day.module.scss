@@ -18,6 +18,12 @@
   font-weight: bold;
   color: #333;
   font-size: 30px;
+  @media (width <= 480px) {
+    font-size: 15px;
+  }
+  @media (width <= 800px) {
+    font-size: 20px;
+  }
 }
 
 /* Nepali date (e.g., १) */
@@ -29,6 +35,12 @@
   top: 6px;
   font-size: 80px;
   margin-top: -20px;
+  @media (width <= 480px) {
+    font-size: 40px;
+  }
+  @media (width <= 800px) {
+    font-size: 50px;
+  }
 }
 
 /* Container for left-right actions */
@@ -36,6 +48,15 @@
   display: flex;
   justify-content: space-between;
   margin: -40px 0;
+  @media (width <= 480px) {
+    margin: 10px 0;
+  }
+  @media (width <= 1100px) {
+    margin: 30px 0;
+  }
+  @media (width <= 1500px) {
+    margin: 20px 0;
+  }
 }
 
 .leftAction {
@@ -50,6 +71,12 @@
   font-size: 25px;
   margin-left: 10px;
   margin-right: 10px;
+  @media (width <= 480px) {
+    display: none;
+  }
+  @media (width <= 1100px) {
+    display: none;
+  }
 }
 
 /* Event text styling */
@@ -58,6 +85,15 @@
   color: #455a64; /* Darker text color for better readability */
   margin-top: 50px;
   text-align: center;
+  @media (width <= 480px) {
+    margin-top: 20px;
+  }
+  @media (width <= 1100px) {
+    margin-top: 20px;
+  }
+  @media (width <= 1400px) {
+    margin-top: 30px;
+  }
 }
 .englishDay {
   font-size: 1.2rem;
@@ -75,4 +111,25 @@
   color: #607d8b; /* Muted color for subtle actions */
   padding-right: 30px; /* Muted color for subtle actions */
   font-size: 30px;
+}
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // Ensure it centers vertically
+}
+
+.loadingGif {
+  width: 400px; // Adjust width based on your GIF size
+  height: 300px; // Adjust height based on your GIF size
+}
+.container {
+  max-width: 1800px;
+  margin: 0 auto; /* Center the container horizontally */
+  display: flex; /* Enable flexbox for alignment */
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+  min-height: 100vh; /* Make it full height */
+  padding: 20px; /* Optional: Add some padding */
 }

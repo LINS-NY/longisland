@@ -114,42 +114,13 @@ function MonthView({ isNepali, currentNepaliDate, monthInfo }) {
     </div>
   );
 }
-
-const Switch = ({ nepali, changeNepali }) => {
-  const handleSelect = () => {
-    changeNepali(!nepali);
-  };
-  return (
-    <div className="sm:w-5/6 flex flex-row-reverse">
-      <label className="relative inline-flex cursor-pointer items-center">
-        <input
-          id="switch"
-          type="checkbox"
-          className="peer sr-only"
-          value="off"
-          onChange={handleSelect}
-        />
-        <div className="peer h-6 w-11 rounded-full border bg-slate-200 after:absolute after:left-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-slate-800 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-green-300"></div>
-        <label htmlFor="switch" className="px-2 dark:text-black">
-          Nepali
-        </label>
-      </label>
-    </div>
-  );
-};
-
+/** Gets data from some website and reads files in proper format */
 export default function Calendar() {
   const [isNepali, setIsNepali] = useState(true);
   const [currentNepaliDate, setCurrentNepaliDate] = useState("");
   const [monthInfo, setMonthInfo] = useState({ days: [] }); // Ensure days is an array
   const [extraInformation, setExtraInformation] = useState({}); // State for storing detail
 
-  //   const [info, setExtraInformation] = useState({
-  //     bratabandha : " ",
-  //     holiFes,
-  //     marriage,
-  //     metadata,
-  //   });
   useEffect(() => {
     async function fetchMyAPI() {
       try {
@@ -165,7 +136,6 @@ export default function Calendar() {
         )}.json`;
         const detail = await fetch(page).then((res) => res.json());
         console.log(detail);
-        // setExtraInformation(detail); // Store the whole detail object
         setMonthInfo(detail);
         setExtraInformation(detail);
       } catch (error) {
@@ -178,38 +148,34 @@ export default function Calendar() {
     }
   }, [isNepali]);
 
-  return (
-    <div className="bg-white flex flex-col">
-      <div>
-        <div className="flex flex-row justify-between mx-auto p-4">
-          <span
-            className={
-              ("text-sm",
-              "md:text-3xl",
-              "font-semibold",
-              "whitespace-nowrap",
-              "text-gray-9500",
-              "dark:text-gray-900",
-              styles.span1)
-            }
-          >
-            {extraInformation.metadata?.en || ""}
-          </span>
-          <span
-            className={
-              ("text-sm",
-              "md:text-3xl",
-              "font-extrabold",
-              "whitespace-nowrap",
-              "text-gray-500",
-              "dark:text-gray-400",
-              styles.span2)
-            }
-          >
-            {extraInformation.metadata?.np || ""}
-          </span>
-        </div>
+  // Show loading if monthInfo is empty
+  if (monthInfo.days.length === 0) {
+    return (
+      <div className={styles.loadingContainer}>
+        <img
+          src="/loading.gif"
+          alt="Loading..."
+          className={styles.loadingGif}
+        />
       </div>
+    );
+  }
+
+  return (
+    <div className={`${styles.container}`}>
+      <div className="flex flex-row justify-between items-center w-full p-4">
+        <span
+          className={`text-sm md:text-3xl font-semibold whitespace-nowrap text-gray-9500 dark:text-gray-900 ${styles.span1}`}
+        >
+          {extraInformation.metadata?.en || ""}
+        </span>
+        <span
+          className={`text-sm md:text-3xl font-extrabold whitespace-nowrap text-gray-500 dark:text-gray-400 ${styles.span2}`}
+        >
+          {extraInformation.metadata?.np || ""}
+        </span>
+      </div>
+
       <div className="flex flex-row justify-between mx-auto p-4">
         <MonthView
           isNepali={isNepali}
