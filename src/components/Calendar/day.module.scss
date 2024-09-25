@@ -1,0 +1,78 @@
+/* Container for each day entry */
+.dayContainer {
+  background-color: #f0f8ff; /* Light subtle background color */
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  transition: all 0.3s ease; /* Smooth hover effect */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dayContainer:hover {
+  background-color: #e0f7fa;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Elevation on hover */
+}
+
+/* Day name styling (e.g., Monday) */
+.dayName {
+  font-weight: bold;
+  color: #333;
+  font-size: 30px;
+}
+
+/* Nepali date (e.g., १) */
+.nepaliDate {
+  font-weight: bold;
+  color: #00796b; /* A nice teal color for contrast */
+  margin-bottom: 8px;
+  position: relative;
+  top: 6px;
+  font-size: 80px;
+  margin-top: -20px;
+}
+
+/* Container for left-right actions */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin: -40px 0;
+}
+
+.leftAction {
+  color: #607d8b; /* Muted color for subtle actions */
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+.rightAction {
+  color: #607d8b; /* Muted color for subtle actions */
+  font-size: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Event text styling */
+.event {
+  font-size: 1.2rem;
+  color: #455a64; /* Darker text color for better readability */
+  margin-top: 50px;
+  text-align: center;
+}
+.englishDay {
+  font-size: 1.2rem;
+}
+.info {
+  color: #607d8b;
+}
+.span1 {
+  color: #607d8b;
+  padding-left: 30px; /* Muted color for subtle actions */
+  font-size: 30px;
+}
+
+.span2 {
+  color: #607d8b; /* Muted color for subtle actions */
+  padding-right: 30px; /* Muted color for subtle actions */
+  font-size: 30px;
+}
