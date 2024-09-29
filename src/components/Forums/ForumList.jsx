@@ -1,80 +1,34 @@
 'use client'
 import * as React from 'react';
+import IndividualForum from './IndividualForum';
 
-const ForumList = () => {
+const ForumList = ({data}) => {
     return (
         <div>
-			<div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+			<div class="-mx-4 sm:-mx-2 px-4 py-4 overflow-x-auto">
 				<div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-					<table class="min-w-full leading-normal">
+					<table class="sm:w-10 min-w-full leading-normal">
 						<thead>
 							<tr>
 								<th
-									class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+									class="sm:px-1 sm:py-1 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs sm:font-normal font-semibold text-gray-600 uppercase tracking-wider">
 									Topic
 								</th>
                                 <th
-									class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+									class=" sm:px-1 sm:py-1 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
 									Created By
 								</th>
 								<th
-									class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+									class="sm:px-1 sm:py-1 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
 									Replies
 								</th>
 								<th
-									class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+									class="sm:px-1 sm:py-1 px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
 									Activity
 								</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									<div class="flex items-center">
-											<div class="ml-3">
-												<p class="text-gray-900 whitespace-no-wrap">
-													Actively looking for a Room near train station.
-												</p>
-											</div>
-										</div>
-								</td>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									<p class="text-gray-900 whitespace-no-wrap">Admin</p>
-								</td>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									<p class="text-gray-900 whitespace-no-wrap">
-										43
-									</p>
-								</td>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">30 mins Ago</p>
-								</td>
-							</tr>
-							<tr>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									<div class="flex items-center">
-											<div class="ml-3">
-												<p class="text-gray-900 whitespace-no-wrap">
-													Looking for a car mechanic in long island to fix my new car
-												</p>
-											</div>
-										</div>
-								</td>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									<p class="text-gray-900 whitespace-no-wrap">Editor</p>
-								</td>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									<p class="text-gray-900 whitespace-no-wrap">
-										77
-									</p>
-								</td>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">
-										2 Hours Ago
-									</p>
-								</td>
-							</tr>
-						</tbody>
+                            <IndividualForum data={data}/>
 					</table>
 					<div
 						class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
