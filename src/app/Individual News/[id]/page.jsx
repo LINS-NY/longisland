@@ -23,9 +23,9 @@ export async function generateStaticParams() {
   })))
 }
 
-// async function getPosts(id) {
-//   const postData = await googleDocsGet(id);
-//   return {
-//       postData,
-//     };
-// }
+async function getPosts(id) {
+  const postData = await googleDocsGet(id);
+  return {
+      postData,
+    };
+}

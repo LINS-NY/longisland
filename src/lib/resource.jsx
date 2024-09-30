@@ -27,6 +27,9 @@ export async function getAllResourcesID(location){
 });
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function getDocValue(response,title,location, month,year,sheetId){
   // console.log(response,title,location, month,year,sheetId)
@@ -62,6 +65,7 @@ function getDocValue(response,title,location, month,year,sheetId){
 
 
 export async function getFinancialDocs(location){
+  await sleep(10);
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: credential.client_email,
