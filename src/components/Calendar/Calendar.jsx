@@ -1,94 +1,231 @@
-'use client';
+"use client";
 
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from "react";
+import styles from "./day.module.scss";
 
+const weekdays = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+const nepaliDays = [
+  "आईतवार",
+  "सोमवार",
+  "मंगलवार",
+  "बुधवार",
+  "बिहीवार",
+  "शुक्रवार",
+  "शनिवार",
+];
+const NepaliMonths = [
+  "बैशाख",
+  "जेठ",
+  "असार",
+  "साउन",
+  "भदौ",
+  "असोज",
+  "कार्तिक",
+  "मंसिर",
+  "पौष",
+  "माघ",
+  "फागुन",
+  "चैत",
+];
+const currentDay = new Date();
 
-const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-const nepaliDays = ["आईतवार", "सोमवार", "मंगलवार", "बुधवार", "बिहीवार", "शुक्रवार", "शनिवार"];
-const NepaliMonths = ['बैशाख', 'जेठ', 'असार', 'साउन', 'भदौ', 'असोज', 'कार्तिक', 'मंसिर', 'पौष', 'माघ', 'फागुन', 'चैत']
-const currentDay= new Date()
+function MonthView({ isNepali, currentNepaliDate, monthInfo }) {
+  let daysInMonth = [];
+  const today = new Date(); // Get today's date for highlighting
+  let month = currentNepaliDate.split("-")[1];
+  const day = currentNepaliDate.split("-")[2];
 
+  //   if (isNepali) {
+  const nepMonthIndex = currentNepaliDate.split("-")[1] - 1;
+  month = NepaliMonths[nepMonthIndex];
+  daysInMonth = monthInfo.days.map((dayInfo, index) => ({
+    day: nepaliDays[dayInfo.d - 1],
+    nepali_date: dayInfo.n || " ",
+    english_date: dayInfo.e || " ",
+    date: dayInfo.n || " ",
+    events: dayInfo.f,
+    holiday: dayInfo.h,
+    tithi: dayInfo.t,
+  }));
 
-function Today({isNepali,currentNepaliDate,monthInfo}){
-    let month = ""
-    let day = ""
-    let date = ""
-    if (isNepali){
-        month = NepaliMonths[currentNepaliDate.split('-')[1] - 1]
-        day = nepaliDays[monthInfo.days[parseInt(currentNepaliDate.split('-')[2])+1].d-1]
-        date = currentNepaliDate.split('-')[2]
-        let year = currentNepaliDate.split('-')[0]
-        let nepMonth = currentNepaliDate.split('-')[1]
+  console.log(daysInMonth);
 
-    }else{
-        month = months[currentDay.getMonth()]
-        day = weekdays[currentDay.getDay()]
-        date = currentDay.getDate()
+  return (
+    <div>
+      <div className="grid grid-cols-7">
+        {daysInMonth.map((dayInfo, index) => {
+          const isToday =
+            parseInt(dayInfo.english_date, 10) === today.getDate(); // Check if the current date matches
+
+          return (
+            <div
+              key={index}
+              className={`${styles.dayContainer} ${
+                isToday ? styles.today : ""
+              }`} // Add conditional styling
+              style={{
+                border: isToday ? "4px solid #FF6347" : "1px solid #ddd", // Highlight current day
+                backgroundColor: isToday ? "#e6d2ab" : "",
+                borderRadius: isToday ? "5px" : "0",
+                padding: "10px",
+              }}
+            >
+              {dayInfo.nepali_date !== " " && (
+                <>
+                  <div className={styles.dayName}>{dayInfo.day}</div>
+                  <div className={styles.nepaliDate}>{dayInfo.nepali_date}</div>
+                  <div className={styles.actions}>
+                    <div className={styles.leftAction}>{dayInfo.tithi}</div>
+                    <div className={styles.rightAction}>
+                      {dayInfo.english_date}
+                    </div>
+                  </div>
+                  {dayInfo.events && (
+                    <div className={styles.event}>{dayInfo.events}</div>
+                  )}
+                </>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+/** Gets data from some website and reads files in proper format */
+export default function Calendar() {
+  const [isNepali, setIsNepali] = useState(true);
+  const [currentNepaliDate, setCurrentNepaliDate] = useState("");
+  const [monthInfo, setMonthInfo] = useState({ days: [] }); // Ensure days is an array
+  const [extraInformation, setExtraInformation] = useState({}); // State for storing detail
+
+  useEffect(() => {
+    async function fetchMyAPI() {
+      try {
+        let response = await fetch("https://nepali-datetime.amitgaru.me/date");
+
+        const data = await response.json();
+        setCurrentNepaliDate(data.data);
+        const year = data.data.split("-")[0];
+        const nepMonth = data.data.split("-")[1];
+        const page = `./Calendar/Nepali/${year}/${nepMonth.replace(
+          /^0+/,
+          ""
+        )}.json`;
+        const detail = await fetch(page).then((res) => res.json());
+        console.log(detail);
+        setMonthInfo(detail);
+        setExtraInformation(detail);
+      } catch (error) {
+        console.error("Error fetching Nepali date or month details:", error);
+      }
     }
+
+    if (isNepali) {
+      fetchMyAPI();
+    }
+  }, [isNepali]);
+
+  // Show loading if monthInfo is empty
+  if (monthInfo.days.length === 0) {
     return (
-        <div>
-            <h1 class="text-center font-bold text-4xl">Today</h1>
-            <div class="flex flex-col container border-2 rounded-xl border-stone-300 shadow-slate-900 bg-orange-200 w-48 sm:w-96 h-52 md:h-96 mt-2 dark:bg-slate-400">
-                    <div class="p-2  rounded-t-xl text-5xl md:text-9xl dark:bg-slate-900  shadow-slate-900 bg-orange-300 border-stone-300 ">
-                    {month}
-                    </div>
-                    <div class=" p-2 text-2xl md:text-4xl py-2">
-                        {day}
-                    </div>
-                    <div class="p-2 text-3xl py-2">
-                        {date}
-                    </div>
-            </div>
-        </div>
-    )
-}
+      <div className={styles.loadingContainer}>
+        <img
+          src="/loading.gif"
+          alt="Loading..."
+          className={styles.loadingGif}
+        />
+      </div>
+    );
+  }
 
-const Switch =({nepali,changeNepali}) =>{
-    const handleSelect = () => {
-        changeNepali(!nepali)
-    }
-    return(
-        <div class="sm:w-5/6 flex flex-row-reverse" >
-            <label class="relative inline-flex cursor-pointer items-center">
-                <input id="switch" type="checkbox" class="peer sr-only" value="off" onChange={handleSelect}/>
-                <div class="peer h-6 w-11 rounded-full border bg-slate-200 after:absolute after:left-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-slate-800 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-green-300"></div>
-                <label for="switch" class="px-2 dark:text-black">Nepali</label>
-            </label>
-        </div>
-    )
-}
+  return (
+    <div className={`${styles.container}`}>
+      <div className="flex flex-row justify-between items-center w-full p-4">
+        <span
+          className={`text-sm md:text-3xl sd:text-sm font-semibold whitespace-nowrap text-gray-9500 dark:text-gray-900 ${styles.span1}`}
+        >
+          {extraInformation.metadata?.en || ""}
+        </span>
+        <span
+          className={`text-sm md:text-3xl font-extrabold whitespace-nowrap text-gray-500 dark:text-gray-400 ${styles.span2}`}
+        >
+          {extraInformation.metadata?.np || ""}
+        </span>
+      </div>
 
+      <div className="flex flex-row justify-between mx-auto p-4">
+        <MonthView
+          isNepali={isNepali}
+          currentNepaliDate={currentNepaliDate}
+          monthInfo={monthInfo}
+        />
+      </div>
 
-export default function Calendar(){
-    const [ isNepali, setIsNepali ] = useState(false);
-    const [currentNepaliDate, setCurrentNepaliDate] = useState("")
-    const [monthInfo, setMonthInfo] = useState({})
-    useEffect(() => {
-        async function fetchMyAPI() {
-            let response = await fetch('https://nepali-datetime.amitgaru.me/date')
-            response = await response.json()
-            setCurrentNepaliDate(response.data)
-            const data = response.data
-            const year = data.split('-')[0]
-            const nepMonth = data.split('-')[1]
-            const page = `./Calendar/Nepali/${year}/${nepMonth.replace(/^0+/, '')}.json`
-            const detail = await fetch(page).then(res => res.json())
-            setMonthInfo(detail)
-          }
-        fetchMyAPI()      
-    },[])
-    return(
-        <div class="bg-white flex flex-col">
-            <div class="mt-3"> 
-            <Switch nepali={isNepali} changeNepali={setIsNepali} />
-            </div>
-            <div class="flex flex-row justify-between mx-auto p-4">
-                <Today isNepali={isNepali} currentNepaliDate={currentNepaliDate} monthInfo={monthInfo}/>
-            </div>
-            <div class="flex flex-row justify-between mx-auto p-4">
-                <span class="text-sm md:text-3xl font-semibold whitespace-nowrap text-gray-500 dark:text-gray-400">Upcoming Event</span>
-            </div>
+      <div className="flex flex-col mx-auto p-4 space-y-4">
+        {/* Bratabandha Section */}
+        <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-md">
+          <span className="text-md md:text-xl font-semibold text-gray-700">
+            ब्रताबन्ध : {extraInformation.bratabandha}
+          </span>
         </div>
-    )
+
+        {/* Marriage Events Section */}
+        <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-md">
+          <span className="text-md md:text-xl font-semibold text-gray-700">
+            विवाह :
+            {extraInformation.marriage &&
+            extraInformation.marriage.length > 0 ? (
+              extraInformation.marriage.map((event, index) => (
+                <div key={index} className="mb-1">
+                  {event}
+                </div>
+              ))
+            ) : (
+              <span>No marriage events available</span>
+            )}
+          </span>
+        </div>
+
+        {/* Important Dates Section */}
+        <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-md">
+          <span className="text-md md:text-xl font-semibold text-gray-700">
+            महत्त्वपूर्ण मितिहरू :
+            {extraInformation.holiFest &&
+            extraInformation.holiFest.length > 0 ? (
+              extraInformation.holiFest.map((fest, index) => (
+                <div key={index} className="mb-1">
+                  {fest}
+                </div>
+              ))
+            ) : (
+              <span>No festivals available</span>
+            )}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
 }
