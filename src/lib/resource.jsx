@@ -78,13 +78,13 @@ export async function getFinancialDocs(location){
     spreadsheetId: location,
   });
   const fullTitle = res.data.properties.title
-  await sleep(1000);
   if (fullTitle.includes("Bank Statement")){
     const found = fullTitle.match(/^(\w*)\s(\d*)\s.*-\s.*Bank Statement/)
     const month = found[1]
     const year = found[2]
     const sheetsFiltered = res.data.sheets.filter((_,index) => index < 3)
     const totalValue =  await Promise.all(sheetsFiltered.map(async (item) => {
+      await sleep(1000);
       const value = await client.spreadsheets.values.get({
       spreadsheetId: location,
         range: `${item.properties.title}!A1:E86`
