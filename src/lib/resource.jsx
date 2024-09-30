@@ -78,7 +78,7 @@ export async function getFinancialDocs(location){
     spreadsheetId: location,
   });
   const fullTitle = res.data.properties.title
-  await sleep(10);
+  await sleep(1000);
   if (fullTitle.includes("Bank Statement")){
     const found = fullTitle.match(/^(\w*)\s(\d*)\s.*-\s.*Bank Statement/)
     const month = found[1]
