@@ -70,8 +70,6 @@ function MonthView({ isNepali, currentNepaliDate, monthInfo }) {
     tithi: dayInfo.t,
   }));
 
-  console.log(daysInMonth);
-
   return (
     <div>
       <div className="grid grid-cols-7">
