@@ -13,6 +13,7 @@ const Forums = () => {
     const id = useParams()
     const searchParams = useSearchParams()
     const search = searchParams.get('Topic')
+    const creator = searchParams.get('creator')
     const q = query(collection(db,`Forum/${id.id}/messages`),orderBy("timestamp"))
     const [message] = useCollectionData(q)
     const bottomOfRef = useRef()
@@ -41,9 +42,10 @@ const Forums = () => {
         <div>
             {
                 message && 
-                <div id="chat-container" class="w-11/12 md:w-7/12 m-4 item-center justify-center mx-auto  bg-gray-100 border dark:bg-gray-900">
-                        <div class="p-4 border-b text-dark rounded-t-lg flex justify-between items-center">
+                <div id="chat-container" class="w-11/12 md:w-7/12 m-4 item-center justify-center mx-auto  bg-gray-100 border dark:bg-gray-900 rounded-lg">
+                        <div class="p-4 border-b text-dark rounded-t-lg flex flex-col">
                             <p class="text-lg font-semibold">{search}</p>
+                            <p class="text-xs px-2">{creator}</p>
                         </div>
                         
                         <div id="chatbox" class="p-4 h-80 overflow-y-auto">

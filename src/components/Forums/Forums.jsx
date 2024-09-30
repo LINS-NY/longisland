@@ -3,7 +3,6 @@ import * as React from 'react';
 import { useState } from 'react'
 import Login from "./Login"
 import LogOut from "./LogOut"
-import ForumList from './ForumList';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../../../firebaseconfig';
 import { useCollection } from 'react-firebase-hooks/firestore';
@@ -30,28 +29,24 @@ const Forums = () => {
         setOpenModel(!openModel)
     }
     return(
-        <div class="w-11/12 md:w-7/12 m-4 item-center justify-center mx-auto  bg-gray-100 border dark:bg-gray-900 ">
+        <div class="">
             <div className={`flex flex-col item-center justify-center ${openModel ? "blur-2xl": "display"} bg-white/30`}>
                 <div class="flex flex-row justify-between">
-                    <h1 class="p-2 font-normal tracking-wide md:text-3xl text-xl">Forum</h1>
+                    <h1 class="p-2 font-bold font-serif tracking-wide md:text-3xl text-xl text-blue-400 ">Forum</h1>
                     <div class="flex flex-row items-center justify-center px-2">
-                    { user && <LogOut/> }
-                    { user && <Avatar name={user.displayName}/> }
-                    { !user && <Login/> }
-                    </div>
-                </div>
-                <div class="flex flex-row-reverse justify-between w-full p-2 md:py-6 sm:p-0">
-                    <div class="px-3">
                     { 
                         user &&
                         <div> 
-                            <button class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"
+                            <button class="block text-white dark:bg-slate-400 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 md:px-5 md:py-2.5 text-center  dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"
                              onClick={() => setOpenModel(!openModel)}
                              >
                                 Create
                             </button>
                         </div>
                     }
+                    { user && <LogOut/> }
+                    { user && <Avatar name={user.displayName}/> }
+                    { !user && <Login/> }
                     </div>
                 </div>
                 <div class="">
