@@ -84,7 +84,7 @@ export async function getFinancialDocs(location){
     const year = found[2]
     const sheetsFiltered = res.data.sheets.filter((_,index) => index < 3)
     const totalValue =  await Promise.all(sheetsFiltered.map(async (item, index) => {
-      await sleep(index * 10000);
+      await sleep(index * 50000);
       const value = await client.spreadsheets.values.get({
       spreadsheetId: location,
         range: `${item.properties.title}!A1:E86`
