@@ -8,8 +8,8 @@ const LogIn = () => {
     return (
         <div role="button"
         onClick={() => signInWithGoogle()}
-        class="flex items-center p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-        <div class="grid mr-4 sm:mr-2 place-items-center">
+        class="flex items-center p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900 dark:text-slate-800 dark:bg-slate-400 bg-blue-400">
+        <div class="lg:grid mr-4 md:mr-2 place-items-center hidden dark:text-slate-800">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
             class="w-5 sm:w-1 sm:h-1 h-5">
             <path fill-rule="evenodd"

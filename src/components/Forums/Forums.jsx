@@ -30,7 +30,7 @@ const Forums = () => {
     }
     return(
         <div class="">
-            <div className={`flex flex-col item-center justify-center ${openModel ? "blur-2xl": "display"} bg-white/30`}>
+            <div className={`flex flex-col  item-center justify-center ${openModel ? "blur-2xl": "display"} bg-white/30`}>
                 <div class="flex flex-row justify-between">
                     <h1 class="p-2 font-bold font-serif tracking-wide md:text-3xl text-xl text-blue-400 ">Forum</h1>
                     <div class="flex flex-row items-center justify-center px-2">
