@@ -1,12 +1,12 @@
 import Header from "../../components/Header/Header";
-import Member from "../../components/Member/Member"
+import WebNews from "../../components/WebNews/WebNews"
 import Footer from "../../components/Footer/Footer"
 
 export default function Ab() {
   return (
-    <main class="flex flex-col h-screen ">
+    <main class="flex flex-col h-screen">
       <Header/>
-      <Member/>
+      <WebNews/>
       <Footer/>
     </main>
   );
