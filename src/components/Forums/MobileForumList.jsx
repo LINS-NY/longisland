@@ -6,7 +6,7 @@ const MobileForumList = ({data}) => {
         <div class=" flex flex-col ">
              { data && data.map(function(object, i){
                 return(
-                   < ForumItem object={object} />
+                   < ForumItem object={object} key={i} />
                 )
              }
             )}

@@ -52,7 +52,7 @@ const Forums = () => {
                             {
                                 message.map(function(object, i){
                                     return(
-                                        <Individual object={object}/>
+                                        <Individual object={object} key={i}/>
                                     )
                                 })
                             }
