@@ -27,6 +27,9 @@ export async function getAllResourcesID(location){
 });
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function getDocValue(response,title,location, month,year,sheetId){
   // console.log(response,title,location, month,year,sheetId)
@@ -62,6 +65,7 @@ function getDocValue(response,title,location, month,year,sheetId){
 
 
 export async function getFinancialDocs(location){
+  await sleep(10000);
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: credential.client_email,
@@ -79,7 +83,8 @@ export async function getFinancialDocs(location){
     const month = found[1]
     const year = found[2]
     const sheetsFiltered = res.data.sheets.filter((_,index) => index < 3)
-    const totalValue =  await Promise.all(sheetsFiltered.map(async (item) => {
+    const totalValue =  await Promise.all(sheetsFiltered.map(async (item, index) => {
+      await sleep(index * 20000);
       const value = await client.spreadsheets.values.get({
       spreadsheetId: location,
         range: `${item.properties.title}!A1:E86`
