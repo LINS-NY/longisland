@@ -1,5 +1,5 @@
 import {  googleDocsGet, getAllResourcesID } from '../../lib/resource';	
-import Item from './Item'	
+import Item from './Item'
 
 
 
@@ -22,6 +22,4 @@ export default async function Resources(){
             </div>	
         </div>	
     )	
-}	
-Footer
-© 2024 GitHub, Inc.
+}
