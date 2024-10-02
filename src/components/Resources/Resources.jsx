@@ -1,4 +1,4 @@
-import {  googleDocsGet, getAllResourcesID } from '../../lib/resource';	
+import {  googleDocsGet, getAllResourcesID } from '../../lib/resource';
 import Item from './Item'
 
 
