@@ -8,7 +8,7 @@ module.exports = { nextConfig };
 module.exports = withMDX({
     staticPageGenerationTimeout: 1000
 })
-module.exports = ({
+module.exports = {
     experimental: {
         // This is experimental but can
         // be enabled to allow parallel threads
@@ -16,4 +16,4 @@ module.exports = ({
         workerThreads: false,
         cpus: 1
       },
-})
+}
