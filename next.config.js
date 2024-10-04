@@ -3,12 +3,6 @@ const withMDX = require('@next/mdx')()
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-};
-module.exports = { nextConfig };
-module.exports = withMDX({
-    staticPageGenerationTimeout: 1000
-})
-module.exports = {
     experimental: {
         // This is experimental but can
         // be enabled to allow parallel threads
@@ -16,4 +10,8 @@ module.exports = {
         workerThreads: false,
         cpus: 1
       },
-}
+};
+module.exports = { nextConfig };
+module.exports = withMDX({
+    staticPageGenerationTimeout: 1000
+})
