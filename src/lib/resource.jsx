@@ -64,8 +64,8 @@ function getDocValue(response,title,location, month,year,sheetId){
 }
 
 
-export async function getFinancialDocs(location){
-  await sleep(200000);
+export function getFinancialDocs(location){
+  sleep(200000);
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: credential.client_email,
@@ -74,7 +74,7 @@ export async function getFinancialDocs(location){
     scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
   })
   const client = google.sheets({version: "v4", auth: auth})
-  const res = await client.spreadsheets.get({
+  const res = client.spreadsheets.get({
     spreadsheetId: location,
   });
   const fullTitle = res.data.properties.title
@@ -83,9 +83,9 @@ export async function getFinancialDocs(location){
     const month = found[1]
     const year = found[2]
     const sheetsFiltered = res.data.sheets.filter((_,index) => index < 3)
-    const totalValue =  await Promise.all(sheetsFiltered.map(async (item) => {
-      await sleep(200000);
-      const value = await client.spreadsheets.values.get({
+    const totalValue =  Promise.all(sheetsFiltered.map(async (item) => {
+      sleep(200000);
+      const value = client.spreadsheets.values.get({
       spreadsheetId: location,
         range: `${item.properties.title}!A1:E86`
       });
@@ -95,7 +95,7 @@ export async function getFinancialDocs(location){
     return totalValue
   }
   const title = res.data.sheets[0].properties.title
-  const value = await client.spreadsheets.values.get({
+  const value = client.spreadsheets.values.get({
   spreadsheetId: location,
     range: `${title}!A1:E86`
   });
