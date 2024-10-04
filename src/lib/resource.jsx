@@ -65,7 +65,7 @@ function getDocValue(response,title,location, month,year,sheetId){
 
 
 export function getFinancialDocs(location){
-  sleep(1500);
+  sleep(15000);
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: credential.client_email,
@@ -84,7 +84,7 @@ export function getFinancialDocs(location){
     const year = found[2]
     const sheetsFiltered = res.data.sheets.filter((_,index) => index < 3)
     const totalValue =  Promise.all(sheetsFiltered.map(async (item, index) => {
-      sleep(1500 * index);
+      sleep(15000 * index);
       const value = client.spreadsheets.values.get({
       spreadsheetId: location,
         range: `${item.properties.title}!A1:E86`
