@@ -9,6 +9,9 @@ export default async function FinancialReports(){
     }))
     let item = []
     let financialItem = []
+    docsData.sort((a,b)=>{
+        return new Date(b.date) - new Date(a.date);
+    })
     docsData.map((i)=> {
         if (Array.isArray(i)){
             financialItem.push(<Item title={`${i[0].month}-${i[0].year}`} location={i[0].location} key={i[0].location}/>)
