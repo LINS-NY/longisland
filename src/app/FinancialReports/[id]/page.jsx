@@ -6,7 +6,7 @@ import {getAllFinances,getFinancialDocs} from '../../../lib/resource'
 export default async  function FinancialReports({params}) {
   const data = await getFinancialDocs(params.id)
   return (
-    <main class="flex flex-col h-dvh ">
+    <main class="flex flex-col">
       <Header/>
       <FinancialReport key={data.location} content={data}/>
       <Footer/>

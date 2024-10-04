@@ -31,7 +31,7 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function getDocValue(response,title,location, month,year,sheetId){
+function getDocValue(response,title,location, month,year,sheetId, date){
   // console.log(response,title,location, month,year,sheetId)
   let startingPoint = response.filter((name) => response.indexOf(name) > 9)
   const rowRegular = [
@@ -59,13 +59,12 @@ function getDocValue(response,title,location, month,year,sheetId){
     balanceHeading: rowBank,
     month: month,
     year: year,
-    sheetId: sheetId
+    sheetId: sheetId,
+    date: date
   })
 }
 
-
-export async function getFinancialDocs(location){
-  await sleep(10000);
+export async function getFinancialDocsIN(location){
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: credential.client_email,
@@ -84,12 +83,11 @@ export async function getFinancialDocs(location){
     const year = found[2]
     const sheetsFiltered = res.data.sheets.filter((_,index) => index < 3)
     const totalValue =  await Promise.all(sheetsFiltered.map(async (item, index) => {
-      await sleep(index * 20000);
       const value = await client.spreadsheets.values.get({
       spreadsheetId: location,
         range: `${item.properties.title}!A1:E86`
       });
-      return getDocValue(value.data.values, item.properties.title, location, month,year,item.properties.sheetId)
+      return getDocValue(value.data.values, item.properties.title, location, month,year,item.properties.sheetId, value.headers.date)
     })
     )
     return totalValue
@@ -100,7 +98,49 @@ export async function getFinancialDocs(location){
     range: `${title}!A1:E86`
   });
 
-return getDocValue(value.data.values, title, location, "", "", 0)
+return getDocValue(value.data.values, title, location, "", "", 0,value.headers.date)
+}
+
+
+export async function getFinancialDocs(location){
+  await sleep(100000);
+  const auth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: credential.client_email,
+      private_key: credential.private_key,
+    },
+    scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
+  })
+  const client = google.sheets({version: "v4", auth: auth})
+  const res = await client.spreadsheets.get({
+    spreadsheetId: location,
+  });
+  const fullTitle = res.data.properties.title
+  if (fullTitle.includes("Bank Statement")){
+    const found = fullTitle.match(/^(\w*)\s(\d*)\s.*-\s.*Bank Statement/)
+    const month = found[1]
+    const year = found[2]
+    const sheetsFiltered = res.data.sheets.filter((_,index) => index < 3)
+    await sleep(2000);
+    const totalValue =  await Promise.all(sheetsFiltered.map(async (item, index) => {
+      await sleep(index * 2000);
+      const value = await client.spreadsheets.values.get({
+      spreadsheetId: location,
+        range: `${item.properties.title}!A1:E86`
+      });
+      return getDocValue(value.data.values, item.properties.title, location, month,year,item.properties.sheetId, value.headers.date)
+    })
+    )
+    return totalValue
+  }
+  const title = res.data.sheets[0].properties.title
+  await sleep(20000);
+  const value = await client.spreadsheets.values.get({
+  spreadsheetId: location,
+    range: `${title}!A1:E86`
+  });
+
+return getDocValue(value.data.values, title, location, "", "", 0,value.headers.date)
 }
 
 
