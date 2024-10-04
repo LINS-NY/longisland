@@ -4,7 +4,7 @@ import Footer from "../../../components/Footer/Footer"
 import {getAllFinances,getFinancialDocs} from '../../../lib/resource'
 
 export default async  function FinancialReports({params}) {
-  const data = getFinancialDocs(params.id)
+  const data = await getFinancialDocs(params.id)
   return (
     <main class="flex flex-col">
       <Header/>
