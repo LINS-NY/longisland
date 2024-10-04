@@ -65,6 +65,7 @@ function getDocValue(response,title,location, month,year,sheetId){
 
 
 export async function getFinancialDocs(location){
+  await sleep(200000);
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: credential.client_email,
@@ -104,6 +105,7 @@ return getDocValue(value.data.values, title, location, "", "", 0)
 
 
 export async function getAllFinances(location){
+
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: credential.client_email,
