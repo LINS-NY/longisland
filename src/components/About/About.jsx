@@ -60,7 +60,7 @@ function Member(){
                 },
               })
         })
-      }, []);
+      }, [readString]);
 
     const handleClick = () => {
         setPopup(!popup)
