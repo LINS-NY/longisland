@@ -85,26 +85,24 @@ const Hero = () => {
             </section>
 
             {/* Below is President's message */}
-            <div class="grid grid-cols-3">
+            <div class="grid grid-cols-2 justify-center">
                 <Link href="/PresidentialMessages">
-                    <section class="relative container rounded-xl mx-auto  my-5  w-5/6  h-50 shadow-sm">
+                    <div class="grid px-8 place-items-center">
                         <Image
                             src="/Members/RajanGouli.png"
-                            width={300}
-                            height={300}
+                            width={200}
+                            height={200}
                             alt="RajanGauli"
                         />
-                    </section>
+                    </div>
                     <div class="grid grid-cols-1 gap-4 relative flex justify-between  sm:w-5/6 h-full mx-auto">
                         <div>
-                            <h1 class=" mb-2 text-2xl sm:font-extrabold tracking-tight leading-none 
-                                        text-blue-900 xl:text-2xl dark:text-white">
-                                President's Message
+                            <h1 class=" mb-2 text-2xl text-center sm:font-extrabold tracking-tight leading-none 
+                                        text-blue-900 xl:text-2xl">
+                                <br/>President's Message
                             </h1>
-                            <p class="text-black text-sm dark:text-white text-left font-light">
-                                Dear Valuable and Respected Members of the Long-island Nepalese Society New York. 
-                                It is with immense gratitude and humility that I address you as the elected President of 
-                                our Nepali community ‘Long ISland Nepalese Society’ here in New York.
+                            <p class="text-black text-center text-sm font-light">
+                                Dear Valuable and Respected Members of the Long-island Nepalese Society New York...
                             </p>
                         </div>
                     </div>
@@ -114,24 +112,22 @@ const Hero = () => {
                         {/* Below is Gen Secretary's message */}
                         <div>
                 <Link href="/GeneralSecretaryMessages">
-                    <section class="relative container rounded-xl mx-auto  my-5  w-5/6  h-50 shadow-sm">
-                        <Image
+                <div class="grid px-8 place-items-center">
+                <Image
                             src="/Members/RAJENDRAKUMARKARKI.png"
-                            width={300}
-                            height={300}
+                            width={200}
+                            height={200}
                             alt="RAJENDRAKUMARKARKI"
                         />
-                    </section>
+                    </div>
                     <div class="grid grid-cols-1 gap-4 relative flex justify-center  sm:w-5/6 h-full mx-auto">
                         <div>
-                            <h1 class=" mb-2 text-2xl sm:font-extrabold tracking-tight leading-none 
-                                        justify-center  text-blue-900 xl:text-2xl dark:text-white">
-                                Gen. Sec's Message
+                        <h1 class=" mb-2 text-2xl text-center sm:font-extrabold tracking-tight leading-none 
+                        text-blue-900 xl:text-2xl">
+                                <br/>Gen. Sec's Message
                             </h1>
-                            <p class="text-black text-sm dark:text-white text-left font-light">
-                                Dear Valuable and Respected Members of the Long-island Nepalese Society New York. 
-                                It is with immense gratitude and humility that I address you as the elected  General Secretary
-                                of our Nepali community ‘Long ISland Nepalese Society’ here in New York.
+                            <p class="text-black text-center text-sm font-light">
+                                Dear Valuable and Respected Members of the Long-island Nepalese Society New York...
                             </p>
                         </div>
                     </div>
