@@ -95,7 +95,7 @@ const Hero = () => {
                             alt="RajanGauli"
                         />
                     </div>
-                    <div class="grid grid-cols-1 gap-4 relative flex justify-between  sm:w-5/6 h-full mx-auto">
+                    <div class="grid grid-cols-1 gap-4 relative flex justify-between  sm:w-5/6 mx-auto">
                         <div>
                             <h1 class=" mb-2 text-2xl text-center sm:font-extrabold tracking-tight leading-none 
                                         text-blue-900 xl:text-2xl">
@@ -120,11 +120,11 @@ const Hero = () => {
                             alt="RAJENDRAKUMARKARKI"
                         />
                     </div>
-                    <div class="grid grid-cols-1 gap-4 relative flex justify-center  sm:w-5/6 h-full mx-auto">
+                    <div class="grid grid-cols-1 gap-4 relative flex justify-center  sm:w-5/6 mx-auto">
                         <div>
                         <h1 class=" mb-2 text-2xl text-center sm:font-extrabold tracking-tight leading-none 
                         text-blue-900 xl:text-2xl">
-                                <br/>Gen. Sec's Message
+                                Gen. Sec's Message
                             </h1>
                             <p class="text-black text-center text-sm font-light">
                                 Dear Valuable and Respected Members of the Long-island Nepalese Society New York...
