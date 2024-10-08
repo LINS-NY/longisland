@@ -4,15 +4,6 @@ import { useEffect, useState } from "react";
 import styles from "./day.module.scss";
 import NepaliDate from "nepali-date-converter";
 
-const weekdays = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
 const nepaliDays = [
   "आईतवार",
   "सोमवार",
@@ -22,6 +13,7 @@ const nepaliDays = [
   "शुक्रवार",
   "शनिवार",
 ];
+
 const NepaliMonths = [
   "बैशाख",
   "जेठ",
@@ -36,71 +28,86 @@ const NepaliMonths = [
   "फागुन",
   "चैत",
 ];
-const currentDay = new Date();
 
-function MonthView({ isNepali, date, monthInfo }) {
-  let daysInMonth = [];
-  const today = new Date(); // Get today's date for highlighting
+// Utility function to convert Nepali numerals to English numerals
+const nepaliToEnglishNumber = (nepaliStr) => {
+  const nepaliNums = {
+    "०": 0,
+    "१": 1,
+    "२": 2,
+    "३": 3,
+    "४": 4,
+    "५": 5,
+    "६": 6,
+    "७": 7,
+    "८": 8,
+    "९": 9,
+  };
+  return nepaliStr.replace(/[०-९]/g, (match) => nepaliNums[match]);
+};
 
-  const [year, month, day] = date.split("-");
-  console.log(year, month, day);
-  if (isNepali) {
-    const nepMonthIndex = month - 1; // Adjusting for 0-based indexing
-    const nepMonthName = NepaliMonths[nepMonthIndex];
-    daysInMonth = monthInfo.days.map((dayInfo, index) => ({
-      day: nepaliDays[dayInfo.d - 1],
-      nepali_date: dayInfo.n || " ",
-      english_date: dayInfo.e || " ",
-      date: dayInfo.n || " ",
-      events: dayInfo.f,
-      holiday: dayInfo.h,
-      tithi: dayInfo.t,
-    }));
+function MonthView({ isNepali, date, monthInfo, currentYear, currentMonth }) {
+  // Get today's Nepali date
+  const nepaliToday = new NepaliDate(new Date());
+  const todayNepaliYear = nepaliToday.getYear();
+  const todayNepaliMonth = nepaliToday.getMonth() + 1; // Nepali months are 0-indexed
+  const todayNepaliDate = nepaliToday.getDate();
 
-    return (
-      <div>
-        <div className="grid grid-cols-7">
-          {daysInMonth.map((dayInfo, index) => {
-            const isToday =
-              parseInt(dayInfo.english_date, 10) === today.getDate(); // Check if the current date matches
+  const daysInMonth = monthInfo.days.map((dayInfo) => ({
+    day: nepaliDays[dayInfo.d - 1],
+    nepali_date: dayInfo.n || null, // Ensure that empty values are handled as null
+    english_date: dayInfo.e || " ",
+    date: dayInfo.n || " ",
+    events: dayInfo.f,
+    holiday: dayInfo.h,
+    tithi: dayInfo.t,
+  }));
 
-            return (
-              <div
-                key={index}
-                className={`${styles.dayContainer} ${
-                  isToday ? styles.today : ""
-                }`}
-                style={{
-                  border: isToday ? "4px solid #FF6347" : "1px solid #ddd",
-                  backgroundColor: isToday ? "#e6d2ab" : "",
-                  borderRadius: isToday ? "5px" : "0",
-                  padding: "10px",
-                }}
-              >
-                {dayInfo.nepali_date !== " " && (
-                  <>
-                    <div className={styles.dayName}>{dayInfo.day}</div>
-                    <div className={styles.nepaliDate}>
-                      {dayInfo.nepali_date}
+  return (
+    <div>
+      <div className="grid grid-cols-7">
+        {daysInMonth.map((dayInfo, index) => {
+          // Convert Nepali date to English before comparison
+          const nepaliDateInEnglish = dayInfo.nepali_date
+            ? parseInt(nepaliToEnglishNumber(dayInfo.nepali_date), 10)
+            : null;
+
+          const isToday =
+            nepaliDateInEnglish === todayNepaliDate &&
+            currentMonth === todayNepaliMonth &&
+            currentYear === todayNepaliYear;
+
+          return (
+            <div
+              key={index}
+              className={`${styles.dayContainer} ${
+                isToday ? styles.today : ""
+              }`}
+              style={{
+                border: isToday ? "4px solid #FF6347" : "1px solid #ddd",
+                backgroundColor: isToday ? "#e6d2ab" : "",
+                borderRadius: isToday ? "5px" : "0",
+                padding: "10px",
+              }}
+            >
+              {dayInfo.nepali_date !== null && (
+                <>
+                  <div className={styles.dayName}>{dayInfo.day}</div>
+                  <div className={styles.nepaliDate}>{dayInfo.nepali_date}</div>
+                  <div className={styles.actions}>
+                    <div className={styles.leftAction}>{dayInfo.tithi}</div>
+                    <div className={styles.rightAction}>
+                      {dayInfo.english_date}
                     </div>
-                    <div className={styles.actions}>
-                      <div className={styles.leftAction}>{dayInfo.tithi}</div>
-                      <div className={styles.rightAction}>
-                        {dayInfo.english_date}
-                      </div>
-                    </div>
-                    {dayInfo.events && (
-                      <div className={styles.event}>{dayInfo.events}</div>
-                    )}
-                  </>
-                )}
-              </div>
-            );
-          })}
-        </div>
+                  </div>
+                </>
+              )}
+            </div>
+          );
+        })}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default function Calendar() {
@@ -108,22 +115,14 @@ export default function Calendar() {
   const [currentNepaliDate, setCurrentNepaliDate] = useState("");
   const [monthInfo, setMonthInfo] = useState({ days: [] });
   const [extraInformation, setExtraInformation] = useState({});
+  const [currentYear, setCurrentYear] = useState(null);
+  const [currentMonth, setCurrentMonth] = useState(null);
 
+  // Fetch the Nepali calendar for the current year and month
   useEffect(() => {
-    async function fetchMyAPI() {
+    async function fetchMyAPI(year, month) {
       try {
-        const nepaliDate = new NepaliDate(new Date()); // Pass today's date in AD
-        console.log("Nepali Date: ", nepaliDate);
-
-        // To access the year, month, and day
-        const year = nepaliDate.getYear();
-        const nepMonth = nepaliDate.getMonth() + 1;
-        const day = nepaliDate.getDate(); // Using getDate for actual date
-        console.log(`Nepali Date: ${year}-${nepMonth}-${day}`);
-
-        setCurrentNepaliDate(`${year}-${nepMonth}-${day}`);
-        const page = `/Calendar/Nepali/${year}/${nepMonth}.json`; // Ensure this path is correct
-
+        const page = `/Calendar/Nepali/${year}/${month}.json`; // Ensure this path is correct
         const detail = await fetch(page).then((res) => res.json());
         setMonthInfo(detail);
         setExtraInformation(detail);
@@ -132,10 +131,48 @@ export default function Calendar() {
       }
     }
 
-    if (isNepali) {
-      fetchMyAPI();
+    if (isNepali && currentYear && currentMonth) {
+      fetchMyAPI(currentYear, currentMonth);
     }
-  }, [isNepali]);
+  }, [isNepali, currentYear, currentMonth]);
+
+  // Set initial Nepali date when component mounts
+  useEffect(() => {
+    const nepaliDate = new NepaliDate(new Date());
+    const year = nepaliDate.getYear();
+    const nepMonth = nepaliDate.getMonth() + 1;
+    const day = nepaliDate.getDate();
+
+    setCurrentNepaliDate(`${year}-${nepMonth}-${day}`);
+    setCurrentYear(year);
+    setCurrentMonth(nepMonth);
+  }, []);
+
+  const handleNextMonth = () => {
+    let newMonth = currentMonth + 1;
+    let newYear = currentYear;
+
+    if (newMonth > 12) {
+      newMonth = 1;
+      newYear++;
+    }
+
+    setCurrentMonth(newMonth);
+    setCurrentYear(newYear);
+  };
+
+  const handlePreviousMonth = () => {
+    let newMonth = currentMonth - 1;
+    let newYear = currentYear;
+
+    if (newMonth < 1) {
+      newMonth = 12;
+      newYear--;
+    }
+
+    setCurrentMonth(newMonth);
+    setCurrentYear(newYear);
+  };
 
   // Show loading if monthInfo is empty
   if (monthInfo.days.length === 0) {
@@ -159,10 +196,27 @@ export default function Calendar() {
           {extraInformation.metadata?.en || ""}
         </span>
         <span
-          className={`text-sm md:text-3xl font-extrabold whitespace-nowrap text-gray-500 dark:text-gray-400 ${styles.span2}`}
+          className={`text-sm md:text-3xl sd:text-sm font-semibold whitespace-nowrap text-gray-9500 dark:text-gray-900 ${styles.span1}`}
         >
           {extraInformation.metadata?.np || ""}
         </span>
+      </div>
+
+      {/* Add Next and Previous Buttons */}
+      <div className="flex justify-between items-center w-full p-4">
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          onClick={handlePreviousMonth}
+        >
+          Previous Month
+        </button>
+
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          onClick={handleNextMonth}
+        >
+          Next Month
+        </button>
       </div>
 
       <div className="flex flex-row justify-between mx-auto p-4">
@@ -170,6 +224,8 @@ export default function Calendar() {
           isNepali={isNepali}
           date={currentNepaliDate}
           monthInfo={monthInfo}
+          currentYear={currentYear}
+          currentMonth={currentMonth}
         />
       </div>
 

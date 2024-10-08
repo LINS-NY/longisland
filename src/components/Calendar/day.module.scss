@@ -122,7 +122,7 @@
 
 .leftAction {
   color: #607d8b; /* Muted color for subtle actions */
-  font-size: 25px;
+  font-size: 20px;
   margin-left: 10px;
   margin-right: 10px;
   font-weight: bold;
@@ -153,7 +153,7 @@
 }
 .rightAction {
   color: #607d8b; /* Muted color for subtle actions */
-  font-size: 25px;
+  font-size: 20px;
 
   @media (min-width: 376px) and (max-width: 667px) {
     display: none;
