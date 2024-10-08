@@ -1,70 +1,77 @@
-import matter from 'gray-matter';
-import { MDXRemote } from 'next-mdx-remote/rsc'
-import { components } from './component';
-const { google } = require('googleapis');
+import matter from "gray-matter";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { components } from "./component";
+const { google } = require("googleapis");
 
-const credential =  JSON.parse(atob(process.env.GOOGLE_SERVICE_KEY))
+const credential = JSON.parse(atob(process.env.GOOGLE_SERVICE_KEY));
 
-export async function getAllResourcesID(location){
+export async function getAllResourcesID(location) {
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: credential.client_email,
       private_key: credential.private_key,
     },
-    scopes: 'https://www.googleapis.com/auth/drive.metadata.readonly',
-  })
-  const client = google.drive({version: "v3", auth: auth})
+    scopes: "https://www.googleapis.com/auth/drive.metadata.readonly",
+  });
+  const client = google.drive({ version: "v3", auth: auth });
   const res = await client.files.list({
-    q: `'${location}' in parents and trashed=false`
-  })
-  const resourcesRemoved = res.data.files.filter((name)=>name.name != "Resources")
-  return resourcesRemoved.map((name) =>{
+    q: `'${location}' in parents and trashed=false`,
+  });
+  const resourcesRemoved = res.data.files.filter(
+    (name) => name.name != "Resources"
+  );
+  return resourcesRemoved.map((name) => {
     return {
       params: {
         documentId: name.id,
-    },
-  }
-});
+      },
+    };
+  });
 }
 
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function getDocValue(response,title,location, month,year,sheetId, date){
+function getDocValue(response,title,location, month,year,sheetId){
   // console.log(response,title,location, month,year,sheetId)
-  let startingPoint = response.filter((name) => response.indexOf(name) > 9)
+  let startingPoint = response.filter((name) => response.indexOf(name) > 9);
   const rowRegular = [
-    'Description',
-    'Receipt Number',
-    'Income (Cash)',
-    'Income (Cheque)',
-    'Expenses'
-  ]
-  const rowBank = ['Description','Begining Balance','Deposit','Withdraw','Ending Balance']
-  const content = startingPoint.map((value => 
-      {
-        let totalItems = ["", "", "" ,"" ,""]
-        value.map((item,index)=>{
-              totalItems[index] = item
-        })
-      return totalItems
-    }
-  ))
-  return ({
-    title : title,
+    "Description",
+    "Receipt Number",
+    "Income (Cash)",
+    "Income (Cheque)",
+    "Expenses",
+  ];
+  const rowBank = [
+    "Description",
+    "Begining Balance",
+    "Deposit",
+    "Withdraw",
+    "Ending Balance",
+  ];
+  const content = startingPoint.map((value) => {
+    let totalItems = ["", "", "", "", ""];
+    value.map((item, index) => {
+      totalItems[index] = item;
+    });
+    return totalItems;
+  });
+  return {
+    title: title,
     rowHeading: rowRegular,
     content: content,
     location: location,
     balanceHeading: rowBank,
     month: month,
     year: year,
-    sheetId: sheetId,
-    date: date
+    sheetId: sheetId
   })
 }
 
-export async function getFinancialDocsIN(location){
+
+export async function getFinancialDocs(location){
+  await sleep(10000);
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: credential.client_email,
@@ -83,11 +90,12 @@ export async function getFinancialDocsIN(location){
     const year = found[2]
     const sheetsFiltered = res.data.sheets.filter((_,index) => index < 3)
     const totalValue =  await Promise.all(sheetsFiltered.map(async (item, index) => {
+      await sleep(index * 20000);
       const value = await client.spreadsheets.values.get({
       spreadsheetId: location,
         range: `${item.properties.title}!A1:E86`
       });
-      return getDocValue(value.data.values, item.properties.title, location, month,year,item.properties.sheetId, value.headers.date)
+      return getDocValue(value.data.values, item.properties.title, location, month,year,item.properties.sheetId)
     })
     )
     return totalValue
@@ -98,6 +106,7 @@ export async function getFinancialDocsIN(location){
     range: `${title}!A1:E86`
   });
 
+return getDocValue(value.data.values, title, location, "", "", 0)
 return getDocValue(value.data.values, title, location, "", "", 0,value.headers.date)
 }
 
@@ -143,81 +152,84 @@ export async function getFinancialDocs(location){
 return getDocValue(value.data.values, title, location, "", "", 0,value.headers.date)
 }
 
-
-export async function getAllFinances(location){
+export async function getAllFinances(location) {
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: credential.client_email,
       private_key: credential.private_key,
     },
-    scopes: 'https://www.googleapis.com/auth/drive.metadata.readonly',
-  })
-  const client = google.drive({version: "v3", auth: auth})
+    scopes: "https://www.googleapis.com/auth/drive.metadata.readonly",
+  });
+  const client = google.drive({ version: "v3", auth: auth });
   const res = await client.files.list({
-    files: location
-  })
-  const resourcesRemoved = res.data.files.filter((name)=>name.mimeType == "application/vnd.google-apps.spreadsheet")
-  return resourcesRemoved.map((name) =>{
+    files: location,
+  });
+  const resourcesRemoved = res.data.files.filter(
+    (name) => name.mimeType == "application/vnd.google-apps.spreadsheet"
+  );
+  return resourcesRemoved.map((name) => {
     return {
       params: {
         documentId: name.id,
-    },
-  }
-});
+      },
+    };
+  });
 }
 
-
-export async function getAllResources(location){
+export async function getAllResources(location) {
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: credential.client_email,
       private_key: credential.private_key,
     },
-    scopes: 'https://www.googleapis.com/auth/drive.metadata.readonly',
-  })
-  const client = google.drive({version: "v3", auth: auth})
+    scopes: "https://www.googleapis.com/auth/drive.metadata.readonly",
+  });
+  const client = google.drive({ version: "v3", auth: auth });
   const res = await client.files.list({
-    files: location
-  })
-  const resourcesRemoved = res.data.files.filter((name)=>name.name != "Resources")
-  return resourcesRemoved.map((name) =>{
+    files: location,
+  });
+  const resourcesRemoved = res.data.files.filter(
+    (name) => name.name != "Resources"
+  );
+  return resourcesRemoved.map((name) => {
     return {
       params: {
-        id: name.name.replace(/\.md$/, ''),
-    },
-  }
-});
+        id: name.name.replace(/\.md$/, ""),
+      },
+    };
+  });
 }
 
 export async function googleDocsGet(id) {
-    const auth = new google.auth.GoogleAuth({
-      credentials: {
-        client_email: credential.client_email,
-        private_key: credential.private_key,
-      },
-      scopes: ['https://www.googleapis.com/auth/documents'],
-    })
-    const client = google.docs({version: "v1", auth: auth})
-    const res = await client.documents.get({
-      documentId: id,
-    });
+  const auth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: credential.client_email,
+      private_key: credential.private_key,
+    },
+    scopes: ["https://www.googleapis.com/auth/documents"],
+  });
+  const client = google.docs({ version: "v1", auth: auth });
+  const res = await client.documents.get({
+    documentId: id,
+  });
 
-    const contents = res.data.body.content.filter(value => value.paragraph != undefined)
-    const text = contents.reduce((fullContent, value)=>{
-      return (
-        fullContent += value.paragraph.elements.reduce((joinText,element)=>{
-          return (
-            joinText += Buffer.from(element.textRun.content).toString()
-          )
-        },"")
-      )
-    },"")
-    const {data, content} = matter(Buffer.from(text).toString());
-    const contentRd = <MDXRemote source={content} components={components}/>
-    return {
-      id,
-      contentRd,
-      content,
-      ...data,
-    };
-  }
+  const contents = res.data.body.content.filter(
+    (value) => value.paragraph != undefined
+  );
+  const text = contents.reduce((fullContent, value) => {
+    return (fullContent += value.paragraph.elements.reduce(
+      (joinText, element) => {
+        return (joinText += Buffer.from(element.textRun.content).toString());
+      },
+      ""
+    ));
+  }, "");
+  const { data, content } = matter(Buffer.from(text).toString());
+  const contentRd = <MDXRemote source={content} components={components} />;
+  return {
+    id,
+    contentRd,
+    content,
+    ...data,
+  };
+}
