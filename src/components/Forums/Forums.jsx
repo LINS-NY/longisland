@@ -66,7 +66,36 @@ const Forums = () => {
           </div>
         </div>
         <div class="">
+<<<<<<< HEAD
           <MobileForumList data={data} />
+=======
+            <div className={`flex flex-col  item-center justify-center ${openModel ? "blur-2xl": "display"} bg-white/30`}>
+                <div class="flex flex-row justify-between">
+                    <h1 class="p-2 font-bold font-serif tracking-wide md:text-3xl text-xl text-blue-400 ">Forum</h1>
+                    <div class="flex flex-row items-center justify-center px-2">
+                    { 
+                        user &&
+                        <div> 
+                            <button class="block text-white dark:bg-slate-400 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 md:px-5 md:py-2.5 text-center  dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"
+                             onClick={() => setOpenModel(!openModel)}
+                             >
+                                Create
+                            </button>
+                        </div>
+                    }
+                    { user && <LogOut/> }
+                    { user && <Avatar name={user.displayName}/> }
+                    { !user && <Login/> }
+                    </div>
+                </div>
+                <div class="">
+                < MobileForumList data={data} />
+                </div>
+            </div>
+                {
+                   openModel && <NewCreate createTopic={createTopic} setInput={setInput} input={input}/>
+                }
+>>>>>>> 522054bcf140500783ae5dcd660bff7767e580fd
         </div>
       </div>
       {openModel && (
