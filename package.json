@@ -28,6 +28,9 @@
     "sass": "^1.79.3",
     "react-firebase-hooks": "^5.1.1",
     "react-papaparse": "^4.4.0"
+    "react-firebase-hooks": "^5.1.1",
+    "react-papaparse": "^4.4.0",
+    "sass": "^1.79.3"
   },
   "devDependencies": {
     "@types/node": "^20",

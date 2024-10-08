@@ -1,14 +1,17 @@
-import {  getFinancialDocs,  getAllFinances } from '../../lib/resource';
+import {  getFinancialDocsIN,  getAllFinances } from '../../lib/resource';
 import Item from './Item'
 
 
 export default async function FinancialReports(){
     const id = await getAllFinances('16sIVBJl6hsLA-_27vWvvF9CxGsfcRdeq')
     let docsData = await Promise.all(id.map(async (document)=>{
-        return (await getFinancialDocs(document.params.documentId))
+        return (await getFinancialDocsIN(document.params.documentId))
     }))
     let item = []
     let financialItem = []
+    docsData.sort((a,b)=>{
+        return new Date(b.date) - new Date(a.date);
+    })
     docsData.map((i)=> {
         if (Array.isArray(i)){
             financialItem.push(<Item title={`${i[0].month}-${i[0].year}`} location={i[0].location} key={i[0].location}/>)
