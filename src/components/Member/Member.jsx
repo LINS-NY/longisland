@@ -41,7 +41,7 @@ function Member(){
                 },
               })
         })
-      }, []);
+      }, [readString]);
 
     const handleClick = () => {
         setPopup(!popup)
@@ -51,7 +51,6 @@ function Member(){
         setMembership(value.target.innerText.trim())
         setSelected(value.target.innerText.trim())
         if (value.target.innerText.trim() == "Life Time"){
-            console.log(lifeMember,"jere")
             setDisplayMember(lifeMember)
         }else if (value.target.innerText.trim() == "All"){
             setDisplayMember(all)

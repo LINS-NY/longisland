@@ -33,6 +33,15 @@ const Donation = () => {
                                         type="text" placeholder="" required/>
                           <p class="text-gray-600 text-xs italic">Do not include Dollar $$ Sign</p>
                           <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                          <br/>
+                          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-donation-amount">
+                            Email Address
+                          </label>
+                          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 
+                                        leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-donation-amount" 
+                                        type="text" placeholder="" required/>
+                          <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-2">
@@ -78,7 +87,8 @@ const Donation = () => {
                     </div>
                     <br/>
                     <div class="flex flex-col items-center justify-center">
-                      <button class="flex flex-col items-center justify-center bg-sky-800 hover:bg-sky-950 text-white font-bold py-2 px-10 mt-3 rounded">Send message ✉</button>
+                      <button class="flex flex-col items-center justify-center bg-sky-800 hover:bg-sky-950 text-white 
+                      font-bold py-2 px-10 mt-3 rounded">Donate</button>
                     </div>
                 </form>
             </div>

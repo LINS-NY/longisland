@@ -1,13 +1,13 @@
 import Header from "../../components/Header/Header";
-import Member from "../../components/Member/Member"
+import PresidentialMessage from "../../components/PresidentialMessage/PresidentialMessage"
 import Footer from "../../components/Footer/Footer"
 
 export default function Ab() {
   return (
-    <main class="flex flex-col h-screen ">
+    <main class="flex flex-col h-dvh">
       <Header/>
-      <Member/>
+      <PresidentialMessage/>
       <Footer/>
     </main>
   );
-}
+} 
