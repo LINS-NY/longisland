@@ -205,17 +205,17 @@ export default function Calendar() {
       {/* Add Next and Previous Buttons */}
       <div className="flex justify-between items-center w-full p-4">
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          className="bg-blue-300 text-white px-4 py-2 rounded-md font-medium"
           onClick={handlePreviousMonth}
         >
-          Previous Month
+          अघिल्लो महिना
         </button>
 
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          className="bg-blue-300 text-white px-4 py-2 rounded-md font-medium"
           onClick={handleNextMonth}
         >
-          Next Month
+          अर्को महिना
         </button>
       </div>
 
