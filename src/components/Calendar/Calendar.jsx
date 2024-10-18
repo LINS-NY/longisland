@@ -229,8 +229,26 @@ export default function Calendar() {
         />
       </div>
 
+      
+
       <div className="flex flex-col mx-auto p-4 space-y-4">
         {/* Additional Sections */}
+        <div className="justify-between items-center bg-gray-100 p-4 rounded-lg shadow-md">
+          <span className="text-md md:text-xl font-semibold text-orange-700">
+            LINS-NY Events : 
+            <span className="text-md md:text-xl font-semibold text-green-700">
+          {extraInformation.linsevent?.length > 0 ? (
+              extraInformation.linsevent.map((linsevent, index) => (
+                <div key={index} className="mb-1">
+              {linsevent}
+              </div>
+              ))
+            ) : (
+              <span><br/>No LINS events available</span>
+            )}
+          </span></span>
+        </div>
+
         <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-md">
           <span className="text-md md:text-xl font-semibold text-gray-700">
             ब्रताबन्ध : {extraInformation.bratabandha}
