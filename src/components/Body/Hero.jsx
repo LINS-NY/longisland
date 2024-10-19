@@ -137,7 +137,7 @@ const Hero = () => {
 
             {/*Developers */}
             <br/><div class="flex-grow h-px bg-gray-400 py-0.5"></div>
-            <div class ="flex justify-center font-extrabold font-serif text-5xl py-0.5 ">Developers</div>
+            <div class ="flex justify-center font-extrabold font-serif text-5xl py-0.5">Developers</div>
             
             <div class="flex items-center py-4">
         <div class="flex-grow h-px bg-gray-400 py-0.5"></div>
@@ -145,35 +145,34 @@ const Hero = () => {
         
     </div>
 
-            <div class = "grid grid-cols-3 grid-rows-2 m-auto p-4  justify-center">
-            <Image
-                                src="/DeepakAdhikari.jpg"
-                                width={95}
-                                height={95}
-                                alt="DeepakAdhikari"
-                            />
-                           
-                             <Image
-                                src="/DeepakAdhikari.jpg"
-                                width={95}
-                                height={95}
-                                alt="DeepakAdhikari"
-                            />
-                             <Image
-                                src="/Bikash Mainali.jpg"
-                                width={105}
-                                height={95}
-                                alt="Bikash Mainali"
-                            />
-                            <p class = " text-left sm:font-bold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
-                                Bijendra <br/>Basnet </p>
-                                <p class = " text-left sm:font-bold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
-                                    Deepak <br/>Adhikari </p>
-                                    <p class = " text-left sm:font-bold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
-                                        Bikash <br/>Mainali</p>
+            <div class="grid grid-cols-3 px-8 place-items-center">
+                <Image
+                    src="/BijendraBasnet.jpg"
+                    width={130}
+                    height={130}
+                    alt="BijendraBasnet"
+                />
+                <Image
+                    src="/DeepakAdhikari.jpg"
+                    width={87}
+                    height={95}
+                    alt="DeepakAdhikari"
+                />
+                <Image
+                    src="/Bikash Mainali.jpg"
+                    width={97}
+                    height={95}
+                    alt="Bikash Mainali"
+                />
+                <p class=" text-center sm:font-extrabold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
+                    Bijendra <br />Basnet </p>
+                <p class=" text-center sm:font-bold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
+                    Deepak <br />Adhikari </p>
+                <p class=" text-center sm:font-bold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
+                    Bikash <br />Mainali</p></div>
 
             </div>
-        </div>
+       
     )
 }
 
