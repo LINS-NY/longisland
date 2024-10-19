@@ -156,7 +156,7 @@ const ElectedMembers = () => {
     return(
         <div class=" bg-white flex flex-col">
              <br /><div class="flex-grow h-px bg-gray-400 py-0.5"></div>
-            <div class="flex flex-col font-extrabold justify-center items-center text-3xl dark:text-black">
+            <div class="flex flex-col font-extrabold justify-center items-center text-xl dark:text-black">
             <span>2024-2025 Elected Members</span>
                 <h6> २०२४ - २०२५ कार्यसमिति सदस्य</h6>
             </div>    
