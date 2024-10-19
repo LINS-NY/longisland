@@ -89,8 +89,8 @@ const Hero = () => {
                 <Link href="/PresidentialMessages">
                     <div class="grid px-8 place-items-center">
                         <Image
-                            src="/Members/RajanGouli.png"
-                            width={200}
+                            src="/RajanGouli.jpg"
+                            width={95}
                             height={200}
                             alt="RajanGauli"
                         />
@@ -99,7 +99,7 @@ const Hero = () => {
                         <div>
                             <h1 class=" mb-2 text-2xl text-center sm:font-extrabold tracking-tight leading-none 
                                         text-blue-900 xl:text-2xl">
-                                <br/>President's Message
+                                <br />President's Message
                             </h1>
                             <p class="text-black text-center text-sm font-light">
                                 Dear Valuable and Respected Members of the Long-island Nepalese Society New York...
@@ -107,35 +107,72 @@ const Hero = () => {
                         </div>
                     </div>
                 </Link>
-            
 
-                        {/* Below is Gen Secretary's message */}
-                        <div>
-                <Link href="/GeneralSecretaryMessages">
-                <div class="grid px-8 place-items-center">
-                <Image
-                            src="/Members/RAJENDRAKUMARKARKI.png"
-                            width={200}
-                            height={200}
-                            alt="RAJENDRAKUMARKARKI"
-                        />
-                    </div>
-                    <div class="grid grid-cols-1 gap-4 relative flex justify-center  sm:w-5/6 mx-auto">
-                        <div>
-                        <h1 class=" mb-2 text-2xl text-center sm:font-extrabold tracking-tight leading-none 
+
+                {/* Below is Gen Secretary's message */}
+                <div>
+                    <Link href="/GeneralSecretaryMessages">
+                        <div class="grid px-8 place-items-center">
+                            <Image
+                                src="/RajendraKarki.jpg"
+                                width={95}
+                                height={200}
+                                alt="RAJENDRAKUMARKARKI"
+                            />
+                        </div>
+                        <div class="grid grid-cols-1 gap-4 relative flex justify-center  sm:w-5/6 mx-auto">
+                            <div>
+                                <h1 class=" mb-2 text-2xl text-center sm:font-extrabold tracking-tight leading-none 
                         text-blue-900 xl:text-2xl">
-                                Gen. Sec's Message
-                            </h1>
-                            <p class="text-black text-center text-sm font-light">
-                                Dear Valuable and Respected Members of the Long-island Nepalese Society New York...
-                            </p>
+                                    <br /> Gen. Sec's Message
+                                </h1>
+                                <p class="text-black text-center text-sm font-light">
+                                    Dear Valuable and Respected Members of the Long-island Nepalese Society New York...
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                </Link>
-            </div>
+                    </Link>
+                </div>
             </div>
 
-        </div>
+            {/*Developers */}
+            <br/><div class="flex-grow h-px bg-gray-400 py-0.5"></div>
+            <div class ="flex justify-center font-extrabold font-serif text-5xl py-0.5">Developers</div>
+            
+            <div class="flex items-center py-4">
+        <div class="flex-grow h-px bg-gray-400 py-0.5"></div>
+
+        
+    </div>
+
+            <div class="grid grid-cols-3 px-8 place-items-center">
+                <Image
+                    src="/BijendraBasnet.jpg"
+                    width={130}
+                    height={130}
+                    alt="BijendraBasnet"
+                />
+                <Image
+                    src="/DeepakAdhikari.jpg"
+                    width={87}
+                    height={95}
+                    alt="DeepakAdhikari"
+                />
+                <Image
+                    src="/Bikash Mainali.jpg"
+                    width={97}
+                    height={95}
+                    alt="Bikash Mainali"
+                />
+                <p class=" text-center sm:font-extrabold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
+                    Bijendra <br />Basnet </p>
+                <p class=" text-center sm:font-bold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
+                    Deepak <br />Adhikari </p>
+                <p class=" text-center sm:font-bold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
+                    Bikash <br />Mainali</p></div>
+
+            </div>
+       
     )
 }
 
