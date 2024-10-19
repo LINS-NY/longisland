@@ -155,10 +155,15 @@ const electedMember = [
 const ElectedMembers = () => {
     return(
         <div class=" bg-white flex flex-col">
-            <div class="flex flex-col font-medium justify-center items-center text-sm">
-                <span>2024-2025 Elected Members</span>
+             <br /><div class="flex-grow h-px bg-gray-400 py-0.5"></div>
+            <div class="flex flex-col font-extrabold justify-center items-center text-3xl dark:text-black">
+            <span>2024-2025 Elected Members</span>
                 <h6> २०२४ - २०२५ कार्यसमिति सदस्य</h6>
-            </div>      
+            </div>    
+            <div class="flex items-center py-4">
+                <div class="flex-grow h-px bg-gray-400 py-0.5"></div>
+
+            </div>  
             <div class="md:grid md:grid-cols-4 md:gap-4 sm:mx-auto" >                                     
                 {electedMember.map(function(object, i){
                     return <ElectedMember 

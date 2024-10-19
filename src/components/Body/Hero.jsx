@@ -136,14 +136,13 @@ const Hero = () => {
             </div>
 
             {/*Developers */}
-            <br/><div class="flex-grow h-px bg-gray-400 py-0.5"></div>
-            <div class ="flex justify-center font-extrabold font-serif text-5xl py-0.5">Developers</div>
-            
-            <div class="flex items-center py-4">
-        <div class="flex-grow h-px bg-gray-400 py-0.5"></div>
+            <br /><div class="flex-grow h-px bg-gray-400 py-0.5"></div>
+            <div class="flex justify-center font-extrabold font-serif text-5xl py-0.5 dark:text-black">Developers</div>
 
-        
-    </div>
+            <div class="flex items-center py-4">
+                <div class="flex-grow h-px bg-gray-400 py-0.5"></div>
+
+            </div>
 
             <div class="grid grid-cols-3 px-8 place-items-center">
                 <Image
@@ -171,8 +170,8 @@ const Hero = () => {
                 <p class=" text-center sm:font-bold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
                     Bikash <br />Mainali</p></div>
 
-            </div>
-       
+        </div>
+
     )
 }
 
