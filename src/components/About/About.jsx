@@ -1,5 +1,6 @@
 'use client';
 import * as React from 'react';
+import Image from 'next/image'
 import LifeTimeMember from './LifeTimeMember';
 import ElectedMembers from './ElectedMembers';
 import GeneralMember from './GeneralMember';
@@ -29,6 +30,46 @@ const About = () => {
                     </article>
                 </div>
                 <Member />
+
+                <div>
+                    {/*Developers */}
+                    <br /><div class="flex-grow h-px bg-gray-400 py-0.5"></div>
+                    <div class="flex justify-center font-extrabold font-serif text-5xl py-0.5">Developers</div>
+
+                    <div class="flex items-center py-4">
+                        <div class="flex-grow h-px bg-gray-400 py-0.5"></div>
+
+
+                    </div>
+
+                    <div class="grid grid-cols-3 px-8 place-items-center">
+                        <Image
+                            src="/BijendraBasnet.jpg"
+                            width={130}
+                            height={130}
+                            alt="BijendraBasnet"
+                        />
+                        <Image
+                            src="/DeepakAdhikari.jpg"
+                            width={87}
+                            height={95}
+                            alt="DeepakAdhikari"
+                        />
+                        <Image
+                            src="/Bikash Mainali.jpg"
+                            width={97}
+                            height={95}
+                            alt="Bikash Mainali"
+                        />
+                        <p class=" text-center sm:font-extrabold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
+                            Bijendra <br />Basnet </p>
+                        <p class=" text-center sm:font-bold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
+                            Deepak <br />Adhikari </p>
+                        <p class=" text-center sm:font-bold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
+                            Bikash <br />Mainali</p></div>
+
+                </div>
+
             </div>
         </div>
     )
@@ -175,6 +216,8 @@ function Member() {
                 </div>
             </div>
         </div>
+
+
 
     )
 }
