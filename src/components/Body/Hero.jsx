@@ -21,9 +21,11 @@ const Hero = () => {
                             </p>
                             <div class="flex  flex-wrap text-sm font-light item-center justify-center">
                                  <Link href="/FinancialReport" >
+                                 <Link href="/FinancialReport" >
                                     <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   
                             shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">
                                         Financial Report
+                                    </button> 
                                     </button> 
                                 </Link>
                                 <Link href="/About">
@@ -35,13 +37,9 @@ const Hero = () => {
                                     <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white 
                             dark:shadow-slate-950   shadow-lg rounded-lg p-2 text-white m-2 drop-shadow-2xl">LINS News</button>
                                 </Link>
-                                <Link href="/GalleryYearSelection">
+                                <Link href="/Gallery">
                                     <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white 
                             dark:shadow-slate-950   shadow-lg rounded-lg p-2 text-white m-2 drop-shadow-2xl">Gallery</button>
-                                </Link>
-                                <Link href="/Bylaws">
-                                    <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white 
-                            dark:shadow-slate-950   shadow-lg rounded-lg p-2 text-white m-2 drop-shadow-2xl">Bylaws</button>
                                 </Link>
                             </div>
                         </div>
@@ -68,6 +66,7 @@ const Hero = () => {
                                     <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   
                             shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Financial Report</button>
                                 </Link> 
+                                </Link> 
                                 <Link href="/MembershipForm">
                                     <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   
                             shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Membership Form</button>
@@ -76,13 +75,9 @@ const Hero = () => {
                                     <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950  
                              shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">LINS News</button>
                                 </Link>
-                                <Link href="/GalleryYearSelection">
+                                <Link href="/Gallery">
                                     <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950  
                              shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Gallery</button>
-                                </Link>
-                                <Link href="/Bylaws">
-                                    <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950  
-                             shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Bylaws</button>
                                 </Link>
                             </div>
                         </div>
