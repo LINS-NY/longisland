@@ -89,7 +89,7 @@ const NepaliCalendar = () => {
         }}
       ></div>
 
-      
+      {/* Image of the Events */}
       <Image
           src="/CalendarLINSEvents/LINSEVENTS2024.jpg" // Path to the image in the public folder
           alt="LINS Yearly Calendar 2025 Events"
