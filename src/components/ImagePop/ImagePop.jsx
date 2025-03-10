@@ -63,7 +63,7 @@ const Slider = ({imageList}) => {
             alt={imageList.alt}
             className="thumbnail"
             onClick={() => openPopup(imageList)}
-            style={{ width: "300px", height: "300px", margin: "30px", cursor: "pointer" }}
+            style={{ width: "225px", height: "225px", margin: "30px", cursor: "pointer" }}
           />
         ))}
       </div>
