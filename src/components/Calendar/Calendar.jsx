@@ -51,7 +51,7 @@ const NepaliCalendar = () => {
           width: '100%',
           height: '5px',
           backgroundColor: '#ccc',
-          margin: '20px 0',
+          margin: '10px 0',
         }}
       ></div>
 
