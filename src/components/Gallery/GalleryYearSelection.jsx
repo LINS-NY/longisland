@@ -13,7 +13,7 @@ export default function Home() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (selectedYear) {
-      router.push(`Gallery${selectedYear}`); // Navigate to the selected year's page
+      router.push(`Gallery${selectedYear}`); // Navigate to the selected year's page.
     }
   };
 

@@ -1,46 +1,146 @@
-import * as React from 'react';
+'use client'
+import { useState } from 'react';
+import Modal from './Modal';
 
-const Contact = () => {
-    return(
-<div class="bg-white flex max-w-screen-xl flex flex-row justify-between mx-auto p-4">
-  <section class="bg-white dark:bg-gray-900">
-    <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+export default function Contact() {
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [emailError, setEmailError] = useState('');
+
+  // Email validation function
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email regex
+    return regex.test(email);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Validate email
+    if (!validateEmail(email)) {
+      setEmailError('Please enter a valid email address.');
+      return; // Stop form submission
+    }
+
+    // Clear email error if valid
+    setEmailError('');
+
+    // Send the form data to the API
+    const res = await fetch('/api/sendEmail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, subject, message }),
+    });
+
+    const result = await res.json();
+    if (result.success) {
+      setStatus('Message sent successfully!');
+      setEmail('');
+      setSubject('');
+      setMessage('');
+    } else {
+      setStatus('Failed to send message. Please try again.');
+    }
+    setShowModal(true); // Show the modal
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  return (
+    <div style={styles.container}>
       <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Us</h2>
       <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
         Got a technical issue? Want to send comment/feedback? <br/>Please Let us know.</p>
-      <form action="#" class="space-y-8">
-          <div>
-              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-              <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                    text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 
-                    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 
-                    dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="TechnicalSupport@linsny.org" required>
-              </input>
-          </div>
-          <div>
-              <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subject</label>
-              <input type="text" id="subject" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg 
-              border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 
-              dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 
-              dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Let us know how we can help you !!!" required>
-              </input>
-          </div>
-          <div class="sm:col-span-2">
-              <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
-              <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 
-              rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 
-              dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 
-              dark:focus:border-primary-500" placeholder="Leave a comment..."></textarea>
-          </div>
-            <button class="bg-sky-800 hover:bg-sky-950 text-white font-bold py-2 px-5 rounded">Send message ✉</button>
-      </form>
-    </div>
-  </section>
-</div>    
-  
-  
+      <form onSubmit={handleSubmit} style={styles.form}>
+        <label htmlFor="email">Your Email:</label>
+        <input
+  type="email"
+  id="email"
+  value={email}
+  onChange={(e) => {
+    setEmail(e.target.value);
+    if (!validateEmail(e.target.value)) {
+      setEmailError('Please enter a valid email address.');
+    } else {
+      setEmailError('');
+    }
+  }}
+  required
+  style={styles.input}
+/>
+        {emailError && <p style={styles.error}>{emailError}</p>}
 
-)
+        <label htmlFor="subject">Subject:</label>
+        <input
+          type="text"
+          id="subject"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+          required
+          style={styles.input}
+        />
+
+        <label htmlFor="message">Your Message:</label>
+        <textarea
+          id="message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          required
+          style={styles.textarea}
+        />
+
+        <button type="submit" style={styles.button}>
+          Send Message
+        </button>
+      </form>
+
+      {showModal && <Modal message={status} onClose={closeModal} />}
+    </div>
+  );
 }
 
-export default Contact
+const styles = {
+  container: {
+    maxWidth: '600px',
+    margin: '0 auto',
+    padding: '20px',
+    fontFamily: 'Arial, sans-serif',
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  input: {
+    padding: '10px',
+    margin: '10px 0',
+    border: '1px solid #ccc',
+    borderRadius: '5px',
+  },
+  textarea: {
+    padding: '10px',
+    margin: '10px 0',
+    border: '1px solid #ccc',
+    borderRadius: '5px',
+    height: '150px',
+  },
+  button: {
+    padding: '10px 20px',
+    backgroundColor: '#007bff',
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+  },
+  error: {
+    color: 'red',
+    fontSize: '14px',
+    marginTop: '5px',
+  },
+};
