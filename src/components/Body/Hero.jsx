@@ -19,6 +19,8 @@ const Hero = () => {
                             <p class="max-w-2xl mb-4 text-sm fond-sm tracking-tight leading-none text-blue-900 xl:text-2xl dark:text-white">
                                 From Planning To Progress
                             </p>
+                            
+                            
                             <div class="flex  flex-wrap text-sm font-light item-center justify-center">
                                  <Link href="/FinancialReport" >
                                     <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   
@@ -35,9 +37,13 @@ const Hero = () => {
                                     <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white 
                             dark:shadow-slate-950   shadow-lg rounded-lg p-2 text-white m-2 drop-shadow-2xl">LINS News</button>
                                 </Link>
-                                <Link href="/Gallery">
+                                <Link href="/GalleryYearSelection">
                                     <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white 
                             dark:shadow-slate-950   shadow-lg rounded-lg p-2 text-white m-2 drop-shadow-2xl">Gallery</button>
+                                </Link>
+                                <Link href="/Bylaws">
+                                    <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white 
+                            dark:shadow-slate-950   shadow-lg rounded-lg p-2 text-white m-2 drop-shadow-2xl">Bylaws</button>
                                 </Link>
                             </div>
                         </div>
@@ -72,9 +78,13 @@ const Hero = () => {
                                     <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950  
                              shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">LINS News</button>
                                 </Link>
-                                <Link href="/Gallery">
+                                <Link href="/GalleryYearSelection">
                                     <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950  
                              shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Gallery</button>
+                                </Link>
+                                <Link href="/Bylaws">
+                                    <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950  
+                             shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Bylaws</button>
                                 </Link>
                             </div>
                         </div>
@@ -92,24 +102,25 @@ const Hero = () => {
                 </div>
             </section>
 
-            {/* Below is President's message */}
-            <div class="grid grid-cols-2 justify-center">
+            {/* President's Messages */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto my-10 w-5/6">
+                {/* President's Message */}
                 <Link href="/PresidentialMessages">
-                    <div class="grid px-8 place-items-center">
-                        <Image
-                            src="/RajanGouli.jpg"
-                            width={95}
-                            height={200}
-                            alt="RajanGauli"
-                        />
-                    </div>
-                    <div class="grid grid-cols-1 gap-4 relative flex justify-between  sm:w-5/6 mx-auto">
-                        <div>
-                            <h1 class=" mb-2 text-2xl text-center sm:font-extrabold tracking-tight leading-none 
-                                        text-blue-900 xl:text-2xl">
-                                <br />President's Message
+                    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 cursor-pointer">
+                        <div className="p-6">
+                            <div className="flex justify-center">
+                                <Image
+                                    src="/RajanGouli.jpg"
+                                    width={120}
+                                    height={120}
+                                    alt="Rajan Gouli"
+                                    className="rounded-full"
+                                />
+                            </div>
+                            <h1 className="text-2xl font-bold text-blue-900 dark:text-white text-center mt-4">
+                                President's Message
                             </h1>
-                            <p class="text-black text-center text-sm font-light">
+                            <p className="text-gray-600 dark:text-gray-300 text-sm text-center mt-2">
                                 Dear Valuable and Respected Members of the Long-island Nepalese Society New York...
                             </p>
                         </div>
@@ -117,30 +128,31 @@ const Hero = () => {
                 </Link>
 
 
-                {/* Below is Gen Secretary's message */}
-                <div>
-                    <Link href="/GeneralSecretaryMessages">
-                        <div class="grid px-8 place-items-center">
-                            <Image
-                                src="/RajendraKarki.jpg"
-                                width={95}
-                                height={200}
-                                alt="RAJENDRAKUMARKARKI"
-                            />
-                        </div>
-                        <div class="grid grid-cols-1 gap-4 relative flex justify-center  sm:w-5/6 mx-auto">
-                            <div>
-                                <h1 class=" mb-2 text-2xl text-center sm:font-extrabold tracking-tight leading-none 
-                        text-blue-900 xl:text-2xl">
-                                    <br /> Gen. Sec's Message
-                                </h1>
-                                <p class="text-black text-center text-sm font-light">
-                                    Dear Valuable and Respected Members of the Long-island Nepalese Society New York...
-                                </p>
+                  {/* Gen. Secretary's Message */}
+                <Link href="/GeneralSecretaryMessages">
+                    <div className="bg-white/20 dark:bg-gray-800/20 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 transform hover:scale-105 cursor-pointer border border-white/10 dark:border-gray-700/10">
+                        <div className="p-6 text-center">
+                            <div className="flex justify-center">
+                                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-full p-2 shadow-lg">
+                                    <Image
+                                        src="/RajendraKarki.jpg"
+                                        width={120}
+                                        height={120}
+                                        alt="Rajendra Karki"
+                                        className="rounded-full border-4 border-white dark:border-gray-800"
+                                    />
+                                </div>
                             </div>
+                            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400 mt-4">
+                                Gen. Sec's Message
+                            </h1>
+                            <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
+                                Dear Valuable and Respected Members of the Long-island Nepalese Society New York...
+                            </p>
                         </div>
-                    </Link>
-                </div>
+                    </div>
+                </Link>
+                
             </div>
 
         </div>

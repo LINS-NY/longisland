@@ -1,12 +1,12 @@
 import Header from "../../components/Header/Header";
-import Gallery from "../../components/Gallery/Gallery";
+import GalleryYearSelection from "../../components/Gallery/GalleryYearSelection";
 import Footer from "../../components/Footer/Footer";
 
 export default function Ab() {
   return (
     <main class="flex flex-col ">
       <Header/>
-      <Gallery/>
+      <GalleryYearSelection/>
       <Footer/>
     </main>
   );
