@@ -6,13 +6,17 @@ const Bylaws = () => {
 
     // Function to handle the download of the PDF file
     const handleDownloadPdf = () => {
-        const pdfUrl = "/Bylaws/LINSNY-BYLAWS.pdf"; // Path to the PDF file
-        const link = document.createElement('a');
-        link.href = pdfUrl;
-        link.download = 'LINSNY-BYLAWS.pdf'; // Name of the downloaded file
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        try {
+            const pdfUrl = "/Bylaws/LINSNY-BYLAWS.pdf"; // Path to the PDF file in the public folder
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = 'LINSNY-BYLAWS.pdf'; // Name of the downloaded file
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } catch (err) {
+            setError("Failed to download the PDF. Please try again later.");
+        }
     };
 
     if (error) {
@@ -20,7 +24,7 @@ const Bylaws = () => {
             <div className="flex flex-col justify-center items-center bg-gradient-to-r from-purple-500 to-pink-500">
                 <div className="flex justify-center font-bold font-serif text-3xl text-white py-1">Long Island Nepalese Society, New York - Bylaws</div>
                 <div className="flex justify-center font-bold font-serif text-3xl text-white py-1">लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क - विधान</div>
-                <div>{error}</div>
+                <div className="text-red-500 font-bold text-xl mt-4">{error}</div>
             </div>
         );
     }
@@ -44,7 +48,11 @@ const Bylaws = () => {
                 width="100%"
                 height="600px"
                 style={{ border: "none" }}
-            />
+                title="LINSNY Bylaws PDF"
+                aria-label="LINSNY Bylaws PDF Viewer"
+            >
+                <p>Your browser does not support PDFs. Please download the PDF to view it: <a href="/Bylaws/LINSNY-BYLAWS.pdf">Download PDF</a>.</p>
+            </iframe>
         </div>
     );
 };
