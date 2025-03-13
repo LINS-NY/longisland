@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const XLSX = require('xlsx');
-const nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail'); // Import SendGrid
 
 const app = express();
 const port = 3001;
@@ -13,16 +13,10 @@ app.use(bodyParser.json());
 // Path to save the Excel file
 const filePath = path.join('./src/components/Donation/LINS-Donations.xlsx');
 
-// Create a Nodemailer transporter
-const transporter = nodemailer.createTransport({
-  service: 'gmail', // Use your email service (e.g., Gmail, Outlook)
-  auth: {
-    user: process.env.EMAIL_USER, // Your email address
-    pass: process.env.EMAIL_PASSWORD, // Your email password or app-specific password
-  },
-});
+// Set SendGrid API key
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-// Function to generate a invoice number
+// Function to generate an invoice number
 const generateInvoiceNumber = () => {
   const timestamp = Date.now().toString(); // Current timestamp
   const randomNum = Math.floor(Math.random() * 1000).toString().padStart(3, '0'); // Random 3-digit number
@@ -53,7 +47,7 @@ createExcelFileIfNotExist();
 app.post('/donate', async (req, res) => {
   const { firstName, lastName, email, donationAmount, phone, streetAddress, city, state, zip } = req.body;
 
-  // Generate a Invoice Number
+  // Generate an Invoice Number
   const invoiceNumber = generateInvoiceNumber();
 
   // Read the existing Excel file
@@ -108,10 +102,10 @@ app.post('/donate', async (req, res) => {
     XLSX.writeFile(wb, filePath);
     console.log('Excel file updated successfully.');
 
-    // Send a thank-you email to the user
-    const mailOptions = {
-      from: process.env.EMAIL_USER, // Sender email address
+    // Send a thank-you email to the user using SendGrid
+    const msg = {
       to: email, // Recipient email address
+      from: process.env.EMAIL_USER, // Verified sender email address
       subject: 'Thank You for Your Donation', // Email subject
       html: `
         <div style="font-family: Arial, sans-serif; color: #333;">
@@ -127,7 +121,7 @@ app.post('/donate', async (req, res) => {
             <li><strong>Donation Amount:</strong> $${donationAmount}</li>
             <p></p>
           </ul>
-          <p><strong>Note:</strong>To get the Receipt, this invoice needs to be paid in full . Please contact Rajan Gouli @718-97407252 to make a payment.</p>
+          <p><strong>Note:</strong> To get the Receipt, this invoice needs to be paid in full. Please contact Rajan Gouli @718-97407252 to make a payment.</p>
           <p>If you have any questions or need further assistance, please feel free to contact us at <a href="mailto:support@lins.org">support@lins.org</a>.</p>
           <p>Once again, thank you for your support!</p>
           <p>Warm regards,</p>
@@ -136,8 +130,8 @@ app.post('/donate', async (req, res) => {
       `,
     };
 
-    // Send the email
-    await transporter.sendMail(mailOptions);
+    // Send the email using SendGrid
+    await sgMail.send(msg);
     console.log('Thank-you email sent successfully.');
 
     // Send a success response with the Invoice Number

@@ -1,5 +1,4 @@
-import nodemailer from 'nodemailer';
-import transporter from '../../lib/email'; // Import the existing transporter
+import sgMail from '@sendgrid/mail';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -10,10 +9,13 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'Email and OTP are required' });
     }
 
+    // Set SendGrid API key
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
     // Email content
-    const mailOptions = {
+    const msg = {
+      to: email,
       from: process.env.EMAIL_USER, // Sender email address
-      to: email, // Recipient email address
       subject: 'Your OTP for Donation Verification', // Email subject
       text: `Your OTP is: ${otp}`, // Plain text body
       html: `<p>Your OTP is: <strong>${otp}</strong></p>`, // HTML body
@@ -21,24 +23,25 @@ export default async function handler(req, res) {
 
     try {
       console.log('Sending email to:', email); // Debugging
-      console.log('Mail options:', mailOptions); // Debugging
+      console.log('Using API key:', process.env.SENDGRID_API_KEY); // Debugging
+      console.log('Sender email:', process.env.EMAIL_USER); // Debugging
 
-      // Send the email using the existing transporter
-      const info = await transporter.sendMail(mailOptions);
-      console.log('Email sent:', info.response); // Debugging
-
+      // Send the email using SendGrid
+      await sgMail.send(msg);
+      console.log('Email sent successfully'); // Debugging
       res.status(200).json({ message: 'OTP sent successfully' });
     } catch (error) {
       console.error('Error sending email:', error); // Debugging
 
       // Provide more detailed error messages
       let errorMessage = 'Failed to send OTP';
-      if (error.code === 'EAUTH') {
-        errorMessage = 'Authentication failed. Check your email credentials.';
-      } else if (error.code === 'ECONNECTION') {
-        errorMessage = 'Unable to connect to the email server. Check your network settings.';
-      } else if (error.responseCode === 535) {
-        errorMessage = 'Invalid email credentials. Please verify your email username and password.';
+      if (error.response) {
+        console.error('SendGrid response:', error.response.body); // Debugging
+        if (error.response.body.errors) {
+          errorMessage = error.response.body.errors
+            .map((err) => err.message)
+            .join(', ');
+        }
       }
 
       res.status(500).json({ message: errorMessage, error: error.message });
