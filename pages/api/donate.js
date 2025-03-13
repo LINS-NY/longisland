@@ -97,14 +97,13 @@ export default async function handler(req, res) {
               <li><strong>Email:</strong> ${email}</li>
               <li><strong>Phone:</strong> ${phone}</li>
               <li><strong>Address:</strong> ${streetAddress}, ${city}, ${state}, ${zip}</li>
-              <li><strong>Donation Amount:</strong> $${donationAmount}</li>
-            
-            <p><strong>Note:</strong>To get the Receipt, this invoice needs to be paid in full . Please contact Rajan Gouli @718-97407252 to make a payment.</p>
-            <p>If you have any questions or need further assistance, please feel free to contact us at <a href="mailto:longislandnepalese@gmail.com">longislandnepalese@gmail.com</a>.</p>
-            <p>Once again, thank you for your support!</p>
-            <p>Warm regards,</p>
-            <p><strong>The LINS Team</strong></p>
-            </ul>
+            <p></p>
+          </ul>
+          <p><strong>Note:</strong>To get the Receipt, this invoice needs to be paid in full . Please contact Rajan Gouli @718-97407252 to make a payment.</p>
+          <p>If you have any questions or need further assistance, please feel free to contact us at <a href="mailto:support@lins.org">support@lins.org</a>.</p>
+          <p>Once again, thank you for your support!</p>
+          <p>Warm regards,</p>
+          <p><strong>The LINS Team</strong></p>
           </div>
         `,
       };
