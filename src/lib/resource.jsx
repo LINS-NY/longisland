@@ -36,7 +36,7 @@ function getDocValue(response,title,location, month,year,sheetId, date){
   let startingPoint = response.filter((name) => response.indexOf(name) > 9)
   const rowRegular = [
     'Description',
-    'Receipt Number',
+    'Invoice Number',
     'Income (Cash)',
     'Income (Cheque)',
     'Expenses'
