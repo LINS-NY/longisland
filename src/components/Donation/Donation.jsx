@@ -214,7 +214,7 @@ const Donation = () => {
             />
           </div>
           <div>
-            <label className="block text-gray-700 font-semibold">Email Address</label>
+            <label className="block text-gray-700 font-semibold">Please Enter Your Gmail Email Address</label>
             <div className="relative">
               <input
                 type="email"
@@ -331,7 +331,7 @@ const Donation = () => {
           <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 max-w-sm">
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Email Verification</h3>
             <p className="text-gray-600 mb-4">Please enter the OTP sent to your email.</p>
-            <p className="text-gray-600 mb-1">Note: Do not close this or refresh the page until you receive the code. It might take sometime to receive the code.</p>
+            <p className="text-gray-600 mb-1">Note:Do not close this or refresh the page until you receive the code. It might take sometime to receive the code.</p>
             <input
               type="text"
               className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 mb-4"
