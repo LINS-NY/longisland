@@ -215,13 +215,23 @@ const Donation = () => {
           </div>
           <div className="w-full md:w-1/3">
             <label className="block text-gray-700 font-semibold">Email Address</label>
-            <input
-              type="email"
-              className={`w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 ${isValidEmail ? '' : 'border-red-500'}`}
-              value={email}
-              onChange={handleEmailChange}
-              required
-            />
+            <div className="relative">
+              <input
+                type="email"
+                className={`w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 ${
+                  isValidEmail ? '' : 'border-red-500'
+                } ${isEmailVerified ? 'bg-gray-200 cursor-not-allowed' : ''}`}
+                value={email}
+                onChange={handleEmailChange}
+                required
+                disabled={isEmailVerified} // Lock the email field after verification
+              />
+              {isEmailVerified && (
+                <span className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500">
+                  🔒 {/* Lock icon */}
+                </span>
+              )}
+            </div>
             {!isValidEmail && <p className="text-red-500 text-xs">Please enter a valid email address</p>}
           </div>
           <div className="w-full md:w-1/3">

@@ -22,8 +22,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Function to generate a receipt number
-const generateReceiptNumber = () => {
+// Function to generate a invoice number
+const generateInvoiceNumber = () => {
   const timestamp = Date.now().toString(); // Current timestamp
   const randomNum = Math.floor(Math.random() * 1000).toString().padStart(3, '0'); // Random 3-digit number
   return `REC-${timestamp}-${randomNum}`; // Example: REC-1698251234567-042
@@ -34,7 +34,7 @@ const createExcelFileIfNotExist = () => {
   if (!fs.existsSync(filePath)) {
     console.log('File does not exist. Creating a new file...');
     const headers = [
-      ['Receipt Number', 'Row Number', 'Timestamp', 'First Name', 'Last Name', 'Donation Amount', 'Email', 'Phone', 'Street Address', 'City', 'State', 'Zip']
+      ['Invoice Number', 'Row Number', 'Timestamp', 'First Name', 'Last Name', 'Donation Amount', 'Email', 'Phone', 'Street Address', 'City', 'State', 'Zip']
     ];
     const wb = XLSX.utils.book_new();
     const ws = XLSX.utils.aoa_to_sheet(headers);
@@ -53,8 +53,8 @@ createExcelFileIfNotExist();
 app.post('/donate', async (req, res) => {
   const { firstName, lastName, email, donationAmount, phone, streetAddress, city, state, zip } = req.body;
 
-  // Generate a receipt number
-  const receiptNumber = generateReceiptNumber();
+  // Generate a Invoice Number
+  const invoiceNumber = generateInvoiceNumber();
 
   // Read the existing Excel file
   let wb;
@@ -80,7 +80,7 @@ app.post('/donate', async (req, res) => {
 
   // Prepare the new row of data
   const newRow = [
-    receiptNumber, // Auto-generated receipt number
+    invoiceNumber, // Auto-generated Invoice Number
     nextRowNumber, // Auto-incremented row number
     timestamp, // Current timestamp
     firstName,
@@ -119,7 +119,7 @@ app.post('/donate', async (req, res) => {
           <p>We are incredibly grateful for your generous donation of <strong>$${donationAmount}</strong>.</p>
           <p>Your support helps us continue our mission and make a meaningful impact. Here are the details of your donation:</p>
           <ul>
-            <li><strong>Receipt Number:</strong> ${receiptNumber}</li>
+            <li><strong>Invoice Number:</strong> ${invoiceNumber}</li>
             <li><strong>Name:</strong> ${firstName} ${lastName}</li>
             <li><strong>Email:</strong> ${email}</li>
             <li><strong>Phone:</strong> ${phone}</li>
@@ -138,8 +138,8 @@ app.post('/donate', async (req, res) => {
     await transporter.sendMail(mailOptions);
     console.log('Thank-you email sent successfully.');
 
-    // Send a success response with the receipt number
-    res.status(200).json({ message: 'Donation recorded successfully', receiptNumber });
+    // Send a success response with the Invoice Number
+    res.status(200).json({ message: 'Donation recorded successfully', invoiceNumber });
   } catch (err) {
     console.error('Error writing to Excel file or sending email:', err);
     res.status(500).json({ message: 'Error writing to Excel file or sending email' });
