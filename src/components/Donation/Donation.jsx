@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 // List of all 50 states
 const statesList = [
-  "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida",
+  "New York","Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida",
   "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine",
   "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska",
   "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota",
@@ -165,35 +165,35 @@ const Donation = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Make a Donation</h2>
-      <form onSubmit={handleDonate} className="space-y-6">
+    <div className="max-w-4xl mx-auto p-4 bg-white rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Make a Donation</h2>
+      <form onSubmit={handleDonate} className="space-y-4">
         {/* Form fields for donation details */}
-        <div className="flex space-x-6">
-          <div className="w-full md:w-1/3">
+        <div className="space-y-4">
+          <div>
             <label className="block text-gray-700 font-semibold">First Name</label>
             <input
               type="text"
-              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               required
             />
           </div>
-          <div className="w-full md:w-1/3">
+          <div>
             <label className="block text-gray-700 font-semibold">Middle Initial</label>
             <input
               type="text"
-              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
               value={middleInitial}
               onChange={(e) => setMiddleInitial(e.target.value)}
             />
           </div>
-          <div className="w-full md:w-1/3">
+          <div>
             <label className="block text-gray-700 font-semibold">Last Name</label>
             <input
               type="text"
-              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               required
@@ -202,23 +202,23 @@ const Donation = () => {
         </div>
 
         {/* Email, Phone, and Donation Amount Fields */}
-        <div className="flex space-x-6">
-          <div className="w-full md:w-1/3">
+        <div className="space-y-4">
+          <div>
             <label className="block text-gray-700 font-semibold">Donation Amount ($$)</label>
             <input
               type="number"
-              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
               value={donationAmount}
               onChange={(e) => setDonationAmount(e.target.value)}
               required
             />
           </div>
-          <div className="w-full md:w-1/3">
+          <div>
             <label className="block text-gray-700 font-semibold">Email Address</label>
             <div className="relative">
               <input
                 type="email"
-                className={`w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 ${
+                className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 ${
                   isValidEmail ? '' : 'border-red-500'
                 } ${isEmailVerified ? 'bg-gray-200 cursor-not-allowed' : ''}`}
                 value={email}
@@ -234,11 +234,11 @@ const Donation = () => {
             </div>
             {!isValidEmail && <p className="text-red-500 text-xs">Please enter a valid email address</p>}
           </div>
-          <div className="w-full md:w-1/3">
+          <div>
             <label className="block text-gray-700 font-semibold">Phone Number</label>
             <input
               type="tel"
-              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               required
@@ -249,33 +249,32 @@ const Donation = () => {
         </div>
 
         {/* Address Fields */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           <div>
             <label className="block text-gray-700 font-semibold">Street Address</label>
             <input
               type="text"
-              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
               value={streetAddress}
               onChange={(e) => setStreetAddress(e.target.value)}
               required
             />
           </div>
-
-          <div className="flex space-x-6">
-            <div className="w-full md:w-1/3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
               <label className="block text-gray-700 font-semibold">City</label>
               <input
                 type="text"
-                className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
                 required
               />
             </div>
-            <div className="w-full md:w-1/3">
+            <div>
               <label className="block text-gray-700 font-semibold">State</label>
               <select
-                className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
                 value={state}
                 onChange={(e) => setState(e.target.value)}
                 required
@@ -285,11 +284,11 @@ const Donation = () => {
                 ))}
               </select>
             </div>
-            <div className="w-full md:w-1/3">
+            <div>
               <label className="block text-gray-700 font-semibold">Zip Code</label>
               <input
                 type="text"
-                className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
                 value={zip}
                 onChange={handleZipChange}
                 required
@@ -304,7 +303,7 @@ const Donation = () => {
             type="button"
             onClick={generateOtp}
             disabled={otpSentToEmail || !isValidEmail}
-            className="bg-sky-800 text-white py-3 px-10 rounded-full hover:bg-sky-900 font-bold text-lg transition duration-300"
+            className="bg-sky-800 text-white py-2 px-6 rounded-full hover:bg-sky-900 font-bold text-base transition duration-300"
           >
             Send OTP to Email
           </button>
@@ -315,7 +314,7 @@ const Donation = () => {
           <button
             type="submit"
             disabled={!isEmailVerified}
-            className={`py-3 px-10 rounded-full font-bold text-lg transition duration-300 ${
+            className={`py-2 px-6 rounded-full font-bold text-base transition duration-300 ${
               isEmailVerified
                 ? 'bg-sky-800 text-white hover:bg-sky-900' // Enabled style
                 : 'bg-gray-400 text-gray-700 cursor-not-allowed' // Disabled style
@@ -329,12 +328,13 @@ const Donation = () => {
       {/* OTP Dialog */}
       {showOtpDialog && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 max-w-sm">
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Email Verification</h3>
             <p className="text-gray-600 mb-4">Please enter the OTP sent to your email.</p>
+            <p className="text-gray-600 mb-1">Note: Do not close this or refresh the page until you receive the code. It might take sometime to receive the code.</p>
             <input
               type="text"
-              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 mb-4"
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 mb-4"
               value={otp}
               onChange={(e) => setOtp(e.target.value)}
               required
