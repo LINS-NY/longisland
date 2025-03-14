@@ -1,0 +1,15 @@
+/* PhoneIcon.css */
+.phone-link {
+    text-decoration: none; /* Remove underline */
+    color: #007BFF; /* Blue color for the link */
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+    padding: 8px 16px; /* Add padding for better click area */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  .phone-link:hover {
+    color: #005bb5; /* Darker blue on hover */
+    background-color: #e0e0e0; /* Light gray background on hover */
+  }
