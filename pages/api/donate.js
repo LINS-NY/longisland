@@ -1,12 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import XLSX from 'xlsx';
-import transporter from '../../lib/email'; // Import the nodemailer transporter
 
 // Path to save the Excel file
 const filePath = path.join(process.cwd(), './src/components/Donation/LINS-Donations.xlsx');
 
-// Function to generate a Invoice Number
+// Function to generate an Invoice Number
 const generateInvoiceNumber = () => {
   const timestamp = Date.now().toString(); // Current timestamp
   const randomNum = Math.floor(Math.random() * 1000).toString().padStart(3, '0'); // Random 3-digit number
@@ -17,7 +16,7 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { firstName, lastName, email, donationAmount, phone, streetAddress, city, state, zip } = req.body;
 
-    // Generate a Invoice Number
+    // Generate an Invoice Number
     const invoiceNumber = generateInvoiceNumber();
 
     // Create the file if it doesn't exist
@@ -81,41 +80,11 @@ export default async function handler(req, res) {
     try {
       XLSX.writeFile(wb, filePath);
 
-      // Send a thank-you email to the user
-      const mailOptions = {
-        from: process.env.EMAIL_USER, // Sender email address
-        to: email, // Recipient email address
-        subject: 'Thank You for Your Donation', // Email subject
-        html: `
-          <div style="font-family: Arial, sans-serif; color: #333;">
-            <h2 style="color: #1e3a8a;">Thank You, ${firstName}!</h2>
-            <p>We are incredibly grateful for your generous donation of <strong>$${donationAmount}</strong>.</p>
-            <p>Your support helps us continue our mission and make a meaningful impact. Here are the details of your donation:</p>
-            <ul>
-              <li><strong>Invoice Number:</strong> ${invoiceNumber}</li>
-              <li><strong>Name:</strong> ${firstName} ${lastName}</li>
-              <li><strong>Email:</strong> ${email}</li>
-              <li><strong>Phone:</strong> ${phone}</li>
-              <li><strong>Address:</strong> ${streetAddress}, ${city}, ${state}, ${zip}</li>
-            <p></p>
-          </ul>
-          <p><strong>Note:</strong>To get the Receipt, this invoice needs to be paid in full . Please contact Rajan Gouli @718-97407252 to make a payment.</p>
-          <p>If you have any questions or need further assistance, please feel free to contact us at <a href="mailto:support@lins.org">support@lins.org</a>.</p>
-          <p>Once again, thank you for your support!</p>
-          <p>Warm regards,</p>
-          <p><strong>The LINS Team</strong></p>
-          </div>
-        `,
-      };
-
-      // Send the email
-      await transporter.sendMail(mailOptions);
-
       // Return the Invoice Number in the response
       res.status(200).json({ message: 'Donation recorded successfully', invoiceNumber });
     } catch (err) {
-      console.error('Error writing to Excel file or sending email:', err);
-      res.status(500).json({ message: 'Error writing to Excel file or sending email' });
+      console.error('Error writing to Excel file:', err);
+      res.status(500).json({ message: 'Error writing to Excel file' });
     }
   } else {
     res.status(405).json({ message: 'Method not allowed' });

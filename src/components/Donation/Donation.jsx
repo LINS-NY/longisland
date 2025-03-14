@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 // List of all 50 states
 const statesList = [
-  "New York","Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida",
+  "New York", "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida",
   "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine",
   "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska",
   "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota",
@@ -22,12 +22,7 @@ const Donation = () => {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zip, setZip] = useState('');
-  const [isEmailVerified, setIsEmailVerified] = useState(false);
-  const [otp, setOtp] = useState('');
-  const [showOtpDialog, setShowOtpDialog] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(true);
-  const [otpSentToEmail, setOtpSentToEmail] = useState(false);
-  const [generatedOtp, setGeneratedOtp] = useState('');
 
   // Function to handle ZIP code auto-population
   const handleZipChange = (e) => {
@@ -63,6 +58,12 @@ const Donation = () => {
     // Validate phone number
     if (!validatePhone(phone)) {
       alert('Please enter a valid 10-digit phone number.');
+      return;
+    }
+
+    // Validate donation amount
+    if (!validateDonationAmount(donationAmount)) {
+      alert('Please enter a valid donation amount (greater than 0).');
       return;
     }
 
@@ -105,18 +106,6 @@ const Donation = () => {
     }
   };
 
-  // Function to handle OTP verification
-  const handleOtpVerification = async () => {
-    // Check if the entered OTP matches the generated one
-    if (otp === generatedOtp) {
-      setIsEmailVerified(true);
-      setShowOtpDialog(false);
-      alert('Email verified successfully!');
-    } else {
-      alert('Invalid OTP, please try again.');
-    }
-  };
-
   // Validate email format
   const validateEmail = (email) => {
     const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -129,39 +118,16 @@ const Donation = () => {
     return regex.test(phone);
   };
 
+  // Validate donation amount
+  const validateDonationAmount = (amount) => {
+    return !isNaN(amount) && parseFloat(amount) > 0;
+  };
+
   // Function to handle email change and validate
   const handleEmailChange = (e) => {
     const emailValue = e.target.value;
     setEmail(emailValue);
     setIsValidEmail(validateEmail(emailValue));
-  };
-
-  // Generate a random OTP and send it to the user's email
-  const generateOtp = async () => {
-    const otpCode = Math.floor(100000 + Math.random() * 900000).toString(); // 6-digit OTP
-    setGeneratedOtp(otpCode);
-
-    // Send OTP to the user's email via the backend
-    try {
-      const response = await fetch('/api/send-otp', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, otp: otpCode }),
-      });
-
-      if (response.ok) {
-        setOtpSentToEmail(true);
-        setShowOtpDialog(true); // Show OTP verification dialog
-        alert('OTP has been sent to your email!');
-      } else {
-        alert('Failed to send OTP. Please try again.');
-      }
-    } catch (error) {
-      console.error('Error sending OTP:', error);
-      alert('An error occurred while sending OTP.');
-    }
   };
 
   return (
@@ -218,19 +184,10 @@ const Donation = () => {
             <div className="relative">
               <input
                 type="email"
-                className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 ${
-                  isValidEmail ? '' : 'border-red-500'
-                } ${isEmailVerified ? 'bg-gray-200 cursor-not-allowed' : ''}`}
+                className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 `}
                 value={email}
                 onChange={handleEmailChange}
-                required
-                disabled={isEmailVerified} // Lock the email field after verification
               />
-              {isEmailVerified && (
-                <span className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500">
-                  🔒 {/* Lock icon */}
-                </span>
-              )}
             </div>
             {!isValidEmail && <p className="text-red-500 text-xs">Please enter a valid email address</p>}
           </div>
@@ -297,65 +254,16 @@ const Donation = () => {
           </div>
         </div>
 
-        {/* Send OTP Button */}
-        <div className="flex justify-center mt-6">
-          <button
-            type="button"
-            onClick={generateOtp}
-            disabled={otpSentToEmail || !isValidEmail}
-            className="bg-sky-800 text-white py-2 px-6 rounded-full hover:bg-sky-900 font-bold text-base transition duration-300"
-          >
-            Send OTP to Email
-          </button>
-        </div>
-
         {/* Donate Button */}
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-6 ">
           <button
             type="submit"
-            disabled={!isEmailVerified}
-            className={`py-2 px-6 rounded-full font-bold text-base transition duration-300 ${
-              isEmailVerified
-                ? 'bg-sky-800 text-white hover:bg-sky-900' // Enabled style
-                : 'bg-gray-400 text-gray-700 cursor-not-allowed' // Disabled style
-            }`}
+            className={`py-2 px-6 rounded-full font-bold text-base transition duration-300 bg-sky-800 text-white hover:bg-sky-900`}
           >
             Donate
           </button>
         </div>
       </form>
-
-      {/* OTP Dialog */}
-      {showOtpDialog && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 max-w-sm">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">Email Verification</h3>
-            <p className="text-gray-600 mb-4">Please enter the OTP sent to your email.</p>
-            <p className="text-gray-600 mb-1">Note:Do not close this or refresh the page until you receive the code. It might take sometime to receive the code.</p>
-            <input
-              type="text"
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 mb-4"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-              required
-            />
-            <div className="flex justify-between">
-              <button
-                onClick={handleOtpVerification}
-                className="bg-sky-800 text-white py-2 px-4 rounded hover:bg-sky-900"
-              >
-                Verify OTP
-              </button>
-              <button
-                onClick={() => setShowOtpDialog(false)}
-                className="bg-gray-300 text-black py-2 px-4 rounded hover:bg-gray-400"
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
