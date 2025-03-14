@@ -9,7 +9,7 @@ export default async function FinancialReports() {
         return (await getFinancialDocsIN(document.params.documentId));
     }));
 
-    // Separate and sort documents by year and month
+    // Sort documents by year and month
     const sortedDocsData = docsData.sort((a, b) => {
         const yearA = a.year || new Date(a.date).getFullYear();
         const yearB = b.year || new Date(b.date).getFullYear();
@@ -18,6 +18,7 @@ export default async function FinancialReports() {
         return yearA - yearB || monthA - monthB;
     });
 
+    // Group documents by year
     const groupedByYear = sortedDocsData.reduce((acc, doc) => {
         const year = doc.year || new Date(doc.date).getFullYear();
         if (!acc[year]) {
@@ -30,6 +31,7 @@ export default async function FinancialReports() {
     let financialItem = [];
     let item = [];
 
+    // Render documents by year and month
     Object.keys(groupedByYear).sort().forEach(year => {
         groupedByYear[year].forEach(i => {
             if (Array.isArray(i)) {
