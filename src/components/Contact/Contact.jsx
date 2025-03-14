@@ -61,7 +61,8 @@ const ContactUsButton = () => {
     const [showOptions, setShowOptions] = useState(false);
 
     const handleEmailClick = () => {
-        window.location.href = 'mailto:lognislandnepalese@gmail.com';
+        const subject = encodeURIComponent('LINS Website: Member Inquiry. Executive Members Please Respond ASAP'); // Encode the subject line
+        window.location.href = `mailto:lognislandnepalese@gmail.com?subject=${subject}`;
     };
 
     const handleCallClick = () => {
