@@ -40,44 +40,40 @@ content.map((val,index) => {
         )
     })  
     return(
-        <div class=" bg-white flex flex-row justify-center text-center sm:px-6">
-            <div class="p-4">
-                <h1 class="text-lg sm:text-xl font-semibold whitespace-nowrap text-gray-500 mx-auto text-center dark:text-gray-400">
+<div className="bg-white flex flex-row justify-center text-center sm:px-6">
+            <div className="p-4">
+                <h1 className="text-lg sm:text-xl font-semibold whitespace-nowrap text-gray-500 mx-auto text-center dark:text-gray-400">
                     {title}
                 </h1>
-                <div class="mt-5 sm:mt-20 border-4 border-black">
-                    <div class="overflow-hidden ">
-                        <table class="w-full text-center text-xs font-light dark:text-white border-collapse ">
-                                { (title.includes("Checking"))
-                                ? 
-                                bHeading:
-                                headItem
-                            }
-                            <tbody> 
+                <div className="mt-5 sm:mt-20 border-4 border-black">
+                    <div className="overflow-hidden">
+                        <table className="w-full text-center text-xs font-light dark:text-white border-collapse">
+                            {title.includes("Checking") ? bHeading : headItem}
+                            <tbody>
                                 {contTable}
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
     )
 }
 
-const FinancialReport = ({content}) => {
-    let totalData = []
-    if (Array.isArray(content)){
-        totalData = content.map((item)=> {
-            return <FinancialReporting key={item.title} title={item.title} content={item.content} heading={item.rowHeading} balanceHeading={item.balanceHeading}/>
-        })
-    }else{
-        totalData = <FinancialReporting  key={content.title} title={content.title} content={content.content} heading={content.rowHeading} balanceHeading={content.balanceHeading}/>
+const FinancialReport = ({ content }) => {
+    let totalData = [];
+    if (Array.isArray(content)) {
+        totalData = content.map((item) => {
+            return <FinancialReporting key={item.title} title={item.title} content={item.content} heading={item.rowHeading} balanceHeading={item.balanceHeading} />;
+        });
+    } else {
+        totalData = <FinancialReporting key={content.title} title={content.title} content={content.content} heading={content.rowHeading} balanceHeading={content.balanceHeading} />;
     }
-    return(
+    return (
         <>
-        {totalData}
+            {totalData}
         </>
-    )
-}
+    );
+};
 
-export default FinancialReport
+export default FinancialReport;

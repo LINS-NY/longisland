@@ -9,18 +9,28 @@ export default async function FinancialReports() {
         return (await getFinancialDocsIN(document.params.documentId));
     }));
 
+    // Ensure each document has a year and month
+    const processedDocsData = docsData.map(doc => {
+        const date = new Date(doc.date || doc.createdAt); // Fallback to `createdAt` if `date` is missing
+        return {
+            ...doc,
+            year: doc.year || date.getFullYear(),
+            month: doc.month || monthsOrder[date.getMonth()],
+        };
+    });
+
     // Sort documents by year and month
-    const sortedDocsData = docsData.sort((a, b) => {
-        const yearA = a.year || new Date(a.date).getFullYear();
-        const yearB = b.year || new Date(b.date).getFullYear();
-        const monthA = monthsOrder.indexOf(a.month) || new Date(a.date).getMonth();
-        const monthB = monthsOrder.indexOf(b.month) || new Date(b.date).getMonth();
+    const sortedDocsData = processedDocsData.sort((a, b) => {
+        const yearA = a.year;
+        const yearB = b.year;
+        const monthA = monthsOrder.indexOf(a.month);
+        const monthB = monthsOrder.indexOf(b.month);
         return yearA - yearB || monthA - monthB;
     });
 
     // Group documents by year
     const groupedByYear = sortedDocsData.reduce((acc, doc) => {
-        const year = doc.year || new Date(doc.date).getFullYear();
+        const year = doc.year;
         if (!acc[year]) {
             acc[year] = [];
         }
