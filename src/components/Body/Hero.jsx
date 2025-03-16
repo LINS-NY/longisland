@@ -45,6 +45,10 @@ const Hero = () => {
                                     <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white 
                             dark:shadow-slate-950   shadow-lg rounded-lg p-2 text-white m-2 drop-shadow-2xl">Bylaws</button>
                                 </Link>
+                                <Link href="/ByLawsProposed">
+                                    <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white 
+                            dark:shadow-slate-950   shadow-lg rounded-lg p-2 text-white m-2 drop-shadow-2xl">Proposed Bylaws</button>
+                                </Link>
                             </div>
                         </div>
 
@@ -85,6 +89,10 @@ const Hero = () => {
                                 <Link href="/Bylaws">
                                     <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950  
                              shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Bylaws</button>
+                                </Link>
+                                <Link href="/ByLawsProposed">
+                                    <button class="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950  
+                             shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Proposed Bylaws</button>
                                 </Link>
                             </div>
                         </div>
