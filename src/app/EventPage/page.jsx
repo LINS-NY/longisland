@@ -53,7 +53,7 @@ const EventPage = () => {
   return (
     <>
       {isConfettiActive && (
-        <Confetti 
+        <Confetti
           recycle={false}
           numberOfPieces={500}
           onConfettiComplete={() => setConfettiActive(false)}
@@ -70,15 +70,15 @@ const EventPage = () => {
         </div>
 
         {/* Floating decorations */}
-        <motion.div 
+        <motion.div
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 4, repeat: Infinity }}
           className="absolute top-20 left-10 w-16 h-16 opacity-40"
         >
           <Image src="/NewYear2082Flyer.jpg" width={64} height={64} alt="NewYear2082Flyer.jpg" />
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           animate={{ y: [-10, 10, -10] }}
           transition={{ duration: 5, repeat: Infinity, delay: 1 }}
           className="absolute bottom-20 right-10 w-16 h-16 opacity-40"
@@ -88,7 +88,7 @@ const EventPage = () => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -97,8 +97,8 @@ const EventPage = () => {
               <span className="block">Nepali New Year</span>
               <span className="block text-5xl md:text-7xl text-yellow-300 flash-animation">2082 B.S.</span>
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 1 }}
@@ -106,19 +106,24 @@ const EventPage = () => {
             >
               लङ्ग आईल्याण्ड नेपाली समाज, न्यूयोर्कद्वारा नेपाली नयाँ वर्ष २०८२ को भव्य आयोजना
             </motion.p>
-            
+
             <motion.div
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.8, type: 'spring' }}
               className="mt-8"
             >
-              <div className="inline-flex items-center px-6 py-3 border border-transparent text-lg font-medium rounded-full shadow-lg text-white bg-red-700 hover:bg-red-800 transition duration-300 transform hover:scale-105">
+              <a
+                href="https://www.evite.com/event/0034CHBF65YBFUNS6EPQBHI5UOCC4I?utm_campaign=send_sharable_link&utm_source=evitelink&utm_medium=sharable_invite"
+                target="_blank" // Opens in a new tab (optional)
+                rel="noopener noreferrer" // Security best practice
+                className="inline-flex items-center px-6 py-3 border border-transparent text-lg font-medium rounded-full shadow-lg text-white bg-red-700 hover:bg-red-800 transition duration-300 transform hover:scale-105"
+              >
                 Join the Celebration
                 <svg className="ml-3 -mr-1 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
-              </div>
+              </a>
             </motion.div>
           </div>
         </div>
@@ -128,7 +133,7 @@ const EventPage = () => {
       <div className="bg-white py-12 relative">
         {/* Decorative border */}
         <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600"></div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
             {/* Rotating Flyer Gallery */}
@@ -155,7 +160,7 @@ const EventPage = () => {
                   </div>
                 </motion.div>
               </AnimatePresence>
-              
+
               {/* Flyer navigation dots */}
               <div className="flex justify-center mt-4 space-x-2">
                 {flyers.map((_, index) => (
@@ -170,7 +175,7 @@ const EventPage = () => {
             </div>
 
             {/* Event Info with enhanced animations */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
@@ -183,7 +188,7 @@ const EventPage = () => {
               </h2>
 
               <div className="space-y-6">
-                <motion.div 
+                <motion.div
                   whileHover={{ x: 5 }}
                   className="flex items-start bg-red-50 p-4 rounded-lg"
                 >
@@ -198,7 +203,7 @@ const EventPage = () => {
                   </div>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   whileHover={{ x: 5 }}
                   className="flex items-start bg-yellow-50 p-4 rounded-lg"
                 >
@@ -214,7 +219,7 @@ const EventPage = () => {
                   </div>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   whileHover={{ x: 5 }}
                   className="flex items-start bg-red-50 p-4 rounded-lg"
                 >
@@ -247,7 +252,7 @@ const EventPage = () => {
                     "Kids activities and games",
                     "Raffle Prizes and giveaways"
                   ].map((item, index) => (
-                    <motion.li 
+                    <motion.li
                       key={index}
                       whileHover={{ scale: 1.02 }}
                       className="flex items-center bg-gray-50 p-3 rounded-lg"
@@ -288,9 +293,9 @@ const EventPage = () => {
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0 bg-[url('/NewYear2082Flyer.jpg')] bg-repeat opacity-30"></div>
         </div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
@@ -300,10 +305,10 @@ const EventPage = () => {
             <span className="block">Countdown to New Year 2082</span>
             <span className="block text-xl text-yellow-200 mt-2">नयाँ वर्ष २०८२ आगमनको अन्तिम समय</span>
           </motion.h2>
-          
+
           <div className="flex justify-center gap-4">
             {Object.entries(timeLeft).map(([unit, value]) => (
-              <motion.div 
+              <motion.div
                 key={unit}
                 whileHover={{ scale: 1.05 }}
                 className="bg-white bg-opacity-20 rounded-lg p-4 min-w-[80px] backdrop-blur-sm"
@@ -319,7 +324,7 @@ const EventPage = () => {
       {/* Enhanced Gallery Section */}
       <div className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -329,10 +334,10 @@ const EventPage = () => {
             <span className="block text-red-600">Memories from Past Events</span>
             <span className="block text-lg text-gray-600 mt-2">अघिल्ला वर्षको सम्झनाहरू</span>
           </motion.h2>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
-              <motion.div 
+              <motion.div
                 key={item}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -357,25 +362,25 @@ const EventPage = () => {
       {/* Enhanced Footer */}
       <footer className="bg-gray-900 text-white py-12 relative">
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600"></div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="md:flex md:justify-between">
             <div className="mb-8 md:mb-0">
               <h3 className="text-2xl font-bold flex items-center">
-                <Image 
-                  src="/NewYear2082Flyer.jpg" 
-                  width={32} 
-                  height={32} 
-                  alt="Nepal Flag" 
+                <Image
+                  src="/NewYear2082Flyer.jpg"
+                  width={32}
+                  height={32}
+                  alt="Nepal Flag"
                   className="mr-2"
                 />
                 Long Island Nepalese Society, New York
               </h3>
               <p className="mt-2 text-gray-300">लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क</p>
               <p className="mt-4 text-gray-400">longislandnepalese@gmail.com</p>
-              
+
             </div>
-            
+
             <div className="grid grid-cols-2 gap-8">
               <div>
                 <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
@@ -385,7 +390,7 @@ const EventPage = () => {
                     { name: "Events", path: "/EventPage" },
                     { name: "Membership", path: "/MembershipForm" }
                   ].map((link) => (
-                    <motion.li 
+                    <motion.li
                       key={link.name}
                       whileHover={{ x: 5 }}
                     >
@@ -396,10 +401,10 @@ const EventPage = () => {
                   ))}
                 </ul>
               </div>
-              
+
             </div>
           </div>
-          
+
           <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
             <p>&copy; {new Date().getFullYear()} Long Island Nepalese Society. All rights reserved.</p>
             <p className="mt-2">शुभ नयाँ वर्ष २०८२ को हार्दिक शुभकामना!</p>
