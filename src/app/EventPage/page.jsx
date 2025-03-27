@@ -66,7 +66,7 @@ const EventPage = () => {
       <div className="relative overflow-hidden bg-gradient-to-b from-red-600 to-yellow-500 py-16 md:py-24">
         {/* Animated background elements */}
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[url('/mandala-pattern.png')] bg-repeat opacity-30"></div>
+          <div className="absolute inset-0 bg-[url('/NewYear2082Flyer.jpg')] bg-repeat opacity-30"></div>
         </div>
 
         {/* Floating decorations */}
@@ -286,7 +286,7 @@ const EventPage = () => {
       {/* Enhanced Countdown Section */}
       <div className="bg-gradient-to-r from-red-800 to-yellow-700 py-16 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[url('/mandala-pattern.png')] bg-repeat opacity-30"></div>
+          <div className="absolute inset-0 bg-[url('/NewYear2082Flyer.jpg')] bg-repeat opacity-30"></div>
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
