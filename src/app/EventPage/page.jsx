@@ -218,7 +218,7 @@ const EventPage = () => {
                   </div>
                   <div className="ml-4">
                     <p className="text-lg font-medium text-gray-900">Hicksville Community Center</p>
-                    <p className="text-gray-600">28 West Carl Street, Hicksville, NY 11801</p>
+                    <p className="text-gray-600">201 Levittown Pkwy, Hicksville, NY 11801</p>
                   </div>
                 </motion.div>
 
