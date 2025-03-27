@@ -5,6 +5,7 @@ import Header from '@/components/Header/Header';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Confetti from 'react-confetti';
+import CountdownTimer from '/src/components/Countdown/Countdown';
 
 const EventPage = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -19,7 +20,9 @@ const EventPage = () => {
   const flyers = [
     '/NewYear2082Flyer.jpg',
     '/images/2024/Nepali New Year 2081/1.jpg',
-    '/images/2024/Nepali New Year 2081/2.jpg'
+    '/images/2024/Nepali New Year 2081/13.jpg',
+    '/images/2024/Nepali New Year 2081/11.jpg',
+    '/images/2024/Nepali New Year 2081/3.jpg',
   ];
 
   useEffect(() => {
@@ -198,8 +201,8 @@ const EventPage = () => {
                     </svg>
                   </div>
                   <div className="ml-4">
-                    <p className="text-lg font-medium text-gray-900">Saturday, April 13, 2024</p>
-                    <p className="text-gray-600">5:00 PM onwards</p>
+                    <p className="text-lg font-medium text-gray-900">Saturday, April 12, 2024</p>
+                    <p className="text-gray-600">From 5:00 PM till 10:45 PM</p>
                   </div>
                 </motion.div>
 
@@ -229,8 +232,10 @@ const EventPage = () => {
                     </svg>
                   </div>
                   <div className="ml-4">
-                    <p className="text-lg font-medium text-gray-900">For more information</p>
-                    <p className="text-gray-600">longislandnepalese@gmail.com</p>
+                    <p className="text-lg font-medium text-gray-900">For more information contact</p>
+                    <p className="text-gray-600">Deepak Adhikari (Coordinator/ Secretary  LINS): <strong> (856)776-8105</strong> </p>
+                    <p className="text-gray-600">Kul P Gouli (Rajan) (President - LINS): <strong>(718)974-7251 </strong> </p>
+                    <p className="text-gray-600">Rajendra Karki (General Secretary - LINS): <strong>(516)234-1642 </strong> </p>
                   </div>
                 </motion.div>
               </div>
@@ -249,8 +254,7 @@ const EventPage = () => {
                     "Traditional Nepali cultural performances",
                     "Live music and DJ entertainment",
                     "Authentic Nepali cuisine",
-                    "Kids activities and games",
-                    "Raffle Prizes and giveaways"
+                    "Raffle Prizes"
                   ].map((item, index) => (
                     <motion.li
                       key={index}
@@ -289,35 +293,47 @@ const EventPage = () => {
       </div>
 
       {/* Enhanced Countdown Section */}
-      <div className="bg-gradient-to-r from-red-800 to-yellow-700 py-16 relative overflow-hidden">
+      <div className="bg-gradient-to-br from-red-800 via-red-600 to-yellow-600 py-16 relative overflow-hidden">
+        {/* Decorative elements */}
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[url('/NewYear2082Flyer.jpg')] bg-repeat opacity-30"></div>
+          <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-20"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2
+        {/* Floating decorations */}
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          className="absolute -left-20 -top-20 w-64 h-64 opacity-10"
+        >
+          <Image src="/mandala.png" width={256} height={256} alt="Mandala" />
+        </motion.div>
+
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+          className="absolute -right-20 -bottom-20 w-64 h-64 opacity-10"
+        >
+          <Image src="/mandala.png" width={256} height={256} alt="Mandala" />
+        </motion.div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <CountdownTimer />
+
+          {/* Additional festive message */}
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ delay: 0.5 }}
             viewport={{ once: true }}
-            className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl mb-8"
+            className="mt-12 text-center"
           >
-            <span className="block">Countdown to New Year 2082</span>
-            <span className="block text-xl text-yellow-200 mt-2">नयाँ वर्ष २०८२ आगमनको अन्तिम समय</span>
-          </motion.h2>
-
-          <div className="flex justify-center gap-4">
-            {Object.entries(timeLeft).map(([unit, value]) => (
-              <motion.div
-                key={unit}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white bg-opacity-20 rounded-lg p-4 min-w-[80px] backdrop-blur-sm"
-              >
-                <div className="text-4xl font-bold text-white flash-animation-slow">{value}</div>
-                <div className="text-yellow-200 uppercase text-sm mt-2">{unit}</div>
-              </motion.div>
-            ))}
-          </div>
+            <p className="text-white text-lg italic">
+              "Join us for a vibrant celebration of Nepali culture, tradition, and the dawn of New Year 2082!"
+            </p>
+            <p className="text-yellow-200 mt-2">
+              "नेपाली संस्कृति, परम्परा, र नयाँ वर्ष २०८२ को उज्यालो उत्सवमा सहभागी हुनुहोस्!"
+            </p>
+          </motion.div>
         </div>
       </div>
 
@@ -336,7 +352,7 @@ const EventPage = () => {
           </motion.h2>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 12, 15, 17, 16].map((item) => (
               <motion.div
                 key={item}
                 initial={{ opacity: 0, scale: 0.9 }}
