@@ -384,9 +384,9 @@ const EventPage = () => {
             <div className="mb-8 md:mb-0">
               <h3 className="text-2xl font-bold flex items-center">
                 <Image
-                  src="/NewYear2082Flyer.jpg"
-                  width={32}
-                  height={32}
+                  src="/LINS.png"
+                  width={50}
+                  height={50}
                   alt="Nepal Flag"
                   className="mr-2"
                 />
