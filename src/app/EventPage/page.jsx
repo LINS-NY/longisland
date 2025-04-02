@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Confetti from 'react-confetti';
 import CountdownTimer from '/src/components/Countdown/Countdown';
+import { useWindowSize } from 'react-use';
 
 const EventPage = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -16,6 +17,7 @@ const EventPage = () => {
   });
   const [isConfettiActive, setConfettiActive] = useState(true);
   const [currentFlyer, setCurrentFlyer] = useState(0);
+  const { width, height } = useWindowSize();
 
   const flyers = [
     '/NewYear2082Flyer.jpg',
@@ -23,6 +25,33 @@ const EventPage = () => {
     '/images/2024/Nepali New Year 2081/13.jpg',
     '/images/2024/Nepali New Year 2081/11.jpg',
     '/images/2024/Nepali New Year 2081/3.jpg',
+  ];
+
+  const sponsors = [
+    { 
+      name: "Community Partner", 
+      logo: "/images/Sponsors/Sareepasal.png",
+      sponsorName: "Saree Pasal",
+      phone:"347-771-2375",
+      tier: "partner",
+      url: "www.sareepasal.com"
+    },
+    { 
+      name: "Travel Partner", 
+      logo: "/images/Sponsors/zentravels.png",
+      sponsorName: "Zen Travels NY",
+      phone:"347-305-8700",
+      tier: "bronze",
+      url: "#"
+    },    
+ /*    { 
+      name: "Media Sponsor", 
+      logo: "/sponsors/media-partner.png",
+      sponsorName: "Saree Pasal",
+      phone:"",
+      tier: "media",
+      url: "#"
+    }, */
   ];
 
   useEffect(() => {
@@ -42,7 +71,6 @@ const EventPage = () => {
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
 
-    // Rotate flyers every 5 seconds
     const flyerInterval = setInterval(() => {
       setCurrentFlyer((prev) => (prev + 1) % flyers.length);
     }, 5000);
@@ -57,6 +85,8 @@ const EventPage = () => {
     <>
       {isConfettiActive && (
         <Confetti
+          width={width}
+          height={height}
           recycle={false}
           numberOfPieces={500}
           onConfettiComplete={() => setConfettiActive(false)}
@@ -64,6 +94,118 @@ const EventPage = () => {
       )}
 
       <Header />
+
+      {/* Sponsors Section */}
+      <div className="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 py-10 overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-10"></div>
+        </div>
+        
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          className="absolute -left-20 -top-20 w-64 h-64 opacity-10"
+        >
+          <Image src="/mandala.png" width={256} height={256} alt="Mandala" />
+        </motion.div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center text-3xl md:text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400"
+          >
+            Our Generous Sponsors
+          </motion.h2>
+          
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-center text-gray-300 mb-12 text-lg"
+          >
+            This event is made possible by our wonderful sponsors
+          </motion.p>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            {sponsors.map((sponsor, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: sponsor.tier === "gold" ? "0 0 20px rgba(255, 215, 0, 0.7)" :
+                               sponsor.tier === "silver" ? "0 0 20px rgba(192, 192, 192, 0.7)" :
+                               sponsor.tier === "bronze" ? "0 0 20px rgba(205, 127, 50, 0.7)" :
+                               "0 0 20px rgba(255, 255, 255, 0.5)"
+                }}
+                className={`flex flex-col items-center justify-center p-4 rounded-xl bg-gray-800 bg-opacity-60 backdrop-blur-sm border-2 ${
+                  sponsor.tier === "gold" ? "border-yellow-500" :
+                  sponsor.tier === "silver" ? "border-gray-300" :
+                  sponsor.tier === "bronze" ? "border-amber-700" :
+                  "border-blue-400"
+                } transition-all duration-300`}
+              >
+                <Link href={sponsor.url} target="_blank" rel="noopener noreferrer">
+                  <div className="relative w-32 h-32 md:w-40 md:h-40 mb-4 overflow-hidden rounded-full border-2 border-white">
+                    <Image 
+                      src={sponsor.logo} 
+                      alt1={sponsor.sponsorName}
+                      alt2={sponsor.phone}
+                      alt={sponsor.name}
+                      fill
+                      className="object-contain p-2 hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <motion.h3 
+                    className={`text-center font-semibold ${
+                      sponsor.tier === "gold" ? "text-yellow-400" :
+                      sponsor.tier === "silver" ? "text-gray-300" :
+                      sponsor.tier === "bronze" ? "text-amber-600" :
+                      "text-blue-300"
+                    }`}
+                    whileHover={{ scale: 1.05 }}
+                    >
+                    {sponsor.sponsorName}
+                    <p className="text-center text-xs text-gray-300 mt-1">
+                    {sponsor.phone}
+                  </p>
+                  </motion.h3>
+                  <p className="text-center text-large text-gray-300 mt-1 text-red-400">
+                    {sponsor.name}
+                  </p>
+                  
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            viewport={{ once: true }}
+            className="mt-12 text-center"
+          >
+            <p className="text-gray-300 mb-4">Interested in becoming a sponsor?</p>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="/Contact"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-lg font-medium rounded-full shadow-lg text-white bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300"
+            >
+              Contact Us
+              <svg className="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+            </motion.a>
+          </motion.div>
+        </div>
+      </div>
 
       {/* Enhanced Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-b from-red-600 to-yellow-500 py-16 md:py-24">
@@ -118,8 +260,8 @@ const EventPage = () => {
             >
               <a
                 href="https://www.evite.com/event/0034CHBF65YBFUNS6EPQBHI5UOCC4I?utm_campaign=send_sharable_link&utm_source=evitelink&utm_medium=sharable_invite"
-                target="_blank" // Opens in a new tab (optional)
-                rel="noopener noreferrer" // Security best practice
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 border border-transparent text-lg font-medium rounded-full shadow-lg text-white bg-red-700 hover:bg-red-800 transition duration-300 transform hover:scale-105"
               >
                 Join the Celebration
