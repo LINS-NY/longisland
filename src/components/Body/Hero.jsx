@@ -323,7 +323,7 @@ const Hero = () => {
 
                   {/* Gen. Secretary's Message */}
                 <Link href="/GeneralSecretaryMessages">
-                    <div className="bg-white/20 dark:bg-gray-800/20 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 transform hover:scale-105 cursor-pointer border border-white/10 dark:border-gray-700/10">
+                    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 cursor-pointer">
                         <div className="p-6 text-center">
                             <div className="flex justify-center">
                                 <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-full p-2 shadow-lg">
@@ -336,7 +336,7 @@ const Hero = () => {
                                     />
                                 </div>
                             </div>
-                            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400 mt-4">
+                            <h1 className="text-2xl font-bold text-blue-900 dark:text-white text-center mt-4">
                                 Gen. Sec's Message
                             </h1>
                             <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
