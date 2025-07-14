@@ -355,12 +355,16 @@ const Hero = () => {
 
             {/* Title + Animated Soccer Ball */}
             <div className="flex items-center justify-center md:justify-start gap-5">
-              <h1 className="text-5xl sm:text-6xl font-extrabold text-yellow-400 drop-shadow-[0_0_10px_rgba(255,215,0,0.8)] whitespace-nowrap">
-                LINS Soccer Cup 2025
+              <h1 className="text-4xl sm:text-6xl font-extrabold text-yellow-400 drop-shadow-[0_0_10px_rgba(255,215,0,0.8)] whitespace-nowrap">
+                LINS Soccer Cup
               </h1>
-              <div className="text-6xl animate-spin-slow select-none" aria-hidden="true">⚽</div>
-            </div>
+              
 
+            </div>
+            <div className="text-8xl animate-spin-slow select-none" aria-hidden="true">⚽</div>
+              <h1 className="text-5xl sm:text-6xl font-extrabold text-white -400 glow-red">
+              2025
+            </h1>
             {/* Date + Time + Location */}
             <div className="space-y-1">
               <p className="text-xl font-semibold flex items-center justify-center md:justify-start gap-2">
@@ -431,16 +435,49 @@ const Hero = () => {
         </div>
 
         {/* Animation Styles */}
-        <style jsx>{`
-        .animate-spin-slow {
-          animation: spin 6s linear infinite;
-        }
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
+{/* Animation Styles */}
+<style jsx>{`
+  /* Slow spinning soccer ball */
+  .animate-spin-slow {
+    animation: spin 6s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Glowing & pulsing 2025 animation */
+  .animated-2025 {
+    animation: boomGlow 2.5s ease-in-out infinite;
+    text-shadow:
+      0 0 8px #ffffff,
+      0 0 12px #22c55e,
+      0 0 20px #22c55e,
+      0 0 30px #16a34a;
+  }
+
+  .glow-red {
+    text-shadow:
+      0 0 8px #ff0000,
+      0 0 12px #ff4d4d,
+      0 0 20px #ff1a1a;
+  }
+
+  @keyframes boomGlow {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.9;
+    }
+  }
+`}</style>
+
       </section>
+      
 
       {/* *************LINS Soccer Cup 2025 Banner End*************** */}
 
