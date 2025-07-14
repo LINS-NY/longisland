@@ -2,6 +2,14 @@
 import * as React from 'react';
 import Image from 'next/image'
 import Link from 'next/link'
+import {
+  FaCalendarAlt,
+  FaFileInvoice,
+  FaNewspaper,
+  FaComments,
+  FaImages,
+  FaBalanceScale,
+} from 'react-icons/fa';
 
 const Hero = () => {
   return (
@@ -170,181 +178,195 @@ const Hero = () => {
       </div>
       {/* *************Till Here**************** */}
 
-      <section className="sm:hidden relative container rounded-xl mx-auto  my-5  w-5/6  h-96 shadow-sm dark:bg-gray-900 bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url('./Designer.jpeg')` }}>
-        <div className="relative flex justify-between m-2 rounded-xl  h-full mx-auto backdrop-blur-md bg-white/60 dark:bg-slate-700/60">
-          <div className="flex flex-grow justify-center font-bold">
-            <div className="flex flex-col text-center mx-5 justify-center item-center">
-              <h1 className="sm:max-w-2xl mb-2 text-md tracking-tight leading-none text-blue-900  dark:text-white">
-                Long Island Nepalese Society
-              </h1>
-              <p className="mb-4 text-md tracking-tight leading-none text-blue-900  dark:text-white"> New York</p>
-              <p className=" mb-4 text-md tracking-tight leading-none text-blue-900  dark:text-white">
-                लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क
-              </p>
-              <p className="max-w-2xl mb-4 text-sm fond-sm tracking-tight leading-none text-blue-900 xl:text-2xl dark:text-white">
-                From Planning To Progress
-              </p>
+      {/* *************Small Screen**************** */}
+      <section
+        className="sm:hidden relative container mx-auto my-6 w-11/12 h-auto rounded-3xl overflow-hidden shadow-2xl"
+        style={{ backgroundImage: "url('./Designer.jpeg')" }}
+      >
+        {/* Glassy overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/90 backdrop-blur-xl"></div>
 
-
-              <div className="flex  flex-wrap text-sm font-light item-center justify-center">
-                <Link href="/EventPage" >
-                  <button className="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   
-                            shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">
-                    New Year 2082 Events
-                  </button>
-                </Link>
-                <Link href="/FinancialReport" >
-                  <button className="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   
-                            shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">
-                    Financial Report
-                  </button>
-                </Link>
-                <Link href="/News">
-                  <button className="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white 
-                            dark:shadow-slate-950   shadow-lg rounded-lg p-2 text-white m-2 drop-shadow-2xl">LINS News</button>
-                </Link>
-                <Link href="/Forums">
-                  <button className="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  
-                            dark:shadow-slate-950 shadow-lg rounded-lg p-2 dark:text-white text-white m-2 
-                            drop-shadow-2xl">Forum</button>
-                </Link>
-                <Link href="/GalleryYearSelection">
-                  <button className="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white 
-                            dark:shadow-slate-950   shadow-lg rounded-lg p-2 text-white m-2 drop-shadow-2xl">Gallery</button>
-                </Link>
-                <Link href="/Bylaws">
-                  <button className="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white 
-                            dark:shadow-slate-950   shadow-lg rounded-lg p-2 text-white m-2 drop-shadow-2xl">Bylaws</button>
-                </Link>
-                <Link href="/ByLawsProposed">
-                  <button className="bg-cyan-500 dark:bg-slate-800 shadow-gray-700 dark:text-white 
-                            dark:shadow-slate-950   shadow-lg rounded-lg p-2 text-white m-2 drop-shadow-2xl">Proposed Bylaws</button>
-                </Link>
-              </div>
-            </div>
-
+        {/* Content container */}
+        <div className="relative z-10 flex flex-col items-center text-center text-white px-5 py-10 space-y-6">
+          {/* Hero Text */}
+          <div className="space-y-1 drop-shadow-sm">
+            <h1 className="text-3xl font-extrabold leading-snug tracking-tight">
+              Long Island <br /> Nepalese Society
+            </h1>
+            <p className="text-sm text-gray-300">New York</p>
+            <p className="text-sm text-gray-300 font-medium">
+              लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क
+            </p>
+            <p className="text-xs italic text-blue-200">From Planning To Progress</p>
           </div>
-        </div>
-      </section>
-      <section className="hidden sm:flex relative container sm:h-80 rounded-xl mx-auto  my-5 sm:my-10  w-5/6  h-96 shadow-sm dark:bg-gray-900 bg-gradient-to-r from-purple-500 to-red-500 dark:from-slate-500 dark:to-slate-900">
-        <div className="relative flex justify-between m-2 sm:w-5/6 h-full mx-auto">
-          <div className="flex justify-center ">
-            <div className="flex flex-col sm:mx-15 mx-4 justify-center item-center">
-              <h1 className=" mb-2 text-md md:text-2xl sm:font-extrabold tracking-tight leading-none text-blue-900 xl:text-2xl dark:text-white">
-                Long Island Nepalese Society, New York
-              </h1>
-              <p className="sm:max-w-2xl mb-4 text-md md:text-2xl sm:font-extrabold tracking-tight 
-                    leading-none text-blue-900 xl:text-2xl dark:text-white">
-                लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क
-              </p>
-              <p className="max-w-2xl mb-4 text-sm fond-sm tracking-tight leading-none text-white xl:text-xl font-bold">
-                From Planning To Progress
-              </p>
-              <div className="flex flex-wrap item-center justify-center max-[800px]:text-sm ">
-                {/*  <Link href="/EventPage" >
-                                    <button className="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   
-                            shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">
-                                        New Year 2082 Events
-                                    </button> 
-                                </Link> */}
-                <Link href="/EventPage" >
-                  <button className="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   
-                            shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">
-                    LINS Picnic - July 27th
-                  </button>
-                </Link>
-                <Link href="/FinancialReport">
-                  <button className="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   
-                            shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Financial Report</button>
-                </Link>
-                <Link href="/News">
-                  <button className="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950  
-                             shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">LINS News</button>
-                </Link>
-                <Link href="/Forums">
-                  <button className="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950   
-                            shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Forum</button>
-                </Link>
-                <Link href="/GalleryYearSelection">
-                  <button className="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950  
-                             shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Gallery</button>
-                </Link>
-                <Link href="/Bylaws">
-                  <button className="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950  
-                             shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Bylaws</button>
-                </Link>
-                <Link href="/ByLawsProposed">
-                  <button className="bg-cyan-500 dark:bg-slate-800 shadow-gray-700  dark:shadow-slate-950  
-                             shadow-lg dark:text-white rounded-lg p-2 text-white m-2 drop-shadow-2xl">Proposed Bylaws</button>
-                </Link>
+
+          {/* Gradient Buttons with Icons */}
+          <div className="grid grid-cols-2 gap-4 w-full max-w-xs text-sm font-medium">
+            <Link href="/EventPage">
+              <div className="flex items-center justify-center space-x-2 bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-xl py-4 px-3 shadow-lg hover:scale-105 transition-all duration-300">
+                <FaCalendarAlt />
+                <span>Events</span>
               </div>
-            </div>
-          </div>
-          <div className=" hidden sm:flex sm:mx-5 justify-center">
-            <div className="flex flex-col justify-center">
-              <Image
-                src="/LINS.png"
-                width={200}
-                height={200}
-                alt="Lins logo"
-              />
-            </div>
+            </Link>
+            <Link href="/FinancialReport">
+              <div className="flex items-center justify-center space-x-2 bg-gradient-to-br from-pink-500 to-red-500 text-white rounded-xl py-4 px-3 shadow-lg hover:scale-105 transition-all duration-300">
+                <FaFileInvoice />
+                <span>Finance</span>
+              </div>
+            </Link>
+            <Link href="/News">
+              <div className="flex items-center justify-center space-x-2 bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-xl py-4 px-3 shadow-lg hover:scale-105 transition-all duration-300">
+                <FaNewspaper />
+                <span>News</span>
+              </div>
+            </Link>
+            <Link href="/Forums">
+              <div className="flex items-center justify-center space-x-2 bg-gradient-to-br from-green-400 to-teal-500 text-white rounded-xl py-4 px-3 shadow-lg hover:scale-105 transition-all duration-300">
+                <FaComments />
+                <span>Forum</span>
+              </div>
+            </Link>
+            <Link href="/GalleryYearSelection">
+              <div className="flex items-center justify-center space-x-2 bg-gradient-to-br from-purple-500 to-indigo-600 text-white rounded-xl py-4 px-3 shadow-lg hover:scale-105 transition-all duration-300">
+                <FaImages />
+                <span>Gallery</span>
+              </div>
+            </Link>
+            <Link href="/Bylaws">
+              <div className="flex items-center justify-center space-x-2 bg-gradient-to-br from-rose-500 to-pink-600 text-white rounded-xl py-4 px-3 shadow-lg hover:scale-105 transition-all duration-300">
+                <FaBalanceScale />
+                <span>Bylaws</span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* President's Messages */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto my-10 w-5/6">
-        {/* President's Message */}
-        <Link href="/PresidentialMessages">
-          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 cursor-pointer">
-            <div className="p-6">
-              <div className="flex justify-center">
+      {/* *************Big Screen**************** */}
+      <section
+        className="hidden sm:flex relative container mx-auto my-6 w-[90%] h-[16rem] rounded-[2rem] overflow-hidden shadow-2xl bg-cover bg-center" style={{
+          backgroundImage: "url('/nepal-mountain-bg.jpg')",
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80 backdrop-blur-sm"></div>
+
+        {/* Content */}
+        <div className="relative z-10 flex flex-col w-full h-full px-10 py-8 text-white">
+
+          {/* Header: Logo & Title */}
+          <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-6 mb-2">
+            <div className="flex items-center gap-4">
+              <div className="p-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg hover:scale-105 transition-transform">
                 <Image
-                  src="/RajanGouli.jpg"
-                  width={120}
-                  height={120}
-                  alt="Rajan Gouli"
+                  src="/LINS.png"
+                  width={70}
+                  height={70}
+                  alt="LINS Logo"
                   className="rounded-full"
                 />
               </div>
-              <h1 className="text-2xl font-bold text-blue-900 dark:text-white text-center mt-4">
-                President's Message
-              </h1>
-              <p className="text-gray-600 dark:text-gray-300 text-sm text-center mt-2">
-                Dear Valuable and Respected Members of the Long-island Nepalese Society New York...
-              </p>
-            </div>
-          </div>
-        </Link>
-
-
-        {/* Gen. Secretary's Message */}
-        <Link href="/GeneralSecretaryMessages">
-          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 cursor-pointer">
-            <div className="p-6 text-center">
-              <div className="flex justify-center">
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-full p-2 shadow-lg">
-                  <Image
-                    src="/RajendraKarki.jpg"
-                    width={120}
-                    height={120}
-                    alt="Rajendra Karki"
-                    className="rounded-full border-4 border-white dark:border-gray-800"
-                  />
-                </div>
+              <div className="text-center sm:text-center">
+                <h1 className="text-center text-3xl font-extrabold tracking-wide text-white drop-shadow-xl">
+                  Long Island Nepalese Society
+                </h1>
+                <p className="text-gray-300 font-medium text-sm sm:text-base">
+                  New York | लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क
+                </p>
+                <p className="italic text-cyan-300 text-sm">From Planning To Progress</p>
               </div>
-              <h1 className="text-2xl font-bold text-blue-900 dark:text-white text-center mt-4">
-                Gen. Sec's Message
-              </h1>
-              <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
-                Dear Valuable and Respected Members of the Long-island Nepalese Society New York...
+            </div>
+          </div>
+
+          {/* Icons Row */}
+          <div className="flex justify-center items-center gap-4">
+            {[
+              { href: "/EventPage", label: "Events", icon: <FaCalendarAlt />, color: "from-red-500 to-orange-400" },
+              { href: "/FinancialReport", label: "Finance", icon: <FaFileInvoice />, color: "from-green-500 to-emerald-400" },
+              { href: "/News", label: "News", icon: <FaNewspaper />, color: "from-yellow-400 to-amber-300" },
+              { href: "/Forums", label: "Forum", icon: <FaComments />, color: "from-blue-500 to-cyan-400" },
+              { href: "/GalleryYearSelection", label: "Gallery", icon: <FaImages />, color: "from-violet-500 to-indigo-400" },
+              { href: "/Bylaws", label: "Bylaws", icon: <FaBalanceScale />, color: "from-pink-500 to-rose-400" },
+            ].map(({ href, label, icon, color }, index) => (
+              <Link href={href} key={index}>
+                <div
+                  className={`flex flex-col items-center justify-center w-24 h-24 rounded-xl px-3 py-2 text-white bg-gradient-to-br ${color} shadow-md border border-white/20 hover:scale-105 transition-transform duration-300`}
+                >
+                  <div className="text-xl mb-1">{icon}</div>
+                  <span className="text-sm font-semibold">{label}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/*******Till Here*********/}
+
+      {/* President's & Gen. Sec Message Section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto w-[90%] my-12">
+        {/* President's Message */}
+        <Link href="/PresidentialMessages">
+          <div
+            className="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer h-[22rem] bg-cover bg-center"
+            style={{ backgroundImage: "url('/nepal-mountain-bg.jpg')" }}
+          >
+            {/* Darker Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/85 backdrop-blur-md"></div>
+
+            {/* Content */}
+            <div className="relative z-10 flex flex-col items-center justify-center p-6 text-white text-center h-full">
+              <div className="bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/30 shadow-md">
+                <Image
+                  src="/RajanGouli.jpg"
+                  width={110}
+                  height={110}
+                  alt="Rajan Gouli"
+                  className="rounded-full border-4 border-white"
+                />
+              </div>
+              <h2 className="text-xl sm:text-2xl font-extrabold mt-4 drop-shadow-md">
+                President's Message
+              </h2>
+              <p className="text-gray-200 text-sm mt-2 max-w-sm drop-shadow-sm">
+                Dear Valuable and Respected Members of the Long-Island Nepalese Society New York...
               </p>
             </div>
           </div>
         </Link>
 
+        {/* General Secretary's Message */}
+        <Link href="/GeneralSecretaryMessages">
+          <div
+            className="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer h-[22rem] bg-cover bg-center"
+            style={{ backgroundImage: "url('/nepal-mountain-bg.jpg')" }}
+          >
+            {/* Darker Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/85 backdrop-blur-md"></div>
+
+            {/* Content */}
+            <div className="relative z-10 flex flex-col items-center justify-center p-6 text-white text-center h-full">
+              <div className="bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/30 shadow-md">
+                <Image
+                  src="/RajendraKarki.jpg"
+                  width={110}
+                  height={110}
+                  alt="Rajendra Karki"
+                  className="rounded-full border-4 border-white"
+                />
+              </div>
+              <h2 className="text-xl sm:text-2xl font-extrabold mt-4 drop-shadow-md">
+                Gen. Sec's Message
+              </h2>
+              <p className="text-gray-200 text-sm mt-2 max-w-sm drop-shadow-sm">
+                Dear Valuable and Respected Members of the Long-Island Nepalese Society New York...
+              </p>
+            </div>
+          </div>
+        </Link>
       </div>
+
+
+
 
       {/* *************LINS Soccer Cup 2025 Banner*************** */}
       <section className="w-full py-16 px-4 bg-white">
@@ -360,7 +382,7 @@ const Hero = () => {
                 <h1 className="text-4xl sm:text-6xl font-extrabold text-yellow-400 drop-shadow-[0_0_10px_rgba(255,215,0,0.8)] whitespace-nowrap">
                   LINS Soccer Cup
                 </h1>
-                
+
               </div>
               <div className="text-8xl animate-spin-slow select-none" aria-hidden="true">⚽</div>
               <h1 className="text-5xl sm:text-6xl font-extrabold text-white -400 glow-red">
