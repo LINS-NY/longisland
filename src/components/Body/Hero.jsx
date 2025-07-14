@@ -168,9 +168,109 @@ const Hero = () => {
     .delay-[1s] { animation-delay: 1s; }
   `}</style>
 </div>
+{/* *************Till Here**************** */}
 
 
-{/* *************Till Heret**************** */}
+{/* *************LINS Soccer Cup 2025 Banner*************** */}
+    <section className="w-full bg-gradient-to-br from-green-900 via-green-700 to-green-800 py-20 px-6 md:px-16 text-white overflow-hidden">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+
+        {/* LEFT COLUMN: Content */}
+        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-8">
+
+          {/* Title + Animated Soccer Ball */}
+          <div className="flex items-center justify-center md:justify-start gap-5">
+            <h1 className="text-5xl sm:text-6xl font-extrabold text-yellow-400 drop-shadow-[0_0_10px_rgba(255,215,0,0.8)] whitespace-nowrap">
+  LINS Soccer Cup 2025
+</h1>
+            <div className="text-6xl animate-spin-slow select-none" aria-hidden="true">⚽</div>
+          </div>
+
+          {/* Date + Time + Location */}
+          <div className="space-y-1">
+            <p className="text-xl font-semibold flex items-center justify-center md:justify-start gap-2">
+              <span role="img" aria-label="calendar">📅</span> Saturday, August 9, 2025
+            </p>
+            <p className="text-lg font-medium flex items-center justify-center md:justify-start gap-2">
+              <span role="img" aria-label="clock">🕗</span> 8 AM – 6 PM
+            </p>
+            <p className="text-lg font-medium flex items-center justify-center md:justify-start gap-2">
+              <span role="img" aria-label="location pin">📍</span> Field 2, Cedar Creek Park, 3340 Merrick Rd, Seaford, NY
+            </p>
+          </div>
+
+          {/* Registration Fee Card */}
+          {/* Registration Fee Card */}
+<div className="bg-yellow-100/10 border border-yellow-400 rounded-xl px-8 py-6 shadow-lg backdrop-blur-md max-w-md w-full text-center">
+  <h2 className="text-3xl font-extrabold text-yellow-300 mb-3 flex items-center justify-center gap-3">
+    <span className="icon-glow-pulse text-4xl">💸</span> Registration Fee
+  </h2>
+  <p className="text-4xl font-bold text-white">$650</p>
+  <p className="text-sm text-yellow-100 mt-1">Deadline: August 3, 2025</p>
+</div>
+
+{/* Prizes Card */}
+<div className="bg-yellow-100/10 border border-yellow-400 rounded-xl px-8 py-6 shadow-lg backdrop-blur-md max-w-md w-full text-center">
+  <h2 className="text-3xl font-extrabold text-yellow-300 mb-3 flex items-center justify-center gap-3">
+    <span className="icon-glow-pulse text-4xl">🏆</span> Prizes
+  </h2>
+  <p className="text-3xl font-semibold">Winner: <span className="text-white">$3,000</span></p>
+  <p className="text-3xl font-semibold">Runner-Up: <span className="text-white">$1,000</span></p>
+</div>
+
+
+          {/* CTA Button */}
+          <button
+            aria-label="Contact Coordinators"
+            className="mt-6 px-10 py-4 bg-yellow-400 hover:bg-yellow-300 text-black font-extrabold rounded-full shadow-xl transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-300"
+            onClick={() => alert('Call Dr. Yam Giri: (405) 922-9845')}
+          >
+            📞 Contact Coordinators
+          </button>
+        </div>
+
+        {/* RIGHT COLUMN: Flyer + Coordinators */}
+        <div className="flex flex-col items-center md:items-end space-y-6">
+
+          {/* Coordinators Info */}
+          <div className="text-center md:text-right text-yellow-300 font-semibold max-w-[300px]">
+            <p className="mb-4 text-xl font-bold text-white">📞 Coordinators</p>
+            <ul className="space-y-2 text-yellow-200 text-lg">
+              <li><strong>Dr. Yam Giri:</strong> (405) 922-9845</li>
+              <li><strong>Yog Raj:</strong> (571) 382-0403</li>
+              <li><strong>Ravi Khadka:</strong> (516) 800-3809</li>
+              <li><strong>Niraj Sapkota:</strong> (516) 717-7008</li>
+            </ul>
+          </div>
+
+          {/* Flyer Image */}
+          <div className="rounded-xl border-4 border-yellow-300 shadow-2xl overflow-hidden max-w-full md:max-w-[90%] transition-transform duration-300 hover:scale-105">
+            <Image
+              src="/images/2025/LINSSoccer/soccerFlyer.jpg"
+              alt="LINS Soccer Cup 2025 Flyer"
+              width={800}
+              height={500}
+              className="object-cover rounded-xl"
+              priority
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Animation Styles */}
+      <style jsx>{`
+        .animate-spin-slow {
+          animation: spin 6s linear infinite;
+        }
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
+    </section>
+
+{/* *************LINS Soccer Cup 2025 Banner End*************** */}
+
 
             <section className="sm:hidden relative container rounded-xl mx-auto  my-5  w-5/6  h-96 shadow-sm dark:bg-gray-900 bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url('./Designer.jpeg')` }}>
                 <div className="relative flex justify-between m-2 rounded-xl  h-full mx-auto backdrop-blur-md bg-white/60 dark:bg-slate-700/60">
@@ -323,7 +423,7 @@ const Hero = () => {
 
                   {/* Gen. Secretary's Message */}
                 <Link href="/GeneralSecretaryMessages">
-                    <div className="bg-white/20 dark:bg-gray-800/20 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 transform hover:scale-105 cursor-pointer border border-white/10 dark:border-gray-700/10">
+                    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 cursor-pointer">
                         <div className="p-6 text-center">
                             <div className="flex justify-center">
                                 <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-full p-2 shadow-lg">
@@ -336,7 +436,7 @@ const Hero = () => {
                                     />
                                 </div>
                             </div>
-                            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400 mt-4">
+                            <h1 className="text-2xl font-bold text-blue-900 dark:text-white text-center mt-4">
                                 Gen. Sec's Message
                             </h1>
                             <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
