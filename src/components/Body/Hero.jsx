@@ -178,129 +178,65 @@ const Hero = () => {
       </div>
       {/* *************Till Here**************** */}
 
-      {/* *************Small Screen**************** */}
+      {/* *************Screen Icons/Buttons**************** */}
       <section
-        className="sm:hidden relative container mx-auto my-6 w-11/12 h-auto rounded-3xl overflow-hidden shadow-2xl"
-        style={{ backgroundImage: "url('./Designer.jpeg')" }}
+        className="relative container mx-auto my-6 w-[90%] rounded-[2rem] overflow-hidden shadow-2xl bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/nepal-mountain-bg.jpg')",
+        }}
       >
-        {/* Glassy overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/90 backdrop-blur-xl"></div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80 backdrop-blur-sm"></div>
 
-        {/* Content container */}
-        <div className="relative z-10 flex flex-col items-center text-center text-white px-5 py-10 space-y-6">
-          {/* Hero Text */}
-          <div className="space-y-1 drop-shadow-sm">
-            <h1 className="text-3xl font-extrabold leading-snug tracking-tight">
-              Long Island <br /> Nepalese Society
-            </h1>
-            <p className="text-sm text-gray-300">New York</p>
-            <p className="text-sm text-gray-300 font-medium">
-              लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क
-            </p>
-            <p className="text-xs italic text-blue-200">From Planning To Progress</p>
+        {/* Content */}
+        <div className="relative z-10 flex flex-col w-full h-full px-6 py-8 text-white">
+
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-6 mb-4">
+            <div className="flex items-center gap-4">
+              <div className="p-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg hover:scale-105 transition-transform">
+                <Image
+                  src="/LINS.png"
+                  width={60}
+                  height={60}
+                  alt="LINS Logo"
+                  className="rounded-full"
+                />
+              </div>
+              <div className="text-center sm:text-left">
+                <h1 className="text-2xl sm:text-3xl font-extrabold tracking-wide text-white drop-shadow-xl">
+                  Long Island Nepalese Society
+                </h1>
+                <p className="text-gray-300 font-medium text-sm sm:text-base">
+                  New York | लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क
+                </p>
+                <p className="italic text-cyan-300 text-sm">From Planning To Progress</p>
+              </div>
+            </div>
           </div>
 
-          {/* Gradient Buttons with Icons */}
-          <div className="grid grid-cols-2 gap-4 w-full max-w-xs text-sm font-medium">
-            <Link href="/EventPage">
-              <div className="flex items-center justify-center space-x-2 bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-xl py-4 px-3 shadow-lg hover:scale-105 transition-all duration-300">
-                <FaCalendarAlt />
-                <span>Events</span>
-              </div>
-            </Link>
-            <Link href="/FinancialReport">
-              <div className="flex items-center justify-center space-x-2 bg-gradient-to-br from-pink-500 to-red-500 text-white rounded-xl py-4 px-3 shadow-lg hover:scale-105 transition-all duration-300">
-                <FaFileInvoice />
-                <span>Finance</span>
-              </div>
-            </Link>
-            <Link href="/News">
-              <div className="flex items-center justify-center space-x-2 bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-xl py-4 px-3 shadow-lg hover:scale-105 transition-all duration-300">
-                <FaNewspaper />
-                <span>News</span>
-              </div>
-            </Link>
-            <Link href="/Forums">
-              <div className="flex items-center justify-center space-x-2 bg-gradient-to-br from-green-400 to-teal-500 text-white rounded-xl py-4 px-3 shadow-lg hover:scale-105 transition-all duration-300">
-                <FaComments />
-                <span>Forum</span>
-              </div>
-            </Link>
-            <Link href="/GalleryYearSelection">
-              <div className="flex items-center justify-center space-x-2 bg-gradient-to-br from-purple-500 to-indigo-600 text-white rounded-xl py-4 px-3 shadow-lg hover:scale-105 transition-all duration-300">
-                <FaImages />
-                <span>Gallery</span>
-              </div>
-            </Link>
-            <Link href="/Bylaws">
-              <div className="flex items-center justify-center space-x-2 bg-gradient-to-br from-rose-500 to-pink-600 text-white rounded-xl py-4 px-3 shadow-lg hover:scale-105 transition-all duration-300">
-                <FaBalanceScale />
-                <span>Bylaws</span>
-              </div>
-            </Link>
+          {/* Icons Grid - Responsive 2 Rows */}
+          <div className="grid grid-cols-3 gap-4 w-full">
+            {[
+              { href: "/EventPage", label: "Events", icon: <FaCalendarAlt />, color: "from-red-500 to-orange-400" },
+              { href: "/FinancialReport", label: "Finance", icon: <FaFileInvoice />, color: "from-green-500 to-emerald-400" },
+              { href: "/News", label: "News", icon: <FaNewspaper />, color: "from-yellow-400 to-amber-300" },
+              { href: "/Forums", label: "Forum", icon: <FaComments />, color: "from-blue-500 to-cyan-400" },
+              { href: "/GalleryYearSelection", label: "Gallery", icon: <FaImages />, color: "from-violet-500 to-indigo-400" },
+              { href: "/Bylaws", label: "Bylaws", icon: <FaBalanceScale />, color: "from-pink-500 to-rose-400" },
+            ].map(({ href, label, icon, color }, index) => (
+              <Link href={href} key={index}>
+                <div
+                  className={`flex flex-col items-center justify-center w-full h-24 rounded-xl px-2 py-2 text-white bg-gradient-to-br ${color} shadow-md border border-white/20 hover:scale-105 transition-transform duration-300`}
+                >
+                  <div className="text-lg mb-1">{icon}</div>
+                  <span className="text-sm font-semibold">{label}</span>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
-
-      {/* *************Big Screen**************** */}
-<section
-  className="relative container mx-auto my-6 w-[90%] rounded-[2rem] overflow-hidden shadow-2xl bg-cover bg-center"
-  style={{
-    backgroundImage: "url('/nepal-mountain-bg.jpg')",
-  }}
->
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80 backdrop-blur-sm"></div>
-
-  {/* Content */}
-  <div className="relative z-10 flex flex-col w-full h-full px-6 py-8 text-white">
-
-    {/* Header */}
-    <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-6 mb-4">
-      <div className="flex items-center gap-4">
-        <div className="p-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg hover:scale-105 transition-transform">
-          <Image
-            src="/LINS.png"
-            width={60}
-            height={60}
-            alt="LINS Logo"
-            className="rounded-full"
-          />
-        </div>
-        <div className="text-center sm:text-left">
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-wide text-white drop-shadow-xl">
-            Long Island Nepalese Society
-          </h1>
-          <p className="text-gray-300 font-medium text-sm sm:text-base">
-            New York | लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क
-          </p>
-          <p className="italic text-cyan-300 text-sm">From Planning To Progress</p>
-        </div>
-      </div>
-    </div>
-
-    {/* Icons Grid - Responsive 2 Rows */}
-    <div className="grid grid-cols-3 gap-4 w-full">
-      {[
-        { href: "/EventPage", label: "Events", icon: <FaCalendarAlt />, color: "from-red-500 to-orange-400" },
-        { href: "/FinancialReport", label: "Finance", icon: <FaFileInvoice />, color: "from-green-500 to-emerald-400" },
-        { href: "/News", label: "News", icon: <FaNewspaper />, color: "from-yellow-400 to-amber-300" },
-        { href: "/Forums", label: "Forum", icon: <FaComments />, color: "from-blue-500 to-cyan-400" },
-        { href: "/GalleryYearSelection", label: "Gallery", icon: <FaImages />, color: "from-violet-500 to-indigo-400" },
-        { href: "/Bylaws", label: "Bylaws", icon: <FaBalanceScale />, color: "from-pink-500 to-rose-400" },
-      ].map(({ href, label, icon, color }, index) => (
-        <Link href={href} key={index}>
-          <div
-            className={`flex flex-col items-center justify-center w-full h-24 rounded-xl px-2 py-2 text-white bg-gradient-to-br ${color} shadow-md border border-white/20 hover:scale-105 transition-transform duration-300`}
-          >
-            <div className="text-lg mb-1">{icon}</div>
-            <span className="text-sm font-semibold">{label}</span>
-          </div>
-        </Link>
-      ))}
-    </div>
-  </div>
-</section>
 
       {/*******Till Here*********/}
 
