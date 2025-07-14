@@ -26,19 +26,17 @@ export async function getStaticProps() {
         slug,
         title: data.title || 'Untitled',
         description: data.description || '',
-        displayDate: data.displayDate || '', // optional human-readable date
-        date: data.date || '', // machine-readable
+        displayDate: data.displayDate || '',
+        date: data.date || '',
         year,
       };
     });
 
-    // ✅ Sort by machine-readable date (latest first)
     groupedNews[year] = newsItems.sort((a, b) => {
       return new Date(b.date) - new Date(a.date);
     });
   });
 
-  // ✅ Sort years descending
   const sortedYears = Object.keys(groupedNews).sort((a, b) => b.localeCompare(a));
 
   return {
@@ -49,23 +47,26 @@ export async function getStaticProps() {
   };
 }
 
-
-
 export default function Home({ groupedNews, sortedYears }) {
   return (
-    <div className="max-w-4xl mx-auto py-10">
-      <h1 className="text-4xl font-bold mb-8">Recent News</h1>
+    <div className="max-w-4xl mx-auto py-10 px-4">
+      <h1 className="text-4xl font-bold mb-8 text-center">Recent News</h1>
 
-      {groupedNews[year].map((news) => (
-  <Link key={news.slug} href={`/news/${year}/${news.slug}`}>
-    <div className="mb-4 p-4 border rounded-xl shadow hover:shadow-lg transition hover:border-red-400 cursor-pointer bg-white dark:bg-gray-900">
-      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{news.title}</h3>
-      <p className="text-sm text-gray-500">{news.displayDate}</p> {/* 👈 use displayDate here */}
-      <p className="text-gray-700 dark:text-gray-300">{news.description}</p>
-    </div>
-  </Link>
-))}
+      {sortedYears.map((year) => (
+        <div key={year} className="mb-10">
+          <h2 className="text-2xl font-bold mb-4 text-red-600">{year}</h2>
+
+          {groupedNews[year].map((news) => (
+            <Link key={news.slug} href={`/news/${year}/${news.slug}`}>
+              <div className="mb-4 p-6 border rounded-xl shadow hover:shadow-lg transition hover:border-red-400 cursor-pointer bg-white dark:bg-gray-900">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{news.title}</h3>
+                <p className="text-sm text-gray-500">{news.displayDate || news.date}</p>
+                <p className="text-gray-700 dark:text-gray-300">{news.description}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }
-
