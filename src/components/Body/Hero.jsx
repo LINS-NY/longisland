@@ -360,8 +360,7 @@ const Hero = () => {
                 <h1 className="text-4xl sm:text-6xl font-extrabold text-yellow-400 drop-shadow-[0_0_10px_rgba(255,215,0,0.8)] whitespace-nowrap">
                   LINS Soccer Cup
                 </h1>
-
-
+                
               </div>
               <div className="text-8xl animate-spin-slow select-none" aria-hidden="true">⚽</div>
               <h1 className="text-5xl sm:text-6xl font-extrabold text-white -400 glow-red">
