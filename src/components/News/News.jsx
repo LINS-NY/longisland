@@ -12,8 +12,8 @@ export default function News({ item }) {
             <Image
               src={item.imageUrl}
               alt={item.Title}
-              width={200}
-              height={200}
+              width={400}
+              height={400}
               className="w-full h-auto object-cover"
               priority
             />

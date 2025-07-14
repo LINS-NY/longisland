@@ -60,8 +60,8 @@ export default function NewsPage({ item }) {
             <Image
               src={item.imageUrl}
               alt={item.Title}
-              width={200}
-              height={200}
+              width={350}
+              height={350}
               className="object-cover"
               priority
             />
