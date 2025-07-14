@@ -246,7 +246,7 @@ const Hero = () => {
           {/* Flyer Image */}
           <div className="rounded-xl border-4 border-yellow-300 shadow-2xl overflow-hidden max-w-full md:max-w-[90%] transition-transform duration-300 hover:scale-105">
             <Image
-              src="/images/2025/LINSScoccer/soccerFlyer.jpg"
+              src="/images/2025/LINSSoccer/soccerFlyer.jpg"
               alt="LINS Soccer Cup 2025 Flyer"
               width={800}
               height={500}
