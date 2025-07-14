@@ -243,63 +243,65 @@ const Hero = () => {
       </section>
 
       {/* *************Big Screen**************** */}
-      <section
-        className="hidden sm:flex relative container mx-auto my-6 w-[90%] h-[16rem] rounded-[2rem] overflow-hidden shadow-2xl bg-cover bg-center" style={{
-          backgroundImage: "url('/nepal-mountain-bg.jpg')",
-        }}
-      >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80 backdrop-blur-sm"></div>
+<section
+  className="relative container mx-auto my-6 w-[90%] rounded-[2rem] overflow-hidden shadow-2xl bg-cover bg-center"
+  style={{
+    backgroundImage: "url('/nepal-mountain-bg.jpg')",
+  }}
+>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80 backdrop-blur-sm"></div>
 
-        {/* Content */}
-        <div className="relative z-10 flex flex-col w-full h-full px-10 py-8 text-white">
+  {/* Content */}
+  <div className="relative z-10 flex flex-col w-full h-full px-6 py-8 text-white">
 
-          {/* Header: Logo & Title */}
-          <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-6 mb-2">
-            <div className="flex items-center gap-4">
-              <div className="p-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg hover:scale-105 transition-transform">
-                <Image
-                  src="/LINS.png"
-                  width={70}
-                  height={70}
-                  alt="LINS Logo"
-                  className="rounded-full"
-                />
-              </div>
-              <div className="text-center sm:text-center">
-                <h1 className="text-center text-3xl font-extrabold tracking-wide text-white drop-shadow-xl">
-                  Long Island Nepalese Society
-                </h1>
-                <p className="text-gray-300 font-medium text-sm sm:text-base">
-                  New York | लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क
-                </p>
-                <p className="italic text-cyan-300 text-sm">From Planning To Progress</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Icons Row */}
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-4 justify-items-center">
-            {[
-              { href: "/EventPage", label: "Events", icon: <FaCalendarAlt />, color: "from-red-500 to-orange-400" },
-              { href: "/FinancialReport", label: "Finance", icon: <FaFileInvoice />, color: "from-green-500 to-emerald-400" },
-              { href: "/News", label: "News", icon: <FaNewspaper />, color: "from-yellow-400 to-amber-300" },
-              { href: "/Forums", label: "Forum", icon: <FaComments />, color: "from-blue-500 to-cyan-400" },
-              { href: "/GalleryYearSelection", label: "Gallery", icon: <FaImages />, color: "from-violet-500 to-indigo-400" },
-              { href: "/Bylaws", label: "Bylaws", icon: <FaBalanceScale />, color: "from-pink-500 to-rose-400" },
-            ].map(({ href, label, icon, color }, index) => (
-              <Link href={href} key={index}>
-                <div
-                  className={`flex flex-col items-center justify-center w-24 h-24 rounded-xl px-3 py-2 text-white bg-gradient-to-br ${color} shadow-md border border-white/20 hover:scale-105 transition-transform duration-300`}
-                >
-                  <div className="text-xl mb-1">{icon}</div>
-                  <span className="text-sm font-semibold text-center">{label}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
+    {/* Header */}
+    <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-6 mb-4">
+      <div className="flex items-center gap-4">
+        <div className="p-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg hover:scale-105 transition-transform">
+          <Image
+            src="/LINS.png"
+            width={60}
+            height={60}
+            alt="LINS Logo"
+            className="rounded-full"
+          />
         </div>
-      </section>
+        <div className="text-center sm:text-left">
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-wide text-white drop-shadow-xl">
+            Long Island Nepalese Society
+          </h1>
+          <p className="text-gray-300 font-medium text-sm sm:text-base">
+            New York | लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क
+          </p>
+          <p className="italic text-cyan-300 text-sm">From Planning To Progress</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Icons Grid - Responsive 2 Rows */}
+    <div className="grid grid-cols-3 gap-4 w-full">
+      {[
+        { href: "/EventPage", label: "Events", icon: <FaCalendarAlt />, color: "from-red-500 to-orange-400" },
+        { href: "/FinancialReport", label: "Finance", icon: <FaFileInvoice />, color: "from-green-500 to-emerald-400" },
+        { href: "/News", label: "News", icon: <FaNewspaper />, color: "from-yellow-400 to-amber-300" },
+        { href: "/Forums", label: "Forum", icon: <FaComments />, color: "from-blue-500 to-cyan-400" },
+        { href: "/GalleryYearSelection", label: "Gallery", icon: <FaImages />, color: "from-violet-500 to-indigo-400" },
+        { href: "/Bylaws", label: "Bylaws", icon: <FaBalanceScale />, color: "from-pink-500 to-rose-400" },
+      ].map(({ href, label, icon, color }, index) => (
+        <Link href={href} key={index}>
+          <div
+            className={`flex flex-col items-center justify-center w-full h-24 rounded-xl px-2 py-2 text-white bg-gradient-to-br ${color} shadow-md border border-white/20 hover:scale-105 transition-transform duration-300`}
+          >
+            <div className="text-lg mb-1">{icon}</div>
+            <span className="text-sm font-semibold">{label}</span>
+          </div>
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
+
       {/*******Till Here*********/}
 
       {/* President's & Gen. Sec Message Section */}
