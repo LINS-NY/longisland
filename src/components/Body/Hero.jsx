@@ -279,7 +279,7 @@ const Hero = () => {
           </div>
 
           {/* Icons Row */}
-          <div className="flex justify-center items-center gap-4">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-4 justify-items-center">
             {[
               { href: "/EventPage", label: "Events", icon: <FaCalendarAlt />, color: "from-red-500 to-orange-400" },
               { href: "/FinancialReport", label: "Finance", icon: <FaFileInvoice />, color: "from-green-500 to-emerald-400" },
@@ -293,7 +293,7 @@ const Hero = () => {
                   className={`flex flex-col items-center justify-center w-24 h-24 rounded-xl px-3 py-2 text-white bg-gradient-to-br ${color} shadow-md border border-white/20 hover:scale-105 transition-transform duration-300`}
                 >
                   <div className="text-xl mb-1">{icon}</div>
-                  <span className="text-sm font-semibold">{label}</span>
+                  <span className="text-sm font-semibold text-center">{label}</span>
                 </div>
               </Link>
             ))}
