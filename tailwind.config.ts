@@ -16,12 +16,12 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
   variants: {
     extend: {
-        display: ["group-hover"],
+      display: ["group-hover"],
     },
-},
-
+  },
 };
+
 export default config;

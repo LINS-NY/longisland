@@ -42,13 +42,13 @@ const Forums = () => {
         <div>
             {
                 message && 
-                <div id="chat-container" class="w-11/12 md:w-7/12 m-4 item-center justify-center mx-auto  bg-gray-100 border dark:bg-gray-900 rounded-lg">
-                        <div class="p-4 border-b text-dark rounded-t-lg flex flex-col">
-                            <p class="text-lg font-semibold">{search}</p>
-                            <p class="text-xs px-2">{creator}</p>
+                <div id="chat-container" className="w-11/12 md:w-7/12 m-4 item-center justify-center mx-auto  bg-gray-100 border dark:bg-gray-900 rounded-lg">
+                        <div className="p-4 border-b text-dark rounded-t-lg flex flex-col">
+                            <p className="text-lg font-semibold">{search}</p>
+                            <p className="text-xs px-2">{creator}</p>
                         </div>
                         
-                        <div id="chatbox" class="p-4 h-80 overflow-y-auto">
+                        <div id="chatbox" className="p-4 h-80 overflow-y-auto">
                             {
                                 message.map(function(object, i){
                                     return(
@@ -58,12 +58,12 @@ const Forums = () => {
                             }
                             <div ref={bottomOfRef}></div>
                         </div>
-                        <div class="p-4 border-t flex">
+                        <div className="p-4 border-t flex">
                             <input 
                                 id="user-input" 
                                 type="text" 
                                 placeholder="Type a message" 
-                                class="w-full px-3 py-2 border dark:text-black rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full px-3 py-2 border dark:text-black rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 onChange ={e => setInput(e.target.value)}
                                 value={input}/>
                             {user ? <button 
@@ -93,13 +93,13 @@ const Individual = ({object}) => {
         }
     ).format(object?.timestamp.toDate()): ""
     return (
-        <div class="mb-2">
-        <div class="flex flex-row">
-        <p class="md:text-lg text-sm font-bold">{object.sender}</p>
-        <p class="text-xs font-semibold px-4 p-1">{date}</p>
+        <div className="mb-2">
+        <div className="flex flex-row">
+        <p className="md:text-lg text-sm font-bold">{object.sender}</p>
+        <p className="text-xs font-semibold px-4 p-1">{date}</p>
         </div>
-        <div class="p-2 rounded-lg bg-slate-200">
-        <p class= "text-gray-700 rounded-lg py-2 px-4 inline-block font-bold">{object.text}</p>
+        <div className="p-2 rounded-lg bg-slate-200">
+        <p className= "text-gray-700 rounded-lg py-2 px-4 inline-block font-bold">{object.text}</p>
         </div>
     </div>
     )

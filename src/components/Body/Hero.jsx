@@ -219,7 +219,7 @@ const Hero = () => {
           <div className="grid grid-cols-3 gap-4 w-full">
             {[
               { href: "/EventPage", label: "Events", icon: <FaCalendarAlt />, color: "from-red-500 to-orange-400" },
-              { href: "/FinancialReport", label: "Finance", icon: <FaFileInvoice />, color: "from-green-500 to-emerald-400" },
+              { href: "/FinancialReports", label: "Finance", icon: <FaFileInvoice />, color: "from-green-500 to-emerald-400" },
               { href: "/News", label: "News", icon: <FaNewspaper />, color: "from-yellow-400 to-amber-300" },
               { href: "/Forums", label: "Forum", icon: <FaComments />, color: "from-blue-500 to-cyan-400" },
               { href: "/GalleryYearSelection", label: "Gallery", icon: <FaImages />, color: "from-violet-500 to-indigo-400" },

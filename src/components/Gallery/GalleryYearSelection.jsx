@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <div style={{ backgroundColor: '#f0f0f0', padding: '20px', minHeight: '100vh' }}>
-      <h1 class="p-2 font-bold font-serif tracking-wide md:text-3xl text-xl text-green-800 ">Select Gallery Year</h1>
+      <h1 className="p-2 font-bold font-serif tracking-wide md:text-3xl text-xl text-green-800 ">Select Gallery Year</h1>
       <form onSubmit={handleSubmit}>
         <select
           value={selectedYear}
@@ -32,7 +32,7 @@ export default function Home() {
           <option value="2026">2026</option>
         </select>
         <button
-          class="block text-white dark:bg-slate-400 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 md:px-5 md:py-2.5 text-center  dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="block text-white dark:bg-slate-400 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 md:px-5 md:py-2.5 text-center  dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           type="submit"
           style={{ padding: '10px 20px', fontSize: '16px', marginLeft: '10px' }}
         >

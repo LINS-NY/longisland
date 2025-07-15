@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 const ElectedMember = ({name,nepaliName,position,nepaliPostion,imageLocation}) => {
     return(
-        <div class="relative flex flex-col w-96 md:w-5/6 md:mx-auto">
-            <div class="relative mx-auto m-2 p-2">
+        <div className="relative flex flex-col w-96 md:w-5/6 md:mx-auto">
+            <div className="relative mx-auto m-2 p-2">
                 <Image 
                     src={imageLocation}
                     width={100}
@@ -12,11 +12,11 @@ const ElectedMember = ({name,nepaliName,position,nepaliPostion,imageLocation}) =
                     alt={name}
                     /> 
             </div>
-            <div class="text-center font-bold">
-                <h4 class=" text-rose-900 whitespace-pre">{position} </h4> 
-                <h6 class=" text-rose-900 whitespace-pre"> ({nepaliPostion})</h6>
-                <p class="text-sky-700">{name} </p>
-                <p class="text-sky-700">{nepaliName}</p> 
+            <div className="text-center font-bold">
+                <h4 className=" text-rose-900 whitespace-pre">{position} </h4> 
+                <h6 className=" text-rose-900 whitespace-pre"> ({nepaliPostion})</h6>
+                <p className="text-sky-700">{name} </p>
+                <p className="text-sky-700">{nepaliName}</p> 
             </div>
 
     </div>

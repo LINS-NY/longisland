@@ -4,7 +4,7 @@ import Footer from "../../components/Footer/Footer";
 
 export default function Ab() {
   return (
-    <main class="flex flex-col ">
+    <main className="flex flex-col ">
       <Header/>
       <GalleryYearSelection/>
       <Footer/>
