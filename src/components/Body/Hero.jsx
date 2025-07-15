@@ -222,7 +222,7 @@ const Hero = () => {
               { href: "/FinancialReports", label: "Finance", icon: <FaFileInvoice />, color: "from-green-500 to-emerald-400" },
               { href: "/News", label: "News", icon: <FaNewspaper />, color: "from-yellow-400 to-amber-300" },
               { href: "/Forums", label: "Forum", icon: <FaComments />, color: "from-blue-500 to-cyan-400" },
-              { href: "/GalleryYearSelection", label: "Gallery", icon: <FaImages />, color: "from-violet-500 to-indigo-400" },
+              { href: "/Gallery", label: "Gallery", icon: <FaImages />, color: "from-violet-500 to-indigo-400" },
               { href: "/Bylaws", label: "Bylaws", icon: <FaBalanceScale />, color: "from-pink-500 to-rose-400" },
             ].map(({ href, label, icon, color }, index) => (
               <Link href={href} key={index}>
