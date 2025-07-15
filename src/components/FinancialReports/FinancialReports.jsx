@@ -29,7 +29,7 @@ export default function FinancialReports() {
 
     return (
       <section className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-800 dark:text-yellow-300 mb-6 border-b border-gray-300 pb-2">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-green-800 mb-6 border-b border-gray-300 pb-2">
           {title}
         </h2>
 
@@ -37,7 +37,7 @@ export default function FinancialReports() {
           .sort((a, b) => b[0].localeCompare(a[0])) // Descending by year
           .map(([year, files]) => (
             <div key={year} className="mb-8">
-              <h3 className="text-xl font-semibold text-blue-700 dark:text-yellow-200 mb-4">{year}</h3>
+              <h3 className="text-xl font-semibold text-blue-700 dark:text-rose-950 mb-4">{year}</h3>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {files.map((file) => {
   if (!file.filename && !file.slug) return null; // skip invalid
@@ -70,7 +70,7 @@ export default function FinancialReports() {
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-10">
-      <h1 className="text-4xl font-bold text-center text-gray-900 dark:text-yellow-300 mb-12">
+      <h1 className="text-4xl font-bold text-center text-gray-900 dark:text-fuchsia-900 mb-12">
         Financial Reports
       </h1>
 
