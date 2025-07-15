@@ -1,5 +1,5 @@
 import matter from 'gray-matter';
-import { MDXRemote } from 'next-mdx-remote';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import { components } from './component';
 const { google } = require('googleapis');
 
