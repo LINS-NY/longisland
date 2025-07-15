@@ -25,6 +25,7 @@
     "fs": "^0.0.1-security",
     "googleapis": "^139.0.0",
     "gray-matter": "^4.0.3",
+    "lucide-react": "^0.525.0",
     "mammoth": "^1.9.0",
     "marked": "^16.0.0",
     "nepali-date-converter": "^3.3.2",
