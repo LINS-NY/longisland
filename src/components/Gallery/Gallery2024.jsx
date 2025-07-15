@@ -13,9 +13,9 @@ const yearlyEvent = [NepaliNewYear2081,BloodDrive,ImmigrationRightsInteractionPr
 const EventGallery = () => {
     return (
 
-        <div class="mx-10">
+        <div className="mx-10">
             {yearlyEvent && yearlyEvent.map((object, i) =>
-                <div class="flex-row" key={i}>
+                <div className="flex-row" key={i}>
                     <Description description={object.description} key={i} />
                     <ImagePop imageList={object.images} key={i} />
                 </div>)

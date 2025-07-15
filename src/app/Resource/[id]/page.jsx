@@ -8,9 +8,9 @@ import { getAllResourcesID, googleDocsGet } from '../../../lib/resource';
 export default async function Post({params}) {
   const data = await getPosts(params.id)
   return (
-    <main class="flex flex-col h-dvh relative">
+    <main className="flex flex-col h-dvh relative">
     <Header/>
-    <Resource class="dark:text-dark" key={data.postData.id} item={data.postData}/>
+    <Resource className="dark:text-dark" key={data.postData.id} item={data.postData}/>
     <Footer/>
   </main>
   )
