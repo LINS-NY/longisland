@@ -3,6 +3,26 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
+const monthOrder = {
+  January: 1,
+  February: 2,
+  March: 3,
+  April: 4,
+  May: 5,
+  June: 6,
+  July: 7,
+  August: 8,
+  September: 9,
+  October: 10,
+  November: 11,
+  December: 12,
+};
+
+const extractMonthFromFilename = (filename) => {
+  const match = filename.match(/([A-Za-z]+)-\d{4}/);
+  return match ? match[1] : '';
+};
+
 export default function FinancialReports() {
   const [reports, setReports] = useState({ bank: {}, events: {} });
   const [loading, setLoading] = useState(true);
@@ -12,7 +32,6 @@ export default function FinancialReports() {
       try {
         const res = await fetch('/api/financial-reports');
         const data = await res.json();
-        console.log('Fetched Reports:', data); // Debug
         setReports(data);
       } catch (error) {
         console.error('Error fetching reports:', error);
@@ -34,33 +53,37 @@ export default function FinancialReports() {
         </h2>
 
         {Object.entries(data)
-          .sort((a, b) => b[0].localeCompare(a[0])) // Descending by year
+          .sort((a, b) => b[0].localeCompare(a[0]))
           .map(([year, files]) => (
             <div key={year} className="mb-8">
               <h3 className="text-xl font-semibold text-blue-700 dark:text-rose-950 mb-4">{year}</h3>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {files.map((file) => {
-  if (!file.filename && !file.slug) return null; // skip invalid
+                {files
+                  .sort((a, b) => {
+                    const aMonth = monthOrder[a.month || extractMonthFromFilename(a.filename)] || 0;
+                    const bMonth = monthOrder[b.month || extractMonthFromFilename(b.filename)] || 0;
+                    return bMonth - aMonth;
+                  })
+                  .map((file) => {
+                    if (!file.filename && !file.slug) return null;
 
-  const slug = file.filename
-    ? `${source}-${file.filename.replace('.xlsx', '')}`
-    : file.slug;
+                    const slug = file.filename
+                      ? `${source}-${file.filename.replace('.xlsx', '')}`
+                      : file.slug;
 
-  return (
-    <Link key={slug} href={`/FinancialReport/${encodeURIComponent(slug)}`}>
-      <div className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-xl shadow hover:shadow-lg transition-shadow p-5 hover:scale-[1.02] cursor-pointer">
-        <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
-          {file.title}
-        </h4>
-        <p className="text-sm text-gray-600 dark:text-gray-400">
-          {file.month} {file.year}
-        </p>
-      </div>
-    </Link>
-  );
-})}
-
-
+                    return (
+                      <Link key={slug} href={`/FinancialReport/${encodeURIComponent(slug)}`}>
+                        <div className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-xl shadow hover:shadow-lg transition-shadow p-5 hover:scale-[1.02] cursor-pointer">
+                          <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                            {file.title}
+                          </h4>
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                            {file.month} {file.year}
+                          </p>
+                        </div>
+                      </Link>
+                    );
+                  })}
               </div>
             </div>
           ))}
