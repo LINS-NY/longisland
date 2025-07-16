@@ -224,6 +224,7 @@ const Hero = () => {
               { href: "/Forums", label: "Forum", icon: <FaComments />, color: "from-blue-500 to-cyan-400" },
               { href: "/Gallery", label: "Gallery", icon: <FaImages />, color: "from-violet-500 to-indigo-400" },
               { href: "/Bylaws", label: "Bylaws", icon: <FaBalanceScale />, color: "from-pink-500 to-rose-400" },
+              // { href: "/CommunityBuilding", label: "Community Building", icon: <span className="text-lg">🏛️</span>, color: "from-purple-600 to-pink-500" },
             ].map(({ href, label, icon, color }, index) => (
               <Link href={href} key={index}>
                 <div
@@ -238,6 +239,40 @@ const Hero = () => {
         </div>
       </section>
 
+      {/*******Till Here*********/}
+
+      {/* Community Building Highlight Card */}
+      <div className="container mx-auto w-[90%] my-10">
+        <Link href="/CommunityBuilding">
+          <div
+            className="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer h-[24rem] bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/community-building/banner.jpg')" }}
+          >
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/85 backdrop-blur-md"></div>
+
+            {/* Content */}
+            <div className="relative z-10 flex flex-col items-center justify-center p-8 text-white text-center h-full">
+              <div className="bg-white/10 backdrop-blur-md p-3 rounded-full border border-white/30 shadow-md">
+                <Image
+                  src="/images/community-building/icon.png"
+                  width={120}
+                  height={120}
+                  alt="Community Icon"
+                  className="rounded-full border-4 border-white"
+                />
+              </div>
+              <h2 className="text-2xl sm:text-5xl font-extrabold mt-4 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-transparent bg-clip-text drop-shadow-lg">
+  Help Build Our Future: LINS-NY Community Center
+</h2>
+
+              <p className="text-gray-200 text-sm sm:text-base mt-3 max-w-2xl drop-shadow-sm">
+                Join our mission to create the first-ever Nepalese community building in Long Island. Powered by love, unity, and purpose.
+              </p>
+            </div>
+          </div>
+        </Link>
+      </div>
       {/*******Till Here*********/}
 
       {/* President's & Gen. Sec Message Section */}
