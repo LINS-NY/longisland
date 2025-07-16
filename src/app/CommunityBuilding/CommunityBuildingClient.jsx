@@ -1,6 +1,6 @@
 'use client';
 import donors from './donors';
-import PDFViewer from './PDFViewer';
+
 import { useState } from 'react';
 import { FaTools, FaHandsHelping, FaDonate, FaPeopleCarry } from 'react-icons/fa';
 
@@ -106,9 +106,13 @@ const CommunityBuildingClient = ({ pptFiles, noteFiles }) => {
       ))}
     </select>
     <div className="bg-white rounded-xl border overflow-hidden">
-         {/* PDF Reader */}
-          <h3 className="text-xl font-bold mb-2">📄 Meeting Presentation Slides (PDF)s</h3>
-          <PDFViewer fileUrl={selectedPPT} />
+      <iframe
+        src={selectedPPT}
+        width="100%"
+        height="500"
+        className="w-full"
+        title="Slide Preview"
+      />
     </div>
     <div className="mt-4 text-center">
       <a
@@ -135,9 +139,13 @@ const CommunityBuildingClient = ({ pptFiles, noteFiles }) => {
       ))}
     </select>
     <div className="bg-white rounded-xl border overflow-hidden">
-        {/* PDF Reader */}
-        <h3 className="text-xl font-bold mb-2">Meeting Notes</h3>
-        <PDFViewer fileUrl={selectedNote} />
+      <iframe
+        src={selectedNote}
+        width="100%"
+        height="500"
+        className="w-full"
+        title="Notes Preview"
+      />
     </div>
     <div className="mt-4 text-center">
       <a
