@@ -263,8 +263,8 @@ const Hero = () => {
                 />
               </div>
               <h2 className="text-2xl sm:text-5xl font-extrabold mt-4 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-transparent bg-clip-text drop-shadow-lg">
-  Help Build Our Future: LINS-NY Community Center
-</h2>
+                Help Build Our Future: LINS-NY Community Center
+              </h2>
 
               <p className="text-gray-200 text-sm sm:text-base mt-3 max-w-2xl drop-shadow-sm">
                 Join our mission to create the first-ever Nepalese community building in Long Island. Powered by love, unity, and purpose.
