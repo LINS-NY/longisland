@@ -5,14 +5,14 @@ import Footer from '@/components/Footer/Footer';
 import CommunityBuildingClient from './CommunityBuildingClient'; // client component
 
 export default function CommunityBuildingPage() {
-  const pptDir = path.join(process.cwd(), 'public/Community Building Files/PowerPoint');
-  const notesDir = path.join(process.cwd(), 'public/Community Building Files/Notes');
+  const pptDir = path.join(process.cwd(), 'public/Community-Building-Files/PowerPoint');
+  const notesDir = path.join(process.cwd(), 'public/Community-Building-Files/Notes');
 
   const pptFiles = fs.readdirSync(pptDir)
     .filter(name => name.endsWith('.pdf'))
     .map(name => ({
       label: name,
-      value: `/Community Building Files/PowerPoint/${name}`
+      value: `/Community-Building-Files/PowerPoint/${name}`
     }))
     .reverse(); // latest first
 
@@ -20,7 +20,7 @@ export default function CommunityBuildingPage() {
     .filter(name => name.endsWith('.pdf'))
     .map(name => ({
       label: name,
-      value: `/Community Building Files/Notes/${name}`
+      value: `/Community-Building-Files/Notes/${name}`
     }))
     .reverse();
 

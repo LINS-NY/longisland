@@ -1,60 +1,47 @@
 'use client';
+
 import { useState } from "react";
+import PDFViewer from '../Shared/PDFViewer'; // adjust path if needed
 
 const Bylaws = () => {
-    const [error, setError] = useState("");
+  const [error, setError] = useState("");
+  const pdfUrl = "/Bylaws/LINSNY-BYLAWS-Proposed.pdf";
 
-    // Function to handle the download of the PDF file
-    const handleDownloadPdf = () => {
-        try {
-            const pdfUrl = "/Bylaws/LINSNY-BYLAWS-Proposed.pdf"; // Path to the PDF file in the public folder
-            const link = document.createElement('a');
-            link.href = pdfUrl;
-            link.download = 'LINSNY-BYLAWS-Proposed.pdf'; // Name of the downloaded file
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        } catch (err) {
-            setError("Failed to download the PDF. Please try again later.");
-        }
-    };
-
-    if (error) {
-        return (
-            <div className="flex flex-col justify-center items-center bg-gradient-to-r from-purple-500 to-pink-500">
-                <div className="flex justify-center font-bold font-serif text-3xl text-white py-1">Long Island Nepalese Society, New York - Bylaws</div>
-                <div className="flex justify-center font-bold font-serif text-3xl text-white py-1">लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क - विधान</div>
-                <div className="text-red-500 font-bold text-xl mt-4">{error}</div>
-            </div>
-        );
+  const handleDownloadPdf = () => {
+    try {
+      const link = document.createElement('a');
+      link.href = pdfUrl;
+      link.download = 'LINSNY-BYLAWS-Proposed.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (err) {
+      setError("Failed to download the PDF. Please try again later.");
     }
+  };
 
-    return (
-        <div>
-            <div className="flex flex-col justify-center items-center bg-gradient-to-r from-purple-500 to-pink-500">
-                <div className="flex justify-center font-bold font-serif text-3xl text-white py-1">Long Island Nepalese Society, New York - Bylaws</div>
-                <div className="flex justify-center font-bold font-serif text-3xl text-white py-1">लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क - विधान</div>
-            </div>
-            <div className="flex justify-center my-4">
-                <button
-                    onClick={handleDownloadPdf}
-                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                >
-                    Download PDF
-                </button>
-            </div>
-            <iframe
-                src="/Bylaws/LINSNY-BYLAWS-Proposed.pdf"
-                width="100%"
-                height="600px"
-                style={{ border: "none" }}
-                title="LINSNY Bylaws PDF"
-                aria-label="LINSNY Bylaws PDF Viewer"
-            >
-                <p>Your browser does not support PDFs. Please download the PDF to view it: <a href="/Bylaws/LINSNY-BYLAWS-Proposed.pdf">Download PDF</a>.</p>
-            </iframe>
-        </div>
-    );
+  return (
+    <div>
+      <div className="flex flex-col justify-center items-center bg-gradient-to-r from-purple-500 to-pink-500 text-white py-4">
+        <h1 className="font-bold font-serif text-3xl">Long Island Nepalese Society, New York - Bylaws</h1>
+        <h2 className="font-bold font-serif text-3xl mt-1">लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क - विधान</h2>
+        {error && <p className="text-red-300 mt-2">{error}</p>}
+      </div>
+
+      <div className="flex justify-center my-4">
+        <button
+          onClick={handleDownloadPdf}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        >
+          ⬇️ Download PDF
+        </button>
+      </div>
+
+      <div className="px-4 pb-8">
+        <PDFViewer fileUrl={pdfUrl} />
+      </div>
+    </div>
+  );
 };
 
 export default Bylaws;
