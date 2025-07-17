@@ -1,5 +1,5 @@
 const donors = [
-  { name: 'Kul Gouli (Raja)', commitment: 15111, donated: 15111, remarks: 'Fully Donated' },
+  { name: 'Kul Gouli (Raja)', commitment: 15111, donated: 11111, remarks: 'Partially Donated' },
   { name: 'Sabitra Siwakoti/ Dr. Hari Dahal', commitment: 11111, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Rajendra Karki/Gaumati Thapa', commitment: 5555, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Indira Simkhada/Diwakar Pande', commitment: 11111, donated: 0, remarks: 'No Donation Yet' },
