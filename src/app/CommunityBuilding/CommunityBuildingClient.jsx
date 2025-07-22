@@ -133,7 +133,7 @@ const CommunityBuildingClient = () => {
             {
               name: "Mr. Surya Poudel",
               role: "Publicity Committee",
-              phone: "+1XXXXXXXXXX",
+              phone: "+1(516) 605-5699",
               color: "from-purple-400 to-purple-600",
             },
           ].map((member, index) => (
