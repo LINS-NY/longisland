@@ -90,66 +90,113 @@ const Hero = () => {
       {/* </div> */}
       {/* *************Till Here**************** */}
 
+
+
+
       {/* *************Below is for Picnic Event**************** */}
       {/* Main picnic button container */}
-      <div className="relative z-10 pb-12 pt-16 bg-gradient-to-b from-blue-100 via-green-100 to-yellow-50 overflow-hidden">
-        {/* Floating picnic emojis */}
-        {['🪁', '🍉', '🌼', '🧃', '🐝', '🐞'].map((e, i) => (
-          <div
-            key={i}
-            className={`absolute ${['top-10 left-8', 'top-20 right-12', 'bottom-16 left-12', 'bottom-10 right-16', 'top-1/2 left-1/3', 'bottom-1/3 right-1/4'][i]} text-3xl animate-float${i % 2 ? -'' + i : '-reverse delay-' + (i * 200)}`}
-          >{e}</div>
-        ))}
+  {/* Floating picnic emojis */}
+  {/*
+  {['🪁', '🍉', '🌼', '🧃', '🐝', '🐞'].map((e, i) => (
+    <div
+      key={i}
+      className={`absolute ${[
+        'top-10 left-8',
+        'top-20 right-12',
+        'bottom-16 left-12',
+        'bottom-10 right-16',
+        'top-1/2 left-1/3',
+        'bottom-1/3 right-1/4'
+      ][i]} text-3xl animate-float${i % 2 ? -'' + i : '-reverse delay-' + i * 200}`}
+    >
+      {e}
+    </div>
+  ))}
+  */}
 
-        {/* Title */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-600 drop-shadow-lg text-center mb-10 animate-fade-in-up">
-          Long Island Nepalese Society
-        </h1>
+  {/* Title */}
+  {/*
+  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-600 drop-shadow-lg text-center mb-10 animate-fade-in-up">
+    Long Island Nepalese Society
+  </h1>
+  */}
 
-        {/* Button + CTA */}
-        <div className="flex flex-col items-center justify-center text-center px-4">
-          <Link href="/EventPage">
-            <button className={'relative text-xl sm:text-2xl md:text-3xl font-bold text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-pink-400 via-yellow-300 to-green-400 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-white hover:border-yellow-200 group overflow-hidden animate-pulse'}>
-              {/* Shining overlay effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -rotate-45 w-1/2 h-full translate-x-[-100%] group-hover:translate-x-[300%]"></div>
+  {/* Button + CTA */}
+  {/*
+  <div className="flex flex-col items-center justify-center text-center px-4">
+    <Link href="/EventPage">
+      <button
+        className={
+          'relative text-xl sm:text-2xl md:text-3xl font-bold text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-pink-400 via-yellow-300 to-green-400 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-white hover:border-yellow-200 group overflow-hidden animate-pulse'
+        }
+      >
+        {/* Shining overlay effect */}
+{/*         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -rotate-45 w-1/2 h-full translate-x-[-100%] group-hover:translate-x-[300%]"></div>
 
-              <span className="relative z-10 flex items-center justify-center gap-2">
-                <span className="text-yellow-200">🧺</span>
-                <span className="text-shadow">Picnic Day – <span className="text-green-200">July 27th</span></span>
-                <span className="text-yellow-200">🌞</span>
-              </span>
-            </button>
-          </Link>
-
-          {/* Call to action */}
-          <div className="mt-4 inline-flex items-center text-pink-600 text-sm animate-bounce">
-            <span className="mr-1">👆</span>
-            <span>Click to see full picnic details</span>
-            <span className="ml-1">👆</span>
-          </div>
-        </div>
-
-        {/* Embedded animations */}
-        <style jsx>{`
+        <span className="relative z-10 flex items-center justify-center gap-2">
+          <span className="text-yellow-200">🧺</span>
+          <span className="text-shadow">
+            Picnic Day – <span className="text-green-200">July 27th</span>
+          </span>
+          <span className="text-yellow-200">🌞</span>
+        </span>
+      </button>
+    </Link>
+ */}
+    {/* Call to action */}
+{/*     <div className="mt-4 inline-flex items-center text-pink-600 text-sm animate-bounce">
+      <span className="mr-1">👆</span>
+      <span>Click to see full picnic details</span>
+      <span className="ml-1">👆</span>
+    </div>
+  </div>
+  */}
+  {/* Embedded animations */}
+  {/*
+  <style jsx>{`
     @keyframes pulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
-      50% { transform: scale(1.03); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4); }
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+      }
+      50% {
+        transform: scale(1.03);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+      }
     }
     @keyframes float {
-      0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
-      50% { transform: translateY(-12px) translateX(8px) rotate(5deg); }
+      0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-12px) translateX(8px) rotate(5deg);
+      }
     }
     @keyframes float-reverse {
-      0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
-      50% { transform: translateY(12px) translateX(-8px) rotate(-5deg); }
+      0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(12px) translateX(-8px) rotate(-5deg);
+      }
     }
     @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
     }
     @keyframes fade-in-up {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     .animate-pulse {
       animation: pulse 2s ease-in-out infinite;
@@ -175,8 +222,151 @@ const Hero = () => {
     .delay-800 { animation-delay: 0.8s; }
     .delay-[1s] { animation-delay: 1s; }
   `}</style>
-      </div>
-      {/* *************Till Here**************** */}
+  */}
+
+      {/* *************Summer Picnic -- Till Here**************** */}
+
+
+      {/* *************LINS Soccer Cup 2025 Banner*************** */}
+      <section className="w-full py-16 px-4 bg-white">
+        <div className="max-w-5xl mx-auto bg-gradient-to-br from-green-900 via-green-700 to-green-800 text-white rounded-2xl shadow-2xl px-6 sm:px-12 py-10 transition-all duration-300">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
+
+            {/* LEFT COLUMN: Content */}
+            <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-8">
+
+              {/* Title + Animated Soccer Ball */}
+              <div className="flex items-center justify-center md:justify-start gap-5">
+                <h1 className="text-4xl sm:text-6xl font-extrabold text-yellow-400 drop-shadow-[0_0_10px_rgba(255,215,0,0.8)] whitespace-nowrap">
+                  LINS Soccer Cup
+                </h1>
+
+              </div>
+              <div className="text-8xl animate-spin-slow select-none" aria-hidden="true">⚽</div>
+              <h1 className="text-5xl sm:text-6xl font-extrabold text-white -400 glow-red">
+                2025
+              </h1>
+              {/* Date + Time + Location */}
+              <div className="space-y-1">
+                <p className="text-xl font-semibold flex items-center justify-center md:justify-start gap-2">
+                  <span role="img" aria-label="calendar">📅</span> Saturday, August 9, 2025
+                </p>
+                <p className="text-lg font-medium flex items-center justify-center md:justify-start gap-2">
+                  <span role="img" aria-label="clock">🕗</span> 8 AM – 6 PM
+                </p>
+                <p className="text-lg font-medium flex items-center justify-center md:justify-start gap-2">
+                  <span role="img" aria-label="location pin">📍</span> Field 2, Cedar Creek Park, 3340 Merrick Rd, Seaford, NY
+                </p>
+              </div>
+
+              {/* Registration Fee Card */}
+              <div className="bg-yellow-100/10 border border-yellow-400 rounded-xl px-8 py-6 shadow-lg backdrop-blur-md max-w-md w-full text-center">
+                <h2 className="text-3xl font-extrabold text-yellow-300 mb-3 flex items-center justify-center gap-3">
+                  <span className="icon-glow-pulse text-4xl">💸</span> Registration Fee
+                </h2>
+                <p className="text-4xl font-bold text-white">$650</p>
+                <p className="text-sm text-yellow-100 mt-1">Deadline: August 3, 2025</p>
+              </div>
+
+              {/* Prizes Card */}
+              <div className="bg-yellow-100/10 border border-yellow-400 rounded-xl px-8 py-6 shadow-lg backdrop-blur-md max-w-md w-full text-center">
+                <h2 className="text-3xl font-extrabold text-yellow-300 mb-3 flex items-center justify-center gap-3">
+                  <span className="icon-glow-pulse text-4xl">🏆</span> Prizes
+                </h2>
+                <p className="text-3xl font-semibold">Winner: <span className="text-white">$3,000</span></p>
+                <p className="text-3xl font-semibold">Runner-Up: <span className="text-white">$1,000</span></p>
+              </div>
+            </div>
+
+            {/* RIGHT COLUMN: Flyer + Coordinators */}
+            <div className="flex flex-col items-center md:items-end space-y-6">
+
+              {/* Coordinators Info */}
+              <div className="text-center md:text-right text-yellow-300 font-semibold max-w-[300px]">
+                <p className="mb-4 text-xl font-bold text-white">📞 Coordinators</p>
+                <ul className="space-y-2 text-yellow-200 text-lg">
+                  <li><strong>Dr. Yam Giri:</strong> (405) 922-9845</li>
+                  <li><strong>Yog Raj:</strong> (571) 382-0403</li>
+                  <li><strong>Ravi Khadka:</strong> (516) 800-3809</li>
+                  <li><strong>Niraj Sapkota:</strong> (516) 717-7008</li>
+                </ul>
+              </div>
+
+              {/* Flyer Image */}
+              <div className="rounded-xl border-4 border-yellow-300 shadow-2xl overflow-hidden max-w-full md:max-w-[90%] transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/images/2025/LINSSoccer/soccerFlyer.jpg"
+                  alt="LINS Soccer Cup 2025 Flyer"
+                  width={800}
+                  height={500}
+                  className="object-cover rounded-xl"
+                  priority
+                />
+              </div>
+              <div className="flex justify-center mt-6">
+                <button
+                  aria-label="Contact Coordinators"
+                  className="px-10 py-4 bg-yellow-400 hover:bg-yellow-300 text-black font-extrabold rounded-full shadow-xl transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-300"
+                  onClick={() => alert('Call Dr. Yam Giri: (405) 922-9845')}
+                >
+                  📞 Contact Coordinators
+                </button>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+        {/* Animation Styles */}
+        {/* Animation Styles */}
+        <style jsx>{`
+  /* Slow spinning soccer ball */
+  .animate-spin-slow {
+    animation: spin 6s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Glowing & pulsing 2025 animation */
+  .animated-2025 {
+    animation: boomGlow 2.5s ease-in-out infinite;
+    text-shadow:
+      0 0 8px #ffffff,
+      0 0 12px #22c55e,
+      0 0 20px #22c55e,
+      0 0 30px #16a34a;
+  }
+
+  .glow-red {
+    text-shadow:
+      0 0 8px #ff0000,
+      0 0 12px #ff4d4d,
+      0 0 20px #ff1a1a;
+  }
+
+  @keyframes boomGlow {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.9;
+    }
+  }
+`}</style>
+
+      </section>
+
+      {/* *************LINS Soccer Cup 2025 Banner End*************** */}
+
+
+
 
       {/* *************Screen Icons/Buttons**************** */}
       <section
@@ -340,144 +530,6 @@ const Hero = () => {
 
 
 
-
-      {/* *************LINS Soccer Cup 2025 Banner*************** */}
-      <section className="w-full py-16 px-4 bg-white">
-        <div className="max-w-5xl mx-auto bg-gradient-to-br from-green-900 via-green-700 to-green-800 text-white rounded-2xl shadow-2xl px-6 sm:px-12 py-10 transition-all duration-300">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-
-
-            {/* LEFT COLUMN: Content */}
-            <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-8">
-
-              {/* Title + Animated Soccer Ball */}
-              <div className="flex items-center justify-center md:justify-start gap-5">
-                <h1 className="text-4xl sm:text-6xl font-extrabold text-yellow-400 drop-shadow-[0_0_10px_rgba(255,215,0,0.8)] whitespace-nowrap">
-                  LINS Soccer Cup
-                </h1>
-
-              </div>
-              <div className="text-8xl animate-spin-slow select-none" aria-hidden="true">⚽</div>
-              <h1 className="text-5xl sm:text-6xl font-extrabold text-white -400 glow-red">
-                2025
-              </h1>
-              {/* Date + Time + Location */}
-              <div className="space-y-1">
-                <p className="text-xl font-semibold flex items-center justify-center md:justify-start gap-2">
-                  <span role="img" aria-label="calendar">📅</span> Saturday, August 9, 2025
-                </p>
-                <p className="text-lg font-medium flex items-center justify-center md:justify-start gap-2">
-                  <span role="img" aria-label="clock">🕗</span> 8 AM – 6 PM
-                </p>
-                <p className="text-lg font-medium flex items-center justify-center md:justify-start gap-2">
-                  <span role="img" aria-label="location pin">📍</span> Field 2, Cedar Creek Park, 3340 Merrick Rd, Seaford, NY
-                </p>
-              </div>
-
-              {/* Registration Fee Card */}
-              <div className="bg-yellow-100/10 border border-yellow-400 rounded-xl px-8 py-6 shadow-lg backdrop-blur-md max-w-md w-full text-center">
-                <h2 className="text-3xl font-extrabold text-yellow-300 mb-3 flex items-center justify-center gap-3">
-                  <span className="icon-glow-pulse text-4xl">💸</span> Registration Fee
-                </h2>
-                <p className="text-4xl font-bold text-white">$650</p>
-                <p className="text-sm text-yellow-100 mt-1">Deadline: August 3, 2025</p>
-              </div>
-
-              {/* Prizes Card */}
-              <div className="bg-yellow-100/10 border border-yellow-400 rounded-xl px-8 py-6 shadow-lg backdrop-blur-md max-w-md w-full text-center">
-                <h2 className="text-3xl font-extrabold text-yellow-300 mb-3 flex items-center justify-center gap-3">
-                  <span className="icon-glow-pulse text-4xl">🏆</span> Prizes
-                </h2>
-                <p className="text-3xl font-semibold">Winner: <span className="text-white">$3,000</span></p>
-                <p className="text-3xl font-semibold">Runner-Up: <span className="text-white">$1,000</span></p>
-              </div>
-            </div>
-
-            {/* RIGHT COLUMN: Flyer + Coordinators */}
-            <div className="flex flex-col items-center md:items-end space-y-6">
-
-              {/* Coordinators Info */}
-              <div className="text-center md:text-right text-yellow-300 font-semibold max-w-[300px]">
-                <p className="mb-4 text-xl font-bold text-white">📞 Coordinators</p>
-                <ul className="space-y-2 text-yellow-200 text-lg">
-                  <li><strong>Dr. Yam Giri:</strong> (405) 922-9845</li>
-                  <li><strong>Yog Raj:</strong> (571) 382-0403</li>
-                  <li><strong>Ravi Khadka:</strong> (516) 800-3809</li>
-                  <li><strong>Niraj Sapkota:</strong> (516) 717-7008</li>
-                </ul>
-              </div>
-
-              {/* Flyer Image */}
-              <div className="rounded-xl border-4 border-yellow-300 shadow-2xl overflow-hidden max-w-full md:max-w-[90%] transition-transform duration-300 hover:scale-105">
-                <Image
-                  src="/images/2025/LINSSoccer/soccerFlyer.jpg"
-                  alt="LINS Soccer Cup 2025 Flyer"
-                  width={800}
-                  height={500}
-                  className="object-cover rounded-xl"
-                  priority
-                />
-              </div>
-              <div className="flex justify-center mt-6">
-                <button
-                  aria-label="Contact Coordinators"
-                  className="px-10 py-4 bg-yellow-400 hover:bg-yellow-300 text-black font-extrabold rounded-full shadow-xl transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-300"
-                  onClick={() => alert('Call Dr. Yam Giri: (405) 922-9845')}
-                >
-                  📞 Contact Coordinators
-                </button>
-              </div>
-
-
-            </div>
-          </div>
-        </div>
-
-        {/* Animation Styles */}
-        {/* Animation Styles */}
-        <style jsx>{`
-  /* Slow spinning soccer ball */
-  .animate-spin-slow {
-    animation: spin 6s linear infinite;
-  }
-
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  /* Glowing & pulsing 2025 animation */
-  .animated-2025 {
-    animation: boomGlow 2.5s ease-in-out infinite;
-    text-shadow:
-      0 0 8px #ffffff,
-      0 0 12px #22c55e,
-      0 0 20px #22c55e,
-      0 0 30px #16a34a;
-  }
-
-  .glow-red {
-    text-shadow:
-      0 0 8px #ff0000,
-      0 0 12px #ff4d4d,
-      0 0 20px #ff1a1a;
-  }
-
-  @keyframes boomGlow {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.2);
-      opacity: 0.9;
-    }
-  }
-`}</style>
-
-      </section>
-
-      {/* *************LINS Soccer Cup 2025 Banner End*************** */}
 
     </div>
   )
