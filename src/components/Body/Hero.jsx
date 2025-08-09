@@ -494,7 +494,7 @@ const Hero = () => {
         {/* Full Dancing Lady Illustration */}
         <div className="rounded-xl border-4 border-yellow-300 shadow-2xl overflow-hidden max-w-full md:max-w-[90%] transition-transform duration-300 hover:scale-105">
           <Image
-                          src="/images/2025/Teej/Teejflyer.jpeg"
+                          src="/images/2025/Teej/teejflyer.jpeg"
 
             alt="Nepali Dancing Lady - Teej 2025"
             width={800}
