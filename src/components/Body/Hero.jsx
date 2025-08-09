@@ -403,7 +403,7 @@ const Hero = () => {
         {/* Date + Time + Location */}
         <div className="">
           <p className="text-xl font-semibold flex items-center justify-center md:justify-start gap-2">
-            <span role="img" aria-label="calendar">📅</span> Saturdau, August 23, 2025
+            <span role="img" aria-label="calendar">📅</span> Saturday, August 23, 2025
           </p>
           <p className="text-lg font-medium flex items-center justify-center md:justify-start gap-2">
             <span role="img" aria-label="clock">🕗</span> 4 PM – 10 PM
