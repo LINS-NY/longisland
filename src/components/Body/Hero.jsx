@@ -385,23 +385,23 @@ const Hero = () => {
   हरितालिका तीज 2025 को <br /><br /> हार्दिक शुभकामना
 </h1>
 
-          <h2 className="text-4xl sm:text-6xl font-extrabold text-yellow-300 drop-shadow-lg whitespace-nowrap">
-            LINS - Teej Mahotsav
-          </h2>
+          <div className="text-center">
+  <h1 className="text-3xl sm:text-4xl font-extrabold text-white glow-gold leading-none mb-2">
+    LINS - Teej Mahotsav
+  </h1>
+    <h1 className="text-3xl sm:text-4xl font-extrabold text-white glow-gold leading-none mb-2">
+    2025
+  </h1>
 
-          {/* Dancing Lady Image instead of emoji */}
-          <div className="w-32 h-32 animate-bounce">
-            <div className="flex items-center justify-center md:justify-start gap-5">
-        </div>
-        <div className="text-8xl animate-bounce select-none" aria-hidden="true">💃</div>
-          </div>
-          <h1 className="text-5xl sm:text-6xl font-extrabold text-white glow-gold">
-          2025
-        </h1>
-        </div>
+
+  <div className="w-32 h-32 mx-auto animate-bounce flex items-center justify-center overflow-hidden mb-2">
+    <div className="text-6xl select-none leading-none" aria-hidden="true">💃</div>
+  </div>
+
+        
 
         {/* Date + Time + Location */}
-        <div className="space-y-1">
+        <div className="">
           <p className="text-xl font-semibold flex items-center justify-center md:justify-start gap-2">
             <span role="img" aria-label="calendar">📅</span> Sunday, August 24, 2025
           </p>
@@ -411,15 +411,15 @@ const Hero = () => {
           <p className="text-lg font-medium flex items-center justify-center md:justify-start gap-2">
             <span role="img" aria-label="location pin">📍</span> 201 Levittown Pkwy, Hicksville, NY - 11801
           </p>
-        </div>
+        </div></div></div>
 
 {/* Flashy Free Entry */}
-<div className="bg-pink-100/10 border border-yellow-400 rounded-xl px-8 py-6 shadow-lg backdrop-blur-md max-w-md w-full text-center">
-  <h2 className="text-3xl font-extrabold text-yellow-300 mb-3 flex items-center justify-center gap-3">
-    <span className="icon-glow-pulse text-4xl">🎟</span> Entry Ticket
+<div className="bg-pink-100/10 border border-yellow-400 rounded-xl px-6 py-6 shadow-lg backdrop-blur-md max-w-full w-full text-center overflow-hidden">
+  <h2 className="text-3xl sm:text-4xl font-extrabold text-yellow-300 mb-3 flex items-center justify-center gap-3">
+    <span className="icon-glow-pulse text-3xl sm:text-4xl">🎟</span> Entry Ticket
   </h2>
   <span
-    className="whitespace-nowrap text-4xl font-extrabold text-white px-4 py-2 rounded-lg animate-pulse shadow-[0_0_10px_rgba(0,0,0,0.7)] inline-block"
+    className="whitespace-nowrap text-2xl sm:text-4xl font-extrabold text-white px-3 py-1 rounded-lg animate-pulse shadow-[0_0_10px_rgba(0,0,0,0.7)] inline-block"
     style={{
       background: "linear-gradient(90deg, #ff0000, #ffcc00, #00cc00)",
       border: "3px solid white",
@@ -428,8 +428,10 @@ const Hero = () => {
   >
     🎉 FREE ENTRY 🎉
   </span>
-  <p className="text-sm text-yellow-100 mt-1">All are welcome!</p>
+  <p className="text-xs sm:text-sm text-yellow-100 mt-1">All are welcome!</p>
 </div>
+
+
 
 
         {/* Special Program Highlights */}
