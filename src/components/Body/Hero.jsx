@@ -228,27 +228,27 @@ const Hero = () => {
 
 
       {/* *************LINS Soccer Cup 2025 Banner*************** */}
-      <section className="w-full py-16 px-4 bg-white">
-        <div className="max-w-5xl mx-auto bg-gradient-to-br from-green-900 via-green-700 to-green-800 text-white rounded-2xl shadow-2xl px-6 sm:px-12 py-10 transition-all duration-300">
+      {/* <section className="w-full py-16 px-4 bg-white"> */}
+{/*         <div className="max-w-5xl mx-auto bg-gradient-to-br from-green-900 via-green-700 to-green-800 text-white rounded-2xl shadow-2xl px-6 sm:px-12 py-10 transition-all duration-300">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
 
             {/* LEFT COLUMN: Content */}
-            <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-8">
+{/*             <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-8">
 
               {/* Title + Animated Soccer Ball */}
-              <div className="flex items-center justify-center md:justify-start gap-5">
+{/*               <div className="flex items-center justify-center md:justify-start gap-5">
                 <h1 className="text-4xl sm:text-6xl font-extrabold text-yellow-400 drop-shadow-[0_0_10px_rgba(255,215,0,0.8)] whitespace-nowrap">
                   LINS Soccer Cup
                 </h1>
 
-              </div>
-              <div className="text-8xl animate-spin-slow select-none" aria-hidden="true">⚽</div>
+              </div> */}
+{/*               <div className="text-8xl animate-spin-slow select-none" aria-hidden="true">⚽</div>
               <h1 className="text-5xl sm:text-6xl font-extrabold text-white -400 glow-red">
                 2025
-              </h1>
+              </h1> */}
               {/* Date + Time + Location */}
-              <div className="space-y-1">
+{/*               <div className="space-y-1">
                 <p className="text-xl font-semibold flex items-center justify-center md:justify-start gap-2">
                   <span role="img" aria-label="calendar">📅</span> Saturday, August 9, 2025
                 </p>
@@ -258,32 +258,32 @@ const Hero = () => {
                 <p className="text-lg font-medium flex items-center justify-center md:justify-start gap-2">
                   <span role="img" aria-label="location pin">📍</span> Field 2, Cedar Creek Park, 3340 Merrick Rd, Seaford, NY
                 </p>
-              </div>
+              </div> */}
 
               {/* Registration Fee Card */}
-              <div className="bg-yellow-100/10 border border-yellow-400 rounded-xl px-8 py-6 shadow-lg backdrop-blur-md max-w-md w-full text-center">
+{/*               <div className="bg-yellow-100/10 border border-yellow-400 rounded-xl px-8 py-6 shadow-lg backdrop-blur-md max-w-md w-full text-center">
                 <h2 className="text-3xl font-extrabold text-yellow-300 mb-3 flex items-center justify-center gap-3">
                   <span className="icon-glow-pulse text-4xl">💸</span> Registration Fee
                 </h2>
                 <p className="text-4xl font-bold text-white">$650</p>
                 <p className="text-sm text-yellow-100 mt-1">Deadline: August 3, 2025</p>
-              </div>
+              </div> */}
 
               {/* Prizes Card */}
-              <div className="bg-yellow-100/10 border border-yellow-400 rounded-xl px-8 py-6 shadow-lg backdrop-blur-md max-w-md w-full text-center">
+{/*               <div className="bg-yellow-100/10 border border-yellow-400 rounded-xl px-8 py-6 shadow-lg backdrop-blur-md max-w-md w-full text-center">
                 <h2 className="text-3xl font-extrabold text-yellow-300 mb-3 flex items-center justify-center gap-3">
                   <span className="icon-glow-pulse text-4xl">🏆</span> Prizes
                 </h2>
                 <p className="text-3xl font-semibold">Winner: <span className="text-white">$3,000</span></p>
                 <p className="text-3xl font-semibold">Runner-Up: <span className="text-white">$1,000</span></p>
               </div>
-            </div>
+            </div> */} 
 
             {/* RIGHT COLUMN: Flyer + Coordinators */}
-            <div className="flex flex-col items-center md:items-end space-y-6">
+{/*             <div className="flex flex-col items-center md:items-end space-y-6">
 
               {/* Coordinators Info */}
-              <div className="text-center md:text-right text-yellow-300 font-semibold max-w-[300px]">
+{/*               <div className="text-center md:text-right text-yellow-300 font-semibold max-w-[300px]">
                 <p className="mb-4 text-xl font-bold text-white">📞 Coordinators</p>
                 <ul className="space-y-2 text-yellow-200 text-lg">
                   <li><strong>Dr. Yam Giri:</strong> (405) 922-9845</li>
@@ -291,10 +291,10 @@ const Hero = () => {
                   <li><strong>Ravi Khadka:</strong> (516) 800-3809</li>
                   <li><strong>Niraj Sapkota:</strong> (516) 717-7008</li>
                 </ul>
-              </div>
+              </div> */}
 
               {/* Flyer Image */}
-              <div className="rounded-xl border-4 border-yellow-300 shadow-2xl overflow-hidden max-w-full md:max-w-[90%] transition-transform duration-300 hover:scale-105">
+{/*               <div className="rounded-xl border-4 border-yellow-300 shadow-2xl overflow-hidden max-w-full md:max-w-[90%] transition-transform duration-300 hover:scale-105">
                 <Image
                   src="/images/2025/LINSSoccer/soccerFlyer.jpg"
                   alt="LINS Soccer Cup 2025 Flyer"
@@ -303,8 +303,8 @@ const Hero = () => {
                   className="object-cover rounded-xl"
                   priority
                 />
-              </div>
-              <div className="flex justify-center mt-6">
+              </div> */}
+{/*               <div className="flex justify-center mt-6">
                 <button
                   aria-label="Contact Coordinators"
                   className="px-10 py-4 bg-yellow-400 hover:bg-yellow-300 text-black font-extrabold rounded-full shadow-xl transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-300"
@@ -313,17 +313,17 @@ const Hero = () => {
                   📞 Contact Coordinators
                 </button>
               </div>
+ */}
 
-
-            </div>
+{/*             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Animation Styles */}
         {/* Animation Styles */}
-        <style jsx>{`
+{/*         <style jsx>{`
   /* Slow spinning soccer ball */
-  .animate-spin-slow {
+  /* .animate-spin-slow {
     animation: spin 6s linear infinite;
   }
 
@@ -331,9 +331,9 @@ const Hero = () => {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
-
+ */
   /* Glowing & pulsing 2025 animation */
-  .animated-2025 {
+/*   .animated-2025 {
     animation: boomGlow 2.5s ease-in-out infinite;
     text-shadow:
       0 0 8px #ffffff,
@@ -359,11 +359,193 @@ const Hero = () => {
       opacity: 0.9;
     }
   }
-`}</style>
-
-      </section>
+`}</style> */}
+     {/*  </section> */}
 
       {/* *************LINS Soccer Cup 2025 Banner End*************** */}
+
+
+
+
+{/* *************Teej Banner Start*************** */}
+<section className="w-full py-16 px-4 bg-white">
+  <div className="max-w-5xl mx-auto bg-gradient-to-br from-red-700 via-pink-600 to-red-800 text-white rounded-2xl shadow-2xl px-6 sm:px-12 py-10 transition-all duration-300">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
+      {/* LEFT COLUMN: Content */}
+      <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-8">
+
+        {/* Title + Nepali Dancing Lady Illustration */}
+        <div className="flex flex-col items-center md:items-start gap-5">
+          <h1 className="text-center text-3xl sm:text-5xl font-extrabold leading-snug"
+    style={{
+      color: '#7CFC00',
+      textShadow: '2px 2px 4px rgba(0,0,0,0.8), -2px -2px 0 #FFD700'
+    }}>
+  हरितालिका तीज 2025 को <br /><br /> हार्दिक शुभकामना
+</h1>
+
+          <h2 className="text-4xl sm:text-6xl font-extrabold text-yellow-300 drop-shadow-lg whitespace-nowrap">
+            LINS - Teej Mahotsav
+          </h2>
+
+          {/* Dancing Lady Image instead of emoji */}
+          <div className="w-32 h-32 animate-bounce">
+            <div className="flex items-center justify-center md:justify-start gap-5">
+        </div>
+        <div className="text-8xl animate-bounce select-none" aria-hidden="true">💃</div>
+          </div>
+          <h1 className="text-5xl sm:text-6xl font-extrabold text-white glow-gold">
+          2025
+        </h1>
+        </div>
+
+        {/* Date + Time + Location */}
+        <div className="space-y-1">
+          <p className="text-xl font-semibold flex items-center justify-center md:justify-start gap-2">
+            <span role="img" aria-label="calendar">📅</span> Sunday, August 24, 2025
+          </p>
+          <p className="text-lg font-medium flex items-center justify-center md:justify-start gap-2">
+            <span role="img" aria-label="clock">🕗</span> 4 PM – 10 PM
+          </p>
+          <p className="text-lg font-medium flex items-center justify-center md:justify-start gap-2">
+            <span role="img" aria-label="location pin">📍</span> 201 Levittown Pkwy, Hicksville, NY - 11801
+          </p>
+        </div>
+
+{/* Flashy Free Entry */}
+<div className="bg-pink-100/10 border border-yellow-400 rounded-xl px-8 py-6 shadow-lg backdrop-blur-md max-w-md w-full text-center">
+  <h2 className="text-3xl font-extrabold text-yellow-300 mb-3 flex items-center justify-center gap-3">
+    <span className="icon-glow-pulse text-4xl">🎟</span> Entry Ticket
+  </h2>
+  <span
+    className="whitespace-nowrap text-4xl font-extrabold text-white px-4 py-2 rounded-lg animate-pulse shadow-[0_0_10px_rgba(0,0,0,0.7)] inline-block"
+    style={{
+      background: "linear-gradient(90deg, #ff0000, #ffcc00, #00cc00)",
+      border: "3px solid white",
+      textShadow: "2px 2px 4px rgba(0,0,0,0.8)"
+    }}
+  >
+    🎉 FREE ENTRY 🎉
+  </span>
+  <p className="text-sm text-yellow-100 mt-1">All are welcome!</p>
+</div>
+
+
+        {/* Special Program Highlights */}
+        <div className="bg-pink-100/10 border border-yellow-400 rounded-xl px-8 py-6 shadow-lg backdrop-blur-md max-w-md w-full text-center">
+          <h2 className="text-3xl font-extrabold text-yellow-300 mb-3 flex items-center justify-center gap-3">
+            <span className="icon-glow-pulse text-4xl">🌺</span> Highlights
+          </h2>
+          <p className="text-lg font-semibold">🎤 Live Teej Songs &amp; DJ</p>
+          <p className="text-lg font-semibold">💃 Group Dance Performances</p>
+          <p className="text-lg font-semibold">🍛 Delicious Nepali Food</p>
+        </div>
+      </div>
+
+      {/* RIGHT COLUMN: Full Dancing Lady Image + Coordinators */}
+      <div className="flex flex-col items-center md:items-end space-y-6">
+
+{/* Coordinators Info */}
+<div className="text-center md:text-right text-yellow-300 font-semibold max-w-[300px]">
+  <p className="mb-4 text-xl font-bold text-white">📞 Coordinators</p>
+  <ul className="space-y-2 text-lg">
+    <li>
+      <span className="text-yellow-300 font-bold">Sabitra Siwakoti:</span>{' '}
+      <a href="tel:5162426345" className="text-green-400 hover:underline">(516) 242-6345</a>
+    </li>
+    <li>
+      <span className="text-yellow-300 font-bold">Indira Simkhada:</span>{' '}
+      <a href="tel:5167245057" className="text-green-400 hover:underline">(516) 724-5057</a>
+    </li>
+    <li>
+      <span className="text-yellow-300 font-bold">Namita Paudel:</span>{' '}
+      <a href="tel:5162608529" className="text-green-400 hover:underline">(516) 260-8529</a>
+    </li>
+    <li>
+      <span className="text-yellow-300 font-bold">Gyanu Chand:</span>{' '}
+      <a href="tel:6318853429" className="text-green-400 hover:underline">(631) 885-3429</a>
+    </li>
+    <li>
+      <span className="text-yellow-300 font-bold">Ambika Phuyal:</span>{' '}
+      <a href="tel:5164507659" className="text-green-400 hover:underline">(516) 450-7659</a>
+    </li>
+    <li>
+      <span className="text-yellow-300 font-bold">Bimala Bhandari:</span>{' '}
+      <a href="tel:9173730940" className="text-green-400 hover:underline">(917) 373-0940</a>
+    </li>
+  </ul>
+
+  {/* Contact Button */}
+  <div className="flex justify-center mt-6">
+    <button
+      aria-label="Contact Coordinators"
+      className="px-10 py-4 bg-yellow-400 hover:bg-yellow-300 text-black font-extrabold rounded-full shadow-xl transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-300"
+       onClick={() => window.location.href = 'tel:+15162426345'}
+    >
+      📞 Contact Coordinators
+    </button>
+  </div>
+</div>
+
+
+        {/* Full Dancing Lady Illustration */}
+        <div className="rounded-xl border-4 border-yellow-300 shadow-2xl overflow-hidden max-w-full md:max-w-[90%] transition-transform duration-300 hover:scale-105">
+          <Image
+                          src="/images/2025/Teej/Teejflyer.jpeg"
+
+            alt="Nepali Dancing Lady - Teej 2025"
+            width={800}
+            height={500}
+            className="object-cover rounded-xl"
+            priority
+          />
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {/* Animation Styles */}
+  <style jsx>{`
+    .animate-bounce {
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    .glow-gold {
+      text-shadow:
+        0 0 8px #ffd700,
+        0 0 12px #ffcc33,
+        0 0 20px #ffaa00;
+    }
+    .icon-glow-pulse {
+      animation: pulseGlow 2s infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { text-shadow: 0 0 10px gold; }
+      50% { text-shadow: 0 0 20px orange; }
+    }
+    .flashy-text {
+      animation: flashyGlow 1.5s infinite;
+    }
+    @keyframes flashyGlow {
+      0%, 100% {
+        text-shadow: 0 0 8px #00ff00, 0 0 12px #00ff99, 0 0 20px #00ffcc;
+        transform: scale(1);
+      }
+      50% {
+        text-shadow: 0 0 15px #00ff66, 0 0 25px #00ffcc, 0 0 35px #00ffff;
+        transform: scale(1.1);
+      }
+    }
+  `}</style>
+</section>
+
+
+{/* *************Teej Banner End*************** */}
 
 
 
