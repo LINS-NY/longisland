@@ -63,6 +63,7 @@ featuring competitive matches, energetic crowds, and a vibrant atmosphere. \
 Building on the success of the inaugural tournament, the 2025 edition promises even more \
 thrilling games, talented players, and unforgettable moments on the field.",
       images: [
+        "/images/2025/LINSSoccer/soccerFlyer.jpg",
         "/images/2025/LINSSoccer/1(1).jpg",
         "/images/2025/LINSSoccer/1(2).jpg",
         "/images/2025/LINSSoccer/1(3).jpg",
