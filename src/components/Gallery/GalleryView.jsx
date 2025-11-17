@@ -1,6 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import { ArrowLeft, ArrowRight, X } from 'lucide-react';
+import Image from "next/image";
+
 
 export default function GalleryView({ imagesByEvent }) {
   const [popupImage, setPopupImage] = useState(null);
@@ -44,7 +46,7 @@ export default function GalleryView({ imagesByEvent }) {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {event.images.map((src, imgIdx) => (
-              <img
+              <Image
                 key={imgIdx}
                 src={src}
                 alt={event.event}
@@ -63,7 +65,7 @@ export default function GalleryView({ imagesByEvent }) {
           onClick={closePopup}
         >
           <div className="relative max-w-[90vw] max-h-[90vh] flex justify-center items-center">
-            <img
+            <Image
               src={popupImage}
               alt="popup"
               className="rounded-xl max-h-[90vh] max-w-[90vw] object-contain"

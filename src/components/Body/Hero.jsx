@@ -368,15 +368,15 @@ const Hero = () => {
 
 
 {/* *************Teej Banner Start*************** */}
-<section className="w-full py-16 px-4 bg-white">
+{/* <section className="w-full py-16 px-4 bg-white">
   <div className="max-w-5xl mx-auto bg-gradient-to-br from-red-700 via-pink-600 to-red-800 text-white rounded-2xl shadow-2xl px-6 sm:px-12 py-10 transition-all duration-300">
     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
       {/* LEFT COLUMN: Content */}
-      <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-8">
-
+{/*       <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-8">
+ */}
         {/* Title + Nepali Dancing Lady Illustration */}
-        <div className="flex flex-col items-center md:items-start gap-5">
+        {/* <div className="flex flex-col items-center md:items-start gap-5">
           <h1 className="text-center text-3xl sm:text-5xl font-extrabold leading-snug"
     style={{
       color: '#7CFC00',
@@ -401,7 +401,7 @@ const Hero = () => {
         
 
         {/* Date + Time + Location */}
-        <div className="">
+{/*         <div className="">
           <p className="text-xl font-semibold flex items-center justify-center md:justify-start gap-2">
             <span role="img" aria-label="calendar">📅</span> Saturday, August 23, 2025
           </p>
@@ -411,10 +411,10 @@ const Hero = () => {
           <p className="text-lg font-medium flex items-center justify-center md:justify-start gap-2">
             <span role="img" aria-label="location pin">📍</span> 201 Levittown Pkwy, Hicksville, NY - 11801
           </p>
-        </div></div></div>
+ */}        {/* </div></div></div> */} 
 
 {/* Flashy Free Entry */}
-<div className="bg-pink-100/10 border border-yellow-400 rounded-xl px-6 py-6 shadow-lg backdrop-blur-md max-w-full w-full text-center overflow-hidden">
+{/* <div className="bg-pink-100/10 border border-yellow-400 rounded-xl px-6 py-6 shadow-lg backdrop-blur-md max-w-full w-full text-center overflow-hidden">
   <h2 className="text-3xl sm:text-4xl font-extrabold text-yellow-300 mb-3 flex items-center justify-center gap-3">
     <span className="icon-glow-pulse text-3xl sm:text-4xl">🎟</span> Entry Ticket
   </h2>
@@ -430,12 +430,12 @@ const Hero = () => {
   </span>
   <p className="text-xs sm:text-sm text-yellow-100 mt-1">All are welcome!</p>
 </div>
-
+ */}
 
 
 
         {/* Special Program Highlights */}
-        <div className="bg-pink-100/10 border border-yellow-400 rounded-xl px-8 py-6 shadow-lg backdrop-blur-md max-w-md w-full text-center">
+{/*         <div className="bg-pink-100/10 border border-yellow-400 rounded-xl px-8 py-6 shadow-lg backdrop-blur-md max-w-md w-full text-center">
           <h2 className="text-3xl font-extrabold text-yellow-300 mb-3 flex items-center justify-center gap-3">
             <span className="icon-glow-pulse text-4xl">🌺</span> Highlights
           </h2>
@@ -443,13 +443,13 @@ const Hero = () => {
           <p className="text-lg font-semibold">💃 Group Dance Performances</p>
           <p className="text-lg font-semibold">🍛 Delicious Nepali Food</p>
         </div>
-      </div>
-
+ */}{/*       </div>
+ */}
       {/* RIGHT COLUMN: Full Dancing Lady Image + Coordinators */}
-      <div className="flex flex-col items-center md:items-end space-y-6">
+{/*       <div className="flex flex-col items-center md:items-end space-y-6">
 
 {/* Coordinators Info */}
-<div className="text-center md:text-right text-yellow-300 font-semibold max-w-[300px]">
+{/* <div className="text-center md:text-right text-yellow-300 font-semibold max-w-[300px]">
   <p className="mb-4 text-xl font-bold text-white">📞 Coordinators</p>
   <ul className="space-y-2 text-lg">
     <li>
@@ -479,7 +479,7 @@ const Hero = () => {
   </ul>
 
   {/* Contact Button */}
-  <div className="flex justify-center mt-6">
+  {/* <div className="flex justify-center mt-6">
     <button
       aria-label="Contact Coordinators"
       className="px-10 py-4 bg-yellow-400 hover:bg-yellow-300 text-black font-extrabold rounded-full shadow-xl transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-300"
@@ -488,11 +488,11 @@ const Hero = () => {
       📞 Contact Coordinators
     </button>
   </div>
-</div>
+</div> */}
 
 
         {/* Full Dancing Lady Illustration */}
-        <div className="rounded-xl border-4 border-yellow-300 shadow-2xl overflow-hidden max-w-full md:max-w-[90%] transition-transform duration-300 hover:scale-105">
+{/*         <div className="rounded-xl border-4 border-yellow-300 shadow-2xl overflow-hidden max-w-full md:max-w-[90%] transition-transform duration-300 hover:scale-105">
           <Image
                           src="/images/2025/Teej/teejflyer.jpeg"
 
@@ -503,13 +503,13 @@ const Hero = () => {
             priority
           />
         </div>
-
-      </div>
+ */}
+      {/* </div>
     </div>
-  </div>
+  </div> */} 
 
   {/* Animation Styles */}
-  <style jsx>{`
+{/*   <style jsx>{`
     .animate-bounce {
       animation: bounce 2s infinite;
     }
@@ -546,11 +546,35 @@ const Hero = () => {
   `}</style>
 </section>
 
-
+ */}
 {/* *************Teej Banner End*************** */}
 
-
-
+{/* Donation QR Section - Left Aligned */}
+<div className="container mx-auto w-[90%] my-6 flex flex-col sm:flex-row items-start gap-6">
+    <div className="text-red max-w-xl">
+    <h2 className="text-2xl sm:text-3xl font-bold mb-2 drop-shadow-lg">
+      Support Our Mission 💖
+    </h2>
+    <div className="bg-white p-4 rounded-xl shadow-lg">
+    <Image
+      src="/qr-donation.png" // Make sure this image is in /public
+      width={180}
+      height={180}
+      alt="Donate QR Code"
+      className="rounded-md"
+    />
+    <p className="mt-2 text-sm text-gray-700 font-medium">
+      Scan to donate:{" "}
+      <Link href="https://www.linsny.org/Donations" className="text-blue-600 underline">
+        linsny.org/Donations
+      </Link>
+    </p>
+  </div>
+    <p className="text-red/80 text-sm sm:text-base">
+      Your donation helps us build a stronger Nepalese community in Long Island. Every contribution counts — help us grow together!
+    </p>
+  </div>
+</div>
 
       {/* *************Screen Icons/Buttons**************** */}
       <section
