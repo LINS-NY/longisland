@@ -550,7 +550,7 @@ const Hero = () => {
 {/* *************Teej Banner End*************** */}
 
 {/* Donation QR Section - Left Aligned */}
-<div className="container mx-auto w-[90%] my-6 flex flex-col sm:flex-row items-start gap-6">
+<div className="container mx-auto w-[90%] my-6 flex flex-col sm:flex-row items-start">
     <div className="text-red max-w-xl">
     <h2 className="text-2xl sm:text-3xl font-bold mb-2 drop-shadow-lg">
       Support Our Mission 💖
