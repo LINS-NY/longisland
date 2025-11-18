@@ -595,7 +595,7 @@ const Hero = () => {
         className="mx-auto rounded-md"
       />
       <p className="mt-3 text-sm text-gray-700 font-medium">
-        Scan to Donate:{" "}
+        Scan Form:{" "}
         <Link
           href="https://www.linsny.org/MembershipForm"
           className="text-blue-600 underline"
