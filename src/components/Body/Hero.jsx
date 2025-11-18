@@ -549,32 +549,67 @@ const Hero = () => {
  */}
 {/* *************Teej Banner End*************** */}
 
-{/* Donation QR Section - Left Aligned */}
-<div className="container mx-auto w-[90%] my-6 flex flex-col sm:flex-row items-start gap-6">
-    <div className="text-red max-w-xl">
-    <h2 className="text-2xl text-black sm:text-3xl font-bold mb-2 drop-shadow-lg">
-      Support Our Mission 💖
-    </h2>
-    <div className="bg-white p-4 rounded-xl shadow-lg">
-    <Image
-      src="/QR-DonationPage.png" // Make sure this image is in /public
-      width={180}
-      height={180}
-      alt="Donate QR Code"
-      className="rounded-md"
-    />
-    <p className="mt-2 text-sm text-gray-700 font-medium">
-      Scan to Donate:{" "}
-      <Link href="https://www.linsny.org/Donations" className="text-blue-600 underline">
-        linsny.org/Donations
-      </Link>
-    </p>
-  </div>
-    <p className="text-black text-sm sm:text-base">
-      Your donation helps us build a stronger Nepalese community in Long Island. Every contribution counts — help us grow together!
-    </p>
+{/* Centered Side-by-Side Section */}
+<div className="w-full flex justify-center mt-10">
+  <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-10 w-[90%] max-w-5xl">
+
+    {/* Donation Section */}
+    <div className="bg-white p-6 rounded-xl shadow-lg max-w-sm text-center">
+      <h2 className="text-2xl sm:text-3xl font-bold text-black mb-3">
+        Support Our Mission 💖
+      </h2>
+
+      <Image
+        src="/QR-DonationPage.png"
+        width={180}
+        height={180}
+        alt="Donate QR Code"
+        className="mx-auto rounded-md"
+      />
+
+      <p className="mt-3 text-sm text-gray-700 font-medium">
+        Scan to Donate:{" "}
+        <Link
+          href="https://www.linsny.org/Donations"
+          className="text-blue-600 underline"
+        >
+          linsny.org/Donations
+        </Link>
+      </p>
+
+      <p className="text-black text-sm sm:text-base mt-3">
+        Your donation helps us build a stronger Nepalese community in Long Island.
+      </p>
+    </div>
+
+    {/* Membership Form Section */}
+    <div className="bg-white p-6 rounded-xl shadow-lg max-w-sm text-center">
+      <h2 className="text-2xl sm:text-3xl font-bold text-black mb-3">
+        Scan to Become a Member 📝
+      </h2>
+      <Image
+        src="/QR-MembershipPage.png"
+        width={180}
+        height={180}
+        alt="Donate QR Code"
+        className="mx-auto rounded-md"
+      />
+      <p className="mt-3 text-sm text-gray-700 font-medium">
+        Scan to Donate:{" "}
+        <Link
+          href="https://www.linsny.org/MembershipForm"
+          className="text-blue-600 underline"
+        >
+          linsny.org/MembershipForm
+        </Link>
+      </p>
+      <p className="text-black text-sm sm:text-base mt-3">
+        Join the Long Island Nepalese Society and be part of our growing family.
+      </p>
+    </div>
   </div>
 </div>
+
 
       {/* *************Screen Icons/Buttons**************** */}
       <section
@@ -616,7 +651,7 @@ const Hero = () => {
           {/* Icons Grid - Responsive 2 Rows */}
           <div className="grid grid-cols-3 gap-4 w-full">
             {[
-              { href: "/EventPage", label: "Events", icon: <FaCalendarAlt />, color: "from-red-500 to-orange-400" },
+              { href: "/Gallery", label: "Events", icon: <FaCalendarAlt />, color: "from-red-500 to-orange-400" },
               { href: "/FinancialReports", label: "Finance", icon: <FaFileInvoice />, color: "from-green-500 to-emerald-400" },
               { href: "/News", label: "News", icon: <FaNewspaper />, color: "from-yellow-400 to-amber-300" },
               { href: "/Forums", label: "Forum", icon: <FaComments />, color: "from-blue-500 to-cyan-400" },
