@@ -1,152 +1,249 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { usePapaParse } from "react-papaparse";
-import LifeTimeMember from "./LifeTimeMember";
-import GeneralMember from "./GeneralMember";
-import MembershipCount from "./MembershipCount";
-import MembershipTable from "./MembershipTable";
+import { useState } from "react";
+import Image from "next/image";
+import banner from "/public/banner.png"; // Replace with your banner image
 
-const HomePage = () => {
-  return (
-    <div>
-      {/* Render the Membership Form at the top */}
-      <MembershipFormPage />
+const MembershipPage = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+    phone: "",
+    email: "",
+    contactMethod: "",
+    membershipType: "",
+  });
 
-      {/* Render the Members List at the bottom */}
-      <Member />
-    </div>
-  );
-};
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-const MembershipFormPage = () => {
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-purple-600 to-blue-500 text-white p-6">
-      <div className="max-w-3xl text-center mb-10">
-        <h1 className="text-5xl font-bold mb-6 text-shadow-lg">
-          Become a LINS Member
-        </h1>
-        <p className="text-xl opacity-90 leading-relaxed">
-          Thank You for Your Interest in Joining Long Island Nepalese Society!
-        </p>
-        <p className="text-xl opacity-90 leading-relaxed">
-          Please fill out the form below to become a Member.
-        </p>
-      </div>
-
-      {/* Google Form Embed */}
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLScBvtALULxVns8zdsn0ng6_x1vj_nKorp1ua37U0hud8NgJAg/viewform?embedded=true"
-        width="100%"
-        height="2398"
-        frameBorder="0"
-        marginHeight="0"
-        marginWidth="0"
-        className="w-full max-w-4xl rounded-lg shadow-2xl bg-white"
-      >
-        Loading…
-      </iframe>
-    </div>
-  );
-};
-
-const Member = () => {
-  const [lifeMember, setLifeMember] = useState([]);
-  const [yearlyMember, setYearlyMember] = useState([]);
-  const [all, setAll] = useState([]);
-  const [displayMember, setDisplayMember] = useState([]);
-  const [membership, setMembership] = useState("All");
-  const [popup, setPopup] = useState(false);
-  const [selected, setSelected] = useState(membership);
-  const { readString } = usePapaParse();
-
-  useEffect(() => {
-    fetch("./AllMembers.csv")
-      .then((response) => response.text())
-      .then((csvText) => {
-        readString(csvText, {
-          worker: true,
-          complete: (results) => {
-            const lifeTimeMember = [];
-            const regularMember = [];
-            results.data.forEach((row, index) => {
-              if (row[1] === "") {
-                lifeTimeMember.push(
-                  <LifeTimeMember
-                    name={row[0]}
-                    key={`${index}_${row[0]}`}
-                    id={index + 1}
-                  />
-                );
-              } else if (row[0] === "") {
-                return;
-              } else {
-                regularMember.push(
-                  <GeneralMember
-                    key={`${index}_${row[0]}`}
-                    name={row[0]}
-                    expiration={row[1]}
-                    id={index + 1}
-                  />
-                );
-              }
-            });
-            setDisplayMember([...lifeTimeMember, ...regularMember]);
-            setLifeMember(lifeTimeMember);
-            setYearlyMember(regularMember);
-            setAll([...lifeTimeMember, ...regularMember]);
-          },
-        });
-      });
-  }, [readString]);
-
-  const handleClick = () => {
-    setPopup(!popup);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSelection = (e) => {
-    const value = e.target.innerText.trim();
-    setPopup(false);
-    setMembership(value);
-    setSelected(value);
-    if (value === "Life Time") {
-      setDisplayMember(lifeMember);
-    } else if (value === "All") {
-      setDisplayMember(all);
-    } else {
-      setDisplayMember(yearlyMember);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycby4B-jcKg19fZRP0GbzVtnKWC13L7YYtqVUOyJRZeHwaaY2kIdIV95WH0ZXVLuIjPjS/exec";
+
+    const formBody = new URLSearchParams(formData);
+
+    try {
+      await fetch(scriptURL, {
+        method: "POST",
+        body: formBody,
+        mode: "no-cors",
+      });
+
+      alert("✅ Membership form submitted successfully!");
+      setFormData({
+        firstName: "",
+        middleName: "",
+        lastName: "",
+        address: "",
+        city: "",
+        state: "",
+        zip: "",
+        phone: "",
+        email: "",
+        contactMethod: "",
+        membershipType: "",
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("❌ Network error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="bg-white flex flex-col">
-      <div className="w-96 sm:w-5/6 justify-center mx-auto">
-        <h4 className="font-bold text-center text-md lg:text-2xl bg-white mx-auto py-2">
-          Long Island Nepalese Society - New York
-        </h4>
-        <h4 className="font-bold text-center text-md lg:text-2xl bg-white mx-auto py-2">
-          Registered Membership List
-        </h4>
-
-        {/* Use the MembershipCount component */}
-        <MembershipCount
-          lifeMember={lifeMember}
-          yearlyMember={yearlyMember}
-          all={all}
-        />
-
-        {/* Use the MembershipTable component */}
-        <MembershipTable
-          displayMember={displayMember}
-          membership={membership}
-          popup={popup}
-          handleClick={handleClick}
-          handleSelection={handleSelection}
-          selected={selected}
-        />
+    <div className="min-h-screen bg-gradient-to-br from-green-700 via-teal-600 to-blue-700 text-white p-6 flex flex-col items-center">
+      {/* Banner */}
+      <div className="w-full max-w-4xl mb-6">
+        <Image src={banner} alt="LINS-NY Banner" className="rounded-lg shadow-xl w-full" />
       </div>
+
+      {/* Title */}
+      <div className="text-center mb-6">
+        <h1 className="text-4xl font-bold mb-2">LINS-NY Membership Form</h1>
+        <p className="text-lg opacity-90">Join our community by filling out this form.</p>
+      </div>
+
+      {/* Form */}
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white text-black p-8 rounded-xl shadow-2xl w-full max-w-3xl space-y-8"
+      >
+        {/* Name Fields */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">First Name *</label>
+            <input
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              required
+              onChange={handleChange}
+              className="w-full p-3 border rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">Middle Name</label>
+            <input
+              type="text"
+              name="middleName"
+              value={formData.middleName}
+              onChange={handleChange}
+              className="w-full p-3 border rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">Last Name *</label>
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              required
+              onChange={handleChange}
+              className="w-full p-3 border rounded-md"
+            />
+          </div>
+        </div>
+
+        {/* Address Fields */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">Street Address *</label>
+            <input
+              type="text"
+              name="address"
+              value={formData.address}
+              required
+              onChange={handleChange}
+              className="w-full p-3 border rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">City *</label>
+            <input
+              type="text"
+              name="city"
+              value={formData.city}
+              required
+              onChange={handleChange}
+              className="w-full p-3 border rounded-md"
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">State *</label>
+            <input
+              type="text"
+              name="state"
+              value={formData.state}
+              required
+              onChange={handleChange}
+              className="w-full p-3 border rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">Zip Code *</label>
+            <input
+              type="text"
+              name="zip"
+              value={formData.zip}
+              required
+              onChange={handleChange}
+              className="w-full p-3 border rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">Phone Number *</label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              required
+              pattern="[0-9]{10}"
+              onChange={handleChange}
+              className="w-full p-3 border rounded-md"
+            />
+          </div>
+        </div>
+
+        {/* Contact Info */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">Email Address *</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              required
+              onChange={handleChange}
+              className="w-full p-3 border rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">Preferred Contact Method *</label>
+            <select
+              name="contactMethod"
+              value={formData.contactMethod}
+              required
+              onChange={handleChange}
+              className="w-full p-3 border rounded-md"
+            >
+              <option value="">Select</option>
+              <option value="Phone">Phone</option>
+              <option value="Email">Email</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Membership Type */}
+        <div className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-6 rounded-lg shadow-lg mt-6">
+          <h2 className="text-2xl font-bold mb-4 text-center">💳 Membership Type</h2>
+          <label className="block mb-2 font-medium text-white">Select your membership *</label>
+          <select
+            name="membershipType"
+            value={formData.membershipType}
+            required
+            onChange={handleChange}
+            className="w-full p-4 text-lg border rounded-md text-black"
+          >
+            <option value="">Select</option>
+            <option value="General Member ($10)">General Member ($10)</option>
+            <option value="Lifetime Member ($100)">Lifetime Member ($100)</option>
+          </select>
+        </div>
+
+        {/* Spinner */}
+        {isSubmitting && (
+          <div className="flex justify-center items-center mt-4">
+            <div className="animate-spin rounded-full h-8 w-8 border-t-4 border-green-600"></div>
+            <span className="ml-3 text-green-700 font-medium">Submitting...</span>
+          </div>
+        )}
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="w-full bg-green-700 text-white py-3 rounded-md font-semibold hover:bg-green-800 transition"
+        >
+          Submit Membership
+        </button>
+      </form>
     </div>
   );
 };
 
-export default HomePage;
+export default MembershipPage;
