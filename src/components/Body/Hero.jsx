@@ -552,25 +552,25 @@ const Hero = () => {
 {/* Donation QR Section - Left Aligned */}
 <div className="container mx-auto w-[90%] my-6 flex flex-col sm:flex-row items-start gap-6">
     <div className="text-red max-w-xl">
-    <h2 className="text-2xl sm:text-3xl font-bold mb-2 drop-shadow-lg">
+    <h2 className="text-2xl text-black sm:text-3xl font-bold mb-2 drop-shadow-lg">
       Support Our Mission 💖
     </h2>
     <div className="bg-white p-4 rounded-xl shadow-lg">
     <Image
-      src="/qr-donation.png" // Make sure this image is in /public
+      src="/QR-DonationPage.png" // Make sure this image is in /public
       width={180}
       height={180}
       alt="Donate QR Code"
       className="rounded-md"
     />
     <p className="mt-2 text-sm text-gray-700 font-medium">
-      Scan to donate:{" "}
+      Scan to Donate:{" "}
       <Link href="https://www.linsny.org/Donations" className="text-blue-600 underline">
         linsny.org/Donations
       </Link>
     </p>
   </div>
-    <p className="text-red/80 text-sm sm:text-base">
+    <p className="text-black text-sm sm:text-base">
       Your donation helps us build a stronger Nepalese community in Long Island. Every contribution counts — help us grow together!
     </p>
   </div>
