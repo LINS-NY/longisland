@@ -23,6 +23,7 @@
     ],
     "paths": {
       "@/*": [
+        "./*",
         "./src/*"
       ]
     },
@@ -33,15 +34,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/Resource/[slug]/page.jsx",
-    "src/app/Resourcess/page.jsx",
-    "src/app/layout.tsx",
-    "src/app/page.jsx",
-    "src/app/Members/page.jsx",
-    "src/app/Calendar/page.jsx",
-    "src/app/Donations/page.jsx",
-    "src/app/About/page.jsx"
-  ],
+    "src/app/**/*.jsx",
+    "src/app/*.jsx",
+    "src/app/*.tsx",
+    "src/components/**/*.jsx"  ],
   "exclude": [
     "node_modules"
   ]
