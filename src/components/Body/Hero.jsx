@@ -10,6 +10,9 @@ import {
   FaImages,
   FaBalanceScale,
 } from 'react-icons/fa';
+import ForumThumbnails from './ForumThumbnails';
+
+
 
 const Hero = () => {
   return (
@@ -707,6 +710,11 @@ const Hero = () => {
         </Link>
       </div>
       {/*******Till Here*********/}
+
+
+      {/* Forum thumbnails: latest room & job */}
+        <ForumThumbnails />
+
 
       {/* President's & Gen. Sec Message Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto w-[90%] my-12">

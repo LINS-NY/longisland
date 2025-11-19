@@ -6,6 +6,7 @@ import { usePapaParse } from 'react-papaparse';
 import { saveAs } from 'file-saver';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import Image from 'next/image'
 
 /**
  * Back-to-top link component
@@ -301,6 +302,46 @@ function About() {
                     </a>
                 </div>
             </section>
+
+            
+                    {/*Developers */}
+                    
+                         <div> 
+                    <br /><div className="flex-grow h-px bg-gray-400 py-0.5"></div>
+                    <div className="flex justify-center font-extrabold font-serif text-5xl py-0.5">Developers</div>
+
+                    <div className="flex items-center py-4">
+                        <div className="flex-grow h-px bg-gray-400 py-0.5"></div>
+
+                    </div>
+
+                    <div className="grid grid-cols-3 px-8 place-items-center">
+                        <Image
+                            src="/BijendraBasnet.jpg"
+                            width={130}
+                            height={130}
+                            alt="BijendraBasnet"
+                        />
+                        <Image
+                            src="/DeepakAdhikari.jpg"
+                            width={87}
+                            height={95}
+                            alt="DeepakAdhikari"
+                        />
+                        <Image
+                            src="/Bikash Mainali.jpg"
+                            width={97}
+                            height={95}
+                            alt="Bikash Mainali"
+                        />
+                        <p className=" text-center sm:font-extrabold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
+                            Bijendra <br />Basnet </p>
+                        <p className=" text-center sm:font-bold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
+                            Deepak <br />Adhikari </p>
+                        <p className=" text-center sm:font-bold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
+                            Bikash <br />Mainali</p></div>
+                </div> 
+                      
         </div>
     );
 }

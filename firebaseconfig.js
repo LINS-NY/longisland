@@ -1,15 +1,15 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth"
-import { getFirestore } from 'firebase/firestore';
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyA_73QW_B_Sm9ENLk-gJsD4pTdiOB6GvJo",
-  authDomain: "login.linsny.org",
+  authDomain: "lins-ddba5.firebaseapp.com", // ✅ updated
   projectId: "lins-ddba5",
   storageBucket: "lins-ddba5.appspot.com",
   messagingSenderId: "288142248218",
@@ -19,8 +19,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth()
+const auth = getAuth(app); // ✅ updated
 const db = getFirestore(app);
 
-
-export {auth, db};
+export { auth, db };
