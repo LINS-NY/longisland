@@ -1,81 +1,95 @@
+'use client';
+
 import * as React from 'react';
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
+import { FaChevronDown } from 'react-icons/fa';
 
 const Header = () => {
-    return (
-        <header>
-            <ul className="border-gray-200 dark:bg-gray-900">
-                <div className="max-w-screen-xl flex flex-wrap xl:flex-row flex-col items-center md:justify-between mx-auto p-4">
-                    <div className="hidden sm:flex flex-row justify-between p-4">
-                        <Image className="mx-1"
-                            src="/LINS.png"
-                            width={100}
-                            height={100}
-                            alt="Lins logo"
-                        />
-                        <span className="self-center text-lg font-extrabold whitespace-nowrap  text-blue-900 dark:text-white">Long Island Nepalese Society, New York<p>लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क</p></span>
-                    </div>
-                    <div className="sm:hidden flex p-1">
-                        <Image className="mx-1"
-                            src="/LINS.png"
-                            width={70}
-                            height={70}
-                            alt="Lins logo"
-                        />
-                        <span className="self-center text-xs  font-bold whitespace-nowrap dark:text-white text-blue-900">Long Island Nepalese Society, New York<p>लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क</p></span>
-                    </div>
+  const [moreOpen, setMoreOpen] = React.useState(false);
+  const moreRef = React.useRef(null);
 
-                    <div className="md:hidden">
-                        <ul className="text-sm sm:font-bold sm:text-lg flex flex-row  mt-1 border border-gray-100 rounded-lg bg-gray-50 rtl:space-x-reverse    dark:bg-gray-800  dark:border-gray-700">
-                            <li>
-                                <Link href="/" className="block p-2 sm:p-4  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white  " aria-current="page">Home</Link>
-                            </li>
-                            <li>
-                                <Link href="/Resource" className="block p-2 sm:p-4  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white ">Resources</Link>
-                            </li>
+  React.useEffect(() => {
+    const onDocClick = (e) => {
+      if (moreRef.current && !moreRef.current.contains(e.target)) setMoreOpen(false);
+    };
+    document.addEventListener('mousedown', onDocClick);
+    return () => document.removeEventListener('mousedown', onDocClick);
+  }, []);
 
-                            <li>
-                                <Link href="/Donations" className="block p-2 sm:p-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white ">Donation</Link>
-                            </li>
-                            <li>
-                                <Link href="/MembershipForm" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Membership</Link>
-                            </li>
-                            <li>
-                                <Link href="/Calendar" className="block p-2 sm:p-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white ">Calendar</Link>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-                        <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                            <li>
-                                <Link href="/" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Home</Link>
-                            </li>
-                            <li>
-                                <Link href="/Donations" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Donation</Link>
-                            </li>
-                            <li>
-                                <Link href="/MembershipForm" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Membership</Link>
-                            </li>
-                            <li>
-                                <Link href="/Resource" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Resources</Link>
-                            </li>
-                            <li>
-                                <Link href="/Calendar" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Calendar</Link>
-                            </li>
-                        </ul>
-                    </div>
+  const navPrimary = [
+    { href: '/', label: 'Home' },
+    { href: '/Donations', label: 'Donation' },
+    { href: '/MembershipForm', label: 'Membership' },
+    { href: '/Calendar', label: 'Calendar' },
+  ];
 
-                </div>
+  const moreLinks = [
+    { href: '/About', label: 'About LINS' },
+    { href: '/Gallery', label: 'Events' },
+    { href: '/FinancialReports', label: 'Finance' },
+    { href: '/News', label: 'News' },
+    { href: '/Forums', label: 'Forum' },
+    { href: '/Bylaws', label: 'Bylaws' },
+    { href: '/Contact', label: 'Contact' },
+  ];
 
-            </ul>
+  return (
+    <header className="w-full border-b bg-white/90 backdrop-blur z-40 sticky top-0">
+      <div className="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3">
+          <Image src="/LINS.png" width={72} height={72} alt="Lins logo" className="rounded-full" />
+          <div className="hidden sm:block">
+            <div className="text-xl font-extrabold text-blue-900">Long Island Nepalese Society</div>
+            <div className="text-sm text-gray-600">लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क</div>
+          </div>
+        </Link>
 
-        </header>
-    );
+        {/* Navigation - compact inline with slightly larger text */}
+        <nav className="flex items-center gap-4">
+          {navPrimary.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-base text-gray-800 hover:text-blue-700 px-3 py-1"
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          {/* Inline More button (same row, does not expand layout) */}
+          <div className="relative" ref={moreRef}>
+            <button
+              onClick={() => setMoreOpen((v) => !v)}
+              aria-expanded={moreOpen}
+              className="inline-flex items-center gap-2 px-3 py-1 text-base bg-white border rounded text-gray-800 hover:shadow-sm"
+            >
+              More <FaChevronDown className={`${moreOpen ? 'rotate-180' : 'rotate-0'} transition-transform`} />
+            </button>
+
+            <div
+              className={`absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transform transition-all ${
+                moreOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'
+              }`}
+            >
+              <div className="py-1">
+                {moreLinks.map((m) => (
+                  <Link
+                    key={m.href}
+                    href={m.href}
+                    onClick={() => setMoreOpen(false)}
+                    className="block px-4 py-3 text-base text-gray-700 hover:bg-gray-100"
+                  >
+                    {m.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+  );
 };
+
 export default Header;
-
-
-
-
-

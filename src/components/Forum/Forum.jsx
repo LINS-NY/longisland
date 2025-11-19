@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, db } from '../../../firebaseconfig';
+import { auth, db } from '../../firebaseconfig';
 import {
   addDoc,
   collection,
