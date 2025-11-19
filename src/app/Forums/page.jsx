@@ -9,6 +9,8 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import LogOut from '@/components/Forums/LogOut';
 import Login from '@/components/Forums/Login';
 import ThreadCard from '@/components/Forums/ThreadCard';
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
 
 const sections = [
   { key: 'room', label: 'Room Rental', emoji: '🏠', description: 'Find or offer rooms, sublets, and shared housing.' },
@@ -155,7 +157,8 @@ export default function ForumsHome() {
   const loadingAll = roomLoading || jobsLoading || generalLoading;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-indigo-50 to-violet-50">
+    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-indigo-50 to-violet-50">      
+    <Header />
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <h1 className="text-2xl md:text-3xl font-serif font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-indigo-700 to-violet-700">
@@ -234,6 +237,7 @@ export default function ForumsHome() {
             </section>
           );
         })}
+        <Footer />
       </main>
     </div>
   );

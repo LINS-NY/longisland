@@ -66,7 +66,7 @@ const ContactUsButton = () => {
     };
 
     const handleCallClick = () => {
-        window.location.href = 'tel:+8567768105';
+        window.location.href = 'tel:+7189747252';
     };
 
     return (
