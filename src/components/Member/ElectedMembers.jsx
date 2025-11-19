@@ -32,7 +32,7 @@ const electedMember = [
         nepaliPostion: "उपाध्यक्ष"
     },
     {
-        name: "RAJENDRA KUMAR KARKI",
+        name: "Rajendra Kumar Karki",
         nepaliName: "राजेन्द्र कुमार कार्की",
         imageLocation: "/Members/RAJENDRAKUMARKARKI.png",
         position: "General Secretary",
@@ -152,27 +152,55 @@ const electedMember = [
     },
 ]
 
-const ElectedMembers = () => {
-    return(
-        <div className=" bg-white flex flex-col">
-            <div className="flex flex-col font-bold justify-center items-center text-md">
-                <h4>2024-2025 Elected Members</h4>
-                <h6> २०२४ - २०२५ कार्यसमिति सदस्य</h6>
-            </div>      
-            <div className="md:grid md:grid-cols-4 md:gap-4 sm:mx-auto" >                                     
-                {electedMember.map(function(object, i){
-                    return <ElectedMember 
-                        name={object["name"]} 
-                        nepaliName={object["nepaliName"]} 
-                        imageLocation={object["imageLocation"]} 
-                        position={object["position"]}
-                        nepaliPostion={object["nepaliPostion"]}
-                        key={i} />;
-                })}
-             </div> 
+const ElectedMemberCard = ({ name, nepaliName, imageLocation, position, nepaliPostion }) => (
+  <div className="bg-white/60 backdrop-blur-md border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 p-4 flex flex-col items-center text-center">
+    <div className="w-24 h-24 mb-3 rounded-full overflow-hidden border-2 border-blue-400 shadow-sm">
+      <img
+        src={imageLocation}
+        alt={name}
+        className="w-full h-full object-cover"
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=blue&color=white&size=128`;
+        }}
+      />
     </div>
-            
-    )
-}
+    <h3 className="text-lg font-bold text-gray-900">{name}</h3>
+    <p className="text-sm text-gray-600">{nepaliName}</p>
+    <div className="mt-2">
+      <p className="text-sm font-semibold text-blue-700">{position}</p>
+      <p className="text-xs text-gray-500">{nepaliPostion}</p>
+    </div>
+  </div>
+);
 
-export default ElectedMembers
+const ElectedMembers = () => {
+  return (
+    <section className="bg-gradient-to-b from-blue-50 to-white py-16">
+      <div className="max-w-6xl mx-auto px-4">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-extrabold text-blue-900">Executive Members (2024–2025)</h2>
+          <p className="text-lg text-gray-700 mt-2">२०२४ - २०२५ कार्यसमिति सदस्य</p>
+          <div className="mt-4 w-24 h-1 mx-auto bg-blue-500 rounded-full" />
+        </div>
+
+        {/* Member Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {electedMember.map((member, i) => (
+            <ElectedMemberCard
+              key={i}
+              name={member.name}
+              nepaliName={member.nepaliName}
+              imageLocation={member.imageLocation}
+              position={member.position}
+              nepaliPostion={member.nepaliPostion}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ElectedMembers;

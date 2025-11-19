@@ -1,19 +1,239 @@
 'use client';
-import * as React from 'react';
-import Image from 'next/image'
-import LifeTimeMember from './LifeTimeMember';
-import ElectedMembers from './ElectedMembers';
-import GeneralMember from './GeneralMember';
-import { useEffect, useState } from 'react';
-import { usePapaParse } from 'react-papaparse';
 
-const About = () => {
+import React, { useState, useEffect } from 'react';
+import ElectedMembers from '../Member/ElectedMembers';
+import { usePapaParse } from 'react-papaparse';
+import { saveAs } from 'file-saver';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+
+/**
+ * Back-to-top link component
+ */
+const BackToTop = () => (
+    <div className="text-center mt-8">
+        <a href="#about" className="text-blue-600 hover:underline">⬆ Back to Top</a>
+    </div>
+);
+
+/**
+ * Membership table with:
+ * - Summary counts
+ * - Search (left label)
+ * - CSV and PDF download
+ * - Row numbers
+ * - Sticky header
+ */
+function MembershipTable() {
+    const [allMembers, setAllMembers] = useState([]);
+    const [filteredMembers, setFilteredMembers] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [lifetimeCount, setLifetimeCount] = useState(0);
+    const [generalCount, setGeneralCount] = useState(0);
+    const { readString } = usePapaParse();
+
+    useEffect(() => {
+        fetch('./AllMembers.csv')
+            .then(response => response.text())
+            .then(csvText => {
+                readString(csvText, {
+                    worker: true,
+                    complete: (results) => {
+                        const lifetime = [];
+                        const general = [];
+
+                        results.data.forEach((row) => {
+                            const name = row?.[0]?.trim();
+                            const expirationRaw = row?.[1];
+                            const expiration = typeof expirationRaw === 'string' ? expirationRaw.trim() : '';
+
+                            if (!name || name === 'Member Name') return;
+
+                            let type = 'General';
+                            let status = 'Expired';
+
+                            if (!expiration || expiration === '') {
+                                type = 'Lifetime';
+                                status = 'Active';
+                            } else if (expiration === 'Never') {
+                                type = 'General';
+                                status = 'Active';
+                            } else {
+                                const expDate = new Date(expiration);
+                                const now = new Date();
+                                status = expDate > now ? 'Active' : 'Expired';
+                            }
+
+                            const memberRow = {
+                                name,
+                                expiration: expiration || '—',
+                                type,
+                                status
+                            };
+
+                            if (type === 'Lifetime') lifetime.push(memberRow);
+                            else general.push(memberRow);
+                        });
+
+                        lifetime.sort((a, b) => a.name.localeCompare(b.name));
+                        general.sort((a, b) => a.name.localeCompare(b.name));
+
+                        const combined = [...lifetime, ...general];
+                        setLifetimeCount(lifetime.length);
+                        setGeneralCount(general.length);
+                        setAllMembers(combined);
+                        setFilteredMembers(combined);
+                    },
+                });
+            });
+    }, [readString]);
+
+    useEffect(() => {
+        const filtered = allMembers.filter(m =>
+            m.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setFilteredMembers(filtered);
+    }, [searchTerm, allMembers]);
+
+    // Export filtered view to CSV (Excel compatible)
+    const exportCSV = () => {
+        const header = 'Name,Expiration,Type,Status\n';
+        const rows = filteredMembers
+            .map(m => {
+                const cleanExpiration = m.expiration === '—' || !m.expiration ? '' : m.expiration;
+                return `${m.name},${cleanExpiration},${m.type},${m.status}`;
+            })
+            .join('\n');
+        const blob = new Blob([header + rows], { type: 'text/csv;charset=utf-8;' });
+        saveAs(blob, 'members_list.csv');
+    };
+
+    // Export filtered view to PDF with table
+    const exportPDF = () => {
+        const doc = new jsPDF();
+        doc.text('Members List', 14, 16);
+        autoTable(doc, {
+            head: [['#', 'Name', 'Expiration', 'Type', 'Status']],
+            body: filteredMembers.map((m, i) => [i + 1, m.name, m.expiration, m.type, m.status]),
+            styles: { fontSize: 10 },
+            headStyles: { fillColor: [30, 58, 138] }, // blue-900
+        });
+        doc.save('members_list.pdf');
+    };
+
     return (
-        <div className="  bg-white flex">
-            <div className="max-w-screen-xl flex flex-col mx-auto p-4">
-                <div className="flex flex-col justify-center items-center ">
-                    <h1 className="font-bold text-2xl">LINS-NY</h1>
-                    <article className="indent-4 text-pretty text-justify font-serif font-medium  dark:text-gray-400">
+        <div className="bg-white rounded-xl shadow-lg p-6 overflow-x-auto">
+            {/* Membership Summary */}
+            <div className="bg-green-100 border-l-4 border-green-600 text-green-900 p-4 mb-6 rounded-lg">
+                <p className="font-semibold text-lg">📋 Membership Summary</p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-2">
+                    <div className="font-medium">Lifetime Members: <strong>{lifetimeCount}</strong></div>
+                    <div className="font-medium">General Members: <strong>{generalCount}</strong></div>
+                    <div className="font-medium">Total Members: <strong>{lifetimeCount + generalCount}</strong></div>
+                </div>
+            </div>
+
+            {/* Search + Downloads */}
+            <div className="mb-6 flex items-center justify-between flex-col sm:flex-row gap-4">
+                <div className="flex items-center space-x-4 w-full sm:w-auto">
+                    <label className="text-lg font-bold text-blue-900 whitespace-nowrap">
+                        Search Members
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="🔍 Type Name here"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-full max-w-md px-4 py-3
+                       bg-gray-800 text-white font-medium
+                       border-2 border-gray-600 rounded-lg
+                       focus:outline-none focus:ring-2 focus:ring-blue-500
+                       shadow-md placeholder-gray-300"
+                    />
+                </div>
+                <div className="flex gap-2 w-full sm:w-auto justify-end">
+                    <button
+                        onClick={exportCSV}
+                        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                    >
+                        Download Excel
+                    </button>
+                    <button
+                        onClick={exportPDF}
+                        className="px-4 py-2 bg-rose-600 text-white rounded-lg hover:bg-rose-700 transition"
+                    >
+                        Download PDF
+                    </button>
+                </div>
+            </div>
+
+            {/* Table */}
+            <div className="overflow-auto max-h-[600px]">
+                <table className="min-w-full border-collapse">
+                    <thead className="sticky top-0 bg-blue-900 text-white z-10">
+                        <tr>
+                            <th className="px-4 py-2 text-left">#</th>
+                            <th className="px-4 py-2 text-left">Name</th>
+                            <th className="px-4 py-2 text-left">Expiration</th>
+                            <th className="px-4 py-2 text-left">Type</th>
+                            <th className="px-4 py-2 text-left">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredMembers.map((m, i) => (
+                            <tr key={`${m.name}-${i}`} className="hover:bg-gray-100 border-b">
+                                <td className="px-4 py-2 font-semibold text-gray-600">{i + 1}</td>
+                                <td className="px-4 py-2 font-medium">{m.name}</td>
+                                <td className="px-4 py-2">{m.expiration}</td>
+                                <td className="px-4 py-2">{m.type}</td>
+                                <td className="px-4 py-2">
+                                    <span className={`px-2 py-1 rounded-full text-sm ${m.type === 'Lifetime'
+                                            ? 'bg-blue-100 text-blue-800'
+                                            : m.status === 'Active'
+                                                ? 'bg-green-100 text-green-800'
+                                                : 'bg-red-100 text-red-800'
+                                        }`}>
+                                        {m.type === 'Lifetime' ? 'Active' : m.status}
+                                    </span>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
+}
+
+/**
+ * Main About page
+ */
+function About() {
+    const [expanded, setExpanded] = useState(false);
+
+    return (
+        <div className="bg-gray-50 text-gray-800">
+            {/* Sticky nav */}
+            <nav className="sticky top-0 z-50 bg-white shadow-md py-4">
+                <div className="max-w-6xl mx-auto flex justify-center gap-6 text-blue-900 font-semibold text-lg">
+                    <a href="#about" className="hover:text-blue-600">About LINS-NY</a>
+                    <a href="#executives" className="hover:text-blue-600">Executive Members</a>
+                    <a href="#members" className="hover:text-blue-600">Members Directory</a>
+                </div>
+            </nav>
+
+            {/* About section */}
+            <section id="about" className="max-w-5xl mx-auto px-6 py-12">
+                <h1 className="text-3xl font-bold text-center text-blue-900 mb-6">
+                    About Long Island Nepalese Society - NY
+                </h1>
+
+                {/* Collapsible Article */}
+                <article className="relative font-serif leading-relaxed text-justify">
+                    <div
+                        className={`transition-all duration-300 ease-in-out overflow-hidden ${expanded ? 'max-h-full' : 'max-h-[12rem]'
+                            }`}
+                    >
                         <p className="p-2 md:px-5">नेपाल क्षेत्रफलमा सानोहोला तर यहाँको सामाजिक, सांस्कृतिक, भौगोलीक बिबिधता चाही फराकिलो छ।  नेपाल सगरमाथा र भगवान बुद्धको जन्मस्थलले मात्र अन्तराष्ट्रिय जगतमा चिनाएको छैन की नेपालीहरु श्रमशील, मिलनसार, बहुसांस्कृतिक र ईमान्दार नागरिक भनेर नेपाललीले अन्तर्राष्ट्रिय समुदायमा आफ्नो छुट्टै पहिचान बनाएको छ।
                         </p>
                         <p className="p-2 md:px-5">नेपाल सरकारले अमेरिकासंग  कूटनीतिक सम्बन्ध १९४७ मा नै स्थापना गरे पनि नेपालीहरुको आगमन १९९० को दशकको अन्त्यतिरबाट नेपालीहरुको आगमन ब्यापक रुपमा भएको देखिन्छ। हालका दिनहरुमा हरेक वर्ष, ठूलो संख्यामा नेपालीहरू उच्च शिक्षा, डाईभरसिटी कार्यक्रमबाट स्थाई बसोबास गर्न, व्यवसाय र अन्य अवसरहरूको
@@ -27,200 +247,62 @@ const About = () => {
                         </p>
                         <p className="p-2 md:px-5">अधिकांश नेपालीहरूले साझा आकांक्षाहरू कसरी पूरा गर्न सकिन्छ र कसरी विचारहरू आदानप्रदान गर्न सकिन्छ र प्रगतिका अवसरहरू बढाउन सकिन्छ; र अझ महत्त्वपूर्ण कुरा, कसरी एउटै पहिचान निर्माण गर्न, एक भएर अगाडि बढ्न, र एकजुट भई हामीले हाम्रो परिवार र देशबाट प्राप्त गरेको आकांक्षालाई पूरा गर्न सकिन्छ भन्ने कुरा आवश्यकतालाई महसुस भएको छ र सो को लागि यो समाजले सेतूको काम गर्दै आईरहेको छ र अब पनि यो संस्था मार्फत हामी हाम्रो विचारहरू, समस्याहरू आदानप्रदान गर्न सकौं र अरू नेपालीहरूलाई उनीहरूको समस्याबाट मद्दत गर्न सकौं। यस्तो एकता र सहयोगको पवित्र भावना
                         </p>
-                    </article>
-                </div>
-                <Member />
-
-                <div>
-                    {/*Developers */}
-                    <br /><div className="flex-grow h-px bg-gray-400 py-0.5"></div>
-                    <div className="flex justify-center font-extrabold font-serif text-5xl py-0.5">Developers</div>
-
-                    <div className="flex items-center py-4">
-                        <div className="flex-grow h-px bg-gray-400 py-0.5"></div>
-
-
                     </div>
 
-                    <div className="grid grid-cols-3 px-8 place-items-center">
-                        <Image
-                            src="/BijendraBasnet.jpg"
-                            width={130}
-                            height={130}
-                            alt="BijendraBasnet"
-                        />
-                        <Image
-                            src="/DeepakAdhikari.jpg"
-                            width={87}
-                            height={95}
-                            alt="DeepakAdhikari"
-                        />
-                        <Image
-                            src="/Bikash Mainali.jpg"
-                            width={97}
-                            height={95}
-                            alt="Bikash Mainali"
-                        />
-                        <p className=" text-center sm:font-extrabold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
-                            Bijendra <br />Basnet </p>
-                        <p className=" text-center sm:font-bold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
-                            Deepak <br />Adhikari </p>
-                        <p className=" text-center sm:font-bold leading-nonetext-blue-900 xl:text-2xl text-blue-950">
-                            Bikash <br />Mainali</p></div>
-
-                </div>
-
-            </div>
-        </div>
-    )
-}
-
-
-function Member() {
-    const [lifeMember, setLifeMember] = useState([{}]);
-    const [yearlyMember, setYearlyMember] = useState([{}]);
-    const [all, setAll] = useState([{}]);
-    const [displayMember, setDisplayMember] = useState([])
-    const [membership, setMembership] = useState("All");
-    const [popup, setPopup] = useState(false)
-    const [selected, setSelected] = useState(membership)
-    const { readString } = usePapaParse();
-
-    useEffect(() => {
-        fetch('./AllMembers.csv')
-            .then(response => response.text())
-            .then(csvText => {
-                readString(csvText, {
-                    worker: true,
-                    complete: (results) => {
-                        const lifeTimeMember = []
-                        const regularMember = []
-                        Object.entries(results["data"]).map((v, index) => {
-                            if (v[1][1] == "") {
-                                lifeTimeMember.push(<LifeTimeMember name={v[1][0]} key={`${index}_${v[1][0]}`} id={index + 1} />)
-                            } else if (v[1] == "") {
-                                return
-                            } else {
-                                regularMember.push(<GeneralMember key={`${index}_${v[1][0]}`} name={v[1][0]} expiration={v[1][1]} id={index + 1} />)
-                            }
-                        });
-                        setDisplayMember([...lifeTimeMember, ...regularMember])
-                        setLifeMember(lifeTimeMember)
-                        setYearlyMember(regularMember)
-                        setAll([...lifeTimeMember, ...regularMember])
-                    },
-                })
-            })
-    }, [readString]);
-
-    const handleClick = () => {
-        setPopup(!popup)
-    }
-    const handleSelection = (value) => {
-        setPopup(!popup)
-        setMembership(value.target.innerText.trim())
-        setSelected(value.target.innerText.trim())
-        if (value.target.innerText.trim() == "Life Time") {
-            setDisplayMember(lifeMember)
-        } else if (value.target.innerText.trim() == "All") {
-            setDisplayMember(all)
-        } else {
-            setDisplayMember(yearlyMember)
-        }
-    }
-    return (
-        <div className=" bg-white flex flex-col ">
-            <ElectedMembers />
-            <div className="w-96 sm:w-5/6 justify-center mx-auto">
-                <h4 className="font-bold text-center text-md lg:text-2xl bg-white mx-auto py-2 ">Long Island Nepalese Society - New York</h4>
-                <h4 className="font-bold text-center text-md lg:text-2xl bg-white mx-auto py-2">Registered Membership List</h4>
-                <h1 className="font-bold whitespace-pre">
-                    Life Time Members: {lifeMember.length}<br />
-                    General Members:    {yearlyMember.length}<br />
-                    <button className="bg-lime-400 hover:bg-lime-300 text-black font-medium md:font-bold md:py-2 md:px-4 border-b-4 my-1
-                                    border-blue-700 hover:border-red-500">Total Members: {all.length}</button>
-                </h1>
-                <div className=" lg:px-2 px-1 lg:py-6 shadow-lg shadow-cyan-500/50 ">
-                    <div className="overflow-hidden ">
-                        <table className="w-full text-center text-sm font-light dark:text-white border-collapse ">
-                            <thead className="shadow-lg shadow-cyan-500/50 hover:bg-cyan-600 bg-sky-500/100 rounded-3xl">
-                                <tr className="rounded-3xl">
-                                    <th scope="col" className=" font-bold md:px-6 px-1 py-1 md:py-4">Member Name</th>
-                                    <th scope="col" className="font-bold md:px-6 px-1 py-1 md:py-4">Membership Expiration Date</th>
-                                    <th scope="col" className="font-bold md:px-6 px-1 py-1 md:py-4">
-                                        <label id="listbox-label" className="block text-sm font-medium leading-6 text-gray-900">Membership Type</label>
-                                        <div className="relative mt-2">
-                                            <button type="button"
-                                                className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label"
-                                                onClick={handleClick}
-                                            >
-                                                <span className="flex items-center">
-                                                    <span className="ml-3 block truncate">{membership}</span>
-                                                </span>
-                                                <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                                                    <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                        <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </span>
-                                            </button>
-                                            {popup && (
-                                                <ul className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
-                                                    <li className="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9" onClick={e => handleSelection(e)} id="listbox-option-0" role="option">
-                                                        <div className="flex items-center">
-                                                            <span className="font-normal ml-3 block truncate">Life Time</span>
-                                                        </div>
-                                                        {selected == "Life Time" &&
-                                                            (<span className="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-1 sm:pr-4">
-                                                                <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-                                                                </svg>
-                                                            </span>)
-                                                        }
-                                                    </li>
-                                                    <li className="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9" onClick={e => handleSelection(e)} id="listbox-option-1" role="option">
-                                                        <div className="flex items-center">
-                                                            <span className="font-normal ml-3 block truncate">Yearly</span>
-                                                        </div>
-                                                        {selected == "Yearly" && (
-                                                            <span className="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4">
-                                                                <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-                                                                </svg>
-                                                            </span>
-                                                        )}
-                                                    </li>
-                                                    <li className="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9" onClick={e => handleSelection(e)} id="listbox-option-2" role="option">
-                                                        <div className="flex items-center">
-                                                            <span className="font-normal ml-3 block truncate">All</span>
-                                                        </div>
-                                                        {selected == "All" && (
-                                                            <span className="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4">
-                                                                <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-                                                                </svg>
-                                                            </span>
-                                                        )}
-                                                    </li>
-                                                </ul>
-                                            )}
-                                        </div>
-
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {displayMember}
-                            </tbody>
-                        </table>
+                    {/* Continue Reading Button */}
+                    <div className="text-center mt-4">
+                        <button
+                            onClick={() => setExpanded(!expanded)}
+                            className="inline-block px-4 py-2 bg-blue-100 text-blue-800 font-medium rounded-full shadow-sm hover:bg-blue-200 transition"
+                        >
+                            {expanded ? 'Show Less' : '…Continue Reading'}
+                        </button>
                     </div>
+                </article>
+
+                {/* Back to Top Link */}
+                <div className="text-right mt-6">
+                    <a
+                        href="#about"
+                        className="text-bold text-2xl text-blue-800 hover:text-blue-600 transition inline-flex items-center gap-1"
+                    >
+                        <span className="text-lg">↑</span> Back to Top
+                    </a>
                 </div>
-            </div>
+            </section>
+
+            {/* Executives */}
+            <section id="executives" className="bg-white py-12">                
+                <ElectedMembers />
+                {/* Back to Top Link */}
+                <div className="text-center mt-6">
+                    <a
+                        href="#about"
+                        className="text-bold text-2xl text-blue-800 hover:text-blue-600 transition inline-flex items-center gap-1"
+                    >
+                        <span className="text-lg">↑</span> Back to Top
+                    </a>
+                </div>
+            </section>
+
+            {/* Members directory */}
+            <section id="members" className="max-w-6xl mx-auto px-4 py-12">
+                <h2 className="text-2xl font-bold text-center text-blue-900 mb-6">
+                    Registered Members Directory
+                </h2>
+                <MembershipTable />
+                {/* Back to Top Link */}
+                <div className="text-center mt-6">
+                    <a
+                        href="#about"
+                        className="text-bold text-2xl text-blue-800 hover:text-blue-600 transition inline-flex items-center gap-1"
+                    >
+                        <span className="text-lg">↑</span> Back to Top
+                    </a>
+                </div>
+            </section>
         </div>
-
-
-
-    )
+    );
 }
 
-
-export default About
+export default About;
