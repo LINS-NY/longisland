@@ -25,3 +25,75 @@ body {
     text-wrap: balance;
   }
 }
+
+
+/* Make form controls keep the intended light-placeholder / dark-text appearance,
+   even when browsers apply forced colors (Edge forced dark, Windows high contrast). */
+
+/* Primary guard: prefer the explicit colors and prevent forced-color overrides */
+input,
+textarea,
+select,
+button,
+optgroup,
+option {
+  color-scheme: light;                 /* prefer light rendering */
+  forced-color-adjust: none;           /* opt out of forced color adjustments */
+}
+
+/* Ensure visible, dark typed text (some browsers need -webkit-text-fill-color) */
+input,
+textarea,
+select {
+  color: #111827;                      /* Tailwind text-slate-900 */
+  background-color: #ffffff;           /* ensure white background */
+  -webkit-text-fill-color: #111827;    /* Safari/Edge fallback */
+}
+
+/* Strong placeholder color you want */
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: #9CA3AF; /* Tailwind placeholder-gray-400 */
+  opacity: 1;     /* ensure browsers don't reduce visibility */
+}
+
+/* For browsers that apply forced colors to placeholders, force the fill too */
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #9CA3AF;
+  -webkit-text-fill-color: #9CA3AF;
+  opacity: 1;
+}
+
+/* Optional: make form-control borders consistent in forced modes */
+input,
+textarea,
+select {
+  border-color: #D1D5DB; /* Tailwind border-gray-300 */
+}
+
+/* If you use focus rings via Tailwind, keep them visible */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); /* mimic focus:ring-blue-400 */
+}
+
+/* Small high-contrast fallback for extreme modes */
+@media (forced-colors: active) {
+  input,
+  textarea,
+  select {
+    forced-color-adjust: none;
+    background-color: #ffffff;
+    color: #111827;
+    border-color: #D1D5DB;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #9CA3AF;
+  }
+}

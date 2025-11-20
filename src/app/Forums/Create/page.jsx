@@ -11,14 +11,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 /**
- * CreatePostPage — inputs visible in all browser modes (including Edge forced dark)
+ * CreatePostPage — placeholders styled light grey
  *
- * What I changed to ensure inputs are visible in dark mode:
- * - Every <input>, <select>, and <textarea> uses explicit classes: bg-white text-black placeholder-gray-500
- * - Also added inline style { WebkitTextFillColor: '#111827' } to guard against some browsers' forced dark-mode text recolor
- * - Kept focus/tailwind ring styles for accessibility
+ * Change: baseInputClass now uses placeholder-gray-400 so all placeholder/example text
+ * (e.g., "e.g., 1", "e.g., 3rd", "e.g., 790") appears in a light grey color across browsers/modes.
  *
- * Paste this file over your existing CreatePostPage (app/Forums/Create/page.jsx).
+ * Note: Tailwind placeholder utility is used: `placeholder-gray-400`.
+ * Also kept the inline WebKit text fill guard for forced dark-mode browsers.
  */
 
 export default function CreatePostPage() {
@@ -120,9 +119,9 @@ export default function CreatePostPage() {
   // Inline style to guard against forced dark-mode recolor in some browsers (Edge)
   const inputStyle = { WebkitTextFillColor: '#111827' }; // dark slate-900
 
-  // A small helper to build consistent input className (applied to every input/select/textarea)
+  // IMPORTANT: placeholder-gray-400 ensures example text is light grey
   const baseInputClass =
-    'w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white text-black placeholder-gray-500';
+    'w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white text-black placeholder-gray-200';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -195,7 +194,7 @@ export default function CreatePostPage() {
   const FieldLabel = ({ children }) => <label className="block text-sm font-medium text-gray-700 mb-1">{children}</label>;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-indigo-50 to-violet-50 py-10">
+    <div className="min-h-screen bg-gradient-to-br via-indigo-50 to-violet-50 py-10">
       <Header />
       <main className="max-w-3xl mx-auto bg-white rounded-lg shadow-md border border-gray-100 overflow-hidden">
         <div className="px-6 py-5 border-b">
@@ -264,7 +263,7 @@ export default function CreatePostPage() {
                 <div>
                   <FieldLabel>Rent Amount (USD)</FieldLabel>
                   <div className="flex gap-2 items-center">
-                    <input type="text" inputMode="numeric" value={rent} onChange={(e) => setRent(e.target.value.replace(/[^0-9.]/g, ''))} placeholder="e.g., 2500" className={baseInputClass + ' w-2/3'} style={inputStyle} />
+                    <input type="text" inputMode="numeric" value={rent} onChange={(e) => setRent(e.target.value.replace(/[^0-9.]/g, ''))} placeholder="e.g., 2500" className={`${baseInputClass} w-2/3`} style={inputStyle} />
                     <label className="inline-flex items-center gap-2 text-sm text-gray-700">
                       <input type="checkbox" checked={rentNegotiable} onChange={(e) => setRentNegotiable(e.target.checked)} className="form-checkbox" />
                       Negotiable
