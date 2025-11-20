@@ -27,12 +27,13 @@ const Header = () => {
 
   const moreLinks = [
     { href: '/About', label: 'About LINS' },
-    { href: '/Gallery', label: 'Events' },
-    { href: '/FinancialReports', label: 'Finance' },
+    { href: '/CommunityBuilding', label: 'Community Building' },
+    { href: '/FinancialReports', label: 'Financial Reports' },
+    { href: '/Gallery', label: 'Events/Gallery' },
     { href: '/News', label: 'News' },
-    { href: '/Forums', label: 'Forum' },
+    { href: '/Forums', label: 'Forum/Rent/Job' },
     { href: '/Bylaws', label: 'Bylaws' },
-    { href: '/Contact', label: 'Contact' },
+    { href: '/Contact', label: 'Contact US' },
   ];
 
   return (
@@ -41,21 +42,30 @@ const Header = () => {
       <div className="max-w-screen-xl mx-auto px-4 py-3 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6">
         {/* Left area: logo + title */}
         <div className="flex items-center gap-3 w-full md:w-auto">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0">
-              <Image src="/LINS.png" alt="LINS" fill sizes="56px" className="rounded-full object-cover" />
-            </div>
+  <Link href="/" className="flex items-center gap-3">
+    <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0">
+      <Image
+        src="/LINS.png"
+        alt="LINS"
+        fill
+        sizes="56px"
+        className="rounded-full object-cover"
+      />
+    </div>
 
-            <div className="flex flex-col leading-tight">
-              <span className="text-sm sm:text-lg font-extrabold text-blue-900">
-                Long Island Nepalese Society
-              </span>
-              <span className="text-[10px] sm:text-xs text-gray-600">
-                लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क
-              </span>
-            </div>
-          </Link>
-        </div>
+    {/* Make the text one line */}
+    <div className="flex flex-wrap items-center gap-1 leading-snug">
+      <span className="text-sm sm:text-lg font-extrabold text-blue-900 whitespace-nowrap">
+        Long Island Nepalese Society
+      </span>
+
+      <span className="text-[10px] font-bold sm:text-xs text-gray-600 whitespace-nowrap">
+        लङ्ग आईल्यान्ड नेपाली समाज, न्युयोर्क
+      </span>
+    </div>
+  </Link>
+</div>
+
 
         {/* Middle/Bottom area: primary nav - on small screens this appears below logo (stacked) */}
         <nav className="w-full">

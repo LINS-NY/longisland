@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import donors from './donors';
 import { FaTools, FaHandsHelping, FaDonate, FaPeopleCarry } from 'react-icons/fa';
 import { MdEmail, MdPhone } from 'react-icons/md'; // Import icons from react-icons
+import Link from "next/link";
 
 const CommunityBuildingClient = () => {
   const [pptFiles, setPptFiles] = useState([]);
@@ -60,21 +61,25 @@ const CommunityBuildingClient = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-            <button className="bg-yellow-400 text-black font-bold px-6 py-3 rounded-full shadow-xl hover:scale-105 transition">
-              💖 Donate Now
-            </button>
+            <Link href="/Donations">
+              <button className="bg-yellow-400 text-black font-bold px-6 py-3 rounded-full shadow-xl hover:scale-105 transition">
+                💖 Donate Now
+              </button>
+            </Link>
+            <Link href="/Donations">
             <button className="bg-white text-pink-600 font-bold px-6 py-3 rounded-full shadow-xl hover:scale-105 transition">
               🏛️ Join the Vision
             </button>
+            </Link>
           </div>
 
-          {/* Under Construction Message */}
-          <div className="flex items-center justify-center gap-3 text-red-500">
+           {/* Under Construction Message */}
+          {/*<div className="flex items-center justify-center gap-3 text-red-500">
             <FaTools className="text-5xl text-red-600 animate-bounce" />
             <h2 className="text-2xl sm:text-3xl font-extrabold drop-shadow-md">
               This Page is Under Construction!
             </h2>
-          </div>
+          </div> */}
         </div>
       </section>
 
