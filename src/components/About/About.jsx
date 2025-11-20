@@ -138,7 +138,7 @@ function MembershipTable() {
             <div className="mb-6 flex items-center justify-between flex-col sm:flex-row gap-4">
                 <div className="flex items-center space-x-4 w-full sm:w-auto">
                     <label className="text-lg font-bold text-blue-900 whitespace-nowrap">
-                        Search Members
+                        Search
                     </label>
                     <input
                         type="text"

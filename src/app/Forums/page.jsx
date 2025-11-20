@@ -14,7 +14,7 @@ import Footer from '@/components/Footer/Footer';
 
 const sections = [
   { key: 'room', label: 'Room Rental', emoji: '🏠', description: 'Find or offer rooms, sublets, and shared housing.' },
-  { key: 'jobs', label: 'Job Search', emoji: '💼', description: 'Job postings, referrals, and career opportunities.' },
+  { key: 'jobs', label: 'Job Post', emoji: '💼', description: 'Job postings, referrals, and career opportunities.' },
   { key: 'general', label: 'General Information', emoji: '📢', description: 'Announcements, events, and community updates.' },
 ];
 

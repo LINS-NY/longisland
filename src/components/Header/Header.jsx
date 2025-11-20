@@ -30,8 +30,9 @@ const Header = () => {
     { href: '/CommunityBuilding', label: 'Community Building' },
     { href: '/FinancialReports', label: 'Financial Reports' },
     { href: '/Gallery', label: 'Events/Gallery' },
-    { href: '/News', label: 'News' },
     { href: '/Forums', label: 'Forum/Rent/Job' },
+    { href: '/News', label: 'News' },
+    { href: '/resources', label: 'Resources' },
     { href: '/Bylaws', label: 'Bylaws' },
     { href: '/Contact', label: 'Contact US' },
   ];
