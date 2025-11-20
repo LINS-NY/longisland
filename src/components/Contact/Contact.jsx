@@ -243,7 +243,6 @@ export default function ContactUs() {
             <MdLocationOn size={28} color="#0f172a" />
             <CardText>
               <div className="title">Long Island Nepalese Society (LINS-NY)</div>
-              <div className="sub">Hicksville / Nassau County, NY</div>
             </CardText>
           </ContactCard>
 
