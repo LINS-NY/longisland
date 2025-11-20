@@ -7,7 +7,7 @@ const Bylaws = () => {
     // Function to handle the download of the PDF file
     const handleDownloadPdf = () => {
         try {
-            const pdfUrl = "/Bylaws/LINSNY-BYLAWS.pdf"; // Path to the PDF file in the public folder
+            const pdfUrl = "/Bylaws/LINSNY-BYLAWS_With 2nd Amendment_2024.pdf"; // Path to the PDF file in the public folder
             const link = document.createElement('a');
             link.href = pdfUrl;
             link.download = 'LINSNY-BYLAWS.pdf'; // Name of the downloaded file
@@ -44,7 +44,7 @@ const Bylaws = () => {
                 </button>
             </div>
             <iframe
-                src="/Bylaws/LINSNY-BYLAWS.pdf"
+                src="/Bylaws/LINSNY-BYLAWS_With 2nd Amendment_2024.pdf"
                 width="100%"
                 height="600px"
                 style={{ border: "none" }}
