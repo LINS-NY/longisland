@@ -28,6 +28,7 @@ const Header = () => {
   const moreLinks = [
     { href: '/About', label: 'About LINS' },
     { href: '/CommunityBuilding', label: 'Community Building' },
+    { href: '/NepaliBhasaClass', label: 'Nepali Bhasa Class' },
     { href: '/FinancialReports', label: 'Financial Reports' },
     { href: '/Gallery', label: 'Events/Gallery' },
     { href: '/Forums', label: 'Forum/Rent/Job' },
