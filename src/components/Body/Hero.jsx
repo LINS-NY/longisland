@@ -716,6 +716,53 @@ const Hero = () => {
         <ForumThumbnails />
 
 
+{/* Featured Nepali Bhasa Class card (paste where you want the single card) */}
+<div className="mx-auto max-w-6xl px-4">
+  <Link href="/NepaliBhasaClass" className="block mx-auto w-full max-w-3xl">
+    <div
+      className="relative rounded-2xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-105 cursor-pointer h-36 sm:h-40 md:h-44 bg-cover bg-center"
+      style={{
+        backgroundImage:
+          "linear-gradient(90deg, rgba(99,102,241,0.85), rgba(236,72,153,0.85)), url('/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG')",
+      }}
+      aria-label="Open Nepali Bhasa Class"
+    >
+      <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-black/10"></div>
+
+      <div className="relative z-10 flex items-center justify-between p-4 h-full text-white">
+        <div className="flex items-center gap-4 min-w-0">
+          <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white/30 shadow-md flex-shrink-0">
+            <Image
+              src="/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG"
+              width={56}
+              height={56}
+              alt="Nepali Bhasa teacher"
+              className="object-cover"
+            />
+          </div>
+
+          <div className="min-w-0">
+            <h3 className="text-lg font-extrabold truncate">Nepali Bhasa Class</h3>
+            <p className="text-sm text-gray-100/90 truncate">
+              Language classes for kids & adults — teachers, schedules, and Zoom links.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <span className="text-xs bg-white/20 px-3 py-1 rounded-full">2025</span>
+          <span className="inline-flex items-center gap-2 bg-white/90 text-purple-700 px-3 py-1 rounded-full font-semibold shadow">
+            View Class
+          </span>
+        </div>
+      </div>
+    </div>
+  </Link>
+</div>
+
+      {/* Featured Nepali Bhasa Class card end */}
+
+
       {/* President's & Gen. Sec Message Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto w-[90%] my-12">
         {/* President's Message */}
@@ -747,6 +794,8 @@ const Hero = () => {
             </div>
           </div>
         </Link>
+
+        
 
         {/* General Secretary's Message */}
         <Link href="/GeneralSecretaryMessages">

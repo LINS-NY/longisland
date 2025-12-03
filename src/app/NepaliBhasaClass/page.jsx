@@ -1,23 +1,24 @@
 'use client';
 
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Card from '@/components/ui/card';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 
-// Data file at project root: adjust if your project differs
+// Shared data (single source of truth)
 import {
   years,
   classCards,
-  teachers,
-  volunteers as volunteersFromData,
+  teachers as teachersData,
+  volunteers,
   zoomSchedules,
+  galleryByYear,
 } from '../../../data/nepaliBhasa/nepaliBhasa';
 
 export default function NepaliBhasaClassPage() {
-  // --- Coordinator state and data ---
+  // Coordinator (static)
   const [coordinatorExpanded, setCoordinatorExpanded] = useState(false);
   const coordinator = {
     name: 'Sabitra Siwakoti',
@@ -36,106 +37,49 @@ export default function NepaliBhasaClassPage() {
         : coordinator.messageLines[0])
     : '';
 
-  // --- Data fallbacks ---
-  const volunteers = Array.isArray(volunteersFromData) ? volunteersFromData : [];
-  const classes = Array.isArray(classCards) ? classCards : [];
-  const zooms = Array.isArray(zoomSchedules) ? zoomSchedules : [];
-  const teacherList = Array.isArray(teachers) ? teachers : [];
-
-  // --- UI state ---
+  // UI state
   const [selectedYear, setSelectedYear] = useState('All');
 
-  // --- Gallery: dynamic fetch from server API (Option A) ---
-  const [galleryImages, setGalleryImages] = useState([]);
-  useEffect(() => {
-    let mounted = true;
+  // Gallery grouping state: which years are expanded
+  const [expandedYears, setExpandedYears] = useState(() => ({})); // { '2025': true }
 
-    async function loadGallery(year) {
-      try {
-        if (!year || year === 'All') {
-          // derive years to fetch from `years` if available, otherwise fallback
-          const yearsToFetch = Array.isArray(years) && years.length ? years : ['2024', '2025'];
-          const all = [];
-          for (const y of yearsToFetch) {
-            try {
-              const res = await fetch(`/api/gallery?year=${encodeURIComponent(y)}`);
-              if (!res.ok) continue;
-              const json = await res.json();
-              if (Array.isArray(json.images)) all.push(...json.images);
-            } catch {
-              // ignore single-year failures
-            }
-          }
-          if (mounted) setGalleryImages(all);
-          return;
-        }
+  const toggleYear = (y) => {
+    setExpandedYears((prev) => ({ ...prev, [y]: !prev[y] }));
+  };
 
-        const res = await fetch(`/api/gallery?year=${encodeURIComponent(year)}`);
-        if (!res.ok) {
-          if (mounted) setGalleryImages([]);
-          return;
-        }
-        const json = await res.json();
-        if (mounted) setGalleryImages(Array.isArray(json.images) ? json.images : []);
-      } catch {
-        if (mounted) setGalleryImages([]);
-      }
+  // Helper: flatten or group gallery images depending on selectedYear
+  const groupedGallery = useMemo(() => {
+    const data = galleryByYear || {};
+    if (selectedYear && selectedYear !== 'All') {
+      return { [selectedYear]: data[selectedYear] || [] };
     }
+    // return all years sorted descending (newest first)
+    const yearsList = Object.keys(data).sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
+    const out = {};
+    for (const y of yearsList) out[y] = data[y] || [];
+    return out;
+  }, [selectedYear, galleryByYear]);
 
-    loadGallery(selectedYear);
-
-    return () => {
-      mounted = false;
-    };
-  }, [selectedYear]);
-
-  // --- Order classes in requested sequence and apply image overrides ---
+  // Order classes for display (static)
   const orderedFilteredCards = useMemo(() => {
-    const filteredRaw = selectedYear === 'All' ? classes : classes.filter((c) => c.year === selectedYear);
-
     const desiredTitles = [
       'Advance Class - Section A',
       'Mid-Level Class',
       'Beginning Class (Saturday)',
       'Beginning Class (Sunday)',
     ];
-
-    const findByTitle = (title) => filteredRaw.find((c) => c.title === title);
+    const findByTitle = (title) => classCards.find((c) => c.title === title);
     const ordered = desiredTitles.map(findByTitle).filter(Boolean);
-    const remaining = filteredRaw.filter((c) => !desiredTitles.includes(c.title));
-    return [...ordered, ...remaining].map((card) => {
-      const copy = { ...card };
-      if (copy.title === 'Advance Class - Section A') {
-        copy.img = '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG';
-      }
-      if (copy.title === 'Beginning Class (Sunday)') {
-        copy.img = '/images/2025/NepaliBhasaClass/Teachers/Teacher - Susmita Bhandari.JPG';
-      }
-      return copy;
-    });
-  }, [classes, selectedYear]);
-
-  // --- Zooms filtered by selected year (if zooms reference class ids) ---
-  const filteredZooms = useMemo(() => {
-    if (!Array.isArray(zooms) || !Array.isArray(classes)) return [];
-    const classIdsForYear =
-      selectedYear === 'All' ? classes.map((c) => c.id) : classes.filter((c) => c.year === selectedYear).map((c) => c.id);
-    return zooms.filter((z) => classIdsForYear.includes(z.id));
-  }, [zooms, classes, selectedYear]);
+    const remaining = classCards.filter((c) => !desiredTitles.includes(c.title));
+    return [...ordered, ...remaining];
+  }, [classCards]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-yellow-50 to-purple-50 flex flex-col">
       <Header />
 
       <main className="relative z-10 max-w-6xl mx-auto p-6 w-full flex-1">
-        <h1 className="text-3xl md:text-5xl font-extrabold text-center text-purple-700 mb-2">
-          🌸 Nepali Bhasa Class
-        </h1>
-        <p className="text-center text-pink-700 font-medium mb-8">
-          Learn Nepali with joy — classes, teachers, and Zoom links in one place.
-        </p>
-
-                {/* Coordinator card */}
+        {/* Coordinator card */}
         <section className="max-w-4xl mx-auto mb-8">
           <div className="bg-white/95 border-2 border-red-200 rounded-2xl p-4 md:p-6 shadow-md flex flex-col md:flex-row items-center gap-4">
             <div className="flex-shrink-0">
@@ -150,9 +94,9 @@ export default function NepaliBhasaClassPage() {
               </div>
             </div>
 
-            <div className="flex-1 text-center md:text-center">
+            <div className="flex-1 text-center md:text-left">
               <h3 className="text-lg md:text-xl font-bold text-red-700">Coordinator Message</h3>
-              <p className="text-base md:text-lg font-extrabold text-green-700 mt-1">{coordinator.name}</p>
+              <p className="text-base md:text-lg font-extrabold text-rose-700 mt-1">{coordinator.name}</p>
 
               <div id="coordinator-message" className="mt-4 text-gray-700 text-sm leading-relaxed">
                 {!coordinatorExpanded ? (
@@ -182,25 +126,14 @@ export default function NepaliBhasaClassPage() {
           </div>
         </section>
 
+        <h1 className="text-3xl md:text-5xl font-extrabold text-center text-purple-700 mb-2">
+          🌸 Nepali Bhasa Class
+        </h1>
+        <p className="text-center text-pink-700 font-medium mb-8">
+          Learn Nepali with joy — classes, teachers, and Zoom links in one place.
+        </p>
 
-        {/* Year filter */}
-        <div className="flex items-center justify-center gap-3 mb-8">
-          <label className="text-green-700 text-3xl font-extrabold">Select year:</label>
-          <select
-            value={selectedYear}
-            onChange={(e) => setSelectedYear(e.target.value)}
-            className="px-4 py-2 rounded-2xl border-2 border-pink-300 bg-white text-pink-700 font-semibold shadow-sm"
-          >
-            {(years || ['All']).map((y) => (
-              <option key={y} value={y}>
-                {y}
-              </option>
-            ))}
-            <option value="All">All</option>
-          </select>
-        </div>
-
-        {/* Explore Classes */}
+        {/* Explore Classes (static) */}
         <section className="mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">🎒 Explore Classes</h2>
 
@@ -209,10 +142,8 @@ export default function NepaliBhasaClassPage() {
               {orderedFilteredCards.map((cls) => (
                 <Link key={cls.id} href={`/NepaliBhasaClass/${cls.id}`} className="block">
                   <Card className="cursor-pointer group border-2 border-pink-300 bg-white/95 hover:shadow-2xl transition-all transform hover:-translate-y-1">
-                    {/* Fixed-height card content for consistent sizing */}
                     <div className="flex flex-col justify-between h-40 md:h-44 p-4">
                       <div className="flex items-center gap-4">
-                        {/* Circular image */}
                         <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0 border-4 border-yellow-300">
                           <Image
                             src={cls.img}
@@ -245,22 +176,17 @@ export default function NepaliBhasaClassPage() {
                   </Card>
                 </Link>
               ))}
-              {orderedFilteredCards.length === 0 && (
-                <Card className="text-center border-2 border-gray-200 p-6">
-                  <p className="text-gray-600">No classes found for {selectedYear}. Try another year.</p>
-                </Card>
-              )}
             </div>
           </div>
         </section>
 
-        {/* Teachers & Volunteers */}
+        {/* Teachers & Volunteers (static) */}
         <section className="mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">🙋‍♀️ Teachers & Volunteers</h2>
 
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-              {teacherList.map((t) => (
+              {teachersData.map((t) => (
                 <div key={t.name} className="flex flex-col justify-between bg-white/90 p-4 rounded-xl border-2 border-purple-200 shadow-sm">
                   <div className="flex flex-col items-center gap-3">
                     <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-purple-300 shadow-md">
@@ -274,7 +200,7 @@ export default function NepaliBhasaClassPage() {
                     </div>
                     <div className="text-center">
                       <p className="font-bold text-purple-700 leading-tight">{t.name}</p>
-                      <p className="text-xs text-gray-500">{t.role}</p>
+                      <p className="text-xs text-gray-500">{t.role || 'Teacher'}</p>
                     </div>
                   </div>
 
@@ -301,7 +227,7 @@ export default function NepaliBhasaClassPage() {
                     </div>
                     <div className="text-center">
                       <p className="font-bold text-pink-700">{v.name}</p>
-                      <p className="text-xs text-gray-500">{v.role}</p>
+                      <p className="text-xs text-gray-500">{v.role || 'Volunteer'}</p>
                     </div>
                   </div>
 
@@ -310,64 +236,318 @@ export default function NepaliBhasaClassPage() {
                   </div>
                 </div>
               ))}
-              {volunteers.length === 0 && (
-                <Card className="text-center border-2 border-gray-200 p-6">
-                  <p className="text-gray-600">No volunteers listed.</p>
-                </Card>
-              )}
             </div>
           </div>
         </section>
 
-        {/* Class schedule */}
-        {filteredZooms.length > 0 && (
-          <section className="mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-pink-700 mb-6 text-center">📚 Class Schedule</h2>
-            <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-              {filteredZooms.map((zs) => (
-                <Card key={zs.id || zs.level} className="border-2 border-yellow-300 text-center p-4">
-                  <h3 className="text-xl font-bold text-purple-700">{zs.level}</h3>
-                  <p className="text-pink-600 mt-1">📆 {zs.day} • ⏰ {zs.time}</p>
-                  <a
-                    href={zs.zoom}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-4 inline-flex items-center justify-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-xl shadow-md hover:bg-purple-700 transition text-sm"
+         {/*Enable this once Registration is open*/}     
+        {/* Registration cards (before Gallery) */}
+        {/*
+<section className="mb-10">
+  <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">📝 Registration</h2>
+
+  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+    <Card className="p-6 bg-white/95 border-2 border-pink-200 rounded-xl shadow-md">
+      <div className="flex items-start gap-4">
+        <div className="flex-shrink-0">
+          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold text-xl">
+            S
+          </div>
+        </div>
+
+        <div className="flex-1">
+          <h3 className="text-lg font-extrabold text-purple-700">Student Registration</h3>
+          <p className="text-sm text-gray-600 mt-1">
+            Register your child for Nepali Bhasa classes. Click the button to open the Google registration form in a new tab.
+          </p>
+
+          <div className="mt-4 flex items-center gap-3">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeBBOYA848kGvu72zzvw92YhiRC69cK8miHtcISb3QtLUcDNg/viewform?usp=sf_link"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-full shadow hover:bg-purple-700 transition"
+            >
+              Open Student Registration
+            </a>
+
+            <span className="text-xs text-gray-500">Opens in a new tab</span>
+          </div>
+        </div>
+      </div>
+    </Card>
+
+    <Card className="p-6 bg-white/95 border-2 border-yellow-200 rounded-xl shadow-md">
+      <div className="flex items-start gap-4">
+        <div className="flex-shrink-0">
+          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-pink-400 flex items-center justify-center text-white font-bold text-xl">
+            T
+          </div>
+        </div>
+
+        <div className="flex-1">
+          <h3 className="text-lg font-extrabold text-purple-700">Teacher / Volunteer Registration</h3>
+          <p className="text-sm text-gray-600 mt-1">
+            Interested in teaching or volunteering? Click to open the registration form for teachers and volunteers.
+          </p>
+
+          <div className="mt-4 flex items-center gap-3">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdDswehgA2pTn_hfikJLmkL-G1lF5ORDzKSInDxuVJ361WJpw/viewform?usp=sf_link"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 bg-pink-600 text-white px-4 py-2 rounded-full shadow hover:bg-pink-700 transition"
+            >
+              Open Teacher / Volunteer Form
+            </a>
+
+            <span className="text-xs text-gray-500">Opens in a new tab</span>
+          </div>
+        </div>
+      </div>
+    </Card>
+  </div>
+</section>
+*/}
+{/* Enable Till Here */}
+
+{/*Disable this once Registration is open*/}     
+{/* Registration cards (before Gallery) */}
+<section className="mb-10">
+  <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">📝 Registration</h2>
+
+  <div className="max-w-6xl mx-auto">
+    <div className="text-center mb-4">
+      <p className="text-sm text-gray-600">
+        <strong className="text-pink-700">Note:</strong> Registration is not open yet. The registration buttons are visible but disabled until we open registration.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/*
+        Toggle this flag to true when you want to enable registration.
+        Only one small change is needed later: const registrationOpen = true;
+      */}
+      <script type="text/javascript" dangerouslySetInnerHTML={{ __html: '' }} />
+      {/* keep registrationOpen as a JS const inside the component */}
+      {/* Example: const registrationOpen = false; */}
+      {/* The code below assumes registrationOpen is defined in the component scope */}
+      {/* If you prefer, replace registrationOpen with a state variable. */}
+
+      {/* Student Registration Card */}
+      <Card className="p-6 bg-white/95 border-2 border-pink-200 rounded-xl shadow-md">
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold text-xl">
+              S
+            </div>
+          </div>
+
+          <div className="flex-1">
+            <h3 className="text-lg font-extrabold text-purple-700">Student Registration</h3>
+            <p className="text-sm text-gray-600 mt-1">
+              Register your child for Nepali Bhasa classes. The form will open when registration starts.
+            </p>
+
+            <div className="mt-4 flex items-center gap-3">
+              {/* Disabled button (visible but not clickable) */}
+              <button
+                type="button"
+                disabled
+                aria-disabled="true"
+                className="inline-flex items-center gap-2 bg-gray-300 text-gray-600 px-4 py-2 rounded-full shadow cursor-not-allowed"
+                title="Registration not open yet"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-80" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z" />
+                </svg>
+                Registration coming soon
+              </button>
+
+              <span className="text-xs text-gray-500">Will open soon. Check back later.</span>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      {/* Teacher / Volunteer Registration Card */}
+      <Card className="p-6 bg-white/95 border-2 border-yellow-200 rounded-xl shadow-md">
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-pink-400 flex items-center justify-center text-white font-bold text-xl">
+              T
+            </div>
+          </div>
+
+          <div className="flex-1">
+            <h3 className="text-lg font-extrabold text-purple-700">Teacher / Volunteer Registration</h3>
+            <p className="text-sm text-gray-600 mt-1">
+              Interested in teaching or volunteering? The registration form will be available once we open registrations.
+            </p>
+
+            <div className="mt-4 flex items-center gap-3">
+              <button
+                type="button"
+                disabled
+                aria-disabled="true"
+                className="inline-flex items-center gap-2 bg-gray-300 text-gray-600 px-4 py-2 rounded-full shadow cursor-not-allowed"
+                title="Registration not open yet"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-80" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z" />
+                </svg>
+                Registration coming soon
+              </button>
+
+              <span className="text-xs text-gray-500">Will open soon. Check back later.</span>
+            </div>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </div>
+</section>
+
+
+        {/* Gallery filter (select year affects only gallery) */}
+        <section className="mb-6">
+          <div className="max-w-6xl mx-auto flex items-center justify-center gap-3">
+            <label className="text-purple-700 font-semibold">Select year (Gallery only):</label>
+            <select
+              value={selectedYear}
+              onChange={(e) => setSelectedYear(e.target.value)}
+              className="px-4 py-2 rounded-2xl border-2 border-pink-300 bg-white text-pink-700 font-semibold shadow-sm"
+            >
+              <option value="All">All</option>
+              {Object.keys(galleryByYear || {}).sort((a,b)=>b.localeCompare(a, undefined, {numeric:true})).map((y) => (
+                <option key={y} value={y}>
+                  {y}
+                </option>
+              ))}
+            </select>
+          </div>
+        </section>
+
+        {/* Gallery (grouped by year, 4-preview + show more) */}
+<section className="mb-6">
+  <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-4 text-center">🖼️ Picture Gallery</h2>
+  <p className="text-center text-gray-600 mb-6">
+    Showing {selectedYear === 'All' ? 'All years' : selectedYear}
+  </p>
+
+  <div className="max-w-6xl mx-auto space-y-6">
+    {Object.keys(groupedGallery).length === 0 && (
+      <Card className="text-center border-2 border-gray-200 p-6">
+        <p className="text-gray-600">No images available. Add images to the gallery to display them here.</p>
+      </Card>
+    )}
+
+    {(() => {
+      // sort years descending (numeric-aware)
+      const sortedYears = Object.keys(groupedGallery).sort((a, b) =>
+        b.localeCompare(a, undefined, { numeric: true, sensitivity: 'base' })
+      );
+
+      return sortedYears.map((year) => {
+        const images = groupedGallery[year] || [];
+        const isExpanded = !!expandedYears[year];
+        const preview = images.slice(0, 4);
+        const remainingCount = Math.max(0, images.length - preview.length);
+
+        return (
+          <div key={year} className="bg-white/95 border-2 border-gray-100 rounded-2xl p-4 shadow-sm">
+            <div className="flex items-center justify-between mb-3">
+              <div>
+                <h3 className="text-lg font-bold text-purple-700">{year}</h3>
+                <p className="text-sm text-gray-500">{images.length} photo{images.length !== 1 ? 's' : ''}</p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                {remainingCount > 0 && (
+                  <button
+                    onClick={() => toggleYear(year)}
+                    className="inline-flex items-center gap-2 text-sm font-semibold px-3 py-1 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-sm hover:opacity-95 transition"
+                    aria-expanded={isExpanded}
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z" />
-                    </svg>
-                    🔗 Join Zoom
-                  </a>
+                    {isExpanded ? 'Show less' : `Show ${Math.min(4, images.length)} +${remainingCount}`}
+                  </button>
+                )}
+                {remainingCount === 0 && (
+                  <span className="text-xs text-gray-500 px-3 py-1">All photos shown</span>
+                )}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+              {(isExpanded ? images : preview).map((src) => (
+                <Card key={src} className="p-0 overflow-hidden border-2 border-pink-50">
+                  <Image
+                    src={src}
+                    width={600}
+                    height={600}
+                    alt={`Gallery ${year}`}
+                    className="w-full h-36 sm:h-40 md:h-48 object-cover hover:scale-105 transition"
+                  />
                 </Card>
               ))}
             </div>
-          </section>
-        )}
 
-        {/* Gallery */}
-        <section className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">🖼️ Graduation Picture Gallery</h2>
-          <p className="text-center text-gray-600 mb-4">
-            Showing {selectedYear === 'All' ? 'All years' : selectedYear}
-          </p>
-          <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {galleryImages.map((src) => (
-              <Card key={src} className="p-0 overflow-hidden border-2 border-pink-200">
-                <Image
-                  src={src}
-                  width={600}
-                  height={600}
-                  alt="Gallery image"
-                  className="w-full h-36 sm:h-40 md:h-48 object-cover hover:scale-105 transition"
-                />
-              </Card>
-            ))}
-            {galleryImages.length === 0 && (
-              <Card className="text-center border-2 border-gray-200 p-6">
-                <p className="text-gray-600">No images for {selectedYear}. Try another year.</p>
-              </Card>
+            {!isExpanded && remainingCount > 0 && (
+              <div className="mt-3 text-right">
+                <button
+                  onClick={() => toggleYear(year)}
+                  className="text-sm text-purple-700 underline font-medium"
+                >
+                  View all {images.length} photos from {year}
+                </button>
+              </div>
             )}
+          </div>
+        );
+      });
+    })()}
+  </div>
+</section>
+
+        {/* More images / external gallery links */}
+        <section className="mt-6 mb-12">
+          <div className="max-w-6xl mx-auto">
+            <div className="bg-white/95 border-2 border-gray-200 rounded-2xl p-6 md:p-8 shadow-md text-center">
+              <h3 className="text-lg md:text-xl font-bold text-purple-700 mb-2">Want to see more photos?</h3>
+              <p className="text-sm md:text-base text-gray-700 mb-4">
+                We share additional event photos and albums on our Facebook page and in the official gallery. Visit either place to explore more memories from our classes and events.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-4">
+                <a
+                  href="https://www.facebook.com/LongIslandNepaleseSociety"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full shadow-md transition"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07C2 17.1 5.66 21.2 10.44 22v-7.03H8.08v-2.9h2.36V9.41c0-2.33 1.39-3.61 3.52-3.61 1.02 0 2.09.18 2.09.18v2.3h-1.18c-1.16 0-1.52.72-1.52 1.46v1.75h2.59l-.41 2.9h-2.18V22C18.34 21.2 22 17.1 22 12.07z" />
+                  </svg>
+                  Visit our Facebook page
+                </a>
+
+                <a
+                  href="https://www.linsny.org/Gallery"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-4 py-2 rounded-full shadow-md transition"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M21 19V5a2 2 0 0 0-2-2H5C3.9 3 3 3.9 3 5v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 11.5l2.5 3.01L13.5 12l4.5 6H6l2.5-6.5z" />
+                  </svg>
+                  View our Gallery
+                </a>
+              </div>
+
+              <p className="text-xs text-gray-500 mt-4">
+                Both links open in a new tab. If you have photos to share, please contact the coordinator.
+              </p>
+            </div>
           </div>
         </section>
       </main>
