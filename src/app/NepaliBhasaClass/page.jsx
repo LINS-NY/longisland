@@ -47,6 +47,19 @@ export default function NepaliBhasaClassPage() {
     setExpandedYears((prev) => ({ ...prev, [y]: !prev[y] }));
   };
 
+  // Helper: find teacher image by exact name from shared teachers data
+  const findTeacherImage = (name) => {
+    if (!name || !Array.isArray(teachersData)) return null;
+    const t = teachersData.find((x) => x.name && x.name.trim().toLowerCase() === name.trim().toLowerCase());
+    return t ? t.img : null;
+  };
+
+  // Safe path encoder for image src (handles spaces)
+  const safePath = (p) => (p ? encodeURI(p) : p);
+
+  // Small placeholder path (add a placeholder image at this path in public/)
+  const placeholder = '/images/placeholder-avatar.png';
+
   // Helper: flatten or group gallery images depending on selectedYear
   const groupedGallery = useMemo(() => {
     const data = galleryByYear || {};
@@ -79,7 +92,14 @@ export default function NepaliBhasaClassPage() {
       <Header />
 
       <main className="relative z-10 max-w-6xl mx-auto p-6 w-full flex-1">
-        {/* Coordinator card */}
+        <h1 className="text-3xl md:text-5xl font-extrabold text-center text-purple-700 mb-2">
+          🌸 Nepali Bhasa Class
+        </h1>
+        <p className="text-center text-pink-700 font-medium mb-8">
+          Learn Nepali with joy — classes, teachers, and Zoom links in one place.
+        </p>
+
+                {/* Coordinator card */}
         <section className="max-w-4xl mx-auto mb-8">
           <div className="bg-white/95 border-2 border-red-200 rounded-2xl p-4 md:p-6 shadow-md flex flex-col md:flex-row items-center gap-4">
             <div className="flex-shrink-0">
@@ -126,12 +146,6 @@ export default function NepaliBhasaClassPage() {
           </div>
         </section>
 
-        <h1 className="text-3xl md:text-5xl font-extrabold text-center text-purple-700 mb-2">
-          🌸 Nepali Bhasa Class
-        </h1>
-        <p className="text-center text-pink-700 font-medium mb-8">
-          Learn Nepali with joy — classes, teachers, and Zoom links in one place.
-        </p>
 
         {/* Explore Classes (static) */}
         <section className="mb-10">
@@ -139,43 +153,64 @@ export default function NepaliBhasaClassPage() {
 
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {orderedFilteredCards.map((cls) => (
-                <Link key={cls.id} href={`/NepaliBhasaClass/${cls.id}`} className="block">
-                  <Card className="cursor-pointer group border-2 border-pink-300 bg-white/95 hover:shadow-2xl transition-all transform hover:-translate-y-1">
-                    <div className="flex flex-col justify-between h-40 md:h-44 p-4">
-                      <div className="flex items-center gap-4">
-                        <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0 border-4 border-yellow-300">
-                          <Image
-                            src={cls.img}
-                            alt={cls.title}
-                            width={80}
-                            height={80}
-                            className="w-full h-full object-cover"
-                          />
+              {orderedFilteredCards.map((cls) => {
+                // two teacher avatars logic
+                const teacherNames = Array.isArray(cls.teachers) ? cls.teachers : [];
+                const img1 = teacherNames[0] ? findTeacherImage(teacherNames[0]) : null;
+                const img2 = teacherNames[1] ? findTeacherImage(teacherNames[1]) : null;
+                const firstSrc = img1 || cls.img || placeholder;
+                const secondSrc = img2 || img1 || cls.img || placeholder;
+
+                return (
+                  <Link key={cls.id} href={`/NepaliBhasaClass/${cls.id}`} className="block">
+                    <Card className="cursor-pointer group border-2 border-pink-300 bg-white/95 hover:shadow-2xl transition-all transform hover:-translate-y-1">
+                      <div className="flex flex-col justify-between h-40 md:h-44 p-4">
+                        <div className="flex items-center gap-4">
+                          <div className="relative w-20 h-20 flex-shrink-0">
+                            <div className="absolute left-0 top-0 w-12 h-12 rounded-full overflow-hidden border-4 border-yellow-300 bg-gray-100">
+                              <Image
+                                src={safePath(firstSrc)}
+                                alt={teacherNames[0] || cls.title}
+                                width={48}
+                                height={48}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+
+                            <div className="absolute left-8 top-4 w-12 h-12 rounded-full overflow-hidden border-4 border-yellow-300 bg-gray-100">
+                              <Image
+                                src={safePath(secondSrc)}
+                                alt={teacherNames[1] || teacherNames[0] || cls.title}
+                                width={80}
+                                height={80  }
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="flex-1 min-w-0">
+                            <div className="text-xs text-pink-600 mb-1">{cls.tag}</div>
+                            <h3 className="text-lg md:text-xl font-extrabold text-purple-700 leading-tight truncate">{cls.title}</h3>
+                            <p className="text-sm text-gray-600 mt-1 truncate">
+                              Teachers:{' '}
+                              <span className="font-medium text-gray-700">
+                                {teacherNames.join(', ')}
+                              </span>
+                            </p>
+                            <p className="text-sm text-gray-500 mt-1">📅 {cls.year}</p>
+                          </div>
                         </div>
 
-                        <div className="flex-1 min-w-0">
-                          <div className="text-xs text-pink-600 mb-1">{cls.tag}</div>
-                          <h3 className="text-lg md:text-xl font-extrabold text-purple-700 leading-tight truncate">{cls.title}</h3>
-                          <p className="text-sm text-gray-600 mt-1 truncate">
-                            Teachers:{' '}
-                            <span className="font-medium text-gray-700">
-                              {Array.isArray(cls.teachers) ? cls.teachers.join(', ') : cls.teacher || ''}
-                            </span>
-                          </p>
-                          <p className="text-sm text-gray-500 mt-1">📅 {cls.year}</p>
+                        <div className="px-2 pt-2 text-center">
+                          <span className="inline-block text-xs text-white bg-gradient-to-r from-pink-500 to-purple-500 px-3 py-1 rounded-full shadow-sm group-hover:scale-105 transition">
+                            Tap to see students, teacher & Zoom
+                          </span>
                         </div>
                       </div>
-
-                      <div className="px-2 pt-2 text-center">
-                        <span className="inline-block text-xs text-white bg-gradient-to-r from-pink-500 to-purple-500 px-3 py-1 rounded-full shadow-sm group-hover:scale-105 transition">
-                          Tap to see students, teacher & Zoom
-                        </span>
-                      </div>
-                    </div>
-                  </Card>
-                </Link>
-              ))}
+                    </Card>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -200,7 +235,7 @@ export default function NepaliBhasaClassPage() {
                     </div>
                     <div className="text-center">
                       <p className="font-bold text-purple-700 leading-tight">{t.name}</p>
-                      <p className="text-xs text-gray-500">{t.role || 'Teacher'}</p>
+                      <p className="text-xs text-gray-500">{t.role}</p>
                     </div>
                   </div>
 
@@ -227,7 +262,7 @@ export default function NepaliBhasaClassPage() {
                     </div>
                     <div className="text-center">
                       <p className="font-bold text-pink-700">{v.name}</p>
-                      <p className="text-xs text-gray-500">{v.role || 'Volunteer'}</p>
+                      <p className="text-xs text-gray-500">{v.role}</p>
                     </div>
                   </div>
 
@@ -242,74 +277,7 @@ export default function NepaliBhasaClassPage() {
 
          {/*Enable this once Registration is open*/}     
         {/* Registration cards (before Gallery) */}
-        {/*
-<section className="mb-10">
-  <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">📝 Registration</h2>
-
-  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-    <Card className="p-6 bg-white/95 border-2 border-pink-200 rounded-xl shadow-md">
-      <div className="flex items-start gap-4">
-        <div className="flex-shrink-0">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold text-xl">
-            S
-          </div>
-        </div>
-
-        <div className="flex-1">
-          <h3 className="text-lg font-extrabold text-purple-700">Student Registration</h3>
-          <p className="text-sm text-gray-600 mt-1">
-            Register your child for Nepali Bhasa classes. Click the button to open the Google registration form in a new tab.
-          </p>
-
-          <div className="mt-4 flex items-center gap-3">
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSeBBOYA848kGvu72zzvw92YhiRC69cK8miHtcISb3QtLUcDNg/viewform?usp=sf_link"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-full shadow hover:bg-purple-700 transition"
-            >
-              Open Student Registration
-            </a>
-
-            <span className="text-xs text-gray-500">Opens in a new tab</span>
-          </div>
-        </div>
-      </div>
-    </Card>
-
-    <Card className="p-6 bg-white/95 border-2 border-yellow-200 rounded-xl shadow-md">
-      <div className="flex items-start gap-4">
-        <div className="flex-shrink-0">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-pink-400 flex items-center justify-center text-white font-bold text-xl">
-            T
-          </div>
-        </div>
-
-        <div className="flex-1">
-          <h3 className="text-lg font-extrabold text-purple-700">Teacher / Volunteer Registration</h3>
-          <p className="text-sm text-gray-600 mt-1">
-            Interested in teaching or volunteering? Click to open the registration form for teachers and volunteers.
-          </p>
-
-          <div className="mt-4 flex items-center gap-3">
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdDswehgA2pTn_hfikJLmkL-G1lF5ORDzKSInDxuVJ361WJpw/viewform?usp=sf_link"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-pink-600 text-white px-4 py-2 rounded-full shadow hover:bg-pink-700 transition"
-            >
-              Open Teacher / Volunteer Form
-            </a>
-
-            <span className="text-xs text-gray-500">Opens in a new tab</span>
-          </div>
-        </div>
-      </div>
-    </Card>
-  </div>
-</section>
-*/}
-{/* Enable Till Here */}
+        {/* ... (kept commented out) */}
 
 {/*Disable this once Registration is open*/}     
 {/* Registration cards (before Gallery) */}
@@ -324,17 +292,6 @@ export default function NepaliBhasaClassPage() {
     </div>
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {/*
-        Toggle this flag to true when you want to enable registration.
-        Only one small change is needed later: const registrationOpen = true;
-      */}
-      <script type="text/javascript" dangerouslySetInnerHTML={{ __html: '' }} />
-      {/* keep registrationOpen as a JS const inside the component */}
-      {/* Example: const registrationOpen = false; */}
-      {/* The code below assumes registrationOpen is defined in the component scope */}
-      {/* If you prefer, replace registrationOpen with a state variable. */}
-
-      {/* Student Registration Card */}
       <Card className="p-6 bg-white/95 border-2 border-pink-200 rounded-xl shadow-md">
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0">
@@ -350,7 +307,6 @@ export default function NepaliBhasaClassPage() {
             </p>
 
             <div className="mt-4 flex items-center gap-3">
-              {/* Disabled button (visible but not clickable) */}
               <button
                 type="button"
                 disabled
@@ -370,7 +326,6 @@ export default function NepaliBhasaClassPage() {
         </div>
       </Card>
 
-      {/* Teacher / Volunteer Registration Card */}
       <Card className="p-6 bg-white/95 border-2 border-yellow-200 rounded-xl shadow-md">
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0">
@@ -407,7 +362,6 @@ export default function NepaliBhasaClassPage() {
     </div>
   </div>
 </section>
-
 
         {/* Gallery filter (select year affects only gallery) */}
         <section className="mb-6">
