@@ -86,8 +86,8 @@ export const classDetails = {
   'advance-a-9': {
     title: 'Advance Class - Section A',
     teachers: [
-      { name: 'Medani P Sangroula', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Medani Sangroula.JPG', zoom: 'https://us02web.zoom.us/j/89516727221?pwd=Uq1F4wu0oxnb48QYag5xgqfkLQoj3a.1' },
       { name: 'Sabitra Siwakoti', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG', zoom: 'https://us02web.zoom.us/j/89516727221?pwd=Uq1F4wu0oxnb48QYag5xgqfkLQoj3a.1' },
+      { name: 'Medani P Sangroula', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Medani Sangroula.JPG', zoom: 'https://us02web.zoom.us/j/89516727221?pwd=Uq1F4wu0oxnb48QYag5xgqfkLQoj3a.1' },
     ],
     students: [
       'Aarogya Sharma','Agrima Kafle','Ashwin Kafle','Ayan Sangroula','Diksha Sangraula','Ramchandra Sangraula',
