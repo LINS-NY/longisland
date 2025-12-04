@@ -7,9 +7,10 @@ import { auth } from '@/firebaseconfig';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 
-const APPS_SCRIPT_URL = '/api/submitMembership';
-const ADMIN_EMAIL = 'longislandnepalese@gmail.com';
+// LOCAL: set this to your local proxy or Apps Script URL while testing locally
+const APPS_SCRIPT_URL = '/api/submitMembership'; // e.g., http://localhost:3000/api/submitMembership
 
+const ADMIN_EMAIL = 'longislandnepalese@gmail.com';
 
 const MEMBERSHIP_OPTIONS = [
   { value: 'lifetime', label: 'Lifetime Membership (New Enrollment)', fee: 105 },
@@ -94,9 +95,7 @@ export default function MembershipForm() {
     if (user?.email) setForm((s) => ({ ...s, email: user.email }));
   }, [user?.email]);
 
-  // Single verification selection (radio)
-  const [verificationType, setVerificationType] = useState(''); // single string
-  // idNumbers: for Student ID we use keys 'student_school' and 'student_id'
+  const [verificationType, setVerificationType] = useState('');
   const [idNumbers, setIdNumbers] = useState({});
   const [files, setFiles] = useState([]);
   const [declarationAccepted, setDeclarationAccepted] = useState(false);
@@ -104,6 +103,13 @@ export default function MembershipForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+
+  // confirm fields + inline errors
+  const [confirmEmail, setConfirmEmail] = useState('');
+  const [confirmPhone, setConfirmPhone] = useState('');
+  const [confirmEmailError, setConfirmEmailError] = useState('');
+  const [confirmPhoneError, setConfirmPhoneError] = useState('');
+  const [phoneFormatError, setPhoneFormatError] = useState('');
 
   const fee = useMemo(() => {
     const opt = MEMBERSHIP_OPTIONS.find((o) => o.value === form.membershipType);
@@ -135,79 +141,134 @@ export default function MembershipForm() {
     }
   };
 
-  // Validation: single verification type
-const validate = () => {
-  const missing = [];
+  // Normalizers
+  const normalizePhone = (p) => (p || '').replace(/\D/g, ''); // digits only
+  const normalizeEmail = (e) => (e || '').trim().toLowerCase();
 
-  if (!form.firstName.trim()) missing.push('firstName');
-  if (!form.lastName.trim()) missing.push('lastName');
-  if (!form.streetAddress.trim()) missing.push('streetAddress');
-  if (!form.city.trim()) missing.push('city');
-  if (!form.state.trim()) missing.push('state');
-  if (!/^\d{5}$/.test(form.zip)) missing.push('zip');
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) missing.push('email');
-  if (!form.contactMethod) missing.push('contactMethod');
-  if (!form.membershipType) missing.push('membershipType');
+  // Confirm handlers (real-time)
+  const handleConfirmEmailChange = (value) => {
+    setConfirmEmail(value);
+    if (form.email && normalizeEmail(value) !== normalizeEmail(form.email)) {
+      setConfirmEmailError('Email does not match. Please re-enter the exact email.');
+    } else {
+      setConfirmEmailError('');
+    }
+  };
 
-  // Single verification required (radio)
-  if (!verificationType) missing.push('verificationType');
+  const handleConfirmPhoneChange = (value) => {
+    setConfirmPhone(value);
+    if (form.phone && normalizePhone(value) !== normalizePhone(form.phone)) {
+      setConfirmPhoneError('Phone number does not match. Please re-enter the exact phone number.');
+    } else {
+      setConfirmPhoneError('');
+    }
+  };
 
-  // If Student ID selected, require school and id
-  if (verificationType === 'Student ID') {
-    if (!idNumbers['student_school'] || !String(idNumbers['student_school']).trim()) missing.push('student_school');
-    if (!idNumbers['student_id'] || !String(idNumbers['student_id']).trim()) missing.push('student_id');
-  } else if (verificationType) {
-    // For other types require a single id value
-    if (!idNumbers[verificationType] || !String(idNumbers[verificationType]).trim()) missing.push(`idNumber:${verificationType}`);
-  }
+  // Primary email change
+  const handleEmailChange = (value) => {
+    setForm((s) => ({ ...s, email: value }));
+    if (confirmEmail && normalizeEmail(confirmEmail) !== normalizeEmail(value)) {
+      setConfirmEmailError('Email does not match. Please re-enter the exact email.');
+    } else {
+      setConfirmEmailError('');
+    }
+  };
 
-  if (!declarationAccepted) missing.push('declarationAccepted');
-  if (!paymentNoteAck) missing.push('paymentNoteAck');
+  // Phone input: digits-only, max 10, validate format
+  const handlePhoneChange = (value) => {
+    const digitsOnly = value.replace(/\D/g, '').slice(0, 10);
+    setForm((s) => ({ ...s, phone: digitsOnly }));
 
-  if (form.membershipType === 'honorary' && !isAdmin) missing.push('honoraryNotAllowed');
+    if (digitsOnly.length === 0) {
+      setPhoneFormatError('');
+    } else if (!/^\d{10}$/.test(digitsOnly)) {
+      setPhoneFormatError('Enter valid phone number no dashes or space. Exactly 10 digits required.');
+    } else {
+      setPhoneFormatError('');
+    }
 
-  if (files.length > MAX_FILES) missing.push('tooManyFiles');
-  let totalBytes = 0;
-  for (const f of files) {
-    if (!/^image\/|^application\/pdf/.test(f.type)) missing.push('invalidFileType');
-    if (f.size > MAX_FILE_SIZE_BYTES) missing.push('fileTooLarge');
-    totalBytes += f.size;
-  }
-  if (totalBytes > MAX_TOTAL_ATTACHMENTS_BYTES) missing.push('totalTooLarge');
+    if (confirmPhone && normalizePhone(confirmPhone) !== digitsOnly) {
+      setConfirmPhoneError('Phone number does not match. Please re-enter the exact phone number.');
+    } else {
+      setConfirmPhoneError('');
+    }
+  };
 
-  // DOB checks and Junior rule
-  const age = computeAgeYears(form.dobDay, form.dobMonth, form.dobYear);
-  if (!form.dobDay || !form.dobMonth || !form.dobYear) missing.push('dob');
-  if (form.membershipType === 'junior') {
-    if (age === null) missing.push('dobInvalid');
-    else if (!(age < 18)) missing.push('juniorAge');
-  }
+  // Validation
+  const validate = () => {
+    const missing = [];
 
-  // Build user-friendly messages (optional)
-  const messages = [];
-  if (missing.includes('dob')) messages.push('Please enter Day, Month and Year for Date of Birth.');
-  if (missing.includes('dobInvalid')) messages.push('Date of Birth looks invalid.');
-  if (missing.includes('juniorAge')) messages.push('Junior membership requires the applicant to be under 18 years old.');
-  if (missing.includes('verificationType')) messages.push('Select one verification document.');
-  if (missing.includes('student_school')) messages.push('Enter College/School name for Student ID.');
-  if (missing.includes('student_id')) messages.push('Enter College/School ID number.');
-  if (missing.includes('declarationAccepted')) messages.push('You must accept the declaration.');
-  if (missing.includes('paymentNoteAck')) messages.push('You must acknowledge the payment note.');
-  if (missing.includes('invalidFileType')) messages.push('Only images and PDFs are allowed for uploads.');
-  if (missing.includes('fileTooLarge')) messages.push('One or more files exceed the 5 MB limit.');
-  if (missing.includes('tooManyFiles')) messages.push('Maximum 2 files allowed.');
-  if (missing.includes('totalTooLarge')) messages.push('Total attachments exceed 25 MB.');
-  if (missing.includes('zip')) messages.push('ZIP must be 5 digits.');
-  if (missing.includes('email')) messages.push('Enter a valid email address.');
+    if (!form.firstName.trim()) missing.push('firstName');
+    if (!form.lastName.trim()) missing.push('lastName');
+    if (!form.streetAddress.trim()) missing.push('streetAddress');
+    if (!form.city.trim()) missing.push('city');
+    if (!form.state.trim()) missing.push('state');
+    if (!/^\d{5}$/.test(form.zip)) missing.push('zip');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) missing.push('email');
+    if (!form.contactMethod) missing.push('contactMethod');
+    if (!form.membershipType) missing.push('membershipType');
 
-  return { isValid: missing.length === 0, missing, messages, age };
-};
+    // phone format: exactly 10 digits
+    if (!/^\d{10}$/.test(normalizePhone(form.phone))) missing.push('phoneFormat');
 
+    // confirm matches
+    if (normalizeEmail(confirmEmail) !== normalizeEmail(form.email)) missing.push('confirmEmailMismatch');
+    if (normalizePhone(confirmPhone) !== normalizePhone(form.phone)) missing.push('confirmPhoneMismatch');
 
-const validationInfo = useMemo(() => validate(), [form, verificationType, idNumbers, files, declarationAccepted, paymentNoteAck, isAdmin]);
-const isFormValid = validationInfo.isValid;
+    if (!verificationType) missing.push('verificationType');
 
+    if (verificationType === 'Student ID') {
+      if (!idNumbers['student_school'] || !String(idNumbers['student_school']).trim()) missing.push('student_school');
+      if (!idNumbers['student_id'] || !String(idNumbers['student_id']).trim()) missing.push('student_id');
+    } else if (verificationType) {
+      if (!idNumbers[verificationType] || !String(idNumbers[verificationType]).trim()) missing.push(`idNumber:${verificationType}`);
+    }
 
+    if (!declarationAccepted) missing.push('declarationAccepted');
+    if (!paymentNoteAck) missing.push('paymentNoteAck');
+
+    if (form.membershipType === 'honorary' && !isAdmin) missing.push('honoraryNotAllowed');
+
+    if (files.length > MAX_FILES) missing.push('tooManyFiles');
+    let totalBytes = 0;
+    for (const f of files) {
+      if (!/^image\/|^application\/pdf/.test(f.type)) missing.push('invalidFileType');
+      if (f.size > MAX_FILE_SIZE_BYTES) missing.push('fileTooLarge');
+      totalBytes += f.size;
+    }
+    if (totalBytes > MAX_TOTAL_ATTACHMENTS_BYTES) missing.push('totalTooLarge');
+
+    const age = computeAgeYears(form.dobDay, form.dobMonth, form.dobYear);
+    if (!form.dobDay || !form.dobMonth || !form.dobYear) missing.push('dob');
+    if (form.membershipType === 'junior') {
+      if (age === null) missing.push('dobInvalid');
+      else if (!(age < 18)) missing.push('juniorAge');
+    }
+
+    const messages = [];
+    if (missing.includes('dob')) messages.push('Please enter Day, Month and Year for Date of Birth.');
+    if (missing.includes('dobInvalid')) messages.push('Date of Birth looks invalid.');
+    if (missing.includes('juniorAge')) messages.push('Junior membership requires the applicant to be under 18 years old.');
+    if (missing.includes('verificationType')) messages.push('Select one verification document.');
+    if (missing.includes('student_school')) messages.push('Enter College/School name for Student ID.');
+    if (missing.includes('student_id')) messages.push('Enter College/School ID number.');
+    if (missing.includes('declarationAccepted')) messages.push('You must accept the declaration.');
+    if (missing.includes('paymentNoteAck')) messages.push('You must acknowledge the payment note.');
+    if (missing.includes('invalidFileType')) messages.push('Only images and PDFs are allowed for uploads.');
+    if (missing.includes('fileTooLarge')) messages.push('One or more files exceed the 5 MB limit.');
+    if (missing.includes('tooManyFiles')) messages.push('Maximum 2 files allowed.');
+    if (missing.includes('totalTooLarge')) messages.push('Total attachments exceed 25 MB.');
+    if (missing.includes('zip')) messages.push('ZIP must be 5 digits.');
+    if (missing.includes('email')) messages.push('Enter a valid email address.');
+    if (missing.includes('confirmEmailMismatch')) messages.push('Confirm Email does not match the Email.');
+    if (missing.includes('confirmPhoneMismatch')) messages.push('Confirm Phone does not match the Phone.');
+    if (missing.includes('phoneFormat')) messages.push('Enter valid phone number no dashes or space. Exactly 10 digits required.');
+
+    return { isValid: missing.length === 0, missing, messages, age };
+  };
+
+  const validationInfo = useMemo(() => validate(), [form, verificationType, idNumbers, files, declarationAccepted, paymentNoteAck, isAdmin, confirmEmail, confirmPhone]);
+  const isFormValid = validationInfo.isValid;
 
   const clearFormState = () => {
     setForm({
@@ -232,6 +293,11 @@ const isFormValid = validationInfo.isValid;
     setFiles([]);
     setDeclarationAccepted(false);
     setPaymentNoteAck(false);
+    setConfirmEmail('');
+    setConfirmPhone('');
+    setConfirmEmailError('');
+    setConfirmPhoneError('');
+    setPhoneFormatError('');
   };
 
   const handleSubmit = async (e) => {
@@ -242,6 +308,8 @@ const isFormValid = validationInfo.isValid;
     if (!checks.isValid) {
       if (checks.missing.includes('juniorAge')) {
         setSubmitError('Junior membership requires the applicant to be under 18 years old.');
+      } else if (checks.missing.includes('confirmEmailMismatch') || checks.missing.includes('confirmPhoneMismatch') || checks.missing.includes('phoneFormat')) {
+        setSubmitError('Please correct the confirmation fields or phone format errors.');
       } else {
         setSubmitError('Please complete required fields and fix file/verification issues.');
       }
@@ -258,9 +326,6 @@ const isFormValid = validationInfo.isValid;
         attachments.push({ name, mimeType, data: base64 });
       }
 
-      console.log('Submitting', attachments.length, 'attachment(s)');
-
-      // Build verificationIdNumbers object in a compact form
       const verificationIdNumbers = {};
       if (verificationType === 'Student ID') {
         verificationIdNumbers['Student ID_school'] = idNumbers['student_school'] || '';
@@ -296,20 +361,34 @@ const isFormValid = validationInfo.isValid;
         attachments
       };
 
-      const res = await fetch(APPS_SCRIPT_URL, {
+      // send payload to Apps Script and handle response (local-friendly)
+      const submitRes = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
 
-      const json = await res.json().catch(() => null);
-      if (!res.ok) {
-        console.error('Apps Script error', json);
-        throw new Error(json?.message || 'Submission failed on server');
+      // read raw text first for robust diagnostics
+      const rawText = await submitRes.text();
+      let parsedJson = null;
+      try {
+        parsedJson = JSON.parse(rawText);
+      } catch (e) {
+        // not JSON — keep rawText for diagnostics
       }
 
+      console.log('Submit response status:', submitRes.status);
+      console.log('Submit response body preview:', (rawText || '').slice(0, 1000));
+
+      if (!submitRes.ok) {
+        const serverMessage = parsedJson?.message || rawText || `Server returned ${submitRes.status}`;
+        console.error('Apps Script error — status:', submitRes.status, 'body:', parsedJson || rawText);
+        throw new Error(serverMessage);
+      }
+
+      // success
       clearFormState();
-      setSuccessMessage(`Submitted successfully. Invoice: ${json?.invoice || 'N/A'}. Check your email for receipt.`);
+      setSuccessMessage(`Submitted successfully. Invoice: ${parsedJson?.invoice || 'N/A'}. Check your email for receipt.`);
       setTimeout(() => setSuccessMessage(''), 8000);
     } catch (err) {
       console.error(err);
@@ -319,17 +398,14 @@ const isFormValid = validationInfo.isValid;
     }
   };
 
-  const days = Array.from({ length: 31 }, (_, i) => String(i + 1));
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-      {/* Banner */}
       <div className="rounded-lg overflow-hidden shadow-md">
         <Image src={banner} alt="LINS-NY Banner" className="w-full h-44 md:h-56 lg:h-72 object-cover" priority />
       </div>
 
-      {/* Admin row */}
       <div className="mt-3">
         <div className="bg-white rounded-md p-3 shadow-sm flex items-center justify-between gap-4">
           <div className="flex-1 min-w-0">
@@ -361,9 +437,7 @@ const isFormValid = validationInfo.isValid;
         </div>
       </div>
 
-      {/* Form */}
       <form onSubmit={handleSubmit} className="mt-6 bg-white rounded-xl shadow-lg p-6 md:p-8 space-y-6 text-black">
-        {/* Membership Type */}
         <div className="rounded-md p-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white">
           <div className="flex items-center justify-between">
             <div>
@@ -396,7 +470,7 @@ const isFormValid = validationInfo.isValid;
           </div>
         </div>
 
-        {/* Personal & Address */}
+        {/* Name row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label className="block mb-1 font-medium">First Name *</label>
@@ -412,7 +486,23 @@ const isFormValid = validationInfo.isValid;
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* DOB right after full name */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label className="block mb-1 font-medium">Date of Birth *</label>
+            <div className="flex gap-2">
+              <select value={form.dobDay} onChange={(e) => setForm({ ...form, dobDay: e.target.value })} className="p-2 border rounded w-1/3">
+                <option value="">DD</option>
+                {Array.from({ length: 31 }, (_, i) => i + 1).map((d) => <option key={d} value={String(d)}>{d}</option>)}
+              </select>
+              <select value={form.dobMonth} onChange={(e) => setForm({ ...form, dobMonth: e.target.value })} className="p-2 border rounded w-1/3">
+                <option value="">MM</option>
+                {months.map((m, idx) => <option key={m} value={String(idx + 1)}>{m}</option>)}
+              </select>
+              <input value={form.dobYear} onChange={(e) => setForm({ ...form, dobYear: e.target.value.replace(/[^\d]/g, '').slice(0,4) })} placeholder="YYYY" className="p-2 border rounded w-1/3" />
+            </div>
+          </div>
+
           <div>
             <label className="block mb-1 font-medium">Street Address *</label>
             <input value={form.streetAddress} onChange={(e) => setForm({ ...form, streetAddress: e.target.value })} className="w-full p-2 border rounded" />
@@ -423,6 +513,7 @@ const isFormValid = validationInfo.isValid;
           </div>
         </div>
 
+        {/* Remaining fields */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label className="block mb-1 font-medium">City *</label>
@@ -441,11 +532,31 @@ const isFormValid = validationInfo.isValid;
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block mb-1 font-medium">Phone *</label>
-            <input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="w-full p-2 border rounded" />
+            <input
+              value={form.phone}
+              onChange={(e) => handlePhoneChange(e.target.value)}
+              className="w-full p-2 border rounded"
+              placeholder="Enter 10 digits, no dashes or spaces"
+              inputMode="numeric"
+            />
+            {phoneFormatError && <div className="text-sm text-red-600 mt-1">{phoneFormatError}</div>}
           </div>
           <div>
+            <label className="block mb-1 font-medium">Confirm Phone *</label>
+            <input value={confirmPhone} onChange={(e) => handleConfirmPhoneChange(e.target.value)} className="w-full p-2 border rounded" placeholder="Re-enter phone" inputMode="numeric" />
+            {confirmPhoneError && <div className="text-sm text-red-600 mt-1">{confirmPhoneError}</div>}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
             <label className="block mb-1 font-medium">Email *</label>
-            <input value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} type="email" className="w-full p-2 border rounded" />
+            <input value={form.email} onChange={(e) => handleEmailChange(e.target.value)} type="email" className="w-full p-2 border rounded" />
+          </div>
+          <div>
+            <label className="block mb-1 font-medium">Confirm Email *</label>
+            <input value={confirmEmail} onChange={(e) => handleConfirmEmailChange(e.target.value)} type="email" className="w-full p-2 border rounded" />
+            {confirmEmailError && <div className="text-sm text-red-600 mt-1">{confirmEmailError}</div>}
           </div>
         </div>
 
@@ -459,25 +570,10 @@ const isFormValid = validationInfo.isValid;
             </select>
           </div>
 
-          <div>
-            <label className="block mb-1 font-medium">Date of Birth *</label>
-            <div className="flex gap-2">
-              <select value={form.dobDay} onChange={(e) => setForm({ ...form, dobDay: e.target.value })} className="p-2 border rounded w-1/3">
-                <option value="">DD</option>
-                {Array.from({ length: 31 }, (_, i) => i + 1).map((d) => <option key={d} value={String(d)}>{d}</option>)}
-              </select>
-              <select value={form.dobMonth} onChange={(e) => setForm({ ...form, dobMonth: e.target.value })} className="p-2 border rounded w-1/3">
-                <option value="">MM</option>
-                {months.map((m, idx) => <option key={m} value={String(idx + 1)}>{m}</option>)}
-              </select>
-              <input value={form.dobYear} onChange={(e) => setForm({ ...form, dobYear: e.target.value.replace(/[^\d]/g, '').slice(0,4) })} placeholder="YYYY" className="p-2 border rounded w-1/3" />
-            </div>
-          </div>
-
+          <div />
           <div />
         </div>
 
-        {/* Verification (radio) */}
         <div>
           <label className="block mb-2 font-medium">Mandatory Documentation (select one) *</label>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -491,10 +587,8 @@ const isFormValid = validationInfo.isValid;
                     checked={verificationType === choice}
                     onChange={() => {
                       setVerificationType(choice);
-                      // clear idNumbers for other types
                       setIdNumbers((prev) => {
                         const copy = { ...prev };
-                        // remove student keys if switching away
                         if (choice !== 'Student ID') {
                           delete copy['student_school'];
                           delete copy['student_id'];
@@ -506,7 +600,6 @@ const isFormValid = validationInfo.isValid;
                   <span>{choice}</span>
                 </label>
 
-                {/* conditional inputs */}
                 {verificationType === choice && choice !== 'Student ID' && (
                   <input
                     type="text"
@@ -549,7 +642,6 @@ const isFormValid = validationInfo.isValid;
           </div>
         </div>
 
-        {/* Declaration */}
         <div className="bg-gray-50 p-4 rounded">
           <div className="text-sm font-semibold mb-2">Declaration for Eligibility and Participation in the Electoral Process</div>
           <div className="text-xs mb-3">
@@ -573,13 +665,12 @@ const isFormValid = validationInfo.isValid;
           </div>
         </div>
 
-        {/* Validation messages */}
         {submitError && <div className="text-sm text-red-600">{submitError}</div>}
-{!submitError && validationInfo?.messages?.length > 0 && (
-  <div className="text-sm text-yellow-700 space-y-1">
-    {validationInfo.messages.map((m, i) => <div key={i}>• {m}</div>)}
-  </div>
-)}
+        {!submitError && validationInfo?.messages?.length > 0 && (
+          <div className="text-sm text-yellow-700 space-y-1">
+            {validationInfo.messages.map((m, i) => <div key={i}>• {m}</div>)}
+          </div>
+        )}
 
         {successMessage && <div className="text-sm text-green-700">{successMessage}</div>}
 
