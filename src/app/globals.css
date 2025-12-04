@@ -97,3 +97,11 @@ select:focus {
     color: #9CA3AF;
   }
 }
+
+
+/* globals.css */
+.banner-long {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
