@@ -1,53 +1,20 @@
 // pages/api/submitMembership.js
-// Increase bodyParser limit so large base64 attachments are not truncated
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '20mb' // adjust if you expect larger payloads
-    }
-  }
-};
-
 export default async function handler(req, res) {
+  // Only accept POST
   if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
-    return res.status(405).json({ message: 'Method not allowed' });
+    return res.status(405).json({ status: 'error', message: 'Method not allowed' });
+  }
+
+  const APPS_SCRIPT_WEBAPP = process.env.APPS_SCRIPT_WEBAPP || '';
+
+  // Clear JSON error if env var missing
+  if (!APPS_SCRIPT_WEBAPP) {
+    console.error('Missing APPS_SCRIPT_WEBAPP environment variable (local).');
+    return res.status(500).json({ status: 'error', message: 'Missing Apps Script URL on server (set APPS_SCRIPT_WEBAPP in .env.local)' });
   }
 
   try {
-   const APPS_SCRIPT_WEBAPP = process.env.APPS_SCRIPT_WEBAPP;
-
-    if (!APPS_SCRIPT_WEBAPP) {
-      console.error('Missing NEXT_PUBLIC_APPS_SCRIPT_WEBAPP environment variable');
-      return res.status(500).json({ message: 'Missing Apps Script URL' });
-    }
-
-    console.log('APPS_SCRIPT_WEBAPP present:', !!APPS_SCRIPT_WEBAPP);
-
-    // Basic sanity check
-    if (!req.body || typeof req.body !== 'object') {
-      console.warn('Proxy received non-JSON or empty body');
-      return res.status(400).json({ message: 'Bad request: expected JSON body' });
-    }
-
-    // Compact preview of attachments (no full base64 logging)
-    try {
-      if (Array.isArray(req.body.attachments) && req.body.attachments.length) {
-        const preview = req.body.attachments.map((a, i) => ({
-          index: i,
-          name: a?.name || null,
-          mimeType: a?.mimeType || null,
-          dataPreviewLength: a?.data ? a.data.length : 0
-        }));
-        console.log('Proxy attachments preview:', preview);
-      } else {
-        console.log('Proxy received no attachments');
-      }
-    } catch (logErr) {
-      console.warn('Preview log failed', logErr);
-    }
-
-    // Forward the JSON body to Apps Script
+    // Forward request body to Apps Script
     const appsRes = await fetch(APPS_SCRIPT_WEBAPP, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -55,15 +22,21 @@ export default async function handler(req, res) {
     });
 
     const text = await appsRes.text();
+    // Log status and a preview of the body for local debugging
+    console.log('Apps Script status:', appsRes.status);
+    console.log('Apps Script body preview:', (text || '').slice(0, 2000));
+
+    // Try to parse JSON; if not JSON, return text
     try {
       const json = JSON.parse(text);
       return res.status(appsRes.status).json(json);
-    } catch (e) {
+    } catch (parseErr) {
+      // Return text body with appropriate content-type
       res.status(appsRes.status).setHeader('Content-Type', 'text/plain; charset=utf-8');
-      return res.send(text);
+      return res.send(text || `Apps Script returned status ${appsRes.status} with empty body`);
     }
   } catch (err) {
     console.error('Proxy error forwarding to Apps Script:', err);
-    return res.status(500).json({ message: 'Proxy error', error: String(err) });
+    return res.status(500).json({ status: 'error', message: 'Proxy error forwarding to Apps Script: ' + (err.message || String(err)) });
   }
 }
