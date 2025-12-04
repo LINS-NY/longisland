@@ -15,7 +15,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    const APPS_SCRIPT_WEBAPP = process.env.NEXT_PUBLIC_APPS_SCRIPT_WEBAPP;
+   const APPS_SCRIPT_WEBAPP = process.env.APPS_SCRIPT_WEBAPP;
+
     if (!APPS_SCRIPT_WEBAPP) {
       console.error('Missing NEXT_PUBLIC_APPS_SCRIPT_WEBAPP environment variable');
       return res.status(500).json({ message: 'Missing Apps Script URL' });

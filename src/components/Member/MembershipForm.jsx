@@ -19,7 +19,7 @@ const MEMBERSHIP_OPTIONS = [
 ];
 
 const VERIFICATION_CHOICES = [
-  'Long Island Issued License or ID',
+  'Long Island DMV Issued License or ID',
   'Federal Issued License or ID',
   'Green Card',
   'Passport',
