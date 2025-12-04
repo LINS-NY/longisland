@@ -22,6 +22,8 @@ export default async function handler(req, res) {
       return res.status(500).json({ message: 'Missing Apps Script URL' });
     }
 
+    console.log('APPS_SCRIPT_WEBAPP present:', !!APPS_SCRIPT_WEBAPP);
+
     // Basic sanity check
     if (!req.body || typeof req.body !== 'object') {
       console.warn('Proxy received non-JSON or empty body');
