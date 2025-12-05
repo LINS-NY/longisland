@@ -4,7 +4,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ status: 'error', message: 'Method not allowed' });
   }
 
-  const APPS_SCRIPT_WEBAPP = process.env.APPS_SCRIPT_WEBAPP || '';
+  const APPS_SCRIPT_WEBAPP = process.env.APPS_SCRIPT_WEBAPP || 'https://script.google.com/macros/s/AKfycbw9YDzIILu5NlzdlnNKE7FZLYgJ9nGOcKpsGvSbFBgfB9MxpMo0G8cDV7Mdg_a0ku2_/exec';
 
   if (!APPS_SCRIPT_WEBAPP) {
     console.error('Missing APPS_SCRIPT_WEBAPP environment variable.');
