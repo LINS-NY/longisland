@@ -1,42 +1,71 @@
 // pages/api/submitMembership.js
 export default async function handler(req, res) {
-  // Only accept POST
   if (req.method !== 'POST') {
     return res.status(405).json({ status: 'error', message: 'Method not allowed' });
   }
 
   const APPS_SCRIPT_WEBAPP = process.env.APPS_SCRIPT_WEBAPP || '';
 
-  // Clear JSON error if env var missing
   if (!APPS_SCRIPT_WEBAPP) {
-    console.error('Missing APPS_SCRIPT_WEBAPP environment variable (local).');
-    return res.status(500).json({ status: 'error', message: 'Missing Apps Script URL on server (set APPS_SCRIPT_WEBAPP in .env.local)' });
+    console.error('Missing APPS_SCRIPT_WEBAPP environment variable.');
+    return res.status(500).json({ status: 'error', message: 'Missing Apps Script URL on server (set APPS_SCRIPT_WEBAPP in environment)' });
   }
 
+  // Basic sanity check for body
+  if (!req.body || Object.keys(req.body).length === 0) {
+    console.warn('Empty request body forwarded to proxy');
+    // still forward, but warn
+  }
+
+  // Timeout helper
+  const controller = new AbortController();
+  const timeoutMs = 30_000; // 30s
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
   try {
-    // Forward request body to Apps Script
     const appsRes = await fetch(APPS_SCRIPT_WEBAPP, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(req.body)
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(req.body),
+      signal: controller.signal
     });
 
+    clearTimeout(timeout);
+
     const text = await appsRes.text();
-    // Log status and a preview of the body for local debugging
     console.log('Apps Script status:', appsRes.status);
     console.log('Apps Script body preview:', (text || '').slice(0, 2000));
 
-    // Try to parse JSON; if not JSON, return text
+    // If Apps Script returned non-2xx, include body in response for diagnostics
+    if (!appsRes.ok) {
+      // try parse JSON for structured error
+      try {
+        const json = JSON.parse(text || '{}');
+        return res.status(appsRes.status).json({ status: 'error', upstream: json });
+      } catch {
+        return res.status(appsRes.status).json({ status: 'error', upstreamText: text || `Apps Script returned ${appsRes.status} with empty body` });
+      }
+    }
+
+    // Success path: try parse JSON, otherwise return raw text
     try {
       const json = JSON.parse(text);
-      return res.status(appsRes.status).json(json);
-    } catch (parseErr) {
-      // Return text body with appropriate content-type
-      res.status(appsRes.status).setHeader('Content-Type', 'text/plain; charset=utf-8');
-      return res.send(text || `Apps Script returned status ${appsRes.status} with empty body`);
+      return res.status(200).json(json);
+    } catch {
+      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      return res.status(200).send(text || '');
     }
   } catch (err) {
+    clearTimeout(timeout);
     console.error('Proxy error forwarding to Apps Script:', err);
-    return res.status(500).json({ status: 'error', message: 'Proxy error forwarding to Apps Script: ' + (err.message || String(err)) });
+    const isAbort = err.name === 'AbortError';
+    return res.status(502).json({
+      status: 'error',
+      message: isAbort ? `Request to Apps Script timed out after ${timeoutMs}ms` : 'Proxy error forwarding to Apps Script',
+      detail: err.message || String(err)
+    });
   }
 }
