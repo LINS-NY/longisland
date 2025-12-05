@@ -281,11 +281,13 @@ const DonatePage = () => {
 
         {/* Submit */}
         <button
-    type="submit"
-    className="w-full bg-purple-700 text-white py-3 rounded-md font-semibold hover:bg-purple-800 transition"
-  >
-    Submit Donation
-  </button>
+  type="submit"
+  disabled
+  className="w-full bg-purple-700 text-white py-3 rounded-md font-semibold opacity-50 cursor-not-allowed"
+>
+  Submit Donation
+</button>
+
 </form>
     </div>
   );
