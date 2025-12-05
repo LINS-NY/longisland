@@ -4,7 +4,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ status: 'error', message: 'Method not allowed' });
   }
 
-  const APPS_SCRIPT_WEBAPP = process.env.APPS_SCRIPT_WEBAPP || 'https://script.google.com/macros/s/AKfycbw9YDzIILu5NlzdlnNKE7FZLYgJ9nGOcKpsGvSbFBgfB9MxpMo0G8cDV7Mdg_a0ku2_/exec';
+  const APPS_SCRIPT_WEBAPP = process.env.APPS_SCRIPT_WEBAPP || 'https://script.google.com/macros/s/AKfycbzX5qcCqld6in5M1D9dg1uFVYR5oO04QA2RGaE2wRJZAAZDq_neOfaD1t70FurF_dXS/exec';
 
   if (!APPS_SCRIPT_WEBAPP) {
     console.error('Missing APPS_SCRIPT_WEBAPP environment variable.');
