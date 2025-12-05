@@ -13,14 +13,14 @@ const APPS_SCRIPT_URL = '/api/submitMembership'; // e.g., http://localhost:3000/
 const ADMIN_EMAIL = 'longislandnepalese@gmail.com';
 
 const MEMBERSHIP_OPTIONS = [
-  { value: 'lifetime', label: 'Lifetime Membership (New Enrollment)', fee: 105 },
+  { value: 'lifetime', label: 'Lifetime Membership', fee: 105 },
   { value: 'general', label: 'General Membership', fee: 15 },
   { value: 'junior', label: 'Junior Membership', fee: 0 },
   { value: 'honorary', label: 'Honorary Membership', fee: 0, adminOnly: true }
 ];
 
 const VERIFICATION_CHOICES = [
-  'Long Island DMV Issued License or ID',
+  'State-Issued (DMV) Driver’s License or ID',
   'Federal Issued License or ID',
   'Green Card',
   'Passport',
@@ -111,6 +111,10 @@ export default function MembershipForm() {
   const [confirmPhoneError, setConfirmPhoneError] = useState('');
   const [phoneFormatError, setPhoneFormatError] = useState('');
 
+  // DOB/age helper state (only for UI feedback; validation enforced in validate())
+  const [age, setAge] = useState(null);
+  const [dobError, setDobError] = useState('');
+
   const fee = useMemo(() => {
     const opt = MEMBERSHIP_OPTIONS.find((o) => o.value === form.membershipType);
     if (!opt) return 'Exempt';
@@ -194,6 +198,39 @@ export default function MembershipForm() {
     }
   };
 
+  // Recompute age for UI feedback whenever DOB fields change.
+  // This does not change other behavior except showing messages.
+  useEffect(() => {
+    const a = computeAgeYears(form.dobDay, form.dobMonth, form.dobYear);
+    setAge(a);
+
+    // Reset dobError if fields are incomplete
+    if (!form.dobDay || !form.dobMonth || !form.dobYear) {
+      setDobError('');
+      return;
+    }
+
+    if (a === null) {
+      setDobError('Date of Birth looks invalid.');
+      return;
+    }
+
+    // Applicants under 16 cannot be processed at all — show immediate feedback
+    if (a < 16) {
+      setDobError('Applicants under 16 cannot be processed.');
+      return;
+    }
+
+    // If user selected Junior but age is above 18, show a warning (validation will block submission)
+    // Junior membership is allowed for ages 16, 17, 18 (inclusive)
+    if (form.membershipType === 'junior' && a > 18) {
+      setDobError('Junior membership is only for ages 16–18. You will need to select General or Lifetime membership.');
+      return;
+    }
+
+    setDobError('');
+  }, [form.dobDay, form.dobMonth, form.dobYear, form.membershipType]);
+
   // Validation
   const validate = () => {
     const missing = [];
@@ -238,18 +275,27 @@ export default function MembershipForm() {
     }
     if (totalBytes > MAX_TOTAL_ATTACHMENTS_BYTES) missing.push('totalTooLarge');
 
-    const age = computeAgeYears(form.dobDay, form.dobMonth, form.dobYear);
+    const computedAge = computeAgeYears(form.dobDay, form.dobMonth, form.dobYear);
     if (!form.dobDay || !form.dobMonth || !form.dobYear) missing.push('dob');
+    if (computedAge === null && form.dobDay && form.dobMonth && form.dobYear) missing.push('dobInvalid');
+
+    // Block under-16 applicants entirely
+    if (computedAge !== null && computedAge < 16) missing.push('tooYoung');
+
+    // Junior membership validation only applies if user selected Junior
+    // Junior membership allowed for ages 16, 17, 18 (inclusive)
     if (form.membershipType === 'junior') {
-      if (age === null) missing.push('dobInvalid');
-      else if (!(age < 18)) missing.push('juniorAge');
+      if (computedAge === null) missing.push('dobInvalid');
+      else if (!(computedAge >= 16 && computedAge <= 18)) missing.push('juniorAge');
     }
 
     const messages = [];
     if (missing.includes('dob')) messages.push('Please enter Day, Month and Year for Date of Birth.');
     if (missing.includes('dobInvalid')) messages.push('Date of Birth looks invalid.');
-    if (missing.includes('juniorAge')) messages.push('Junior membership requires the applicant to be under 18 years old.');
-    if (missing.includes('verificationType')) messages.push('Select one verification document.');
+    if (missing.includes('tooYoung')) messages.push('Applicants under 16 cannot be processed.');
+    if (missing.includes('juniorAge')) messages.push('Junior membership is only for ages 16–18. Please choose General or Lifetime membership.');
+    //if (missing.includes('verificationType')) messages.push('Select one verification document.');
+    if (missing.includes('contactMethod')) messages.push('Select Preferred Contact Method.');
     if (missing.includes('student_school')) messages.push('Enter College/School name for Student ID.');
     if (missing.includes('student_id')) messages.push('Enter College/School ID number.');
     if (missing.includes('declarationAccepted')) messages.push('You must accept the declaration.');
@@ -263,8 +309,9 @@ export default function MembershipForm() {
     if (missing.includes('confirmEmailMismatch')) messages.push('Confirm Email does not match the Email.');
     if (missing.includes('confirmPhoneMismatch')) messages.push('Confirm Phone does not match the Phone.');
     if (missing.includes('phoneFormat')) messages.push('Enter valid phone number no dashes or space. Exactly 10 digits required.');
+    if (missing.includes('honoraryNotAllowed')) messages.push('Honorary membership requires admin sign-in.');
 
-    return { isValid: missing.length === 0, missing, messages, age };
+    return { isValid: missing.length === 0, missing, messages, age: computedAge };
   };
 
   const validationInfo = useMemo(() => validate(), [form, verificationType, idNumbers, files, declarationAccepted, paymentNoteAck, isAdmin, confirmEmail, confirmPhone]);
@@ -298,6 +345,8 @@ export default function MembershipForm() {
     setConfirmEmailError('');
     setConfirmPhoneError('');
     setPhoneFormatError('');
+    setAge(null);
+    setDobError('');
   };
 
   const handleSubmit = async (e) => {
@@ -306,8 +355,10 @@ export default function MembershipForm() {
     setSuccessMessage('');
     const checks = validate();
     if (!checks.isValid) {
-      if (checks.missing.includes('juniorAge')) {
-        setSubmitError('Junior membership requires the applicant to be under 18 years old.');
+      if (checks.missing.includes('tooYoung')) {
+        setSubmitError('Cannot process the form: applicants under 16 are not eligible.');
+      } else if (checks.missing.includes('juniorAge')) {
+        setSubmitError('Junior membership is only for ages 16–18. Please select General or Lifetime membership.');
       } else if (checks.missing.includes('confirmEmailMismatch') || checks.missing.includes('confirmPhoneMismatch') || checks.missing.includes('phoneFormat')) {
         setSubmitError('Please correct the confirmation fields or phone format errors.');
       } else {
@@ -453,6 +504,7 @@ export default function MembershipForm() {
           </div>
 
           <div className="mt-4">
+            {/* Junior remains selectable by default; validation only when selected */}
             <select value={form.membershipType} onChange={(e) => setForm({ ...form, membershipType: e.target.value })} className="w-full p-3 rounded text-black">
               {MEMBERSHIP_OPTIONS.map((opt) => (
                 <option key={opt.value} value={opt.value} disabled={opt.adminOnly && !isAdmin}>
@@ -462,10 +514,16 @@ export default function MembershipForm() {
             </select>
             <div className="mt-2 text-xs text-gray-100">
               <span>💡 No online payment. Invoice & payment instructions (Zelle or check) will be emailed.</span>
-              <div className="text-red-200 mt-1">⚠️ Applicants aged below 18 are not entitled to voting rights.</div>
+              <div className="text-red-200 mt-1">⚠️ Applicants and Junior Members between the ages of 16 and 18 are not entitled to voting rights.</div>
             </div>
             {form.membershipType === 'honorary' && !isAdmin && (
               <div className="mt-2 text-sm text-yellow-100">Honorary membership requires admin sign-in (Gmail). Please sign in above if you are the admin.</div>
+            )}
+            {age !== null && age < 16 && (
+              <div className="mt-2 text-sm text-red-200">Applicants under 16 cannot be processed.</div>
+            )}
+            {dobError && age !== null && (
+              <div className="mt-2 text-sm text-yellow-100">{dobError}</div>
             )}
           </div>
         </div>
@@ -486,7 +544,7 @@ export default function MembershipForm() {
           </div>
         </div>
 
-        {/* DOB right after full name */}
+        {/* Date of Birth */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label className="block mb-1 font-medium">Date of Birth *</label>
@@ -500,6 +558,15 @@ export default function MembershipForm() {
                 {months.map((m, idx) => <option key={m} value={String(idx + 1)}>{m}</option>)}
               </select>
               <input value={form.dobYear} onChange={(e) => setForm({ ...form, dobYear: e.target.value.replace(/[^\d]/g, '').slice(0,4) })} placeholder="YYYY" className="p-2 border rounded w-1/3" />
+            </div>
+
+            <div className="mt-2 text-sm">
+              {age !== null && (
+                <span className={`font-medium ${age < 16 ? 'text-red-600' : age > 18 ? 'text-yellow-700' : 'text-green-700'}`}>
+                  Age: {age} year{age === 1 ? '' : 's'}
+                </span>
+              )}
+              {dobError && <div className="text-sm text-red-600 mt-1">{dobError}</div>}
             </div>
           </div>
 
@@ -635,17 +702,23 @@ export default function MembershipForm() {
             ))}
           </div>
 
-          <div className="mt-3">
+         {/*  <div className="mt-3">
             <label className="block mb-2 font-medium">Upload verification files (optional, up to 2 files, images or PDF, max 5 MB each)</label>
             <input type="file" accept="image/*,application/pdf" multiple onChange={handleFilesChange} />
             <div className="text-xs text-gray-500 mt-1">Files will be attached to your confirmation email. Total attachments must be under 25 MB.</div>
-          </div>
+          </div> */}
         </div>
 
         <div className="bg-gray-50 p-4 rounded">
           <div className="text-sm font-semibold mb-2">Declaration for Eligibility and Participation in the Electoral Process</div>
           <div className="text-xs mb-3">
-            I hereby declare that, in accordance with the electoral requirements stipulated in the LINS Bylaws, I shall present myself in person at the designated polling venue and provide a valid DMV-issued identification card for verification purposes. I affirm my commitment to adhere to all prescribed rules, regulations, and the code of conduct governing the election process. I further acknowledge that, should any documents submitted by me be found to be inaccurate, falsified, or unverifiable, I shall forfeit my eligibility to participate in the voting process.
+            I certify that I will appear in person at the designated polling site with a valid DMV-issued ID. I agree to follow all election rules and the code of conduct.
+            I understand that providing incorrect or unverifiable documents will disqualify my voting eligibility.
+          </div>
+
+          <div className="text-xs mb-3">
+             म New York DMV द्वारा जारी परिचयपत्र सहित तोकिएको मतदान स्थलमा भौतिक रूपमा उपस्थित हुने प्रतिबद्धता व्यक्त गर्दछु। म निर्वाचनका सबै नियम र आचारसंहिताको पूर्ण पालना गर्नेछु।
+            मेरो पेश गरेको कागजात गलत, अवैध वा अप्रमाणित भएमा मतदान अधिकार स्वतः खारेज हुने कुरा म पूर्ण रूपमा बुझ्छु।
           </div>
 
           <label className="inline-flex items-center gap-2">
@@ -656,27 +729,38 @@ export default function MembershipForm() {
           <div className="mt-3">
             <label className="inline-flex items-center gap-2">
               <input type="checkbox" checked={paymentNoteAck} onChange={(e) => setPaymentNoteAck(e.target.checked)} />
-              <span className="text-sm">I understand payment is external (Zelle or check) and invoice will be emailed. (Required)</span>
+              <span className="text-sm">I acknowledge that invoice and payment instructions will be emailed. (Required)</span>
             </label>
           </div>
+        </div>          
 
-          <div className="mt-3 text-sm">
+        <div className="mt-3 text-sm">
             <div>Signature (derived): <strong>{fullName || '(Full name will be used as signature)'}</strong></div>
-          </div>
-        </div>
+          </div>    
 
         {submitError && <div className="text-sm text-red-600">{submitError}</div>}
-        {!submitError && validationInfo?.messages?.length > 0 && (
-          <div className="text-sm text-yellow-700 space-y-1">
-            {validationInfo.messages.map((m, i) => <div key={i}>• {m}</div>)}
-          </div>
-        )}
+        {successMessage && <div className="text-sm text-green-600">{successMessage}</div>}
 
-        {successMessage && <div className="text-sm text-green-700">{successMessage}</div>}
+        {/* Validation summary (show required items) */}
+{validationInfo && validationInfo.messages && validationInfo.messages.length > 0 && (
+  <div className="mt-3 bg-yellow-50 border-l-4 border-yellow-400 p-3 text-sm text-yellow-800 rounded">
+    <div className="font-semibold mb-1">Please fix the following before submitting:</div>
+    <ul className="list-disc ml-5 space-y-1">
+      {validationInfo.messages.map((m, idx) => (
+        <li key={idx}>{m}</li>
+      ))}
+    </ul>
+  </div>
+)}
 
-        <div className="flex gap-3">
-          <button type="submit" disabled={!isFormValid || isSubmitting} className={`flex-1 py-3 rounded text-white ${!isFormValid || isSubmitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-700 hover:bg-green-800'}`}>
-            {isSubmitting ? 'Submitting…' : 'Submit Membership'}
+
+        <div className="flex justify-end">
+          <button
+            type="submit"
+            disabled={isSubmitting || !isFormValid || (age !== null && age < 16)}
+            className={`px-6 py-2 rounded-md text-white ${isSubmitting || !isFormValid || (age !== null && age < 16) ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit'}
           </button>
         </div>
       </form>
