@@ -14,17 +14,35 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
       "@/*": [
-        "./*",
+        "./*"
+      ],
+      "@src/*": [
         "./src/*"
+      ],
+      "@components/*": [
+        "./src/components/*",
+        "./components/*"
+      ],
+      "@data/*": [
+        "./data/*",
+        "./src/data/*"
+      ],
+      "@lib/*": [
+        "./lib/*",
+        "./src/lib/*"
+      ],
+      "@public/*": [
+        "./public/*"
       ]
     },
     "target": "ES2017"
@@ -33,11 +51,13 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
     ".next/types/**/*.ts",
-    "src/app/**/*.jsx",
-    "src/app/*.jsx",
-    "src/app/*.tsx",
-    "src/components/**/*.jsx"  ],
+    "app/**/*",
+    "src/**/*",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
