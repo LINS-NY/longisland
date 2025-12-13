@@ -512,20 +512,56 @@ export default function MembershipForm() {
                 </option>
               ))}
             </select>
-            <div className="mt-2 text-xs text-gray-100">
-              <span>💡 No online payment. Invoice & payment instructions (Zelle or check) will be emailed.</span>
-              <div className="text-red-200 mt-1">⚠️ Applicants and Junior Members between the ages of 16 and 18 are not entitled to voting rights.</div>
-            </div>
-            {form.membershipType === 'honorary' && !isAdmin && (
-              <div className="mt-2 text-sm text-yellow-100">Honorary membership requires admin sign-in (Gmail). Please sign in above if you are the admin.</div>
-            )}
-            {age !== null && age < 16 && (
-              <div className="mt-2 text-sm text-red-200">Applicants under 16 cannot be processed.</div>
-            )}
-            {dobError && age !== null && (
-              <div className="mt-2 text-sm text-yellow-100">{dobError}</div>
-            )}
-          </div>
+            <div className="mt-3">
+    <div className="rounded-lg border-2 border-yellow-400 bg-yellow-50 p-4 text-sm text-black shadow-sm">
+      <h3 className="text-base font-semibold mb-2">Payment instructions</h3>
+
+      <p className="text-sm font-medium">To make a Zelle payment:</p>
+      <p className="mt-1 text-sm">
+        Send Zelle to <span className="font-semibold">longislandnepalese@gmail.com</span>.
+      </p>
+
+      <p className="mt-3 text-sm">
+        After payment, please contact the President to verify and complete your registration:
+      </p>
+      <p className="mt-1 text-sm font-medium">Kul Prasad Gouli (Rajan) — +1 (718) 974-7252</p>
+
+      <div className="mt-3 text-sm">
+        <p className="font-medium">Other payment methods</p>
+        <p className="mt-1 text-sm">
+          For payments other than Zelle (cash, check, bank transfer, etc.),
+        </p>
+        <p className="mt-1 text-sm">
+          Contact the Co‑Treasurer:
+        </p>
+        <p className="mt-1 text-sm font-medium">Ram Kumar Rai — +1 (516) 800-5478</p>
+      </div>
+
+      <div className="mt-3 rounded-md bg-rose-900/10 p-2 text-sm text-rose-700">
+        <strong>Important:</strong> Registration will remain <span className="font-semibold">incomplete</span> until full payment is received and verified.
+      </div>
+    </div>
+  </div>
+
+  <div className="mt-2 text-xs text-gray-100">
+    <span>💡 No online payment. Invoice & payment instructions will also be emailed.</span>
+    <div className="text-red-200 mt-1">⚠️ Applicants and Junior Members between the ages of 16 and 18 are not entitled to voting rights.</div>
+  </div>
+
+  {form.membershipType === 'honorary' && !isAdmin && (
+    <div className="mt-2 text-sm text-yellow-100">
+      Honorary membership requires admin sign-in (Gmail). Please sign in above if you are the admin.
+    </div>
+  )}
+
+  {age !== null && age < 16 && (
+    <div className="mt-2 text-sm text-red-200">Applicants under 16 cannot be processed.</div>
+  )}
+
+  {dobError && age !== null && (
+    <div className="mt-2 text-sm text-yellow-100">{dobError}</div>
+  )}
+</div>
         </div>
 
         {/* Name row */}
