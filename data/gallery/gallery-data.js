@@ -55,7 +55,35 @@ const galleryData = {
   ],
   "2025": [
     {
-      event: "LINS 2nd Soccer Tournament - 2025",
+      event: "Nepali Bhasa Graduation Ceremony",
+      description: "The Long Island Nepalese Society proudly celebrates the Nepali Bhasa Graduation Ceremony held yesterday, honoring our dedicated students who successfully completed the Nepali language program. \
+                    This special event recognizes the hard work of our students, the commitment of parents, and the tireless efforts of our teachers and volunteers who continue to preserve and promote Nepali language, culture, and heritage within our community. \
+                    We extend our heartfelt congratulations to all graduates and sincere thanks to everyone who supported this program. Together, we are keeping our language alive for future generations.",
+      images: [
+    '/images/2025/Graduation2025/flyer2.jpg',
+    '/images/2025/Graduation2025/1.jpg',
+    //'/images/2025/Graduation2025/2.jpg',
+    '/images/2025/Graduation2025/3.jpg',
+    '/images/2025/Graduation2025/4.jpg',
+    '/images/2025/Graduation2025/6.jpg',
+    '/images/2025/Graduation2025/7.jpg',
+    '/images/2025/Graduation2025/9.jpg',
+    '/images/2025/Graduation2025/10.jpg',
+    '/images/2025/Graduation2025/11.jpg',
+    '/images/2025/Graduation2025/12.jpg',    
+    '/images/2025/Graduation2025/14.jpg',
+    '/images/2025/Graduation2025/15.jpg',
+
+    '/images/2025/Graduation2025/Flyer1.jpg',    
+    '/images/2025/Graduation2025/8.jpg',
+    '/images/2025/Graduation2025/13.jpg',
+    '/images/2025/Graduation2025/5.jpg',
+    '/images/2025/Graduation2025/16.jpg',
+    
+  ],
+},
+    {
+      event: "LINS 2nd Soccer Tournament",
       description: "The Long Island Nepalese Society (LINS), New York proudly presents its 2nd Soccer Tournament – 2025, \
 bringing together the Nepali community and soccer enthusiasts from across the region. \
 This exciting annual event celebrates sportsmanship, teamwork, and cultural unity, \

@@ -130,5 +130,23 @@ export const galleryByYear = {
 
   ],
   '2025': [
+    '/images/2025/Graduation2025/Flyer1.jpg',
+    '/images/2025/Graduation2025/flyer2.jpg',
+    '/images/2025/Graduation2025/1.jpg',
+    //'/images/2025/Graduation2025/2.jpg',
+    '/images/2025/Graduation2025/3.jpg',
+    '/images/2025/Graduation2025/4.jpg',
+    '/images/2025/Graduation2025/5.jpg',
+    '/images/2025/Graduation2025/6.jpg',
+    '/images/2025/Graduation2025/7.jpg',
+    '/images/2025/Graduation2025/8.jpg',
+    '/images/2025/Graduation2025/9.jpg',
+    '/images/2025/Graduation2025/10.jpg',
+    '/images/2025/Graduation2025/11.jpg',
+    '/images/2025/Graduation2025/12.jpg',
+    '/images/2025/Graduation2025/13.jpg',
+    '/images/2025/Graduation2025/14.jpg',
+    '/images/2025/Graduation2025/15.jpg',
+    '/images/2025/Graduation2025/16.jpg',
   ]
 };
