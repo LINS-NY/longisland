@@ -45,16 +45,18 @@ export default function GalleryView({ imagesByEvent }) {
           <p className="mb-4 text-gray-600">{event.description}</p>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {event.images.map((src, imgIdx) => (
-              <Image
-                key={imgIdx}
-                src={src}
-                alt={event.event}
-                className="rounded-xl shadow-md object-cover w-[300px] h-[300px] cursor-pointer hover:scale-105 transition duration-300"
-                onClick={() => openPopup(eventIdx, imgIdx)}
-              />
-            ))}
-          </div>
+      {event.images.map((src, imgIdx) => (
+        <Image
+          key={imgIdx}
+          src={src}
+          alt={event.event}
+          width={300}
+          height={300}
+          className="rounded-xl shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+          onClick={() => openPopup(eventIdx, imgIdx)}
+        />
+      ))}
+    </div>
         </div>
       ))}
 
