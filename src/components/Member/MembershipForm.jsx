@@ -7,6 +7,7 @@ import { auth } from '@/firebaseconfig';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 
+
 // LOCAL: set this to your local proxy or Apps Script URL while testing locally
 const APPS_SCRIPT_URL = '/api/submitMembership'; // e.g., http://localhost:3000/api/submitMembership
 
@@ -678,72 +679,128 @@ export default function MembershipForm() {
         </div>
 
         <div>
-          <label className="block mb-2 font-medium">Mandatory Documentation (select one) *</label>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            {VERIFICATION_CHOICES.map((choice) => (
-              <div key={choice} className="flex items-center gap-3">
-                <label className="inline-flex items-center gap-2 w-full">
-                  <input
-                    type="radio"
-                    name="verification"
-                    value={choice}
-                    checked={verificationType === choice}
-                    onChange={() => {
-                      setVerificationType(choice);
-                      setIdNumbers((prev) => {
-                        const copy = { ...prev };
-                        if (choice !== 'Student ID') {
-                          delete copy['student_school'];
-                          delete copy['student_id'];
-                        }
-                        return copy;
-                      });
-                    }}
-                  />
-                  <span>{choice}</span>
-                </label>
+  <label className="block mb-2 font-medium">Mandatory Documentation (select one) *</label>
 
-                {verificationType === choice && choice !== 'Student ID' && (
-                  <input
-                    type="text"
-                    placeholder={`${choice} number`}
-                    value={idNumbers[choice] || ''}
-                    onChange={(e) => setIdNumbers((prev) => ({ ...prev, [choice]: e.target.value }))}
-                    className="ml-4 p-2 border rounded"
-                    required
-                  />
-                )}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+    {VERIFICATION_CHOICES.map((choice) => {
+      const isSelected = verificationType === choice;
 
-                {verificationType === choice && choice === 'Student ID' && (
-                  <div className="ml-4 flex gap-2">
-                    <input
-                      type="text"
-                      placeholder="College / School Name"
-                      value={idNumbers['student_school'] || ''}
-                      onChange={(e) => setIdNumbers((prev) => ({ ...prev, student_school: e.target.value }))}
-                      className="p-2 border rounded"
-                      required
-                    />
-                    <input
-                      type="text"
-                      placeholder="College / School ID"
-                      value={idNumbers['student_id'] || ''}
-                      onChange={(e) => setIdNumbers((prev) => ({ ...prev, student_id: e.target.value }))}
-                      className="p-2 border rounded"
-                      required
-                    />
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+      // Determine error for this field
+      const hasError =
+        isSelected &&
+        (
+          (choice !== "Student ID" && !idNumbers[choice]) ||
+          (choice === "Student ID" &&
+            (!idNumbers.student_school || !idNumbers.student_id))
+        );
 
-         {/*  <div className="mt-3">
-            <label className="block mb-2 font-medium">Upload verification files (optional, up to 2 files, images or PDF, max 5 MB each)</label>
-            <input type="file" accept="image/*,application/pdf" multiple onChange={handleFilesChange} />
-            <div className="text-xs text-gray-500 mt-1">Files will be attached to your confirmation email. Total attachments must be under 25 MB.</div>
-          </div> */}
+      return (
+        <div key={choice} className="flex items-start gap-3">
+          <label className="inline-flex items-center gap-2 w-full">
+            <input
+              type="radio"
+              name="verification"
+              value={choice}
+              checked={isSelected}
+              onChange={() => {
+                setVerificationType(choice);
+                setErrors({}); // clear errors on change
+
+                setIdNumbers((prev) => {
+                  const copy = { ...prev };
+                  if (choice !== "Student ID") {
+                    delete copy["student_school"];
+                    delete copy["student_id"];
+                  }
+                  return copy;
+                });
+              }}
+            />
+            <span>{choice}</span>
+          </label>
+
+          {/* Single ID input */}
+          {isSelected && choice !== "Student ID" && (
+            <input
+              type="text"
+              placeholder={
+  choice === 'State-Issued (DMV) Driver’s License or ID' ||
+  choice === 'Federal Issued License or ID'
+    ? 'License/ID Number'
+    : `${choice} Number`
+}
+
+              value={idNumbers[choice] || ""}
+              onChange={(e) =>
+                setIdNumbers((prev) => ({
+                  ...prev,
+                  [choice]: e.target.value,
+                }))
+              }
+              className={`ml-4 p-2 border rounded ${
+                hasError ? "border-red-500 focus:ring-red-500" : "border-gray-300"
+              }`}
+              onBlur={() => {
+                if (!idNumbers[choice]) {
+                  setErrors((prev) => ({ ...prev, [choice]: true }));
+                }
+              }}
+            />
+          )}
+
+          {/* Student ID (two fields) */}
+          {isSelected && choice === "Student ID" && (
+            <div className="ml-4 flex flex-col gap-2 w-full">
+              <input
+                type="text"
+                placeholder="College / School Name"
+                value={idNumbers["student_school"] || ""}
+                onChange={(e) =>
+                  setIdNumbers((prev) => ({
+                    ...prev,
+                    student_school: e.target.value,
+                  }))
+                }
+                className={`p-2 border rounded ${
+                  hasError && !idNumbers.student_school
+                    ? "border-red-500 focus:ring-red-500"
+                    : "border-gray-300"
+                }`}
+                onBlur={() => {
+                  if (!idNumbers.student_school) {
+                    setErrors((prev) => ({ ...prev, student_school: true }));
+                  }
+                }}
+              />
+
+              <input
+                type="text"
+                placeholder="College / School ID Number"
+                value={idNumbers["student_id"] || ""}
+                onChange={(e) =>
+                  setIdNumbers((prev) => ({
+                    ...prev,
+                    student_id: e.target.value,
+                  }))
+                }
+                className={`p-2 border rounded ${
+                  hasError && !idNumbers.student_id
+                    ? "border-red-500 focus:ring-red-500"
+                    : "border-gray-300"
+                }`}
+                onBlur={() => {
+                  if (!idNumbers.student_id) {
+                    setErrors((prev) => ({ ...prev, student_id: true }));
+                  }
+                }}
+              />
+            </div>
+          )}
         </div>
+      );
+    })}
+  </div>
+</div>
 
         <div className="bg-gray-50 p-4 rounded">
           <div className="text-sm font-semibold mb-2">Declaration for Eligibility and Participation in the Electoral Process</div>
