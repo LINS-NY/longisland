@@ -80,6 +80,10 @@ const DonatePage = () => {
       {/* Title */}
       <div className="text-center mb-6">
         <h1 className="text-4xl font-bold mb-2">LINS-NY Donation Form</h1>
+        
+        <h2 className="text-4xl font-bold mb-2 text-yellow-100">
+          This page is currently under construction !!!
+        </h2>
         <p className="text-lg opacity-90">
           Please fill out this form to complete your donation.
         </p>
