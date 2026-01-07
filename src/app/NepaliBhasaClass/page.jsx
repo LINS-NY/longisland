@@ -99,6 +99,90 @@ export default function NepaliBhasaClassPage() {
           Learn Nepali with joy — classes, teachers, and Zoom links in one place.
         </p>
 
+                 {/*Delete or disable this once Registration is closed*/}     
+<section className="mb-10">
+  <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">
+    📝 Registration
+  </h2>
+
+  <div className="max-w-6xl mx-auto">
+    <div className="text-center mb-4">
+      <p className="text-sm text-gray-600">
+        <strong className="text-green-700">Registration is now OPEN!</strong> 
+        Please choose the appropriate form below.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      {/* Student Registration */}
+      <Card className="p-6 bg-white/95 border-2 border-pink-200 rounded-xl shadow-md">
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold text-xl">
+              S
+            </div>
+          </div>
+
+          <div className="flex-1">
+            <h3 className="text-lg font-extrabold text-purple-700">Student Registration</h3>
+            <p className="text-sm text-gray-600 mt-1">
+              Register your child for Nepali Bhasa classes using the form below.
+            </p>
+
+            <div className="mt-4 flex items-center gap-3">
+              <a
+                href="https://docs.google.com/forms/d/1rEH4c86HgJR9h0ZwWrj4Af0MOMHlujyXbMR37j-nDPA/edit"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full shadow transition"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-90" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z" />
+                </svg>
+                Register Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      {/* Teacher / Volunteer Registration */}
+      <Card className="p-6 bg-white/95 border-2 border-yellow-200 rounded-xl shadow-md">
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-pink-400 flex items-center justify-center text-white font-bold text-xl">
+              T
+            </div>
+          </div>
+
+          <div className="flex-1">
+            <h3 className="text-lg font-extrabold text-purple-700">Teacher / Volunteer Registration</h3>
+            <p className="text-sm text-gray-600 mt-1">
+              Interested in teaching or volunteering? Please fill out the form below.
+            </p>
+
+            <div className="mt-4 flex items-center gap-3">
+              <a
+                href="https://docs.google.com/forms/d/1STFFGsG_LDVJRBKfiOMaag6fQfleBMpyEjv6TdLh8mw/edit"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full shadow transition"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-90" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z" />
+                </svg>
+                Register Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+    </div>
+  </div>
+</section>
+
                 {/* Coordinator card */}
         <section className="max-w-4xl mx-auto mb-8">
           <div className="bg-white/95 border-2 border-red-200 rounded-2xl p-4 md:p-6 shadow-md flex flex-col md:flex-row items-center gap-4">
@@ -277,11 +361,92 @@ export default function NepaliBhasaClassPage() {
 
          {/*Enable this once Registration is open*/}     
         {/* Registration cards (before Gallery) */}
-        {/* ... (kept commented out) */}
+<section className="mb-10">
+  <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">
+    📝 Registration
+  </h2>
+
+  <div className="max-w-6xl mx-auto">
+    <div className="text-center mb-4">
+      <p className="text-sm text-gray-600">
+        <strong className="text-green-700">Registration is now OPEN!</strong> 
+        Please choose the appropriate form below.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      {/* Student Registration */}
+      <Card className="p-6 bg-white/95 border-2 border-pink-200 rounded-xl shadow-md">
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold text-xl">
+              S
+            </div>
+          </div>
+
+          <div className="flex-1">
+            <h3 className="text-lg font-extrabold text-purple-700">Student Registration</h3>
+            <p className="text-sm text-gray-600 mt-1">
+              Register your child for Nepali Bhasa classes using the form below.
+            </p>
+
+            <div className="mt-4 flex items-center gap-3">
+              <a
+                href="https://docs.google.com/forms/d/1rEH4c86HgJR9h0ZwWrj4Af0MOMHlujyXbMR37j-nDPA/edit"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full shadow transition"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-90" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z" />
+                </svg>
+                Register Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      {/* Teacher / Volunteer Registration */}
+      <Card className="p-6 bg-white/95 border-2 border-yellow-200 rounded-xl shadow-md">
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-pink-400 flex items-center justify-center text-white font-bold text-xl">
+              T
+            </div>
+          </div>
+
+          <div className="flex-1">
+            <h3 className="text-lg font-extrabold text-purple-700">Teacher / Volunteer Registration</h3>
+            <p className="text-sm text-gray-600 mt-1">
+              Interested in teaching or volunteering? Please fill out the form below.
+            </p>
+
+            <div className="mt-4 flex items-center gap-3">
+              <a
+                href="https://docs.google.com/forms/d/1STFFGsG_LDVJRBKfiOMaag6fQfleBMpyEjv6TdLh8mw/edit"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full shadow transition"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-90" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z" />
+                </svg>
+                Register Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+    </div>
+  </div>
+</section>
 
 {/*Disable this once Registration is open*/}     
 {/* Registration cards (before Gallery) */}
-<section className="mb-10">
+{/* <section className="mb-10">
   <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">📝 Registration</h2>
 
   <div className="max-w-6xl mx-auto">
@@ -361,7 +526,7 @@ export default function NepaliBhasaClassPage() {
       </Card>
     </div>
   </div>
-</section>
+</section> */}
 
         {/* Gallery filter (select year affects only gallery) */}
         <section className="mb-6">
