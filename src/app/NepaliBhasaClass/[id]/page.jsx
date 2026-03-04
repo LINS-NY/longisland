@@ -15,8 +15,14 @@ export default function ClassDetailPage({ params }) {
   // Safe defaults
   const teachers = Array.isArray(cls.teachers) ? cls.teachers : [];
   const students = Array.isArray(cls.students) ? cls.students : [];
+  const substitutes = Array.isArray(cls.substitutes) ? cls.substitutes : [];  
   const zoomUrl = cls.zoom || (teachers[0] && teachers[0].zoom) || '#';
   const zoomDisabled = zoomUrl === '#';
+  const itSupport = [
+  'Deepak Adhikari',
+  'Rabin Sangraula',
+  'Sunita Khanal Poudel'
+];
 
   // Placeholder image for missing teacher photos (put a real placeholder in /public if desired)
   const placeholderImg = '/images/placeholder-avatar.png';
@@ -74,9 +80,8 @@ export default function ClassDetailPage({ params }) {
                 href={zoomDisabled ? undefined : zoomUrl}
                 target={zoomDisabled ? undefined : '_blank'}
                 rel={zoomDisabled ? undefined : 'noreferrer'}
-                className={`inline-flex items-center justify-center gap-3 ${
-                  zoomDisabled ? 'bg-gray-300 text-gray-700 cursor-not-allowed' : 'bg-purple-600 hover:bg-purple-700 text-white'
-                } font-semibold px-8 py-3 rounded-2xl shadow-lg text-lg transition`}
+                className={`inline-flex items-center justify-center gap-3 ${zoomDisabled ? 'bg-gray-300 text-gray-700 cursor-not-allowed' : 'bg-purple-600 hover:bg-purple-700 text-white'
+                  } font-semibold px-8 py-3 rounded-2xl shadow-lg text-lg transition`}
                 aria-disabled={zoomDisabled}
                 role="button"
                 aria-label={zoomDisabled ? 'Zoom link not available' : 'Join Zoom meeting'}
@@ -87,6 +92,27 @@ export default function ClassDetailPage({ params }) {
                 <span className="leading-none">Join Zoom</span>
               </a>
             </div>
+
+            {/* Substitute Section */}
+
+            {substitutes.length > 0 && (
+              <div>
+                <h3 className="text-xl font-semibold text-indigo-700 mb-3 mt-6">
+                  Substitute Teachers
+                </h3>
+
+                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                  {substitutes.map((name, i) => (
+                    <li
+                      key={i}
+                      className="bg-indigo-100 p-3 rounded-xl text-center text-indigo-800 font-medium shadow"
+                    >
+                      {name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* Students */}
             <div>
@@ -103,6 +129,26 @@ export default function ClassDetailPage({ params }) {
                 </ul>
               )}
             </div>
+
+            {/* IT Support Section */}
+            {itSupport.length > 0 && (
+              <div>
+                <h3 className="text-xl font-semibold text-green-700 mb-3 mt-6">
+                  IT Support
+                </h3>
+
+                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                  {itSupport.map((name, i) => (
+                    <li
+                      key={i}
+                      className="bg-green-100 p-3 rounded-xl text-center text-green-800 font-medium shadow"
+                    >
+                      {name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </Card>
 

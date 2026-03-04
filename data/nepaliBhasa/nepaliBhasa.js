@@ -4,97 +4,210 @@ export const years = ['All', '2025', '2024'];
 
 /** Teachers list (ensure images exist in public/images/2025/NepaliBhasaClass/Teachers/) */
 export const teachers = [
-  { name: 'Sabitra Siwakoti', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG', role: 'Coordinator' },
+  { name: 'Sabitra Siwakoti', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG', role: 'Coordinator/Teacher' },
+  { name: 'Medani P Sangroula', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Medani Sangroula.JPG' },
   { name: 'Indira Simkhada', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Indira Simkhada.JPG' },
-  { name: 'Ambika Phuyal', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Ambika Phuyal.JPG' },
   { name: 'Sunita Khanal Poudel', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sunita Khanal.JPG' },
-  { name: 'Susmita Bhandari', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Susmita Bhandari.JPG' },
+  { name: 'Rupa Bhandari', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Rupa Bhandari.JPG' },
+  { name: 'Manisha Khatri', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Manisha Khatri.JPG' },
   { name: 'Jharana Sharma', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Jharna Sharma.JPG' },
   { name: 'Samjhana Khadka', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Samjhana Khadka Neupane.JPG' },
-  { name: 'Medani P Sangroula', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Medani Sangroula.JPG' },
-  { name: 'Rupa Bhandari', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Rupa Bhandari.JPG' },
+];
+
+export const substitutes = [
+  { name: 'Kedar Katel', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Kedar Katel.JPG' },
+  { name: 'Ambika Phuyal', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Ambika Phuyal.JPG' },
+  { name: 'Tanka Phuyal-Katel', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer -Tanka-Anu Phuyal.JPG' },
+  { name: 'Kristina Dahal', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Kristina Dahal.JPG' },
+  { name: 'Rajan Gouli', img: '/RajanGouli.JPG' },
+  { name: 'Susmita Bhandari', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Susmita Bhandari.JPG' },
+  { name: 'Shobha P Shrestha', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Shobha Pokharel Shrestha.JPG' },
+  { name: 'Raveena KC', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Shobha Pokharel Shrestha.JPG' },
 ];
 
 export const volunteers = [
-  { name: 'Shobha P Shrestha', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Shobha Pokharel Shrestha.JPG' },
   { name: 'Deepak Adhikari', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Deepak Adhikari.JPG' },
-  { name: 'Bimala Dangi', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Bimala Dangi.JPG' },
-  { name: 'Kristina Dahal', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Kristina Dahal.JPG' },
-  { name: 'Tanka Phuyal-Katel', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer -Tanka-Anu Phuyal.JPG' },
-  { name: 'Kedar Katel', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Kedar Katel.JPG' },
   { name: 'Ram Rai', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Ram K Rai.JPG' },
+  { name: 'Rabin Sangraula', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Rabin Sangraula.JPG' }
 ];
 
 /** Zoom schedules (keeps existing links) */
 export const zoomSchedules = [
-  { id: 'mid-sun-9', level: 'Mid-Level Class', day: 'Sunday', time: '9:00 AM', zoom: 'https://us02web.zoom.us/j/85799401494?pwd=tEt94H9k0lUyyuXcA4ZJKp9EwEpp4S.1' },
-  { id: 'beg-sun-1015', level: 'Beginning Class (Sunday)', day: 'Sunday', time: '10:15 AM', zoom: 'https://us02web.zoom.us/j/89516727221?pwd=Uq1F4wu0oxnb48QYag5xgqfkLQoj3a.1' },
-  { id: 'beg-sat-1015', level: 'Beginning Class (Saturday)', day: 'Saturday', time: '10:15 AM', zoom: 'https://us02web.zoom.us/j/89516727221?pwd=Uq1F4wu0oxnb48QYag5xgqfkLQoj3a.1' },
-  { id: 'advance-a-9', level: 'Advance Class - Section A', day: 'Saturday', time: '9:00 AM', zoom: 'https://us02web.zoom.us/j/89516727221?pwd=Uq1F4wu0oxnb48QYag5xgqfkLQoj3a.1' },
+  { id: 'Beginners-Class', level: 'Beginning Class', day: 'Friday', time: '7:00 PM', zoom: 'https://us02web.zoom.us/j/81539732054?pwd=tko5aPgflbaJ6TH39ouFHArs8skPJ3.1' },
+  { id: 'Advance-Class', level: 'Advance Class', day: 'Saturday', time: '9:00 AM', zoom: 'https://us02web.zoom.us/j/88274108499?pwd=Yw3u734qMEl34NVvMytCwsbFpyJ6d0.1' },
+  { id: 'Medium-High-Class', level: 'Medium High Class', day: 'Saturday', time: '9:00 AM', zoom: 'https://us02web.zoom.us/j/81177770716?pwd=iEbWKh1T0P83VZz3bjM0blJTFb9hZV.1' },
+  { id: 'Medium-Class', level: 'Medium Class', day: 'Sunday', time: '9:00 AM', zoom: 'https://us02web.zoom.us/j/84930483234?pwd=wK8aM3xiFTUCt9CCHywmqR1k4bdNPs.1' },
 ];
 
 /** Landing cards (one card per class instance) */
 export const classCards = [
-  { id: 'mid-sun-9', title: 'Mid-Level Class', year: '2025', teachers: ['Rupa Bhandari','Sunita Khanal Poudel'], img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sunita Khanal.JPG', tag: '⭐ Mid' },
-  { id: 'beg-sun-1015', title: 'Beginning Class (Sunday)', year: '2025', teachers: ['Indira Simkhada','Susmita Bhandari'], img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Susmita Bhandari.JPG', tag: '🌈 Beginner' },
-  { id: 'beg-sat-1015', title: 'Beginning Class (Saturday)', year: '2025', teachers: ['Samjhana Khadka','Jharana Sharma'], img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Jharna Sharma.JPG', tag: '🌈 Beginner' },
-  { id: 'advance-a-9', title: 'Advance Class - Section A', year: '2025', teachers: ['Medani P Sangroula','Sabitra Siwakoti'], img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG', tag: '🚀 Advance' },
-];
+{
+  id: 'Beginners-Class',
+  title: 'Beginning Class',
+  year: '2026',
+  teachers: ['Samjhana Khadka', 'Jharana Sharma'],
+  substitutes: [
+    'Shobha Pokhrel Shrestha',
+    'Raveena KC',
+    'Anu Phuyal Katel'
+  ],
+  itSupport: [
+    'Deepak Adhikari',
+    'Rabin Sangraula'
+  ],
+  img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Jharna Sharma.JPG',
+  tag: '🌈 Beginner'
+},
+
+{
+  id: 'Advance-Class',
+  title: 'Advance Class',
+  year: '2026',
+  teachers: ['Medani P Sangroula', 'Sabitra Siwakoti'],
+  substitutes: [
+    'Kedar Katel',
+    'Ambika Phuyal'
+  ],
+  img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Medani Sangroula.JPG',
+  tag: '🚀 Advance'
+},
+
+{
+  id: 'Medium-High-Class',
+  title: 'Medium High Class',
+  year: '2026',
+  teachers: ['Indira Simkhada', 'Sunita Khanal Poudel'],
+  substitutes: [
+    'Rajan Gouli',
+    'Anu Phuyal Katel',
+    'Kristina Dahal'
+  ],
+  img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sunita Khanal.JPG',
+  tag: '⭐ Mid High'
+},
+
+{
+  id: 'Medium-Class',
+  title: 'Medium Class',
+  year: '2026',
+  teachers: ['Manisha Khatri', 'Rupa Bhandari'],
+  substitutes: [
+    'Anu Phuyal Katel',
+    'Sushmita Bhandari'
+  ],
+  img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Rupa Bhandari.JPG',
+  tag: '⭐ Mid'
+}];
 
 /** Detail pages keyed by id (students are placeholders) */
 export const classDetails = {
-  'mid-sun-9': {
-    title: 'Mid-Level Class',
+    'Beginners-Class': {
+    title: 'Beginning Class',
     teachers: [
-      { name: 'Sunita Khanal Poudel', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sunita Khanal.JPG', zoom: 'https://us02web.zoom.us/j/85799401494?pwd=tEt94H9k0lUyyuXcA4ZJKp9EwEpp4S.1' },
-      { name: 'Rupa Bhandari', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Rupa Bhandari.JPG', zoom: 'https://us02web.zoom.us/j/85799401494?pwd=tEt94H9k0lUyyuXcA4ZJKp9EwEpp4S.1' },
-    ],
+      { name: 'Jharana Sharma', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Jharna Sharma.JPG', zoom: 'https://us02web.zoom.us/j/81539732054?pwd=tko5aPgflbaJ6TH39ouFHArs8skPJ3.1' },
+      { name: 'Samjhana Khadka', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Samjhana Khadka Neupane.JPG', zoom: 'https://us02web.zoom.us/j/81539732054?pwd=tko5aPgflbaJ6TH39ouFHArs8skPJ3.1' },
+    ],substitutes: [
+    'Shobha Pokhrel Shrestha',
+    'Raveena KC',
+    'Anu Phuyal Katel'
+  ],
     students: [
-      'Aarav Poudel','Adhira Siwakoti','Ashraya Chapagain','Bibani Lamsal','Diya Chhetri','Ishanvi Shree Thapa',
-      'Naavya Shree Thapa','Reva Neupane','Riyan Chhetri','Safal Deuba','Samiksha Kunwar','Sayan Jha',
-      'Seanjay Manadhar','Sofia Deuba','Sugarika Karki'
+      'Aanvi Khanal',
+      'Sunaira Pokharel',
+      'Shalv Adhikari',
+      'Abhishek Phulara',
+      'Adhya Phulara',
+      'Aarya Shrestha',
+      'Sheniza Aryal',
+      'Shirdi Bhattarai',
+      'Sai Bhattarai',
+      'Ishanvi Thapa',
+      'Naavya Thapa'
     ],
-    year: '2025',
+    year: '2026',
   },
-  'beg-sun-1015': {
-    title: 'Beginning Class (Sunday)',
+    'Advance-Class': {
+    title: 'Advance Class',
     teachers: [
-      { name: 'Indira Simkhada', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Indira Simkhada.JPG', zoom: 'https://us02web.zoom.us/j/89516727221?pwd=Uq1F4wu0oxnb48QYag5xgqfkLQoj3a.1' },
-      { name: 'Susmita Bhandari', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Susmita Bhandari.JPG', zoom: 'https://us02web.zoom.us/j/89516727221?pwd=Uq1F4wu0oxnb48QYag5xgqfkLQoj3a.1' }
+      { name: 'Sabitra Siwakoti', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG', zoom: 'https://us02web.zoom.us/j/88274108499?pwd=Yw3u734qMEl34NVvMytCwsbFpyJ6d0.1' },
+      { name: 'Medani P Sangroula', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Medani Sangroula.JPG', zoom: 'https://us02web.zoom.us/j/88274108499?pwd=Yw3u734qMEl34NVvMytCwsbFpyJ6d0.1' },
     ],
+    substitutes: [
+    'Kedar Katel',
+    'Ambika Phuyal'
+  ],
     students: [
-      'Annanya Bhatta','Biban Lamsal','Dev Sangraula','Divyesh Pandey','Ishaani Jha','Jayden Maharjan',
-      'Prasika Maharjan','Prinsha Parajuli','Saaya Nair','Sajan Nair','Samragyee Maharjan','Sashriti Maharjan',
-      'Shalv Adhikari','Shanav Dangol','Shania Dangol','Sunaira Pokharel','Yampak Rai','Yuvan Adhikari',
-      'Yuvan Bikram Chand','Zenaya Trivedi'
+      'Aarogya Sharma',
+      'Aarav Khanal',
+      'Adhira Siwakoti',
+      'Agrima Kafle',
+      'Ashwin Kafle',
+      'Ayan Sangroula',
+      'Diksha Sangraula',
+      'Ramchandra Sangraula',
+      'Sachin Katel',
+      'Samriddi Baruwal',
+      'Sulav Sangraula',
+      'Sushanta Subedi',
+      'Sabin Lamichhane'
     ],
-    year: '2025',
+    year: '2026',
   },
-  'beg-sat-1015': {
-    title: 'Beginning Class (Saturday)',
+  'Medium-High-Class': {
+    title: 'Medium High Class',
     teachers: [
-      { name: 'Jharana Sharma', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Jharna Sharma.JPG', zoom: 'https://us02web.zoom.us/j/89516727221?pwd=Uq1F4wu0oxnb48QYag5xgqfkLQoj3a.1' },
-      { name: 'Samjhana Khadka', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Samjhana Khadka Neupane.JPG', zoom: 'https://us02web.zoom.us/j/89516727221?pwd=Uq1F4wu0oxnb48QYag5xgqfkLQoj3a.1' },
+      { name: 'Sunita Khanal Poudel', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sunita Khanal.JPG', zoom: 'https://us02web.zoom.us/j/81177770716?pwd=iEbWKh1T0P83VZz3bjM0blJTFb9hZV.1' },
+      { name: 'Indira Simkhada', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Indira Simkhada.JPG', zoom: 'https://us02web.zoom.us/j/81177770716?pwd=iEbWKh1T0P83VZz3bjM0blJTFb9hZV.1' },
     ],
+    substitutes: [
+    'Rajan Gouli',
+    'Anu Phuyal Katel',
+    'Kristina Dahal'
+  ],
     students: [
-      'Aiden Shrestha','Anannya Bhatta','Amod Dhakal','Anannya Bhatta','Autumn Shrestha','Niraj Maharjan',
-      'Swornira Maharjan','Dipson Ghimire','Erica Khadka','Janet Poudel','Neepa Jan Kafle','Prince Giri',
-      'Prisha Dhakal','Puja Nova Kafle','Raj Dhakal','Ryan Poudel','Shyam Birbikram Sangraula','Sora Gautam'
+      'Reva Neupane',
+      'Bibani Lamsal',
+      'Ashraya Chapagain',
+      'Adhira Siwakoti',
+      'Riyan Chhetri',
+      'Samiksha Kunwar',
+      'Suraksha Ghimire',
+      'Aarav Khanal',
+      'Sugarika Karki'
     ],
-    year: '2025',
+    year: '2026',
   },
-  'advance-a-9': {
-    title: 'Advance Class - Section A',
+  'Medium-Class': {
+    title: 'Medium Class',
     teachers: [
-      { name: 'Sabitra Siwakoti', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG', zoom: 'https://us02web.zoom.us/j/89516727221?pwd=Uq1F4wu0oxnb48QYag5xgqfkLQoj3a.1' },
-      { name: 'Medani P Sangroula', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Medani Sangroula.JPG', zoom: 'https://us02web.zoom.us/j/89516727221?pwd=Uq1F4wu0oxnb48QYag5xgqfkLQoj3a.1' },
+      { name: 'Rupa Bhandari', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Rupa Bhandari.JPG', zoom: 'https://us02web.zoom.us/j/84930483234?pwd=wK8aM3xiFTUCt9CCHywmqR1k4bdNPs.1' },
+      { name: 'Manisha Khatri', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Manisha Khatri.JPG', zoom: 'https://us02web.zoom.us/j/84930483234?pwd=wK8aM3xiFTUCt9CCHywmqR1k4bdNPs.1' },
     ],
-    students: [
-      'Aarogya Sharma','Agrima Kafle','Ashwin Kafle','Ayan Sangroula','Diksha Sangraula','Ramchandra Sangraula',
-      'Sachin Katel','Samriddi Baruwal','Sulav Sangraula','Sushanta Subedi','Taapas Poudel'
+    substitutes: [
+    'Anu Phuyal Katel',
+    'Sushmita Bhandari'
+  ],
+     students: [
+      'Dipson Ghimire',
+      'Jayden Maharjan',
+      'Sashriti Maharjan',
+      'Samragyee Maharjan',
+      'Dev Sangraula',
+      'Biban Lamsal',
+      'Shanav Dangol',
+      'Shania Dangol',
+      'Yuvan Bikram Chand',
+      'Shanvi Yadav',
+      'Anannya Bhatta',
+      'Raj Dhakal',
+      'Prisha Dhakal',
+      'Amod Dhakal',
+      'Prinsha Parajuli',
+      'Shopie Shrestha'
     ],
-    year: '2025',
-  },
+    year: '2026',
+  }  
+
 };
 
 export const galleryByYear = {
