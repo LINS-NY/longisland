@@ -12,6 +12,7 @@ import {
   years,
   classCards,
   teachers as teachersData,
+  substitutes,
   volunteers,
   zoomSchedules,
   galleryByYear,
@@ -76,10 +77,10 @@ export default function NepaliBhasaClassPage() {
   // Order classes for display (static)
   const orderedFilteredCards = useMemo(() => {
     const desiredTitles = [
-      'Advance Class - Section A',
-      'Mid-Level Class',
-      'Beginning Class (Saturday)',
-      'Beginning Class (Sunday)',
+      'Beginning Class',
+      'Advance Class',
+      'Medium High Class',
+      'Medium Class'      
     ];
     const findByTitle = (title) => classCards.find((c) => c.title === title);
     const ordered = desiredTitles.map(findByTitle).filter(Boolean);
@@ -93,95 +94,11 @@ export default function NepaliBhasaClassPage() {
 
       <main className="relative z-10 max-w-6xl mx-auto p-6 w-full flex-1">
         <h1 className="text-3xl md:text-5xl font-extrabold text-center text-purple-700 mb-2">
-          🌸 Nepali Bhasa Class
+          🌸 Nepali Bhasa Class - 2026
         </h1>
         <p className="text-center text-pink-700 font-medium mb-8">
           Learn Nepali with joy — classes, teachers, and Zoom links in one place.
         </p>
-
-                 {/*Delete or disable this once Registration is closed*/}     
-<section className="mb-10">
-  <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">
-    📝 Registration
-  </h2>
-
-  <div className="max-w-6xl mx-auto">
-    <div className="text-center mb-4">
-      <p className="text-sm text-gray-600">
-        <strong className="text-green-700">Registration is now OPEN!</strong> 
-        Please choose the appropriate form below.
-      </p>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      {/* Student Registration */}
-      <Card className="p-6 bg-white/95 border-2 border-pink-200 rounded-xl shadow-md">
-        <div className="flex items-start gap-4">
-          <div className="flex-shrink-0">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold text-xl">
-              S
-            </div>
-          </div>
-
-          <div className="flex-1">
-            <h3 className="text-lg font-extrabold text-purple-700">Student Registration</h3>
-            <p className="text-sm text-gray-600 mt-1">
-              Register your child for Nepali Bhasa classes using the form below.
-            </p>
-
-            <div className="mt-4 flex items-center gap-3">
-              <a
-                href="https://docs.google.com/forms/d/1rEH4c86HgJR9h0ZwWrj4Af0MOMHlujyXbMR37j-nDPA/edit"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full shadow transition"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-90" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z" />
-                </svg>
-                Register Now
-              </a>
-            </div>
-          </div>
-        </div>
-      </Card>
-
-      {/* Teacher / Volunteer Registration */}
-      <Card className="p-6 bg-white/95 border-2 border-yellow-200 rounded-xl shadow-md">
-        <div className="flex items-start gap-4">
-          <div className="flex-shrink-0">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-pink-400 flex items-center justify-center text-white font-bold text-xl">
-              T
-            </div>
-          </div>
-
-          <div className="flex-1">
-            <h3 className="text-lg font-extrabold text-purple-700">Teacher / Volunteer Registration</h3>
-            <p className="text-sm text-gray-600 mt-1">
-              Interested in teaching or volunteering? Please fill out the form below.
-            </p>
-
-            <div className="mt-4 flex items-center gap-3">
-              <a
-                href="https://docs.google.com/forms/d/1STFFGsG_LDVJRBKfiOMaag6fQfleBMpyEjv6TdLh8mw/edit"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full shadow transition"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-90" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z" />
-                </svg>
-                Register Now
-              </a>
-            </div>
-          </div>
-        </div>
-      </Card>
-
-    </div>
-  </div>
-</section>
 
                 {/* Coordinator card */}
         <section className="max-w-4xl mx-auto mb-8">
@@ -300,64 +217,76 @@ export default function NepaliBhasaClassPage() {
         </section>
 
         {/* Teachers & Volunteers (static) */}
-        <section className="mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">🙋‍♀️ Teachers & Volunteers</h2>
+<section className="mb-10">
+  <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">
+    🙋‍♀️ Teachers & Volunteers
+  </h2>
 
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-              {teachersData.map((t) => (
-                <div key={t.name} className="flex flex-col justify-between bg-white/90 p-4 rounded-xl border-2 border-purple-200 shadow-sm">
-                  <div className="flex flex-col items-center gap-3">
-                    <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-purple-300 shadow-md">
-                      <Image
-                        src={t.img}
-                        alt={t.name}
-                        width={96}
-                        height={96}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="text-center">
-                      <p className="font-bold text-purple-700 leading-tight">{t.name}</p>
-                      <p className="text-xs text-gray-500">{t.role}</p>
-                    </div>
-                  </div>
+  <div className="max-w-6xl mx-auto">
 
-                  <div className="mt-4 text-center">
-                    <span className="text-xs text-gray-500">Teacher</span>
-                  </div>
-                </div>
-              ))}
+    {/* Teachers */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      {teachersData.map((t) => (
+        <div key={t.name} className="flex flex-col justify-between bg-white/90 p-4 rounded-xl border-2 border-purple-200 shadow-sm">
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-purple-300 shadow-md">
+              <Image src={t.img} alt={t.name} width={96} height={96} className="w-full h-full object-cover" />
             </div>
-
-            <h3 className="text-xl font-semibold text-pink-700 mt-8 mb-4 text-center">Volunteers</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-              {volunteers.map((v) => (
-                <div key={v.name} className="flex flex-col justify-between bg-white/90 p-4 rounded-xl border-2 border-pink-200 shadow-sm">
-                  <div className="flex flex-col items-center gap-3">
-                    <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-pink-300 shadow-md">
-                      <Image
-                        src={v.img}
-                        alt={v.name}
-                        width={96}
-                        height={96}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="text-center">
-                      <p className="font-bold text-pink-700">{v.name}</p>
-                      <p className="text-xs text-gray-500">{v.role}</p>
-                    </div>
-                  </div>
-
-                  <div className="mt-4 text-center">
-                    <span className="text-xs text-gray-500">Volunteer</span>
-                  </div>
-                </div>
-              ))}
+            <div className="text-center">
+              <p className="font-bold text-purple-700 leading-tight">{t.name}</p>
+              <p className="text-xs text-gray-500">{t.role || 'Teacher'}</p>
             </div>
           </div>
-        </section>
+
+        </div>
+      ))}
+    </div>
+
+    {/* Substitute Teachers */}
+    <h3 className="text-xl font-semibold text-green-700 mt-8 mb-4 text-center">
+      Substitute Teachers
+    </h3>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      {substitutes.map((s) => (
+        <div key={s.name} className="flex flex-col justify-between bg-white/90 p-4 rounded-xl border-2 border-indigo-200 shadow-sm">
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-indigo-300 shadow-md">
+              <Image src={s.img} alt={s.name} width={96} height={96} className="w-full h-full object-cover" />
+            </div>
+            <div className="text-center">
+              <p className="font-bold text-indigo-700">{s.name}</p>
+              <p className="text-xs text-gray-500">{s.role || 'Substitute'}</p>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    {/* Volunteers */}
+    <h3 className="text-xl font-semibold text-pink-700 mt-8 mb-4 text-center">
+      Volunteers
+    </h3>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      {volunteers.map((v) => (
+        <div key={v.name} className="flex flex-col justify-between bg-white/90 p-4 rounded-xl border-2 border-pink-200 shadow-sm">
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-pink-300 shadow-md">
+              <Image src={v.img} alt={v.name} width={96} height={96} className="w-full h-full object-cover" />
+            </div>
+            <div className="text-center">
+              <p className="font-bold text-pink-700">{v.name}</p>
+              <p className="text-xs text-gray-500">{v.role}</p>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+      
 
          {/*Enable this once Registration is open*/}     
         {/* Registration cards (before Gallery) */}
@@ -370,7 +299,7 @@ export default function NepaliBhasaClassPage() {
     <div className="text-center mb-4">
       <p className="text-sm text-gray-600">
         <strong className="text-green-700">Registration is now OPEN!</strong> 
-        Please choose the appropriate form below.
+         <p>Please choose the appropriate form below.</p>
       </p>
     </div>
 
