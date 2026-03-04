@@ -28,7 +28,7 @@ export const substitutes = [
 export const volunteers = [
   { name: 'Deepak Adhikari', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Deepak Adhikari.JPG' },
   { name: 'Ram Rai', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Ram K Rai.JPG' },
-  { name: 'Rabin Sangraula', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Rabin Sangraula.JPG' }
+  { name: 'Rabin Sangraula', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Rabin Sangraulatemp.JPG' }
 ];
 
 /** Zoom schedules (keeps existing links) */
