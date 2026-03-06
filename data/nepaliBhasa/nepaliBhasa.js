@@ -45,7 +45,7 @@ export const classCards = [
   id: 'Beginners-Class',
   title: 'Beginning Class',
   schedule: '(Friday 7:00 - 8:00 PM)',  
-  driveLink: 'https://drive.google.com/drive/folders/13eJ10ANUkPH96e3NePP3hjL0wDv5ea2R',
+  driveLink: 'https://drive.google.com/drive/folders/1pj67btay87y7gwu1gKq3wjLqr_s3gwea',
   attendanceLink: 'https://docs.google.com/spreadsheets/d/1NMtdxR4s_EqDX7H4R6bdVR5t4-0LI2_cMvJxTqhL7S4/edit?gid=186001220#gid=186001220',
   year: '2026',
   teachers: ['Samjhana Khadka', 'Jharana Sharma'],
@@ -66,7 +66,7 @@ export const classCards = [
   id: 'Advance-Class',
   title: 'Advance Class',
   schedule: '(Saturday 9:00 - 10:00 AM)',
-  driveLink: 'https://drive.google.com/drive/folders/13eJ10ANUkPH96e3NePP3hjL0wDv5ea2R',
+  driveLink: 'https://drive.google.com/drive/folders/1N9mRzl_v92_musURYY_fyCtdFashe-8N',
   attendanceLink: 'https://docs.google.com/spreadsheets/d/1RIqm11cS4593z9y55zoD0fsuckXVF6FFmLE5PJsr4rU/edit?gid=186001220#gid=186001220',
   year: '2026',
   teachers: ['Medani P Sangroula', 'Sabitra Siwakoti'],
@@ -81,7 +81,7 @@ export const classCards = [
 {
   id: 'Medium-High-Class',
   title: 'Medium High Class',
-  driveLink: 'https://drive.google.com/drive/folders/13eJ10ANUkPH96e3NePP3hjL0wDv5ea2R',
+  driveLink: 'https://drive.google.com/drive/folders/1NlpYEKY1jx5urd7RuYkMzA_KV_spCg-L',
   attendanceLink: 'https://docs.google.com/spreadsheets/d/1FuBZDi2oPbC8Ap9b2nnVRHt0_PCF8w-DRFSmALiWndg/edit?gid=186001220#gid=186001220',
   schedule: '(Saturday 9:00 - 10:00 AM))',
   year: '2026',
@@ -99,7 +99,7 @@ export const classCards = [
   id: 'Medium-Class',
   title: 'Medium Class',
   schedule: '(Sunday 9:00 - 10:00 AM)',
-  driveLink: 'https://drive.google.com/drive/folders/13eJ10ANUkPH96e3NePP3hjL0wDv5ea2R',
+  driveLink: 'https://drive.google.com/drive/folders/1-pWFptg7_fIz200ckBKa6_ZJIoR7DPC8',
   attendanceLink: 'https://docs.google.com/spreadsheets/d/1-IkbUr6XDzRIJ3ocYcihr2WaV4T57fO8tbzP-m_lxfc/edit?gid=186001220#gid=186001220',
   year: '2026',
   teachers: ['Manisha Khatri', 'Rupa Bhandari'],
@@ -116,7 +116,7 @@ export const classDetails = {
     'Beginners-Class': {
     title: 'Beginning Class',
     schedule: '(Friday 7:00 - 8:00 PM)',
-    driveLink: 'https://drive.google.com/drive/folders/13eJ10ANUkPH96e3NePP3hjL0wDv5ea2R',
+    driveLink: 'https://drive.google.com/drive/folders/1pj67btay87y7gwu1gKq3wjLqr_s3gwea',
     attendanceLink: 'https://docs.google.com/spreadsheets/d/1NMtdxR4s_EqDX7H4R6bdVR5t4-0LI2_cMvJxTqhL7S4/edit?gid=186001220#gid=186001220',
     teachers: [
       { name: 'Jharana Sharma', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Jharna Sharma.JPG', zoom: 'https://us02web.zoom.us/j/81539732054?pwd=tko5aPgflbaJ6TH39ouFHArs8skPJ3.1' },
@@ -143,7 +143,7 @@ export const classDetails = {
   },
     'Advance-Class': {
     title: 'Advance Class',
-    driveLink: 'https://drive.google.com/drive/folders/13eJ10ANUkPH96e3NePP3hjL0wDv5ea2R',
+    driveLink: 'https://drive.google.com/drive/folders/1N9mRzl_v92_musURYY_fyCtdFashe-8N',
     attendanceLink: 'https://docs.google.com/spreadsheets/d/1RIqm11cS4593z9y55zoD0fsuckXVF6FFmLE5PJsr4rU/edit?gid=186001220#gid=186001220',
     teachers: [
       { name: 'Sabitra Siwakoti', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG', zoom: 'https://us02web.zoom.us/j/88274108499?pwd=Yw3u734qMEl34NVvMytCwsbFpyJ6d0.1' },
@@ -172,7 +172,7 @@ export const classDetails = {
   },
   'Medium-High-Class': {
     title: 'Medium High Class',
-    driveLink: 'https://drive.google.com/drive/folders/13eJ10ANUkPH96e3NePP3hjL0wDv5ea2R',
+    driveLink: 'https://drive.google.com/drive/folders/1NlpYEKY1jx5urd7RuYkMzA_KV_spCg-L',
     attendanceLink: 'https://docs.google.com/spreadsheets/d/1FuBZDi2oPbC8Ap9b2nnVRHt0_PCF8w-DRFSmALiWndg/edit?gid=186001220#gid=186001220',
     teachers: [
       { name: 'Sunita Khanal Poudel', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sunita Khanal.JPG', zoom: 'https://us02web.zoom.us/j/81177770716?pwd=iEbWKh1T0P83VZz3bjM0blJTFb9hZV.1' },
@@ -198,7 +198,7 @@ export const classDetails = {
   },
   'Medium-Class': {
     title: 'Medium Class',
-    driveLink: 'https://drive.google.com/drive/folders/13eJ10ANUkPH96e3NePP3hjL0wDv5ea2R',
+    driveLink: 'https://drive.google.com/drive/folders/1-pWFptg7_fIz200ckBKa6_ZJIoR7DPC8',
     attendanceLink: 'https://docs.google.com/spreadsheets/d/1-IkbUr6XDzRIJ3ocYcihr2WaV4T57fO8tbzP-m_lxfc/edit?gid=186001220#gid=186001220',
     teachers: [
       { name: 'Rupa Bhandari', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Rupa Bhandari.JPG', zoom: 'https://us02web.zoom.us/j/84930483234?pwd=wK8aM3xiFTUCt9CCHywmqR1k4bdNPs.1' },
