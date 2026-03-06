@@ -15,14 +15,14 @@ export default function ClassDetailPage({ params }) {
   // Safe defaults
   const teachers = Array.isArray(cls.teachers) ? cls.teachers : [];
   const students = Array.isArray(cls.students) ? cls.students : [];
-  const substitutes = Array.isArray(cls.substitutes) ? cls.substitutes : [];  
+  const substitutes = Array.isArray(cls.substitutes) ? cls.substitutes : [];
   const zoomUrl = cls.zoom || (teachers[0] && teachers[0].zoom) || '#';
   const zoomDisabled = zoomUrl === '#';
   const itSupport = [
-  'Deepak Adhikari',
-  'Rabin Sangraula',
-  'Sunita Khanal Poudel'
-];
+    'Deepak Adhikari',
+    'Rabin Sangraula',
+    'Sunita Khanal Poudel'
+  ];
 
   // Placeholder image for missing teacher photos (put a real placeholder in /public if desired)
   const placeholderImg = '/images/placeholder-avatar.png';
@@ -32,15 +32,15 @@ export default function ClassDetailPage({ params }) {
       <Header />
 
       <main className="relative z-10 max-w-6xl mx-auto p-6 w-full flex-1">
-  <h1 className="text-3xl md:text-5xl font-extrabold text-center text-purple-700">
-    {cls.title}
-  </h1>
+        <h1 className="text-3xl md:text-5xl font-extrabold text-center text-purple-700">
+          {cls.title}
+        </h1>
 
-  {cls.schedule && (
-    <p className="text-lg md:text-xl text-center text-green-600 font-semibold mt-2 mb-8">
-      🕒 {cls.schedule}
-    </p>
-  )}
+        {cls.schedule && (
+          <p className="text-lg md:text-xl text-center text-green-600 font-semibold mt-2 mb-8">
+            🕒 {cls.schedule}
+          </p>
+        )}
 
         {/* Teachers block with consistent card heights and centered Join Zoom button */}
         <Card className="p-6 md:p-8 border-2 border-purple-200">
@@ -99,35 +99,41 @@ export default function ClassDetailPage({ params }) {
               </a>
             </div>
 
+            {cls.loginEmail && (
+              <p className="text-center text-sm text-gray-700 font-medium">
+                Zoom Login Email: <span className="text-purple-700">{cls.loginEmail}</span>
+              </p>
+            )}
+
             {(cls.driveLink || cls.attendanceLink) && (
-  <div className="mt-6">
-    <h3 className="text-xl font-semibold text-blue-700 mb-3">Class Resources</h3>
+              <div className="mt-6">
+                <h3 className="text-xl font-semibold text-blue-700 mb-3">Class Resources</h3>
 
-    <div className="flex flex-col sm:flex-row gap-4">
-      {cls.driveLink && (
-        <a
-          href={cls.driveLink}
-          target="_blank"
-          rel="noreferrer"
-          className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-center font-semibold shadow"
-        >
-          📁 Google Drive Folder
-        </a>
-      )}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  {cls.driveLink && (
+                    <a
+                      href={cls.driveLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-center font-semibold shadow"
+                    >
+                      📁 Google Drive Folder
+                    </a>
+                  )}
 
-      {cls.attendanceLink && (
-        <a
-          href={cls.attendanceLink}
-          target="_blank"
-          rel="noreferrer"
-          className="flex-1 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl text-center font-semibold shadow"
-        >
-          📊 Attendance Sheet
-        </a>
-      )}
-    </div>
-  </div>
-)}
+                  {cls.attendanceLink && (
+                    <a
+                      href={cls.attendanceLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex-1 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl text-center font-semibold shadow"
+                    >
+                      📊 Attendance Sheet
+                    </a>
+                  )}
+                </div>
+              </div>
+            )}
 
 
             {/* Substitute Section */}
