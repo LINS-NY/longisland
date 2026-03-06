@@ -34,8 +34,8 @@ export default function NepaliBhasaClassPage() {
 
   const previewText = coordinator.messageLines && coordinator.messageLines.length
     ? (coordinator.messageLines[0].length > 180
-        ? coordinator.messageLines[0].slice(0, 180).trim() + '...'
-        : coordinator.messageLines[0])
+      ? coordinator.messageLines[0].slice(0, 180).trim() + '...'
+      : coordinator.messageLines[0])
     : '';
 
   // UI state
@@ -80,7 +80,7 @@ export default function NepaliBhasaClassPage() {
       'Beginning Class',
       'Advance Class',
       'Medium High Class',
-      'Medium Class'      
+      'Medium Class'
     ];
     const findByTitle = (title) => classCards.find((c) => c.title === title);
     const ordered = desiredTitles.map(findByTitle).filter(Boolean);
@@ -100,7 +100,7 @@ export default function NepaliBhasaClassPage() {
           Learn Nepali with joy — classes, teachers, and Zoom links in one place.
         </p>
 
-                {/* Coordinator card */}
+        {/* Coordinator card */}
         <section className="max-w-4xl mx-auto mb-8">
           <div className="bg-white/95 border-2 border-red-200 rounded-2xl p-4 md:p-6 shadow-md flex flex-col md:flex-row items-center gap-4">
             <div className="flex-shrink-0">
@@ -134,9 +134,8 @@ export default function NepaliBhasaClassPage() {
               <div className="mt-4">
                 <button
                   onClick={() => setCoordinatorExpanded((s) => !s)}
-                  className={`inline-flex items-center px-5 py-2 rounded-full font-semibold text-sm transition ${
-                    coordinatorExpanded ? 'bg-red-700 text-white hover:bg-red-800' : 'bg-red-100 text-red-700 hover:bg-red-200'
-                  }`}
+                  className={`inline-flex items-center px-5 py-2 rounded-full font-semibold text-sm transition ${coordinatorExpanded ? 'bg-red-700 text-white hover:bg-red-800' : 'bg-red-100 text-red-700 hover:bg-red-200'
+                    }`}
                   aria-expanded={coordinatorExpanded}
                   aria-controls="coordinator-message"
                 >
@@ -183,7 +182,7 @@ export default function NepaliBhasaClassPage() {
                                 src={safePath(secondSrc)}
                                 alt={teacherNames[1] || teacherNames[0] || cls.title}
                                 width={80}
-                                height={80  }
+                                height={80}
                                 className="w-full h-full object-cover"
                               />
                             </div>
@@ -191,7 +190,13 @@ export default function NepaliBhasaClassPage() {
 
                           <div className="flex-1 min-w-0">
                             <div className="text-xs text-pink-600 mb-1">{cls.tag}</div>
-                            <h3 className="text-lg md:text-xl font-extrabold text-purple-700 leading-tight truncate">{cls.title}</h3>
+                            <h3 className="text-lg md:text-xl font-extrabold text-purple-700 leading-tight">
+                              {cls.title}
+                            </h3>
+
+                            <p className="text-sm text-purple-500 font-semibold">
+                              🕒 {cls.schedule}
+                            </p>
                             <p className="text-sm text-gray-600 mt-1 truncate">
                               Teachers:{' '}
                               <span className="font-medium text-gray-700">
@@ -217,165 +222,165 @@ export default function NepaliBhasaClassPage() {
         </section>
 
         {/* Teachers & Volunteers (static) */}
-<section className="mb-10">
-  <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">
-    🙋‍♀️ Teachers & Volunteers
-  </h2>
+        <section className="mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">
+            🙋‍♀️ Teachers & Volunteers
+          </h2>
 
-  <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto">
 
-    {/* Teachers */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-      {teachersData.map((t) => (
-        <div key={t.name} className="flex flex-col justify-between bg-white/90 p-4 rounded-xl border-2 border-purple-200 shadow-sm">
-          <div className="flex flex-col items-center gap-3">
-            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-purple-300 shadow-md">
-              <Image src={t.img} alt={t.name} width={96} height={96} className="w-full h-full object-cover" />
+            {/* Teachers */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {teachersData.map((t) => (
+                <div key={t.name} className="flex flex-col justify-between bg-white/90 p-4 rounded-xl border-2 border-purple-200 shadow-sm">
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-purple-300 shadow-md">
+                      <Image src={t.img} alt={t.name} width={96} height={96} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="text-center">
+                      <p className="font-bold text-purple-700 leading-tight">{t.name}</p>
+                      <p className="text-xs text-gray-500">{t.role || 'Teacher'}</p>
+                    </div>
+                  </div>
+
+                </div>
+              ))}
             </div>
-            <div className="text-center">
-              <p className="font-bold text-purple-700 leading-tight">{t.name}</p>
-              <p className="text-xs text-gray-500">{t.role || 'Teacher'}</p>
+
+            {/* Substitute Teachers */}
+            <h3 className="text-xl font-semibold text-green-700 mt-8 mb-4 text-center">
+              Substitute Teachers
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {substitutes.map((s) => (
+                <div key={s.name} className="flex flex-col justify-between bg-white/90 p-4 rounded-xl border-2 border-indigo-200 shadow-sm">
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-indigo-300 shadow-md">
+                      <Image src={s.img} alt={s.name} width={96} height={96} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="text-center">
+                      <p className="font-bold text-indigo-700">{s.name}</p>
+                      <p className="text-xs text-gray-500">{s.role || 'Substitute'}</p>
+                    </div>
+                  </div>
+
+                </div>
+              ))}
             </div>
+
+            {/* Volunteers */}
+            <h3 className="text-xl font-semibold text-pink-700 mt-8 mb-4 text-center">
+              Volunteers
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {volunteers.map((v) => (
+                <div key={v.name} className="flex flex-col justify-between bg-white/90 p-4 rounded-xl border-2 border-pink-200 shadow-sm">
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-pink-300 shadow-md">
+                      <Image src={v.img} alt={v.name} width={96} height={96} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="text-center">
+                      <p className="font-bold text-pink-700">{v.name}</p>
+                      <p className="text-xs text-gray-500">{v.role}</p>
+                    </div>
+                  </div>
+
+                </div>
+              ))}
+            </div>
+
           </div>
+        </section>
 
-        </div>
-      ))}
-    </div>
 
-    {/* Substitute Teachers */}
-    <h3 className="text-xl font-semibold text-green-700 mt-8 mb-4 text-center">
-      Substitute Teachers
-    </h3>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-      {substitutes.map((s) => (
-        <div key={s.name} className="flex flex-col justify-between bg-white/90 p-4 rounded-xl border-2 border-indigo-200 shadow-sm">
-          <div className="flex flex-col items-center gap-3">
-            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-indigo-300 shadow-md">
-              <Image src={s.img} alt={s.name} width={96} height={96} className="w-full h-full object-cover" />
-            </div>
-            <div className="text-center">
-              <p className="font-bold text-indigo-700">{s.name}</p>
-              <p className="text-xs text-gray-500">{s.role || 'Substitute'}</p>
-            </div>
-          </div>
-
-        </div>
-      ))}
-    </div>
-
-    {/* Volunteers */}
-    <h3 className="text-xl font-semibold text-pink-700 mt-8 mb-4 text-center">
-      Volunteers
-    </h3>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-      {volunteers.map((v) => (
-        <div key={v.name} className="flex flex-col justify-between bg-white/90 p-4 rounded-xl border-2 border-pink-200 shadow-sm">
-          <div className="flex flex-col items-center gap-3">
-            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-pink-300 shadow-md">
-              <Image src={v.img} alt={v.name} width={96} height={96} className="w-full h-full object-cover" />
-            </div>
-            <div className="text-center">
-              <p className="font-bold text-pink-700">{v.name}</p>
-              <p className="text-xs text-gray-500">{v.role}</p>
-            </div>
-          </div>
-
-        </div>
-      ))}
-    </div>
-
-  </div>
-</section>
-      
-
-         {/*Enable this once Registration is open*/}     
+        {/*Enable this once Registration is open*/}
         {/* Registration cards (before Gallery) */}
-<section className="mb-10">
-  <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">
-    📝 Registration
-  </h2>
+        <section className="mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">
+            📝 Registration
+          </h2>
 
-  <div className="max-w-6xl mx-auto">
-    <div className="text-center mb-4">
-      <p className="text-sm text-gray-600">
-        <strong className="text-green-700">Registration is now OPEN!</strong> 
-         <p>Please choose the appropriate form below.</p>
-      </p>
-    </div>
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-4">
+              <p className="text-sm text-gray-600">
+                <strong className="text-green-700">Registration is now OPEN!</strong>
+                <p>Please choose the appropriate form below.</p>
+              </p>
+            </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-      {/* Student Registration */}
-      <Card className="p-6 bg-white/95 border-2 border-pink-200 rounded-xl shadow-md">
-        <div className="flex items-start gap-4">
-          <div className="flex-shrink-0">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold text-xl">
-              S
+              {/* Student Registration */}
+              <Card className="p-6 bg-white/95 border-2 border-pink-200 rounded-xl shadow-md">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold text-xl">
+                      S
+                    </div>
+                  </div>
+
+                  <div className="flex-1">
+                    <h3 className="text-lg font-extrabold text-purple-700">Student Registration</h3>
+                    <p className="text-sm text-gray-600 mt-1">
+                      Register your child for Nepali Bhasa classes using the form below.
+                    </p>
+
+                    <div className="mt-4 flex items-center gap-3">
+                      <a
+                        href="https://docs.google.com/forms/d/1rEH4c86HgJR9h0ZwWrj4Af0MOMHlujyXbMR37j-nDPA/edit"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full shadow transition"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-90" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z" />
+                        </svg>
+                        Register Now
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Teacher / Volunteer Registration */}
+              <Card className="p-6 bg-white/95 border-2 border-yellow-200 rounded-xl shadow-md">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-pink-400 flex items-center justify-center text-white font-bold text-xl">
+                      T
+                    </div>
+                  </div>
+
+                  <div className="flex-1">
+                    <h3 className="text-lg font-extrabold text-purple-700">Teacher / Volunteer Registration</h3>
+                    <p className="text-sm text-gray-600 mt-1">
+                      Interested in teaching or volunteering? Please fill out the form below.
+                    </p>
+
+                    <div className="mt-4 flex items-center gap-3">
+                      <a
+                        href="https://docs.google.com/forms/d/1STFFGsG_LDVJRBKfiOMaag6fQfleBMpyEjv6TdLh8mw/edit"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full shadow transition"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-90" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z" />
+                        </svg>
+                        Register Now
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
             </div>
           </div>
+        </section>
 
-          <div className="flex-1">
-            <h3 className="text-lg font-extrabold text-purple-700">Student Registration</h3>
-            <p className="text-sm text-gray-600 mt-1">
-              Register your child for Nepali Bhasa classes using the form below.
-            </p>
-
-            <div className="mt-4 flex items-center gap-3">
-              <a
-                href="https://docs.google.com/forms/d/1rEH4c86HgJR9h0ZwWrj4Af0MOMHlujyXbMR37j-nDPA/edit"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full shadow transition"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-90" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z" />
-                </svg>
-                Register Now
-              </a>
-            </div>
-          </div>
-        </div>
-      </Card>
-
-      {/* Teacher / Volunteer Registration */}
-      <Card className="p-6 bg-white/95 border-2 border-yellow-200 rounded-xl shadow-md">
-        <div className="flex items-start gap-4">
-          <div className="flex-shrink-0">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-pink-400 flex items-center justify-center text-white font-bold text-xl">
-              T
-            </div>
-          </div>
-
-          <div className="flex-1">
-            <h3 className="text-lg font-extrabold text-purple-700">Teacher / Volunteer Registration</h3>
-            <p className="text-sm text-gray-600 mt-1">
-              Interested in teaching or volunteering? Please fill out the form below.
-            </p>
-
-            <div className="mt-4 flex items-center gap-3">
-              <a
-                href="https://docs.google.com/forms/d/1STFFGsG_LDVJRBKfiOMaag6fQfleBMpyEjv6TdLh8mw/edit"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full shadow transition"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-90" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z" />
-                </svg>
-                Register Now
-              </a>
-            </div>
-          </div>
-        </div>
-      </Card>
-
-    </div>
-  </div>
-</section>
-
-{/*Disable this once Registration is open*/}     
-{/* Registration cards (before Gallery) */}
-{/* <section className="mb-10">
+        {/*Disable this once Registration is open*/}
+        {/* Registration cards (before Gallery) */}
+        {/* <section className="mb-10">
   <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-6 text-center">📝 Registration</h2>
 
   <div className="max-w-6xl mx-auto">
@@ -467,7 +472,7 @@ export default function NepaliBhasaClassPage() {
               className="px-4 py-2 rounded-2xl border-2 border-pink-300 bg-white text-pink-700 font-semibold shadow-sm"
             >
               <option value="All">All</option>
-              {Object.keys(galleryByYear || {}).sort((a,b)=>b.localeCompare(a, undefined, {numeric:true})).map((y) => (
+              {Object.keys(galleryByYear || {}).sort((a, b) => b.localeCompare(a, undefined, { numeric: true })).map((y) => (
                 <option key={y} value={y}>
                   {y}
                 </option>
@@ -477,85 +482,85 @@ export default function NepaliBhasaClassPage() {
         </section>
 
         {/* Gallery (grouped by year, 4-preview + show more) */}
-<section className="mb-6">
-  <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-4 text-center">🖼️ Picture Gallery</h2>
-  <p className="text-center text-gray-600 mb-6">
-    Showing {selectedYear === 'All' ? 'All years' : selectedYear}
-  </p>
+        <section className="mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-purple-700 mb-4 text-center">🖼️ Picture Gallery</h2>
+          <p className="text-center text-gray-600 mb-6">
+            Showing {selectedYear === 'All' ? 'All years' : selectedYear}
+          </p>
 
-  <div className="max-w-6xl mx-auto space-y-6">
-    {Object.keys(groupedGallery).length === 0 && (
-      <Card className="text-center border-2 border-gray-200 p-6">
-        <p className="text-gray-600">No images available. Add images to the gallery to display them here.</p>
-      </Card>
-    )}
-
-    {(() => {
-      // sort years descending (numeric-aware)
-      const sortedYears = Object.keys(groupedGallery).sort((a, b) =>
-        b.localeCompare(a, undefined, { numeric: true, sensitivity: 'base' })
-      );
-
-      return sortedYears.map((year) => {
-        const images = groupedGallery[year] || [];
-        const isExpanded = !!expandedYears[year];
-        const preview = images.slice(0, 4);
-        const remainingCount = Math.max(0, images.length - preview.length);
-
-        return (
-          <div key={year} className="bg-white/95 border-2 border-gray-100 rounded-2xl p-4 shadow-sm">
-            <div className="flex items-center justify-between mb-3">
-              <div>
-                <h3 className="text-lg font-bold text-purple-700">{year}</h3>
-                <p className="text-sm text-gray-500">{images.length} photo{images.length !== 1 ? 's' : ''}</p>
-              </div>
-
-              <div className="flex items-center gap-3">
-                {remainingCount > 0 && (
-                  <button
-                    onClick={() => toggleYear(year)}
-                    className="inline-flex items-center gap-2 text-sm font-semibold px-3 py-1 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-sm hover:opacity-95 transition"
-                    aria-expanded={isExpanded}
-                  >
-                    {isExpanded ? 'Show less' : `Show ${Math.min(4, images.length)} +${remainingCount}`}
-                  </button>
-                )}
-                {remainingCount === 0 && (
-                  <span className="text-xs text-gray-500 px-3 py-1">All photos shown</span>
-                )}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-              {(isExpanded ? images : preview).map((src) => (
-                <Card key={src} className="p-0 overflow-hidden border-2 border-pink-50">
-                  <Image
-                    src={src}
-                    width={600}
-                    height={600}
-                    alt={`Gallery ${year}`}
-                    className="w-full h-36 sm:h-40 md:h-48 object-cover hover:scale-105 transition"
-                  />
-                </Card>
-              ))}
-            </div>
-
-            {!isExpanded && remainingCount > 0 && (
-              <div className="mt-3 text-right">
-                <button
-                  onClick={() => toggleYear(year)}
-                  className="text-sm text-purple-700 underline font-medium"
-                >
-                  View all {images.length} photos from {year}
-                </button>
-              </div>
+          <div className="max-w-6xl mx-auto space-y-6">
+            {Object.keys(groupedGallery).length === 0 && (
+              <Card className="text-center border-2 border-gray-200 p-6">
+                <p className="text-gray-600">No images available. Add images to the gallery to display them here.</p>
+              </Card>
             )}
+
+            {(() => {
+              // sort years descending (numeric-aware)
+              const sortedYears = Object.keys(groupedGallery).sort((a, b) =>
+                b.localeCompare(a, undefined, { numeric: true, sensitivity: 'base' })
+              );
+
+              return sortedYears.map((year) => {
+                const images = groupedGallery[year] || [];
+                const isExpanded = !!expandedYears[year];
+                const preview = images.slice(0, 4);
+                const remainingCount = Math.max(0, images.length - preview.length);
+
+                return (
+                  <div key={year} className="bg-white/95 border-2 border-gray-100 rounded-2xl p-4 shadow-sm">
+                    <div className="flex items-center justify-between mb-3">
+                      <div>
+                        <h3 className="text-lg font-bold text-purple-700">{year}</h3>
+                        <p className="text-sm text-gray-500">{images.length} photo{images.length !== 1 ? 's' : ''}</p>
+                      </div>
+
+                      <div className="flex items-center gap-3">
+                        {remainingCount > 0 && (
+                          <button
+                            onClick={() => toggleYear(year)}
+                            className="inline-flex items-center gap-2 text-sm font-semibold px-3 py-1 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-sm hover:opacity-95 transition"
+                            aria-expanded={isExpanded}
+                          >
+                            {isExpanded ? 'Show less' : `Show ${Math.min(4, images.length)} +${remainingCount}`}
+                          </button>
+                        )}
+                        {remainingCount === 0 && (
+                          <span className="text-xs text-gray-500 px-3 py-1">All photos shown</span>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                      {(isExpanded ? images : preview).map((src) => (
+                        <Card key={src} className="p-0 overflow-hidden border-2 border-pink-50">
+                          <Image
+                            src={src}
+                            width={600}
+                            height={600}
+                            alt={`Gallery ${year}`}
+                            className="w-full h-36 sm:h-40 md:h-48 object-cover hover:scale-105 transition"
+                          />
+                        </Card>
+                      ))}
+                    </div>
+
+                    {!isExpanded && remainingCount > 0 && (
+                      <div className="mt-3 text-right">
+                        <button
+                          onClick={() => toggleYear(year)}
+                          className="text-sm text-purple-700 underline font-medium"
+                        >
+                          View all {images.length} photos from {year}
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                );
+              });
+            })()}
           </div>
-        );
-      });
-    })()}
-  </div>
-</section>
+        </section>
 
         {/* More images / external gallery links */}
         <section className="mt-6 mb-12">
