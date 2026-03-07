@@ -33,10 +33,14 @@ export const volunteers = [
 
 /** Zoom schedules (keeps existing links) */
 export const zoomSchedules = [
-  { id: 'Beginners-Class', level: 'Beginning Class', day: 'Friday', time: '7:00 PM', zoom: 'https://us02web.zoom.us/j/81539732054?pwd=tko5aPgflbaJ6TH39ouFHArs8skPJ3.1' },
-  { id: 'Advance-Class', level: 'Advance Class', day: 'Saturday', time: '9:00 AM', zoom: 'https://us02web.zoom.us/j/88274108499?pwd=Yw3u734qMEl34NVvMytCwsbFpyJ6d0.1' },
-  { id: 'Medium-High-Class', level: 'Medium High Class', day: 'Saturday', time: '9:00 AM', zoom: 'https://us02web.zoom.us/j/81177770716?pwd=iEbWKh1T0P83VZz3bjM0blJTFb9hZV.1' },
-  { id: 'Medium-Class', level: 'Medium Class', day: 'Sunday', time: '9:00 AM', zoom: 'https://us02web.zoom.us/j/84930483234?pwd=wK8aM3xiFTUCt9CCHywmqR1k4bdNPs.1' },
+  { id: 'Beginners-Class', level: 'Beginning Class', day: 'Friday', time: '7:00 PM', 
+    zoom: 'https://us02web.zoom.us/j/87251619528?pwd=CUIj42ratCCbKs901kXIGDi7xRfeS7.1' },
+  { id: 'Advance-Class', level: 'Advance Class', day: 'Saturday', time: '9:00 AM', 
+    zoom: 'https://us02web.zoom.us/j/85850067503?pwd=zEsTNKzhqknBRpCIJE0G8l2h74iy6X.1' },
+  { id: 'Medium-High-Class', level: 'Medium High Class', day: 'Saturday', time: '9:00 AM', 
+    zoom: 'https://us02web.zoom.us/j/81177770716?pwd=iEbWKh1T0P83VZz3bjM0blJTFb9hZV.1' },
+  { id: 'Medium-Class', level: 'Medium Class', day: 'Sunday', time: '9:00 AM', 
+    zoom: 'https://us02web.zoom.us/j/88390354400?pwd=h5AS7e0Bk6uXTCkZwtEfbknfEZUTcs.1' },
 ];
 
 /** Landing cards (one card per class instance) */
