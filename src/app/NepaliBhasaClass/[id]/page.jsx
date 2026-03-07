@@ -103,7 +103,7 @@ export default function ClassDetailPage({ params }) {
               <p className="text-center text-sm text-gray-700 font-medium">
                 Zoom/Google Chrome Login Email: <span className="text-purple-700 text-lg">{cls.loginEmail}</span>
                 <p className="text-center text-sm text-gray-700 font-medium">
-                Teacher(s) need to log in with the email provided above to unlock full access.
+                Note: User Must Login With Above Email To Get Full Access !!!
               </p>
               </p>
               
