@@ -101,8 +101,12 @@ export default function ClassDetailPage({ params }) {
 
             {cls.loginEmail && (
               <p className="text-center text-sm text-gray-700 font-medium">
-                Zoom Login Email: <span className="text-purple-700">{cls.loginEmail}</span>
+                Zoom/Google Chrome Login Email: <span className="text-purple-700 text-lg">{cls.loginEmail}</span>
+                <p className="text-center text-sm text-gray-700 font-medium">
+                Teacher(s) need to log in with the email provided above to unlock full access.
               </p>
+              </p>
+              
             )}
 
             {(cls.driveLink || cls.attendanceLink) && (
