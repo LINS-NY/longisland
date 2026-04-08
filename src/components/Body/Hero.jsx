@@ -623,7 +623,7 @@ const Hero = () => {
             Our team is here to help you with any inquiries!
           </p>
           <Link
-            href="/contact"
+            href="/Contact"
             className="inline-block w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl shadow-md hover:shadow-xl transition-all active:scale-95"
           >
             Go to Contact Page 🤝
