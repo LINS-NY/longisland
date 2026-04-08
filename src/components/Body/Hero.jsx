@@ -557,7 +557,7 @@ const Hero = () => {
   <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-10 w-[90%] max-w-5xl">
 
     {/* Donation Section */}
-    <div className="bg-white p-6 rounded-xl shadow-lg max-w-sm text-center">
+{/*     <div className="bg-white p-6 rounded-xl shadow-lg max-w-sm text-center">
       <h2 className="text-2xl sm:text-3xl font-bold text-black mb-3">
         Support Our Mission 💖
       </h2>
@@ -583,10 +583,10 @@ const Hero = () => {
       <p className="text-black text-sm sm:text-base mt-3">
         Your donation helps us build a stronger Nepalese community in Long Island.
       </p>
-    </div>
+    </div> */}
 
     {/* Membership Form Section */}
-    <div className="bg-white p-6 rounded-xl shadow-lg max-w-sm text-center">
+{/*     <div className="bg-white p-6 rounded-xl shadow-lg max-w-sm text-center">
       <h2 className="text-2xl sm:text-3xl font-bold text-black mb-3">
         Scan to Become a Member 📝
       </h2>
@@ -609,7 +609,32 @@ const Hero = () => {
       <p className="text-black text-sm sm:text-base mt-3">
         Join the Long Island Nepalese Society and be part of our growing family.
       </p>
-    </div>
+    </div> */}
+
+    {/* 📧 CONTACT US CARD */}
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-[2.5rem] shadow-xl border-2 border-white text-center group hover:shadow-2xl transition-all">
+          <div className="bg-blue-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:rotate-6 transition-transform">
+            <span className="text-3xl text-white">📩</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-black text-blue-900 mb-3">
+            Have Questions?
+          </h2>
+          <p className="text-blue-700 font-medium mb-6">
+            Our team is here to help you with any inquiries!
+          </p>
+          <Link
+            href="/contact"
+            className="inline-block w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl shadow-md hover:shadow-xl transition-all active:scale-95"
+          >
+            Go to Contact Page 🤝
+          </Link>
+          <p className="mt-4 text-xs text-blue-400 font-bold uppercase tracking-widest">
+            We will Try to renspond 
+          </p>
+           <p className="mt-4 text-xs text-blue-400 font-bold uppercase tracking-widest">
+            as soon as possible!
+          </p>
+        </div>
   </div>
 </div>
 
