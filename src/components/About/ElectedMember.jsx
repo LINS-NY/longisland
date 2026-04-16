@@ -18,7 +18,6 @@ const ElectedMember = ({name,nepaliName,position,nepaliPostion,imageLocation}) =
                 <p className="text-sky-700">{name} </p>
                 <p className="text-sky-700">{nepaliName}</p> 
             </div>
-
     </div>
     )
 }
