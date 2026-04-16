@@ -20,13 +20,14 @@ const Header = () => {
 
   const navPrimary = [
     { href: '/', label: 'Home' },
+    { href: '/About', label: 'About LINS' },
     { href: '/Donations', label: 'Donation' },
     { href: '/MembershipForm', label: 'Membership' },
-    { href: '/Calendar', label: 'Calendar' },
+    
   ];
 
   const moreLinks = [
-    { href: '/About', label: 'About LINS' },
+    { href: '/Calendar', label: 'Calendar' },
     { href: '/CommunityBuilding', label: 'Community Building' },
     { href: '/NepaliBhasaClass', label: 'Nepali Bhasa Class' },
     { href: '/FinancialReports', label: 'Financial Reports' },

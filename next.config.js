@@ -7,7 +7,8 @@ const withMDX = require('@next/mdx')({
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-  staticPageGenerationTimeout: 1000
+  staticPageGenerationTimeout: 1000,
+  output: 'standalone',
 };
 
 module.exports = withMDX(nextConfig);

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import ElectedMembers from '../Member/ElectedMembers';
+import ElectedMembers from '../About/ElectedMembers';
 import { usePapaParse } from 'react-papaparse';
 import { saveAs } from 'file-saver';
 import jsPDF from 'jspdf';
@@ -17,6 +17,26 @@ const BackToTop = () => (
     </div>
 );
 
+const MemberData = ({ name, expiration, type }) => {
+    return (
+        <tr className="border-b hover:bg-gray-50 transition-colors">
+            <td className="px-6 py-4 text-left font-medium text-gray-900">{name}</td>
+            <td className="px-6 py-4 text-gray-700">{expiration || "Never"}</td>
+            <td className="px-6 py-4">
+                <span className={`px-2 py-1 rounded-full text-xs font-bold ${
+                    type === "Junior" 
+                        ? "bg-orange-100 text-orange-700" 
+                        : type === "Life Time" || type === "Lifetime"
+                        ? "bg-purple-100 text-purple-700" 
+                        : "bg-green-100 text-green-700"
+                }`}>
+                    {type}
+                </span>
+            </td>
+        </tr>
+    );
+};
+
 /**
  * Membership table with:
  * - Summary counts
@@ -31,57 +51,65 @@ function MembershipTable() {
     const [searchTerm, setSearchTerm] = useState('');
     const [lifetimeCount, setLifetimeCount] = useState(0);
     const [generalCount, setGeneralCount] = useState(0);
+    const [juniorCount, setJuniorCount] = useState(0);
     const { readString } = usePapaParse();
 
-    useEffect(() => {
+   useEffect(() => {
         fetch('./AllMembers.csv')
             .then(response => response.text())
             .then(csvText => {
                 readString(csvText, {
                     worker: true,
+                    skipEmptyLines: true,
                     complete: (results) => {
                         const lifetime = [];
                         const general = [];
+                        const junior = []; // Junior Array
 
                         results.data.forEach((row) => {
-                            const name = row?.[0]?.trim();
+                            const rawName = row?.[0]?.trim() || '';
                             const expirationRaw = row?.[1];
                             const expiration = typeof expirationRaw === 'string' ? expirationRaw.trim() : '';
+                            const typeIndicator = row?.[2] ? row[2].trim().toLowerCase() : '';
 
-                            if (!name || name === 'Member Name') return;
+                            if (!rawName || rawName === 'Member Name') return;
 
                             let type = 'General';
-                            let status = 'Expired';
+                            
+                            // UPDATED: Logic focused on Junior identification
+                            const isJunior = typeIndicator === 'junior' || rawName.toLowerCase().includes('junior');
 
-                            if (!expiration || expiration === '') {
+                            if (isJunior) {
+                                type = 'Junior';
+                            } else if (!expiration || expiration === '' || expiration.toLowerCase() === 'lifetime' || expiration === '—') {
                                 type = 'Lifetime';
-                                status = 'Active';
-                            } else if (expiration === 'Never') {
-                                type = 'General';
-                                status = 'Active';
                             } else {
-                                const expDate = new Date(expiration);
-                                const now = new Date();
-                                status = expDate > now ? 'Active' : 'Expired';
+                                type = 'General';
                             }
 
+                            // Clean name for display
+                            const displayName = rawName.replace(/\(Junior\)/gi, "").trim();
+
                             const memberRow = {
-                                name,
+                                name: displayName,
                                 expiration: expiration || '—',
-                                type,
-                                status
+                                type
                             };
 
-                            if (type === 'Lifetime') lifetime.push(memberRow);
+                            if (type === 'Junior') junior.push(memberRow);
+                            else if (type === 'Lifetime') lifetime.push(memberRow);
                             else general.push(memberRow);
                         });
 
-                        lifetime.sort((a, b) => a.name.localeCompare(b.name));
-                        general.sort((a, b) => a.name.localeCompare(b.name));
+                        const sortFn = (a, b) => a.name.localeCompare(b.name);
+                        lifetime.sort(sortFn);
+                        general.sort(sortFn);
+                        junior.sort(sortFn);
 
-                        const combined = [...lifetime, ...general];
+                        const combined = [...lifetime, ...general, ...junior];
                         setLifetimeCount(lifetime.length);
                         setGeneralCount(general.length);
+                        setJuniorCount(junior.length);
                         setAllMembers(combined);
                         setFilteredMembers(combined);
                     },
@@ -130,7 +158,9 @@ function MembershipTable() {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-2">
                     <div className="font-medium">Lifetime Members: <strong>{lifetimeCount}</strong></div>
                     <div className="font-medium">General Members: <strong>{generalCount}</strong></div>
-                    <div className="font-medium">Total Members: <strong>{lifetimeCount + generalCount}</strong></div>
+                     <div className="font-medium">Junior: <strong>{juniorCount}</strong></div>
+                    <div className="font-medium">Total: <strong>{lifetimeCount + generalCount + juniorCount}</strong></div>
+
                 </div>
             </div>
 
@@ -146,7 +176,7 @@ function MembershipTable() {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="w-full max-w-md px-4 py-3
-                       bg-gray-800 text-white font-medium
+                       bg-white-800 text-black font-medium
                        border-2 border-gray-600 rounded-lg
                        focus:outline-none focus:ring-2 focus:ring-blue-500
                        shadow-md placeholder-gray-300"
@@ -188,15 +218,17 @@ function MembershipTable() {
                                 <td className="px-4 py-2">{m.expiration}</td>
                                 <td className="px-4 py-2">{m.type}</td>
                                 <td className="px-4 py-2">
-                                    <span className={`px-2 py-1 rounded-full text-sm ${m.type === 'Lifetime'
-                                            ? 'bg-blue-100 text-blue-800'
-                                            : m.status === 'Active'
-                                                ? 'bg-green-100 text-green-800'
-                                                : 'bg-red-100 text-red-800'
-                                        }`}>
-                                        {m.type === 'Lifetime' ? 'Active' : m.status}
-                                    </span>
-                                </td>
+    <span className={`px-2 py-1 rounded-full text-sm ${
+        // 1. If it's Lifetime OR Junior, make it Green/Blue Active
+        (m.type === 'Lifetime' || m.type === 'Junior' || m.type === 'General')
+            ? 'bg-green-100 text-green-800' 
+            : m.status === 'Active'
+                ? 'bg-green-100 text-green-800'
+                : 'bg-red-100 text-red-800'
+    }`}>
+        {(m.type === 'Lifetime' || m.type === 'Junior' || m.type === 'General') ? 'Active' : m.status}
+    </span>
+</td>
                             </tr>
                         ))}
                     </tbody>

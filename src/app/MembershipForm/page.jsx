@@ -1,5 +1,5 @@
 import Header from "../../components/Header/Header";
-import MembershipForm from "../../components/Member/MembershipForm"
+import MembershipForm from "../../components/MemberForm/MembershipForm"
 import Footer from "../../components/Footer/Footer"
 
 export default function Ab() {

@@ -1,75 +1,68 @@
-import fs from 'fs';
-import path from 'path';
+import { NextResponse } from 'next/server';
 
-// Capitalize month for filename reconstruction later
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
+const API_KEY = 'AIzaSyCOwQ3p3TqilNzPEDWWcMGaOUuARD_be0k';
+
+// We put the IDs in lists so we can add more years easily in the future
+const BANK_FOLDERS = [
+  '107y4WqVvlu_N7v0n725kAW4ezBHW_AiV', // 2024
+  '160KkAPVH2Bpyi5PrswqFA7H0Rdg9xLs1'  // 2025
+];
+
+const EVENT_FOLDERS = [
+  '1e6lY1NgWP6FaGKKKuksXVu9SjKErkcki', // 2024
+  '1VgLfFKdlTcR7rSpgevnOru51JQFLvf8Z'  // 2025
+];
+
+async function fetchFilesFromDrive(folderId) {
+  const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents+and+trashed=false&fields=files(id,name)&key=${API_KEY}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.files || [];
 }
-
-function parseFileInfo(fileName, source, year) {
-  const cleanName = fileName.replace(/\.xlsx$/, '');
-  const parts = cleanName.split('-');
-
-  if (parts.length < 2) return null;
-
-  const month = parts[0];
-  return {
-    title: cleanName.replace(/-/g, ' '),
-    month,
-    year,
-    slug: `${source}-${year}-${month.toLowerCase()}`, // ✅ Include source
-    path: path.join(source, year, fileName), // e.g. "bank/2025/February-2025.xlsx"
-  };
-}
-
-function readReportsFromDir(baseDir, source) {
-  const results = {};
-
-  if (!fs.existsSync(baseDir)) return results;
-
-  const years = fs.readdirSync(baseDir);
-  for (const year of years) {
-    const yearPath = path.join(baseDir, year);
-    if (!fs.lstatSync(yearPath).isDirectory()) continue;
-
-    const files = fs.readdirSync(yearPath).filter(f => f.endsWith('.xlsx'));
-
-    const parsed = files.map((fileName) => {
-      const cleanName = fileName.replace(/\.xlsx$/, '');
-      const parts = cleanName.split('-');
-
-      if (parts.length < 2) return null;
-
-      const month = parts[0];
-      const yearPart = parts[1];
-
-      return {
-        title: cleanName.replace(/-/g, ' '),
-        month,
-        year: yearPart,
-        slug: `${source}-${yearPart}-${month.toLowerCase()}`,
-        path: `${year}/${fileName}`,
-      };
-    }).filter(Boolean);
-
-    if (parsed.length) {
-      results[year] = parsed;
-    }
-  }
-
-  return results;
-}
-
 
 export async function GET() {
-  const base = process.cwd();
-  const bankPath = path.join(base, 'data', 'financial-reports', 'bank');
-  const eventsPath = path.join(base, 'data', 'financial-reports', 'events');
+  const results = { bank: {}, events: {} };
 
-  const bank = readReportsFromDir(bankPath, 'bank');
-  const events = readReportsFromDir(eventsPath, 'events');
+  try {
+    // 1. Process Bank Folders
+    for (const folderId of BANK_FOLDERS) {
+      const files = await fetchFilesFromDrive(folderId);
+      processFiles(files, 'bank', results);
+    }
 
-  return new Response(JSON.stringify({ bank, events }), {
-    headers: { 'Content-Type': 'application/json' },
+    // 2. Process Event Folders
+    for (const folderId of EVENT_FOLDERS) {
+      const files = await fetchFilesFromDrive(folderId);
+      processFiles(files, 'events', results);
+    }
+
+  } catch (error) {
+    console.error("Drive Fetch Error:", error);
+  }
+
+  return NextResponse.json(results);
+}
+
+function processFiles(files, source, results) {
+  files.forEach(file => {
+    if (!file.name.endsWith('.xlsx')) return;
+
+    const cleanName = file.name.replace('.xlsx', '');
+    const parts = cleanName.split('-');
+    
+    // Fallback if filename isn't perfect
+    const month = parts[0] || 'Report';
+    const year = parts[1] || 'Other';
+
+    if (!results[source][year]) {
+      results[source][year] = [];
+    }
+
+    results[source][year].push({
+      title: cleanName.replace(/-/g, ' '),
+      month: month,
+      year: year,
+      slug: `${source}_${file.id}` 
+    });
   });
 }

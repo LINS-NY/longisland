@@ -1,42 +1,31 @@
-import fs from 'fs';
-import path from 'path';
 import * as XLSX from 'xlsx';
 
+const API_KEY = 'AIzaSyCOwQ3p3TqilNzPEDWWcMGaOUuARD_be0k';
+
 export async function getFinancialDocs(slug) {
-  const [source, year, month] = slug.split('-');
-  const base = process.cwd();
-  const dirPath = path.join(base, 'data', 'financial-reports', source, year);
+  // Slug format: source_fileId
+  const [source, fileId] = slug.split('_');
 
-  if (!fs.existsSync(dirPath)) {
-    throw new Error(`Directory does not exist: ${dirPath}`);
-  }
+  const url = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${API_KEY}`;
+  
+  const response = await fetch(url);
+  if (!response.ok) throw new Error('Failed to fetch file from Drive');
 
-  const files = fs.readdirSync(dirPath);
-  const match = files.find(file =>
-    file.toLowerCase().includes(`${month.toLowerCase()}-${year}`)
-  );
+  const arrayBuffer = await response.arrayBuffer();
+  const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
 
-  if (!match) {
-    throw new Error(`No matching file found for slug: ${slug}`);
-  }
+  const sheets = workbook.SheetNames.map(sheetName => ({
+    name: sheetName,
+    data: XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { defval: '' }),
+  }));
 
-  const filePath = path.join(dirPath, match);
+  // Get filename for the title
+  const metaUrl = `https://www.googleapis.com/drive/v3/files/${fileId}?key=${API_KEY}`;
+  const metaRes = await fetch(metaUrl);
+  const metaData = await metaRes.json();
 
-  try {
-    const fileBuffer = fs.readFileSync(filePath);
-    const workbook = XLSX.read(fileBuffer, { type: 'buffer' });
-
-    const sheets = workbook.SheetNames.map(sheetName => ({
-      name: sheetName,
-      data: XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { defval: '' }),
-    }));
-
-    return { title: match.replace(/\.xlsx$/, ''), sheets };
-  } catch (err) {
-    throw new Error(`XLSX.readFile failed for: ${filePath}\n${err.message}`);
-  }
+  return { 
+    title: metaData.name.replace('.xlsx', ''), 
+    sheets 
+  };
 }
-
-
-
-
