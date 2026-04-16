@@ -1,54 +1,68 @@
 import { NextResponse } from 'next/server';
-import path from 'path';
-import fs from 'fs';
-import AdmZip from 'adm-zip';
+
+const API_KEY = 'AIzaSyCOwQ3p3TqilNzPEDWWcMGaOUuARD_be0k';
+
+// We put the IDs in lists so we can add more years easily in the future
+const BANK_FOLDERS = [
+  '107y4WqVvlu_N7v0n725kAW4ezBHW_AiV', // 2024
+  '160KkAPVH2Bpyi5PrswqFA7H0Rdg9xLs1'  // 2025
+];
+
+const EVENT_FOLDERS = [
+  '1e6lY1NgWP6FaGKKKuksXVu9SjKErkcki', // 2024
+  '1VgLfFKdlTcR7rSpgevnOru51JQFLvf8Z'  // 2025
+];
+
+async function fetchFilesFromDrive(folderId) {
+  const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents+and+trashed=false&fields=files(id,name)&key=${API_KEY}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.files || [];
+}
 
 export async function GET() {
-  const base = process.cwd();
-  const reportDir = path.join(base, 'data', 'financial-reports');
   const results = { bank: {}, events: {} };
 
   try {
-    // 1. Get all zip files in the directory
-    const zipFiles = fs.readdirSync(reportDir).filter(f => f.endsWith('.zip'));
+    // 1. Process Bank Folders
+    for (const folderId of BANK_FOLDERS) {
+      const files = await fetchFilesFromDrive(folderId);
+      processFiles(files, 'bank', results);
+    }
 
-    zipFiles.forEach(zipFileName => {
-      const source = zipFileName.startsWith('bank') ? 'bank' : 'events';
-      const zipPath = path.join(reportDir, zipFileName);
-      const zip = new AdmZip(zipPath);
-      const entries = zip.getEntries();
+    // 2. Process Event Folders
+    for (const folderId of EVENT_FOLDERS) {
+      const files = await fetchFilesFromDrive(folderId);
+      processFiles(files, 'events', results);
+    }
 
-      entries.forEach(entry => {
-        // Skip folders and system files
-        if (entry.isDirectory || entry.entryName.includes('__MACOSX')) return;
-        if (!entry.entryName.endsWith('.xlsx')) return;
-
-        // Inside the zip, we expect a structure like "2024/January-2024.xlsx"
-        const parts = entry.entryName.split('/');
-        const year = parts[0]; 
-        const filename = parts[parts.length - 1];
-
-        const cleanName = filename.replace('.xlsx', '');
-        const nameParts = cleanName.split('-');
-        if (nameParts.length < 2) return;
-
-        const month = nameParts[0];
-
-        if (!results[source][year]) {
-          results[source][year] = [];
-        }
-
-        results[source][year].push({
-          title: cleanName.replace(/-/g, ' '),
-          month: month,
-          year: year,
-          slug: `${source}-${year}-${month.toLowerCase()}`
-        });
-      });
-    });
   } catch (error) {
-    console.error("Failed to read zips for list:", error);
+    console.error("Drive Fetch Error:", error);
   }
 
   return NextResponse.json(results);
+}
+
+function processFiles(files, source, results) {
+  files.forEach(file => {
+    if (!file.name.endsWith('.xlsx')) return;
+
+    const cleanName = file.name.replace('.xlsx', '');
+    const parts = cleanName.split('-');
+    
+    // Fallback if filename isn't perfect
+    const month = parts[0] || 'Report';
+    const year = parts[1] || 'Other';
+
+    if (!results[source][year]) {
+      results[source][year] = [];
+    }
+
+    results[source][year].push({
+      title: cleanName.replace(/-/g, ' '),
+      month: month,
+      year: year,
+      slug: `${source}_${file.id}` 
+    });
+  });
 }
