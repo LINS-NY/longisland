@@ -19,17 +19,20 @@ export default function Gallery() {
     setSelectedEvent(e.target.value);
   };
 
-  const filteredImages = () => {
-    if (!selectedYear) return [];
 
-    const eventsInYear = galleryData[selectedYear];
-    if (selectedEvent === 'All') {
-      return eventsInYear.flatMap((event) => ({
-        ...event,
-      }));
-    }
-    return eventsInYear.filter((e) => e.event === selectedEvent);
-  };
+const filteredImages = () => {
+  if (!selectedYear) return [];
+
+  const eventsInYear = galleryData[selectedYear];
+  
+  if (selectedEvent === 'All') {
+    // Return all events for that year exactly as they are defined in gallery-data.js
+    return eventsInYear;
+  }
+  
+  // Return only the one event that matches the dropdown selection
+  return eventsInYear.filter((e) => e.event === selectedEvent);
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-100 via-blue-50 to-green-100 py-10 px-4">

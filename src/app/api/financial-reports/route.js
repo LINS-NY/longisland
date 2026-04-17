@@ -5,12 +5,14 @@ const API_KEY = 'AIzaSyCOwQ3p3TqilNzPEDWWcMGaOUuARD_be0k';
 // We put the IDs in lists so we can add more years easily in the future
 const BANK_FOLDERS = [
   '107y4WqVvlu_N7v0n725kAW4ezBHW_AiV', // 2024
-  '160KkAPVH2Bpyi5PrswqFA7H0Rdg9xLs1'  // 2025
+  '160KkAPVH2Bpyi5PrswqFA7H0Rdg9xLs1',  // 2025
+  '1kCAyDjNbeO6OlDLlDMOUe2MvTnDwu_xT'  // 2026
 ];
 
 const EVENT_FOLDERS = [
   '1e6lY1NgWP6FaGKKKuksXVu9SjKErkcki', // 2024
-  '1VgLfFKdlTcR7rSpgevnOru51JQFLvf8Z'  // 2025
+  '1VgLfFKdlTcR7rSpgevnOru51JQFLvf8Z',  // 2025
+  '14B12ttCJx4MUn2Calp74zbYuqiCZ-pVj'  // 2026
 ];
 
 async function fetchFilesFromDrive(folderId) {

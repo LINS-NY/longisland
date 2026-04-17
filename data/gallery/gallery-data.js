@@ -2,208 +2,66 @@ const galleryData = {
   "2024": [
     {
       event: "Nepali New Year 2081",
-      description: "Celebration of the Nepali New Year 2081 with vibrant cultural performances, community gathering, and traditional food.",
-      images: [
-        "/images/2024/NepaliNewYear2081/1.jpg",
-        "/images/2024/NepaliNewYear2081/2.jpg",
-        "/images/2024/NepaliNewYear2081/3.jpg",
-        "/images/2024/NepaliNewYear2081/4.jpg",
-      ],
+      driveFolderId: "1onGtFhexU47CVuo64gTVTHbHksM8Q4uC",
+      description: "Welcoming the Nepali New Year 2081 with community cultural performances and traditional food."
     },
     {
       event: "Blood Drive",
-      description: "Annual community blood donation drive to save lives and promote health awareness in collaboration with local hospitals.",
-      images: [
-        "/images/2024/BloodDrive/1.jpg",
-        "/images/2024/BloodDrive/2.jpg",
-        "/images/2024/BloodDrive/3.jpg",
-      ],
+      driveFolderId: "11xhpPauuxTahiaw9rSJuKkPa3zCzsbHq",
+      description: "A successful community health initiative focused on life-saving blood donations from our members."
     },
     {
       event: "Immigration Rights Interaction Program",
-      description: "An informative session discussing immigration policies, rights, and services for the Nepalese community in New York.",
-      images: [
-        "/images/2024/ImmigrationRightsInteractionProgram/1.jpg",
-        "/images/2024/ImmigrationRightsInteractionProgram/2.jpg",
-      ],
+      driveFolderId: "1msMfEGntd0zncsBVQUlgWckExa5S7vN4",
+      description: "An informative session helping community members understand legal rights and immigration pathways."
     },
     {
-      event: "NepaliDashinProgram2081",
-      description: "A joyful Dashain celebration with music, dance, and tika ceremony representing Nepali traditions and family values.",
-      images: [
-        "/images/2024/NepaliDashinProgram2081/1.jpg",
-        "/images/2024/NepaliDashinProgram2081/2.jpg",
-        "/images/2024/NepaliDashinProgram2081/3.jpg",
-        "/images/2024/NepaliDashinProgram2081/4.jpg",
-        "/images/2024/NepaliDashinProgram2081/5.jpg",
-        "/images/2024/NepaliDashinProgram2081/6.jpg",
-        "/images/2024/NepaliDashinProgram2081/7.jpg",
-        "/images/2024/NepaliDashinProgram2081/8.jpg",
-        "/images/2024/NepaliDashinProgram2081/9.jpg",
-        "/images/2024/NepaliDashinProgram2081/10.jpg",
-        "/images/2024/NepaliDashinProgram2081/11.jpg",
-        "/images/2024/NepaliDashinProgram2081/12.jpg",
-        "/images/2024/NepaliDashinProgram2081/14.jpg",
-        "/images/2024/NepaliDashinProgram2081/15.jpg",
-        "/images/2024/NepaliDashinProgram2081/16.jpg",
-        "/images/2024/NepaliDashinProgram2081/17.jpg",
-        "/images/2024/NepaliDashinProgram2081/18.jpg",
-        "/images/2024/NepaliDashinProgram2081/19.jpg",
-        "/images/2024/NepaliDashinProgram2081/20.jpg",
-      ],
+      event: "Nepali Teej Celebration",
+      driveFolderId: "1KRoVLidg6Jwa3KP0H8VNJAhJVkDmJAlD",
+      description: "Celebrating the traditional Teej festival with music, dance, and a vibrant community gathering for women."
     },
+    {
+      event: "Summer Picnic",
+      driveFolderId: "1vltUBrXjcxhB1S-e0sOrAWTOkzhIaI8P",
+      description: "A relaxing outdoor day at the park featuring traditional games, BBQ, and community networking."
+    },
+    {
+      event: "Nepali Dashain Program 2081",
+      driveFolderId: "1tpmSzS53A7xYKmOU-VdwfKUcXASXLI5l",
+      description: "Celebrating our biggest festival, Dashain, with cultural performances, tika, and community blessings."
+    },
+    {
+      event: "Nepali Bhasa Graduation Ceremony",
+      driveFolderId: "1v3d5UgTR127i4-P0JVbj9pU4O69XgDj9",
+      description: "Nepali language learners celebrated their graduation with a ceremony recognizing their dedication and achievements in mastering the language."
+    }
   ],
   "2025": [
     {
       event: "Nepali Bhasa Graduation Ceremony",
-      description: "The Long Island Nepalese Society proudly celebrates the Nepali Bhasa Graduation Ceremony held yesterday, honoring our dedicated students who successfully completed the Nepali language program. \
-                    This special event recognizes the hard work of our students, the commitment of parents, and the tireless efforts of our teachers and volunteers who continue to preserve and promote Nepali language, culture, and heritage within our community. \
-                    We extend our heartfelt congratulations to all graduates and sincere thanks to everyone who supported this program. Together, we are keeping our language alive for future generations.",
-      images: [
-    '/images/2025/Graduation2025/flyer2.jpg',
-    '/images/2025/Graduation2025/1.jpg',
-    //'/images/2025/Graduation2025/2.jpg',
-    '/images/2025/Graduation2025/3.jpg',
-    '/images/2025/Graduation2025/4.jpg',
-    '/images/2025/Graduation2025/6.jpg',
-    '/images/2025/Graduation2025/7.jpg',
-    '/images/2025/Graduation2025/9.jpg',
-    '/images/2025/Graduation2025/10.jpg',
-    '/images/2025/Graduation2025/11.jpg',
-    '/images/2025/Graduation2025/12.jpg',    
-    '/images/2025/Graduation2025/14.jpg',
-    '/images/2025/Graduation2025/15.jpg',
-
-    '/images/2025/Graduation2025/Flyer1.jpg',    
-    '/images/2025/Graduation2025/8.jpg',
-    '/images/2025/Graduation2025/13.jpg',
-    '/images/2025/Graduation2025/5.jpg',
-    '/images/2025/Graduation2025/16.jpg',
-    
-  ],
-},
+      driveFolderId: "1Qit50D7NnPerY3NtmJP_zQV9Nb-aVdOI",
+      description: "Nepali language learners celebrated their graduation with a ceremony recognizing their dedication and achievements in mastering the language."
+    },
     {
       event: "LINS 2nd Soccer Tournament",
-      description: "The Long Island Nepalese Society (LINS), New York proudly presents its 2nd Soccer Tournament – 2025, \
-bringing together the Nepali community and soccer enthusiasts from across the region. \
-This exciting annual event celebrates sportsmanship, teamwork, and cultural unity, \
-featuring competitive matches, energetic crowds, and a vibrant atmosphere. \
-Building on the success of the inaugural tournament, the 2025 edition promises even more \
-thrilling games, talented players, and unforgettable moments on the field.",
-      images: [
-        "/images/2025/LINSSoccer/1(1).jpg",
-        "/images/2025/LINSSoccer/1(2).JPG",
-        "/images/2025/LINSSoccer/1(3).JPG",
-        "/images/2025/LINSSoccer/1(4).JPG",
-        "/images/2025/LINSSoccer/1(5).JPG",
-        "/images/2025/LINSSoccer/1(6).JPG",
-        "/images/2025/LINSSoccer/1(7).jpg",
-        "/images/2025/LINSSoccer/1(8).JPG",
-        "/images/2025/LINSSoccer/1(9).jpg",
-        "/images/2025/LINSSoccer/1(10).jpg",
-        "/images/2025/LINSSoccer/1(11).jpg",
-        "/images/2025/LINSSoccer/1(12).jpg",
-        "/images/2025/LINSSoccer/1(13).JPG",
-        "/images/2025/LINSSoccer/1(14).jpg",
-        "/images/2025/LINSSoccer/1(15).JPG",
-        "/images/2025/LINSSoccer/1(16).jpg",
-        "/images/2025/LINSSoccer/1(17).JPG",
-        "/images/2025/LINSSoccer/1(18).JPG",
-        "/images/2025/LINSSoccer/1(19).JPG",
-        "/images/2025/LINSSoccer/1(20).JPG",
-        "/images/2025/LINSSoccer/1(21).JPG",
-        "/images/2025/LINSSoccer/1(22).jpg",
-        "/images/2025/LINSSoccer/1(23).jpg",
-        "/images/2025/LINSSoccer/1(24).jpg",
-        "/images/2025/LINSSoccer/1(25).JPG",
-        "/images/2025/LINSSoccer/1(26).JPG",
-        "/images/2025/LINSSoccer/1(27).JPG",
-        "/images/2025/LINSSoccer/1(28).JPG",
-        "/images/2025/LINSSoccer/1(29).JPG",
-        "/images/2025/LINSSoccer/1(30).jpg",
-        "/images/2025/LINSSoccer/1(31).JPG",
-        "/images/2025/LINSSoccer/1(32).jpg",
-        "/images/2025/LINSSoccer/1(33).JPG",
-        "/images/2025/LINSSoccer/1(34).JPG",
-        "/images/2025/LINSSoccer/1(35).JPG",
-        "/images/2025/LINSSoccer/1(36).JPG",
-        "/images/2025/LINSSoccer/1(37).JPG",
-        "/images/2025/LINSSoccer/1(38).JPG",
-        "/images/2025/LINSSoccer/1(39).jpg",
-        "/images/2025/LINSSoccer/1(40).jpg",
-        "/images/2025/LINSSoccer/1(41).JPG",
-        "/images/2025/LINSSoccer/1(42).JPG",
-        "/images/2025/LINSSoccer/1(43).JPG",
-        "/images/2025/LINSSoccer/1(44).JPG",
-        "/images/2025/LINSSoccer/1(45).JPG",
-        "/images/2025/LINSSoccer/1(46).JPG",
-        "/images/2025/LINSSoccer/1(47).JPG",
-        "/images/2025/LINSSoccer/1(48).JPG",
-        "/images/2025/LINSSoccer/1(49).jpg",
-        "/images/2025/LINSSoccer/1(50).jpg",
-        "/images/2025/LINSSoccer/1(51).JPG",
-        "/images/2025/LINSSoccer/1(52).JPG",
-        "/images/2025/LINSSoccer/1(53).JPG",
-        "/images/2025/LINSSoccer/1(54).JPG",
-        "/images/2025/LINSSoccer/1(55).jpg",
-        "/images/2025/LINSSoccer/1(56).jpg",
-        "/images/2025/LINSSoccer/1(57).jpg",
-        "/images/2025/LINSSoccer/1(58).jpg",
-        "/images/2025/LINSSoccer/1(59).JPG",
-
-      ],
+      driveFolderId: "1-BqCzjNOxRewrkVIt0IVUDXT5tWeqCdi",
+      description: "Our annual sports event bringing together youth and adults for a day of competitive and fun soccer."
     },
     {
       event: "International Women's Day",
-      description: "An empowering event celebrating women’s achievements with cultural performances, awards, and guest speakers.",
-      images: [
-        "/images/2025/InternationalWomenDay/1.jpg",
-        "/images/2025/InternationalWomenDay/2.jpg",
-        "/images/2025/InternationalWomenDay/3.jpg",
-        "/images/2025/InternationalWomenDay/4.jpg",
-      ],
+      driveFolderId: "1trIvJ5SZ45si9SnixqoYqx2d3P_S3HjX",
+      description: "A celebration of women's achievements and contributions. The event featured inspiring speakers, cultural performances, and a community discussion"
     },
     {
-      event: "Summer Picnic",
-      description: "Long Island Nepalese Society Summer Picnic 2025 – A Joyful Gathering. On July 27, 2025, the Long Island Nepalese Society (LINSNY) successfully hosted its much-anticipated Summer Picnic 2025, bringing together members of the Nepali community for a joyful and memorable day. Held in a warm and welcoming atmosphere, the event featured delicious Nepali food, lively music, fun games, and vibrant cultural expressions. Families, friends, and guests enjoyed the spirit of togetherness, laughter, and community bonding. The picnic was a beautiful reminder of our shared heritage and the strength of unity among the Nepali diaspora in New York.",
-      images: [
-        "/images/2025/SummerPicnic/0.jpg",
-        "/images/2025/SummerPicnic/1.jpg",
-        "/images/2025/SummerPicnic/2.jpg",
-        "/images/2025/SummerPicnic/3.jpg",
-        "/images/2025/SummerPicnic/4.jpg",
-        "/images/2025/SummerPicnic/5.jpg",
-        "/images/2025/SummerPicnic/6.jpg",
-        "/images/2025/SummerPicnic/7.jpg",
-        "/images/2025/SummerPicnic/8.jpg",
-        "/images/2025/SummerPicnic/9.jpg",
-        "/images/2025/SummerPicnic/10.jpg",
-        "/images/2025/SummerPicnic/11.jpg",
-        "/images/2025/SummerPicnic/12.jpg",
-        "/images/2025/SummerPicnic/13.jpg",
-        "/images/2025/SummerPicnic/14.jpg",
-        "/images/2025/SummerPicnic/15.jpg",
-        "/images/2025/SummerPicnic/16.jpg",
-        "/images/2025/SummerPicnic/17.jpg",
-        "/images/2025/SummerPicnic/18.jpg",
-        "/images/2025/SummerPicnic/19.jpg",
-        "/images/2025/SummerPicnic/20.jpg",
-        "/images/2025/SummerPicnic/21.jpg",
-        "/images/2025/SummerPicnic/22.jpg",
-        "/images/2025/SummerPicnic/23.jpg",
-        "/images/2025/SummerPicnic/24.jpg",
-        "/images/2025/SummerPicnic/25.jpg",
-        "/images/2025/SummerPicnic/26.jpg",
-        "/images/2025/SummerPicnic/27.jpg",
-        "/images/2025/SummerPicnic/28.jpg",
-        "/images/2025/SummerPicnic/29.jpg",
-        "/images/2025/SummerPicnic/30.jpg",
-        "/images/2025/SummerPicnic/31.jpg",
-        "/images/2025/SummerPicnic/32.jpg",
-
-      ],
+       event: "Summer Picnic",
+       driveFolderId: "1_kB5cMCYkvXM7Ru5q0YH-EFuySdholtQ",
+       description: "A relaxing outdoor day at the park featuring traditional games, BBQ, and community networking."
     },
-  ],
+    {
+       event: "Teej Celebration",
+       driveFolderId: "1i5dWcyJoWdlHD0xxEMK2DWtRCuMohyaD",
+       description: "Celebrating the traditional Teej festival with music, dance, and a vibrant community gathering for women."
+    }
+  ]
 };
-
 export default galleryData;

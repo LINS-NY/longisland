@@ -9,6 +9,19 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   staticPageGenerationTimeout: 1000,
   output: 'standalone',
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
+      {
+        protocol: 'http',
+        hostname: 'googleusercontent.com',
+      },
+    ],
+  },
+  // --- END OF ADDED SECTION ---
 };
 
 module.exports = withMDX(nextConfig);
