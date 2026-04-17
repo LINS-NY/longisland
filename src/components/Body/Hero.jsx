@@ -18,6 +18,64 @@ const Hero = () => {
   return (
     <div>
 
+
+      {/* ****** ११औं बार्षिक साधारण सभा (AGM) Static Banner *********** */}
+<div className="w-full relative overflow-hidden bg-[#0a192f] border-y-4 border-yellow-600 shadow-2xl my-6">
+  
+  {/* Background Decorative Patterns */}
+  <div className="absolute inset-0 opacity-10">
+    <div className="absolute top-0 left-0 w-32 h-32 border-l-8 border-t-8 border-yellow-500 -translate-x-10 -translate-y-10 rounded-full"></div>
+    <div className="absolute bottom-0 right-0 w-32 h-32 border-r-8 border-b-8 border-yellow-500 translate-x-10 translate-y-10 rounded-full"></div>
+  </div>
+
+  <div className="relative z-10 py-10 px-4 max-w-4xl mx-auto text-center">
+    
+    {/* Top Badge/Subtitle */}
+    <div className="inline-block px-4 py-1 mb-4 border border-yellow-500/50 rounded-full bg-yellow-500/10">
+      <span className="text-yellow-500 uppercase tracking-[0.2em] text-xs font-bold">
+        Official Community Event
+      </span>
+    </div>
+
+    {/* Main Title (Nepali) */}
+    <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-2 drop-shadow-md">
+      ११औं बार्षिक साधारण सभा
+    </h2>
+
+    {/* Secondary Title (English) */}
+    <h3 className="text-xl md:text-3xl font-light text-yellow-400 tracking-wide mb-6 uppercase">
+      11th Annual General Meeting
+    </h3>
+
+    {/* Date & Location Bar */}
+    <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 border-t border-white/10 pt-6">
+      <div className="flex items-center gap-2">
+        <span className="text-yellow-500 text-xl">📅</span>
+        <span className="text-white font-semibold text-lg">Sunday, April 19, 2026</span>
+      </div>
+      
+      {/* Visual Separator for Desktop */}
+      <div className="hidden md:block w-1 h-6 bg-yellow-600/50"></div>
+
+      <div className="flex items-center gap-2">
+        <span className="text-yellow-500 text-xl">📍</span>
+        <span className="text-white font-semibold text-lg">Hicksville, New York</span>
+      </div>
+    </div>
+
+    {/* Bottom Accent Line */}
+    <div className="mt-8 flex justify-center items-center gap-3">
+      <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-yellow-600"></div>
+      <span className="text-yellow-600 text-xs">LINS-NY TRANSITORY BOARD</span>
+      <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-yellow-600"></div>
+    </div>
+
+  </div>
+
+  {/* Subtle Ambient Light Effect */}
+  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-radial-gradient from-blue-500/10 to-transparent pointer-events-none"></div>
+</div>
+
       {/* ******Below is for New Year Event***********          */}
 
       {/* New Year 2082 Banner - Added at the top */}
