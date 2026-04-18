@@ -59,7 +59,7 @@ const Hero = () => {
 
       <div className="flex items-center gap-2">
         <span className="text-yellow-500 text-xl">📍</span>
-        <span className="text-white font-semibold text-lg">Hicksville, New York</span>
+        <span className="text-white font-semibold text-lg">The Cotillion, 440 Jericho Tpke, Jericho, NY 11753</span>
       </div>
     </div>
 
