@@ -34,11 +34,11 @@ const donors = [
   { name: 'Tak B Ruwali ', commitment: 5001, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Dandapani Lamichhane ', commitment: 2000, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Tek Man Gurung', commitment: 5000, donated: 0, remarks: 'No Donation Yet' },
-  { name: 'Shiva Prasad Mainali/Sita Mainali', commitment: 'Daily $1', donated: 730, remarks: 'Partially Donated' },
+  { name: 'Shiva Prasad Mainali/Sita Mainali', commitment: '', donated: 730, remarks: 'Partially Donated' },
   { name: 'Gopal Bhandari/Rupa Bhandari', commitment: '', donated: 366, remarks: 'Partially Donated' },
   { name: 'Shankarnarayan Prajapati/Pampha Bhandari', commitment: '', donated: 460, remarks: 'Partially Donated' },
   { name: 'Surya Poudel/Namita Poudel', commitment: '', donated: 411, remarks: 'Partially Donated' },
 
-];
+];  
 
 export default donors;
