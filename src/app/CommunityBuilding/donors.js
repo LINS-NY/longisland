@@ -1,5 +1,5 @@
 const donors = [
-  { name: 'Kul Gouli (Raja)', commitment: 15111, donated: 11111, remarks: 'Partially Donated' },
+  { name: 'Kul Gouli (Raja)', commitment: 15111, donated: 12160, remarks: 'Partially Donated' },
   { name: 'Sabitra Siwakoti/ Dr. Hari Dahal', commitment: 11111, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Rajendra Karki/Gaumati Thapa', commitment: 5555, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Indira Simkhada/Diwakar Pande', commitment: 11111, donated: 0, remarks: 'No Donation Yet' },
@@ -10,13 +10,13 @@ const donors = [
   { name: 'Ravi Khadka/Ashmita Kadaria', commitment: 3111, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Sujan Regmi', commitment: 3111, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Gyanu Chand', commitment: 5001, donated: 0, remarks: 'No Donation Yet' },
-  { name: 'Durgesh Jung Karki / Neelima Karki', commitment: 11151, donated: 0, remarks: 'No Donation Yet' },
+  { name: 'Durgesh Jung Karki / Neelima Karki', commitment: 11151, donated: 1111, remarks: 'Partially Donated' },
   { name: 'Kedar kattel/ Tanka Anu Phuyal', commitment: 5555, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Devaki Sangraula/Family', commitment: 5555, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Khemanta K. Sunghk', commitment: 1151, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Raghu Neupane/Susmita Pandit', commitment: 5101, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Tej B Shahi/ Shanu Shah', commitment: 5051, donated: 0, remarks: 'No Donation Yet' },
-  { name: 'Bhubhan Shrestha / Shova Pokhrel', commitment: 5001, donated: 0, remarks: 'No Donation Yet' },
+  { name: 'Bhubhan Shrestha / Shova Pokhrel', commitment: 5001, donated: 1003, remarks: 'Partially Donated' },
   { name: 'Samba Lamichhane', commitment: 5100, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Ashok Karki', commitment: 5001, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Dan Singh Bista', commitment: 5001, donated: 0, remarks: 'No Donation Yet' },
@@ -34,6 +34,11 @@ const donors = [
   { name: 'Tak B Ruwali ', commitment: 5001, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Dandapani Lamichhane ', commitment: 2000, donated: 0, remarks: 'No Donation Yet' },
   { name: 'Tek Man Gurung', commitment: 5000, donated: 0, remarks: 'No Donation Yet' },
+  { name: 'Shiva Prasad Mainali/Sita Mainali', commitment: 'Daily $1', donated: 730, remarks: 'Partially Donated' },
+  { name: 'Gopal Bhandari/Rupa Bhandari', commitment: '', donated: 366, remarks: 'Partially Donated' },
+  { name: 'Shankarnarayan Prajapati/Pampha Bhandari', commitment: '', donated: 460, remarks: 'Partially Donated' },
+  { name: 'Surya Poudel/Namita Poudel', commitment: '', donated: 411, remarks: 'Partially Donated' },
+
 ];
 
 export default donors;
