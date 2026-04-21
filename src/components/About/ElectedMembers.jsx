@@ -4,153 +4,125 @@ import ElectedMember from './ElectedMember';
 
 const electedMember = [
     {
-        name: "Kul Prasad Gouli (Rajan)",
-        nepaliName: "कुल प्रसाद गौली (राजन)",
-        imageLocation: "/Members/RajanGouli.png",
-        position: "President",
-        nepaliPostion: "अघ्यक्ष"
-    },
-    {
         name: "Sabitra Siwakoti",
         nepaliName: "सावित्रा सिवाकोटी",
         imageLocation: "/Members/SabitraSiwakoti.png",
-        position: "Senior Vice President",
-        nepaliPostion: "बरिस्ठ उपाध्यक्ष"
+        position: "President",
+        nepaliPostion: "अध्यक्ष"
     },
     {
         name: "Gokul Sapkota",
         nepaliName: "गोकुल सापकोटा",
         imageLocation: "/Members/GokulSapkota.png",
-        position: "Vice President",
-        nepaliPostion: "उपाध्यक्ष"
+        position: "Senior Vice President",
+        nepaliPostion: "वरिष्ठ उपाध्यक्ष"
     },
     {
-        name: "Indira Simkhada",
-        nepaliName: "इन्दिरा सिंखडा (पाण्डे)",
-        imageLocation: "/Members/IndiraSimkhada.png",
-        position: "Vice President",
-        nepaliPostion: "उपाध्यक्ष"
-    },
-    {
-        name: "RAJENDRA KUMAR KARKI",
-        nepaliName: "राजेन्द्र कुमार कार्की",
-        imageLocation: "/Members/RAJENDRAKUMARKARKI.png",
-        position: "General Secretary",
-        nepaliPostion: "महासचिव"
-    },
-    {
-        name: "Deepak Adhikari",
-        nepaliName: "दिपक अधिकारी",
-        imageLocation: "/Members/DeepakAdhikari.png",
-        position: "Secretary",
-        nepaliPostion: "सचिव"
-    },
-    {
-        name: "Mohan Chettry",
-        nepaliName: "मोहन क्षेत्री",
-        imageLocation: "/Members/MohanChettry.png",
-        position: "Secretary",
-        nepaliPostion: "सचिव"
-    },
-    {
-        name: "Nirmal Thapaliya",
-        nepaliName: "निर्मल थपलिया",
-        imageLocation: "/Members/NirmalThapaliya.png",
-        position: "Treasurer",
-        nepaliPostion: "कोषाध्यक्ष"
-    },
-    {
-        name: "Ram Kumar Rai",
-        nepaliName: "राम कुमार राई",
-        imageLocation: "/Members/RamKumarRai.png",
-        position: "Co-Treasurer",
-        nepaliPostion: "सह कोषाध्यक्ष"
-    },
-    {
-        name: "Ambika Phuyal",
-        nepaliName: "अम्बिका फुँयाल",
-        imageLocation: "/Members/AmbikaPhuyal.png",
-        position: "Board Of Directors",
-        nepaliPostion: "कार्यसमिति सदस्य"
-    },
-    {
-        name: "Bikash Mainali",
-        nepaliName: "विकास मैनाली",
-        imageLocation: "/Members/BIkashMainali.png",
-        position: "Board Of Directors",
-        nepaliPostion: "कार्यसमिति सदस्य"
-    },
-    {
-        name: "Bimala Bhandari",
-        nepaliName: "विमला भण्डारी",
-        imageLocation: "/Members/BimalaBhandari.png",
-        position: "Board Of Directors",
-        nepaliPostion: "कार्यसमिति सदस्य"
-    },
-    {
-        name: "Dr.Yam Raj Giri",
-        nepaliName: "डा. यम राज गिरी",
+        name: "Yam Raj Giri",
+        nepaliName: "यम राज गिरी",
         imageLocation: "/Members/YamRajGiri.png",
-        position: "Board Of Directors",
-        nepaliPostion: "कार्यसमिति सदस्य"
+        position: "Vice President (Nassau)",
+        nepaliPostion: "उपाध्यक्ष"
     },
     {
         name: "Gyanu Chand",
         nepaliName: "ज्ञानु चन्द",
         imageLocation: "/Members/GyanuChand.png",
-        position: "Board Of Directors",
-        nepaliPostion: "कार्यसमिति सदस्य"
+        position: "Vice President (Suffolk)",
+        nepaliPostion: "उपाध्यक्ष"
     },
     {
-        name: "Ravi Khadka",
-        nepaliName: "रवि खड्का",
-        imageLocation: "/Members/RaviKhadka.png",
-        position: "Board Of Directors",
-        nepaliPostion: "कार्यसमिति सदस्य"
+        name: "TBD",
+        nepaliName: "TBD",
+        imageLocation: "/Members/default.png",
+        position: "Women Vice President",
+        nepaliPostion: "महिला उपाध्यक्ष"
     },
     {
-        name: "Raj kumar Tamang",
-        nepaliName: "राज कुमार तामांग",
-        imageLocation: "/Members/RajKumarTamang.png",
-        position: "Board Of Directors",
-        nepaliPostion: "कार्यसमिति सदस्य"
+        name: "Bishal Regmi",
+        nepaliName: "विशाल रेग्मी",
+        imageLocation: "/Members/BishalRegmi.jpg",
+        position: "General Secretary",
+        nepaliPostion: "महासचिव"
     },
     {
-        name: "Roshni Sitaula",
-        nepaliName: "रोश्नी सिटौला",
-        imageLocation: "/Members/RoshniSitaula.png",
-        position: "Board Of Directors",
-        nepaliPostion: "कार्यसमिति सदस्य"
+        name: "Milan Chhetri",
+        nepaliName: "मिलन क्षेत्री",
+        imageLocation: "/Members/MilanChhetri.jpg",
+        position: "Secretary",
+        nepaliPostion: "सचिव"
     },
     {
-        name: "Sujan Regmi",
-        nepaliName: "सुजन रेग्मी",
-        imageLocation: "/Members/SujanRegmi.png",
-        position: "Board Of Directors",
-        nepaliPostion: "कार्यसमिति सदस्य"
-    },
-    {
-        name: "Namita Paudel",
+        name: "Namita Poudel",
         nepaliName: "नमिता पौडेल",
         imageLocation: "/Members/NamitaPaudel.png",
-        position: "Board Of Directors",
+        position: "Women Secretary",
+        nepaliPostion: "महिला सचिव"
+    },
+    {
+        name: "Purushottam Sapkota",
+        nepaliName: "पुरुषोत्तम सापकोटा",
+        imageLocation: "/Members/PurushottamSapkota.jpg",
+        position: "Treasurer",
+        nepaliPostion: "कोषाध्यक्ष"
+    },
+    {
+        name: "Shushmita Pandit",
+        nepaliName: "सुस्मिता पण्डित",
+        imageLocation: "/Members/ShushmitaPandit.jpg",
+        position: "Women Co-Treasurer",
+        nepaliPostion: "महिला सह–कोषाध्यक्ष"
+    },
+    {
+        name: " ",
+        nepaliName: "मन्दीप प्रजापति",
+        imageLocation: "/Members/MandipPrajapati.jpg",
+        position: "Board of Directors",
         nepaliPostion: "कार्यसमिति सदस्य"
     },
     {
-        name: "Niraj Sapkota",
-        nepaliName: "निरज सापकोटा",
-        imageLocation: "/Members/NirajSapkota.png",
-        position: "Board Of Directors",
+        name: "Om Kumari Dahal (Ashika)",
+        nepaliName: "ओम कुमारी दाहाल (आशिका)",
+        imageLocation: "/Members/OmKumariDahal(Ashika).jpg",
+        position: "Board of Directors",
         nepaliPostion: "कार्यसमिति सदस्य"
     },
     {
-        name: "Suman Bastola",
-        nepaliName: "सुमन बास्तोला",
-        imageLocation: "/Members/SumanBastola.png",
-        position: "Board Of Directors",
+        name: "Prabhakar Pande",
+        nepaliName: "प्रभाकर पाण्डे",
+        imageLocation: "/Members/PrabhakarPande.jpg",
+        position: "Board of Directors",
         nepaliPostion: "कार्यसमिति सदस्य"
     },
-]
+    {
+        name: "Pushpa Raj Regmi",
+        nepaliName: "पुष्प राज रेग्मी",
+        imageLocation: "/Members/PushpaRajRegmi.jpg",
+        position: "Board of Directors",
+        nepaliPostion: "कार्यसमिति सदस्य"
+    },
+    {
+        name: "Ramu Lamichhane",
+        nepaliName: "रामू लामिछाने",
+        imageLocation: "/Members/RamuLamichhane.jpg",
+        position: "Board of Directors",
+        nepaliPostion: "कार्यसमिति सदस्य"
+    },
+    {
+        name: "Surendra Bikram Basnet",
+        nepaliName: "सुरेन्द्र विक्रम बस्नेत",
+        imageLocation: "/Members/SurendraBikramBasnet.jpg",
+        position: "Board of Directors",
+        nepaliPostion: "कार्यसमिति सदस्य"
+    },
+    {
+        name: "Tulasi Kumari Paudel Timililsina",
+        nepaliName: "तुलसी कुमारी पौडेल तिमिल्सिना",
+        imageLocation: "/Members/TulasiPaudelTimalsina.jpg",
+        position: "Board of Directors",
+        nepaliPostion: "कार्यसमिति सदस्य"
+    }
+];
 
 const ElectedMembers = () => {
     return(
