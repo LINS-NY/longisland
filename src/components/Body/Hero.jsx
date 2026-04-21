@@ -923,70 +923,69 @@ const Hero = () => {
 
 
       {/* President's & Gen. Sec Message Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto w-[90%] my-12">
-        {/* President's Message */}
-        <Link href="/PresidentialMessages">
-          <div
-            className="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer h-[22rem] bg-cover bg-center"
-            style={{ backgroundImage: "url('/nepal-mountain-bg.jpg')" }}
-          >
-            {/* Darker Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/85 backdrop-blur-md"></div>
+   {
+//   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto w-[90%] my-12">
+//     {/* President's Message */}
+//     <Link href="/PresidentialMessages">
+//       <div
+//         className="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer h-[22rem] bg-cover bg-center"
+//         style={{ backgroundImage: "url('/nepal-mountain-bg.jpg')" }}
+//       >
+//         {/* Darker Gradient Overlay */}
+//         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/85 backdrop-blur-md"></div>
 
-            {/* Content */}
-            <div className="relative z-10 flex flex-col items-center justify-center p-6 text-white text-center h-full">
-              <div className="bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/30 shadow-md">
-                <Image
-                  src="/RajanGouli.jpg"
-                  width={110}
-                  height={110}
-                  alt="Rajan Gouli"
-                  className="rounded-full border-4 border-white"
-                />
-              </div>
-              <h2 className="text-xl sm:text-2xl font-extrabold mt-4 drop-shadow-md">
-                President's Message
-              </h2>
-              <p className="text-gray-200 text-sm mt-2 max-w-sm drop-shadow-sm">
-                Dear Valuable and Respected Members of the Long-Island Nepalese Society New York...
-              </p>
-            </div>
-          </div>
-        </Link>
+//         {/* Content */}
+//         <div className="relative z-10 flex flex-col items-center justify-center p-6 text-white text-center h-full">
+//           <div className="bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/30 shadow-md">
+//             <Image
+//               src="/RajanGouli.jpg"
+//               width={110}
+//               height={110}
+//               alt="Rajan Gouli"
+//               className="rounded-full border-4 border-white"
+//             />
+//           </div>
+//           <h2 className="text-xl sm:text-2xl font-extrabold mt-4 drop-shadow-md">
+//             President's Message
+//           </h2>
+//           <p className="text-gray-200 text-sm mt-2 max-w-sm drop-shadow-sm">
+//             Dear Valuable and Respected Members of the Long-Island Nepalese Society New York...
+//           </p>
+//         </div>
+//       </div>
+//     </Link>
 
-        
+//     {/* General Secretary's Message */}
+//     <Link href="/GeneralSecretaryMessages">
+//       <div
+//         className="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer h-[22rem] bg-cover bg-center"
+//         style={{ backgroundImage: "url('/nepal-mountain-bg.jpg')" }}
+//       >
+//         {/* Darker Gradient Overlay */}
+//         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/85 backdrop-blur-md"></div>
 
-        {/* General Secretary's Message */}
-        <Link href="/GeneralSecretaryMessages">
-          <div
-            className="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer h-[22rem] bg-cover bg-center"
-            style={{ backgroundImage: "url('/nepal-mountain-bg.jpg')" }}
-          >
-            {/* Darker Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/85 backdrop-blur-md"></div>
-
-            {/* Content */}
-            <div className="relative z-10 flex flex-col items-center justify-center p-6 text-white text-center h-full">
-              <div className="bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/30 shadow-md">
-                <Image
-                  src="/RajendraKarki.jpg"
-                  width={110}
-                  height={110}
-                  alt="Rajendra Karki"
-                  className="rounded-full border-4 border-white"
-                />
-              </div>
-              <h2 className="text-xl sm:text-2xl font-extrabold mt-4 drop-shadow-md">
-                Gen. Sec's Message
-              </h2>
-              <p className="text-gray-200 text-sm mt-2 max-w-sm drop-shadow-sm">
-                Dear Valuable and Respected Members of the Long-Island Nepalese Society New York...
-              </p>
-            </div>
-          </div>
-        </Link>
-      </div>
-
+//         {/* Content */}
+//         <div className="relative z-10 flex flex-col items-center justify-center p-6 text-white text-center h-full">
+//           <div className="bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/30 shadow-md">
+//             <Image
+//               src="/RajendraKarki.jpg"
+//               width={110}
+//               height={110}
+//               alt="Rajendra Karki"
+//               className="rounded-full border-4 border-white"
+//             />
+//           </div>
+//           <h2 className="text-xl sm:text-2xl font-extrabold mt-4 drop-shadow-md">
+//             Gen. Sec's Message
+//           </h2>
+//           <p className="text-gray-200 text-sm mt-2 max-w-sm drop-shadow-sm">
+//             Dear Valuable and Respected Members of the Long-Island Nepalese Society New York...
+//           </p>
+//         </div>
+//       </div>
+//     </Link>
+//   </div>
+}
 
 
 
