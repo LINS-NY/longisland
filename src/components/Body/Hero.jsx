@@ -18,62 +18,138 @@ const Hero = () => {
   return (
     <div>
 
-
-      {/* ****** ११औं बार्षिक साधारण सभा (AGM) Static Banner *********** */}
-<div className="w-full relative overflow-hidden bg-[#0a192f] border-y-4 border-yellow-600 shadow-2xl my-6">
-  
-  {/* Background Decorative Patterns */}
-  <div className="absolute inset-0 opacity-10">
-    <div className="absolute top-0 left-0 w-32 h-32 border-l-8 border-t-8 border-yellow-500 -translate-x-10 -translate-y-10 rounded-full"></div>
-    <div className="absolute bottom-0 right-0 w-32 h-32 border-r-8 border-b-8 border-yellow-500 translate-x-10 translate-y-10 rounded-full"></div>
-  </div>
-
-  <div className="relative z-10 py-10 px-4 max-w-4xl mx-auto text-center">
-    
-    {/* Top Badge/Subtitle */}
-    <div className="inline-block px-4 py-1 mb-4 border border-yellow-500/50 rounded-full bg-yellow-500/10">
-      <span className="text-yellow-500 uppercase tracking-[0.2em] text-xs font-bold">
-        Official Community Event
-      </span>
-    </div>
-
-    {/* Main Title (Nepali) */}
-    <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-2 drop-shadow-md">
-      ११औं बार्षिक साधारण सभा
-    </h2>
-
-    {/* Secondary Title (English) */}
-    <h3 className="text-xl md:text-3xl font-light text-yellow-400 tracking-wide mb-6 uppercase">
-      11th Annual General Meeting
-    </h3>
-
-    {/* Date & Location Bar */}
-    <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 border-t border-white/10 pt-6">
-      <div className="flex items-center gap-2">
-        <span className="text-yellow-500 text-xl">📅</span>
-        <span className="text-white font-semibold text-lg">Sunday, April 19, 2026</span>
-      </div>
+    <div className="flex flex-col gap-4">
       
-      {/* Visual Separator for Desktop */}
-      <div className="hidden md:block w-1 h-6 bg-yellow-600/50"></div>
+      {/* 🎊 NEWLY ELECTED MEMBERS CELEBRATION CARD - TOP SECTION */}
+      <div className="container mx-auto w-[90%] mt-8">
+        <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-[2.5rem] shadow-2xl border-2 border-yellow-600/50 p-6 md:p-10 flex flex-col md:flex-row gap-8 items-center group transition-all duration-500 hover:shadow-yellow-500/10">
+          
+          {/* Injecting the flashing shimmer animation */}
+          <style>{`
+            @keyframes flashShimmer {
+              0% { background-position: -200% center; }
+              100% { background-position: 200% center; }
+            }
+            .animate-shimmer {
+              background: linear-gradient(to right, #FBBF24 20%, #FFFBEB 40%, #FFFBEB 60%, #FBBF24 80%);
+              background-size: 200% auto;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              animation: flashShimmer 3s linear infinite;
+            }
+          `}</style>
 
-      <div className="flex items-center gap-2">
-        <span className="text-yellow-500 text-xl">📍</span>
-        <span className="text-white font-semibold text-lg">The Cotillion, 440 Jericho Tpke, Jericho, NY 11753</span>
+          {/* Picture Section */}
+          <div className="relative w-full md:w-2/5 flex-shrink-0">
+            <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border-4 border-yellow-600 shadow-xl relative">
+              <Image 
+                src="/Members/ElectedMembers2026.jpg"
+                alt="LINS Newly Elected Members"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            {/* Corner Logo Decoration */}
+            <div className="absolute -top-3 -left-3 w-14 h-14 bg-white rounded-full p-1 shadow-lg border-2 border-yellow-600 z-20">
+              <Image src="/LINS.png" alt="LINS Logo" width={50} height={50} className="rounded-full" />
+            </div>
+          </div>
+
+          {/* Text Section */}
+          <div className="w-full md:w-3/5 text-center md:text-left">
+            <h1 className="text-3xl md:text-7xl font-black mb-4 animate-shimmer leading-tight">
+              Congratulations!
+            </h1>
+            <h2 className="text-xl md:text-2xl font-bold text-blue-900 dark:text-white mb-4 leading-snug">
+              निर्वाचित हुनुभएकोमा सम्पूर्ण टिमलाई हार्दिक बधाई तथा शुभकामना !
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-6 font-medium">
+              Congratulations to the newly elected board members of the Long Island Nepalese Society, New York. We wish the entire team a successful tenure filled with progress and community unity.
+            </p>
+            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+              <span className="px-4 py-1.5 bg-yellow-100 text-yellow-800 rounded-full text-xs font-bold uppercase tracking-wider border border-yellow-200">
+                New Leadership 2026
+              </span>
+              <span className="px-4 py-1.5 bg-blue-100 text-blue-800 rounded-full text-xs font-bold uppercase tracking-wider border border-blue-200">
+                LINS-NY Official
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      {/* 🏛️ LINS-NY FULL ELECTED BOARD 2026-2028 */}
+<div className="container mx-auto w-full md:w-[95%] my-12 px-4 font-sans">
+  <div className="bg-white rounded-[3rem] shadow-2xl border border-gray-100 overflow-hidden">
+    
+    {/* Professional Header Section */}
+    <div className="bg-slate-900 py-12 px-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6">
+      <div>
+        <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase italic">
+          Executive Leadership
+        </h2>
+      </div>
+      <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-2xl">
+        <span className="text-yellow-400 font-black text-lg tracking-widest uppercase">Term: 2026 - 2028</span>
       </div>
     </div>
 
-    {/* Bottom Accent Line */}
-    <div className="mt-8 flex justify-center items-center gap-3">
-      <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-yellow-600"></div>
-      <span className="text-yellow-600 text-xs">LINS-NY TRANSITORY BOARD</span>
-      <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-yellow-600"></div>
+    <div className="p-6 md:p-12">
+      {/* 1. EXECUTIVE OFFICERS GRID (Increased Font & Visibility) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+        {[
+          { role: "President", name: "Sabitra Siwakoti", nep: "अध्यक्ष", color: "bg-blue-600" },
+          { role: "Senior VP", name: "Gokul Sapkota", nep: "वरिष्ठ उपाध्यक्ष", color: "bg-purple-600" },
+          { role: "Gen. Secretary", name: "Bishal Regmi", nep: "महासचिव", color: "bg-orange-600" },
+          { role: "Treasurer", name: "Purushottam Sapkota", nep: "कोषाध्यक्ष", color: "bg-emerald-600" },
+          { role: "VP Nassau", name: "Yam Raj Giri", nep: "उपाध्यक्ष", color: "bg-slate-700" },
+          { role: "VP Suffolk", name: "Gyanu Chand", nep: "उपाध्यक्ष", color: "bg-slate-700" },
+          { role: "Women VP", name: "TBD", nep: "महिला उपाध्यक्ष", color: "bg-pink-600" },
+          { role: "Secretary", name: "Milan Chhetri", nep: "सचिव", color: "bg-slate-700" },
+          { role: "Women Secretary", name: "Namita Poudel", nep: "महिला सचिव", color: "bg-pink-600" },
+          { role: "Women Co-Treasurer", name: "Shushmita Pandit", nep: "महिला सह–कोषाध्यक्ष", color: "bg-purple-600" },
+        ].map((m, i) => (
+          <div key={i} className={`group p-6 rounded-[2rem] shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${m.color.includes('border') ? m.color : m.color + ' text-white'}`}>
+            <span className={`text-sm font-black mb-2 block ${m.color.includes('text-pink') ? 'text-black' : 'opacity-80'}`}>{m.nep}</span>
+            <h3 className="text-xl md:text-2xl font-black leading-tight mb-1">{m.name}</h3>
+            <p className={`text-xs font-bold uppercase tracking-tighter ${m.color.includes('text-pink') ? 'text-slate-500' : 'text-white/80'}`}>{m.role}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* 2. BOARD OF DIRECTORS - FULL POST CARDS */}
+      <div className="pt-12 border-t-2 border-dashed border-slate-100">
+        <div className="flex items-center gap-4 mb-10">
+          <div className="h-10 w-2 bg-blue-600 rounded-full"></div>
+          <h4 className="text-2xl font-black text-slate-900 uppercase tracking-tight">Board of Directors</h4>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {[
+            { name: "Mandip Prajapati" },
+            { name: "Om Kumari Dahal (Ashika)" },
+            { name: "Prabhakar Pande" },
+            { name: "Pushpa Raj Regmi" },
+            { name: "Ramu Lamichhane" },
+            { name: "Surendra Bikram Basnet" },
+            { name: "Tulasi Kumari Paudel Timililsina" }
+          ].map((dir, idx) => (
+            <div key={idx} className="flex flex-col p-5 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-white hover:border-blue-500 hover:shadow-md transition-all">
+              <span className="text-[9px] font-black text-blue-600 uppercase tracking-widest mb-1">कार्यसमिति सदस्य</span>
+              <h5 className="text-lg font-extrabold text-slate-800 leading-tight">{dir.name}</h5>
+              <span className="text-[10px] font-bold text-slate-400 uppercase mt-1">Board of Directors</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
 
+    {/* Footer Branding */}
+    <div className="bg-slate-50 py-6 px-8 text-center border-t border-gray-100">
+      <p className="text-slate-400 font-bold text-[10px] uppercase tracking-[0.4em]">Long Island Nepalese Society New York • Unity • Progress • Culture</p>
+    </div>
   </div>
-
-  {/* Subtle Ambient Light Effect */}
-  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-radial-gradient from-blue-500/10 to-transparent pointer-events-none"></div>
 </div>
 
       {/* ******Below is for New Year Event***********          */}
