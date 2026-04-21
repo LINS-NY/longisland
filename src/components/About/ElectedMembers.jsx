@@ -128,8 +128,8 @@ const ElectedMembers = () => {
     return(
         <div className=" bg-white flex flex-col">
             <div className="flex flex-col font-medium justify-center items-center text-sm">
-                <span>2024-2025 Elected Members</span>
-                <h6> २०२४ - २०२५ कार्यसमिति सदस्य</h6>
+                <span>2026-2028 Elected Members</span>
+                <h6> २०२६ - २०२८ कार्यसमिति सदस्य</h6>
             </div>      
             <div className="md:grid md:grid-cols-4 md:gap-4 sm:mx-auto" >                                     
                 {electedMember.map(function(object, i){
