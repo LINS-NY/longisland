@@ -14,7 +14,7 @@ const ElectedMember = ({ name, nepaliName, position, nepaliPostion, imageLocatio
                     alt={name}
                     fill // This fills the fixed 40x40 or 48x48 box
                     sizes="(max-width: 768px) 160px, 192px"
-                    className="object-cover object-top" // CRITICAL: This prevents stretching
+                    className="object-cover object-top" 
                 /> 
             </div>
 

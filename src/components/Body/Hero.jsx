@@ -101,13 +101,13 @@ const Hero = () => {
         {[
           { role: "President", name: "Sabitra Siwakoti", nep: "अध्यक्ष", color: "bg-blue-600" },
           { role: "Senior VP", name: "Gokul Sapkota", nep: "वरिष्ठ उपाध्यक्ष", color: "bg-purple-600" },
-          { role: "Gen. Secretary", name: "Bishal Regmi", nep: "महासचिव", color: "bg-orange-600" },
-          { role: "Treasurer", name: "Purushottam Sapkota", nep: "कोषाध्यक्ष", color: "bg-emerald-600" },
           { role: "VP Nassau", name: "Yam Raj Giri", nep: "उपाध्यक्ष", color: "bg-slate-700" },
           { role: "VP Suffolk", name: "Gyanu Chand", nep: "उपाध्यक्ष", color: "bg-slate-700" },
           { role: "Women VP", name: "TBD", nep: "महिला उपाध्यक्ष", color: "bg-pink-600" },
+          { role: "Gen. Secretary", name: "Bishal Regmi", nep: "महासचिव", color: "bg-orange-600" },
           { role: "Secretary", name: "Milan Chhetri", nep: "सचिव", color: "bg-slate-700" },
           { role: "Women Secretary", name: "Namita Poudel", nep: "महिला सचिव", color: "bg-pink-600" },
+          { role: "Treasurer", name: "Purushottam Sapkota", nep: "कोषाध्यक्ष", color: "bg-emerald-600" },
           { role: "Women Co-Treasurer", name: "Shushmita Pandit", nep: "महिला सह–कोषाध्यक्ष", color: "bg-purple-600" },
         ].map((m, i) => (
           <div key={i} className={`group p-6 rounded-[2rem] shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${m.color.includes('border') ? m.color : m.color + ' text-white'}`}>
