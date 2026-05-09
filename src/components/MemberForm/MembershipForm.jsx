@@ -488,12 +488,13 @@ export default function MembershipForm() {
         </div>
       </div>
 
-          <div className="flex flex-col items-center mx-auto max-w-3xl px-4">
-  <h2 className="text-2xl font-extrabold text-red-600 uppercase tracking-wide text-center">
+      <div className="text-center max-w-3xl mx-auto px-4 py-6 rounded-lg bg-white dark:bg-gray-900">
+  
+  <h2 className="text-2xl font-extrabold uppercase tracking-wide text-red-700 dark:text-red-300">
     📢 Public Membership Announcement
   </h2>
 
-  <p className="text-sm leading-7 text-justify mt-4">
+  <p className="text-sm leading-7 text-justify mt-4 text-gray-900 dark:text-gray-100">
     According to the LINSNY bylaws, Article IX, Provision No. 12,
     LINSNY has opened its membership to the public. Interested
     individuals are welcome to submit the membership form and become
