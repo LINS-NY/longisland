@@ -32,9 +32,9 @@ const electedMember = [
         nepaliPostion: "उपाध्यक्ष"
     },
     {
-        name: "TBD",
-        nepaliName: "TBD",
-        imageLocation: "/Members/default.png",
+        name: "Indira Simkhada",
+        nepaliName: "इन्दिरा सिम्खडा",
+        imageLocation: "/Members/IndiraSimkhada.jpg",
         position: "Women Vice President",
         nepaliPostion: "महिला उपाध्यक्ष"
     },
@@ -74,7 +74,7 @@ const electedMember = [
         nepaliPostion: "महिला सह–कोषाध्यक्ष"
     },
     {
-        name: " ",
+        name: "Mandip Prajapati",
         nepaliName: "मन्दीप प्रजापति",
         imageLocation: "/Members/MandipPrajapati.jpg",
         position: "Board of Directors",
@@ -119,6 +119,34 @@ const electedMember = [
         name: "Tulasi Kumari Paudel Timililsina",
         nepaliName: "तुलसी कुमारी पौडेल तिमिल्सिना",
         imageLocation: "/Members/TulasiPaudelTimalsina.jpg",
+        position: "Board of Directors",
+        nepaliPostion: "कार्यसमिति सदस्य"
+    },
+    {
+        name: "Neelima Pradhan",
+        nepaliName: "नीलिमा प्रधान",
+        imageLocation: "/Members/NeelimaPradhan.png",
+        position: "Board of Directors",
+        nepaliPostion: "कार्यसमिति सदस्य"
+    },
+    {
+        name: "Unika Chaulagain",
+        nepaliName: "युनिका चौलागाईं",
+        imageLocation: "/Members/UnikaChaulagain.png",
+        position: "Board of Directors",
+        nepaliPostion: "कार्यसमिति सदस्य"
+    },
+    {
+        name: "Pratima Khanal Sigdel",
+        nepaliName: "प्रतिमा खनाल सिग्देल",
+        imageLocation: "/Members/PratimaKhanalSigdel.png",
+        position: "Board of Directors",
+        nepaliPostion: "कार्यसमिति सदस्य"
+    },
+    {
+        name: "Anuj Lamichhane",
+        nepaliName: "अनुज लामिछाने",
+        imageLocation: "/Members/AnujLamichhane.png",
         position: "Board of Directors",
         nepaliPostion: "कार्यसमिति सदस्य"
     }

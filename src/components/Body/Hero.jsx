@@ -103,7 +103,7 @@ const Hero = () => {
           { role: "Senior VP", name: "Gokul Sapkota", nep: "वरिष्ठ उपाध्यक्ष", color: "bg-purple-600" },
           { role: "VP Nassau", name: "Yam Raj Giri", nep: "उपाध्यक्ष", color: "bg-slate-700" },
           { role: "VP Suffolk", name: "Gyanu Chand", nep: "उपाध्यक्ष", color: "bg-slate-700" },
-          { role: "Women VP", name: "TBD", nep: "महिला उपाध्यक्ष", color: "bg-pink-600" },
+          { role: "Women VP", name: "Indira Simkhada", nep: "महिला उपाध्यक्ष", color: "bg-pink-600" },
           { role: "Gen. Secretary", name: "Bishal Regmi", nep: "महासचिव", color: "bg-orange-600" },
           { role: "Secretary", name: "Milan Chhetri", nep: "सचिव", color: "bg-slate-700" },
           { role: "Women Secretary", name: "Namita Poudel", nep: "महिला सचिव", color: "bg-pink-600" },
@@ -133,7 +133,11 @@ const Hero = () => {
             { name: "Pushpa Raj Regmi" },
             { name: "Ramu Lamichhane" },
             { name: "Surendra Bikram Basnet" },
-            { name: "Tulasi Kumari Paudel Timililsina" }
+            { name: "Tulasi Kumari Paudel Timililsina" },
+            { name: "Neelima Pradhan" },
+            { name: "Unika Chaulagain" },
+            { name: "Pratima Khanal Sigdel" },
+            { name: "Anuj Lamichhane" }
           ].map((dir, idx) => (
             <div key={idx} className="flex flex-col p-5 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-white hover:border-blue-500 hover:shadow-md transition-all">
               <span className="text-[9px] font-black text-blue-600 uppercase tracking-widest mb-1">कार्यसमिति सदस्य</span>
@@ -231,135 +235,142 @@ const Hero = () => {
 
 
       {/* *************Below is for Picnic Event**************** */}
-      {/* Main picnic button container */}
-  {/* Floating picnic emojis */}
-  {/*
-  {['🪁', '🍉', '🌼', '🧃', '🐝', '🐞'].map((e, i) => (
-    <div
-      key={i}
-      className={`absolute ${[
+ 
+ {/* *************Below is for Picnic Event**************** */}
+
+{/* Floating picnic emojis */}
+{['🪁', '🍉', '🌼', '🧃', '🐝', '🐞'].map((e, i) => (
+  <div
+    key={i}
+    className={`absolute ${
+      [
         'top-10 left-8',
         'top-20 right-12',
         'bottom-16 left-12',
         'bottom-10 right-16',
         'top-1/2 left-1/3',
         'bottom-1/3 right-1/4'
-      ][i]} text-3xl animate-float${i % 2 ? -'' + i : '-reverse delay-' + i * 200}`}
-    >
-      {e}
-    </div>
-  ))}
-  */}
-
-  {/* Title */}
-  {/*
-  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-600 drop-shadow-lg text-center mb-10 animate-fade-in-up">
-    Long Island Nepalese Society
-  </h1>
-  */}
-
-  {/* Button + CTA */}
-  {/*
-  <div className="flex flex-col items-center justify-center text-center px-4">
-    <Link href="/EventPage">
-      <button
-        className={
-          'relative text-xl sm:text-2xl md:text-3xl font-bold text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-pink-400 via-yellow-300 to-green-400 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-white hover:border-yellow-200 group overflow-hidden animate-pulse'
-        }
-      >
-        {/* Shining overlay effect */}
-{/*         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -rotate-45 w-1/2 h-full translate-x-[-100%] group-hover:translate-x-[300%]"></div>
-
-        <span className="relative z-10 flex items-center justify-center gap-2">
-          <span className="text-yellow-200">🧺</span>
-          <span className="text-shadow">
-            Picnic Day – <span className="text-green-200">July 27th</span>
-          </span>
-          <span className="text-yellow-200">🌞</span>
-        </span>
-      </button>
-    </Link>
- */}
-    {/* Call to action */}
-{/*     <div className="mt-4 inline-flex items-center text-pink-600 text-sm animate-bounce">
-      <span className="mr-1">👆</span>
-      <span>Click to see full picnic details</span>
-      <span className="ml-1">👆</span>
-    </div>
+      ][i]
+    } text-3xl animate-float${i % 2 === 0 ? '' : '-reverse'} delay-${(i + 1) * 200}`}
+  >
+    {e}
   </div>
-  */}
-  {/* Embedded animations */}
-  {/*
-  <style jsx>{`
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-      }
-      50% {
-        transform: scale(1.03);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
-      }
+))}
+
+{/* Title */}
+<h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-600 drop-shadow-lg text-center mb-10 animate-fade-in-up">
+  Long Island Nepalese Society
+</h1>
+
+{/* Button + CTA */}
+<div className="flex flex-col items-center justify-center text-center px-4">
+  <Link href="/EventPage">
+    <button
+      className="relative text-xl sm:text-2xl md:text-3xl font-bold text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-pink-400 via-yellow-300 to-green-400 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-white hover:border-yellow-200 group overflow-hidden animate-pulse"
+    >
+      {/* Shining overlay effect */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -rotate-45 w-1/2 h-full translate-x-[-100%] group-hover:translate-x-[300%]"></div>
+
+      <span className="relative z-10 flex items-center justify-center gap-2">
+        <span className="text-yellow-200">🧺</span>
+        <span>
+          Picnic Day – <span className="text-green-200">July 12th</span>
+        </span>
+        <span className="text-yellow-200">🌞</span>
+      </span>
+    </button>
+  </Link>
+
+  {/* Call to action */}
+  <div className="mt-4 inline-flex items-center text-pink-600 text-sm animate-bounce">
+    <span className="mr-1">👆</span>
+    <span>Click to see full picnic details</span>
+    <span className="ml-1">👆</span>
+  </div>
+</div>
+
+{/* Embedded animations */}
+<style jsx>{`
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
     }
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-12px) translateX(8px) rotate(5deg);
-      }
+    50% {
+      transform: scale(1.03);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
     }
-    @keyframes float-reverse {
-      0%, 100% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-      }
-      50% {
-        transform: translateY(12px) translateX(-8px) rotate(-5deg);
-      }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) translateX(0) rotate(0deg);
     }
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-5px);
-      }
+    50% {
+      transform: translateY(-12px) translateX(8px) rotate(5deg);
     }
-    @keyframes fade-in-up {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+  }
+
+  @keyframes float-reverse {
+    0%, 100% {
+      transform: translateY(0) translateX(0) rotate(0deg);
     }
-    .animate-pulse {
-      animation: pulse 2s ease-in-out infinite;
+    50% {
+      transform: translateY(12px) translateX(-8px) rotate(-5deg);
     }
-    .animate-float {
-      animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
     }
-    .animate-float-reverse {
-      animation: float-reverse 6s ease-in-out infinite;
+    50% {
+      transform: translateY(-5px);
     }
-    .animate-bounce {
-      animation: bounce 1.5s ease-in-out infinite;
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
     }
-    .animate-fade-in-up {
-      animation: fade-in-up 1.2s ease-out forwards;
+    100% {
+      opacity: 1;
+      transform: translateY(0);
     }
-    .text-shadow {
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-    }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-400 { animation-delay: 0.4s; }
-    .delay-600 { animation-delay: 0.6s; }
-    .delay-800 { animation-delay: 0.8s; }
-    .delay-[1s] { animation-delay: 1s; }
-  `}</style>
-  */}
+  }
+
+  .animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-reverse {
+    animation: float-reverse 6s ease-in-out infinite;
+  }
+
+  .animate-bounce {
+    animation: bounce 1.5s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 1.2s ease-out forwards;
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-400 { animation-delay: 0.4s; }
+  .delay-600 { animation-delay: 0.6s; }
+  .delay-800 { animation-delay: 0.8s; }
+`}</style>
+
+{/* *************Summer Picnic -- Till Here**************** */}
 
       {/* *************Summer Picnic -- Till Here**************** */}
 
