@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Confetti from 'react-confetti';
 import { useWindowSize } from 'react-use';
 
-const TOTAL_IMAGES = 30;
+const TOTAL_IMAGES = 6;
 
 const PicnicPage = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -21,11 +21,11 @@ const PicnicPage = () => {
   const [isConfetti, setConfetti] = useState(true);
   const { width, height } = useWindowSize();
 
-  const pics = Array.from({ length: TOTAL_IMAGES }, (_, i) => `/images/2024/Picnic/${i + 1}.jpg`);
+  const pics = Array.from({ length: TOTAL_IMAGES }, (_, i) => `/images/2025Picnic/${i + 1}.jpg`);
 
   useEffect(() => {
     const update = () => {
-      const eventDate = new Date('July 27, 2025 12:00:00').getTime();
+      const eventDate = new Date('July 12, 2026 12:00:00').getTime();
       const now = Date.now();
       const d = eventDate - now;
       setTimeLeft({
@@ -92,7 +92,7 @@ const PicnicPage = () => {
             transition={{ delay: 0.4 }}
             className="text-xl text-gray-800 mb-6"
           >
-            July 27th • 12 PM–8 PM • Cantiague Park (Field A2, near Parking Field 2)
+            July 12th • 12 PM–8 PM • Location: TBD
           </motion.p>
 
           <Link
@@ -120,7 +120,7 @@ const PicnicPage = () => {
             ⏳ Countdown to Picnic & Health Camp
           </h2>
           <div className="mb-4 text-md text-gray-700 flex justify-center items-center gap-3">
-            📍 <strong>Cantiague Park</strong> | 🗓️ <strong>July 27</strong> | 🕛 <strong>12:00 PM – 8:00 PM</strong>
+            📍 <strong>TBD</strong> | 🗓️ <strong>July 12</strong> | 🕛 <strong>12:00 PM – 8:00 PM</strong>
           </div>
           <div className="flex justify-center gap-6 mt-8">
             {['days', 'hours', 'minutes', 'seconds'].map((u, i) => (
