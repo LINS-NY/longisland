@@ -19,6 +19,56 @@ const Hero = () => {
     <div>
 
     <div className="flex flex-col gap-4">
+
+                {/* Concert Flyer Section */}
+            {/* Concert Flyer Section */}
+            {/* Concert Flyer Section - Attractive Version */}
+<div className="w-full flex justify-center mt-10">
+  <div
+    className="
+      relative 
+      max-w-[750px] 
+      rounded-2xl 
+      overflow-hidden 
+      shadow-2xl 
+      border-4 
+      border-yellow-300 
+      transition-transform 
+      duration-300 
+      hover:scale-[1.03]
+      bg-gradient-to-br 
+      from-red-700 
+      via-pink-600 
+      to-red-800
+      p-4
+    "
+  >
+
+    {/* Decorative Background Pattern */}
+    <div className="absolute inset-0 opacity-20 bg-[url('/patterns/mandala.svg')] bg-cover bg-center"></div>
+
+    {/* Soft Vignette */}
+    <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>
+
+    {/* Flyer Image */}
+    <Image
+      src="/images/2026/concert.jpg"
+      alt="Nepali Lok Sanjh Event Poster"
+      width={800}
+      height={500}
+      className="relative z-10 rounded-xl object-cover shadow-xl"
+      priority
+    />
+
+    {/* Glow Border */}
+    <div className="absolute inset-0 rounded-2xl border-2 border-yellow-300/60 shadow-[0_0_25px_5px_rgba(255,215,0,0.4)]"></div>
+  </div>
+</div>
+
+
+
+          {/* End of Concert Flyer Section */}
+
       
       {/* 🎊 NEWLY ELECTED MEMBERS CELEBRATION CARD - TOP SECTION */}
       <div className="container mx-auto w-[90%] mt-8">
@@ -79,82 +129,6 @@ const Hero = () => {
       </div>
       </div>
 
-      {/* 🏛️ LINS-NY FULL ELECTED BOARD 2026-2028 */}
-<div className="container mx-auto w-full md:w-[95%] my-12 px-4 font-sans">
-  <div className="bg-white rounded-[3rem] shadow-2xl border border-gray-100 overflow-hidden">
-    
-    {/* Professional Header Section */}
-    <div className="bg-slate-900 py-12 px-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6">
-      <div>
-        <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase italic">
-          Executive Leadership
-        </h2>
-      </div>
-      <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-2xl">
-        <span className="text-yellow-400 font-black text-lg tracking-widest uppercase">Term: 2026 - 2028</span>
-      </div>
-    </div>
-
-    <div className="p-6 md:p-12">
-      {/* 1. EXECUTIVE OFFICERS GRID (Increased Font & Visibility) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
-        {[
-          { role: "President", name: "Sabitra Siwakoti", nep: "अध्यक्ष", color: "bg-blue-600" },
-          { role: "Senior VP", name: "Gokul Sapkota", nep: "वरिष्ठ उपाध्यक्ष", color: "bg-purple-600" },
-          { role: "VP Nassau", name: "Yam Raj Giri", nep: "उपाध्यक्ष", color: "bg-slate-700" },
-          { role: "VP Suffolk", name: "Gyanu Chand", nep: "उपाध्यक्ष", color: "bg-slate-700" },
-          { role: "Women VP", name: "Indira Simkhada", nep: "महिला उपाध्यक्ष", color: "bg-pink-600" },
-          { role: "Gen. Secretary", name: "Bishal Regmi", nep: "महासचिव", color: "bg-orange-600" },
-          { role: "Secretary", name: "Milan Chhetri", nep: "सचिव", color: "bg-slate-700" },
-          { role: "Women Secretary", name: "Namita Poudel", nep: "महिला सचिव", color: "bg-pink-600" },
-          { role: "Treasurer", name: "Purushottam Sapkota", nep: "कोषाध्यक्ष", color: "bg-emerald-600" },
-          { role: "Women Co-Treasurer", name: "Shushmita Pandit", nep: "महिला सह–कोषाध्यक्ष", color: "bg-purple-600" },
-        ].map((m, i) => (
-          <div key={i} className={`group p-6 rounded-[2rem] shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${m.color.includes('border') ? m.color : m.color + ' text-white'}`}>
-            <span className={`text-sm font-black mb-2 block ${m.color.includes('text-pink') ? 'text-black' : 'opacity-80'}`}>{m.nep}</span>
-            <h3 className="text-xl md:text-2xl font-black leading-tight mb-1">{m.name}</h3>
-            <p className={`text-xs font-bold uppercase tracking-tighter ${m.color.includes('text-pink') ? 'text-slate-500' : 'text-white/80'}`}>{m.role}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* 2. BOARD OF DIRECTORS - FULL POST CARDS */}
-      <div className="pt-12 border-t-2 border-dashed border-slate-100">
-        <div className="flex items-center gap-4 mb-10">
-          <div className="h-10 w-2 bg-blue-600 rounded-full"></div>
-          <h4 className="text-2xl font-black text-slate-900 uppercase tracking-tight">Board of Directors</h4>
-        </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {[
-            { name: "Mandip Prajapati" },
-            { name: "Om Kumari Dahal (Ashika)" },
-            { name: "Prabhakar Pande" },
-            { name: "Pushpa Raj Regmi" },
-            { name: "Ramu Lamichhane" },
-            { name: "Surendra Bikram Basnet" },
-            { name: "Tulasi Kumari Paudel Timililsina" },
-            { name: "Neelima Pradhan" },
-            { name: "Unika Chaulagain" },
-            { name: "Pratima Khanal Sigdel" },
-            { name: "Anuj Lamichhane" }
-          ].map((dir, idx) => (
-            <div key={idx} className="flex flex-col p-5 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-white hover:border-blue-500 hover:shadow-md transition-all">
-              <span className="text-[9px] font-black text-blue-600 uppercase tracking-widest mb-1">कार्यसमिति सदस्य</span>
-              <h5 className="text-lg font-extrabold text-slate-800 leading-tight">{dir.name}</h5>
-              <span className="text-[10px] font-bold text-slate-400 uppercase mt-1">Board of Directors</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-
-    {/* Footer Branding */}
-    <div className="bg-slate-50 py-6 px-8 text-center border-t border-gray-100">
-      <p className="text-slate-400 font-bold text-[10px] uppercase tracking-[0.4em]">Long Island Nepalese Society New York • Unity • Progress • Culture</p>
-    </div>
-  </div>
-</div>
 
       {/* ******Below is for New Year Event***********          */}
 
@@ -239,136 +213,156 @@ const Hero = () => {
  {/* *************Below is for Picnic Event**************** */}
 
 {/* Floating picnic emojis */}
-{['🪁', '🍉', '🌼', '🧃', '🐝', '🐞'].map((e, i) => (
-  <div
-    key={i}
-    className={`absolute ${
-      [
-        'top-10 left-8',
-        'top-20 right-12',
-        'bottom-16 left-12',
-        'bottom-10 right-16',
-        'top-1/2 left-1/3',
-        'bottom-1/3 right-1/4'
-      ][i]
-    } text-3xl animate-float${i % 2 === 0 ? '' : '-reverse'} delay-${(i + 1) * 200}`}
-  >
-    {e}
-  </div>
-))}
-
-{/* Title */}
-<h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-600 drop-shadow-lg text-center mb-10 animate-fade-in-up">
-  Long Island Nepalese Society
-</h1>
-
-{/* Button + CTA */}
-<div className="flex flex-col items-center justify-center text-center px-4">
-  <Link href="/EventPage">
-    <button
-      className="relative text-xl sm:text-2xl md:text-3xl font-bold text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-pink-400 via-yellow-300 to-green-400 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-white hover:border-yellow-200 group overflow-hidden animate-pulse"
+{/*
+  Floating picnic emojis
+  {['🪁', '🍉', '🌼', '🧃', '🐝', '🐞'].map((e, i) => (
+    <div
+      key={i}
+      className={`absolute ${
+        [
+          'top-10 left-8',
+          'top-20 right-12',
+          'bottom-16 left-12',
+          'bottom-10 right-16',
+          'top-1/2 left-1/3',
+          'bottom-1/3 right-1/4'
+        ][i]
+      } text-3xl animate-float${i % 2 === 0 ? '' : '-reverse'} delay-${(i + 1) * 200}`}
     >
-      {/* Shining overlay effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -rotate-45 w-1/2 h-full translate-x-[-100%] group-hover:translate-x-[300%]"></div>
+      {e}
+    </div>
+  ))}
 
-      <span className="relative z-10 flex items-center justify-center gap-2">
-        <span className="text-yellow-200">🧺</span>
-        <span>
-          Picnic Day – <span className="text-green-200">July 12th</span>
+  Title
+  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-600 drop-shadow-lg text-center mb-10 animate-fade-in-up">
+    Long Island Nepalese Society
+  </h1>
+
+  Button + CTA
+  <div className="flex flex-col items-center justify-center text-center px-4">
+    <Link href="/EventPage">
+      <button
+        className="relative text-xl sm:text-2xl md:text-3xl font-bold text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-pink-400 via-yellow-300 to-green-400 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-white hover:border-yellow-200 group overflow-hidden animate-pulse"
+      >
+        Shining overlay effect
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -rotate-45 w-1/2 h-full translate-x-[-100%] group-hover:translate-x-[300%]"></div>
+
+        <span className="relative z-10 flex items-center justify-center gap-2">
+          <span className="text-yellow-200">🧺</span>
+          <span>
+            Picnic Day – <span className="text-green-200">July 12th</span>
+          </span>
+          <span className="text-yellow-200">🌞</span>
         </span>
-        <span className="text-yellow-200">🌞</span>
-      </span>
-    </button>
-  </Link>
+      </button>
+    </Link>
 
-  {/* Call to action */}
-  <div className="mt-4 inline-flex items-center text-pink-600 text-sm animate-bounce">
-    <span className="mr-1">👆</span>
-    <span>Click to see full picnic details</span>
-    <span className="ml-1">👆</span>
+    Call to action
+    <div className="mt-4 inline-flex items-center text-pink-600 text-sm animate-bounce">
+      <span className="mr-1">👆</span>
+      <span>Click to see full picnic details</span>
+      <span className="ml-1">👆</span>
+    </div>
   </div>
-</div>
 
-{/* Embedded animations */}
-<style jsx>{`
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  Embedded animations
+  <style jsx>{`
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+      }
+
+      50% {
+        transform: scale(1.03);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+      }
     }
-    50% {
-      transform: scale(1.03);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-12px) translateX(8px) rotate(5deg);
+      }
     }
-  }
 
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0) translateX(0) rotate(0deg);
+    @keyframes float-reverse {
+      0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(12px) translateX(-8px) rotate(-5deg);
+      }
     }
-    50% {
-      transform: translateY(-12px) translateX(8px) rotate(5deg);
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
     }
-  }
 
-  @keyframes float-reverse {
-    0%, 100% {
-      transform: translateY(0) translateX(0) rotate(0deg);
+    @keyframes fade-in-up {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    50% {
-      transform: translateY(12px) translateX(-8px) rotate(-5deg);
+
+    .animate-pulse {
+      animation: pulse 2s ease-in-out infinite;
     }
-  }
 
-  @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
     }
-    50% {
-      transform: translateY(-5px);
+
+    .animate-float-reverse {
+      animation: float-reverse 6s ease-in-out infinite;
     }
-  }
 
-  @keyframes fade-in-up {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
+    .animate-bounce {
+      animation: bounce 1.5s ease-in-out infinite;
     }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
+
+    .animate-fade-in-up {
+      animation: fade-in-up 1.2s ease-out forwards;
     }
-  }
 
-  .animate-pulse {
-    animation: pulse 2s ease-in-out infinite;
-  }
+    .text-shadow {
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    }
 
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
 
-  .animate-float-reverse {
-    animation: float-reverse 6s ease-in-out infinite;
-  }
+    .delay-400 {
+      animation-delay: 0.4s;
+    }
 
-  .animate-bounce {
-    animation: bounce 1.5s ease-in-out infinite;
-  }
+    .delay-600 {
+      animation-delay: 0.6s;
+    }
 
-  .animate-fade-in-up {
-    animation: fade-in-up 1.2s ease-out forwards;
-  }
+    .delay-800 {
+      animation-delay: 0.8s;
+    }
+  `}</style>
+*/}
 
-  .text-shadow {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-  }
-
-  .delay-200 { animation-delay: 0.2s; }
-  .delay-400 { animation-delay: 0.4s; }
-  .delay-600 { animation-delay: 0.6s; }
-  .delay-800 { animation-delay: 0.8s; }
-`}</style>
 
 {/* *************Summer Picnic -- Till Here**************** */}
 
@@ -997,6 +991,84 @@ const Hero = () => {
 //     </Link>
 //   </div>
 }
+
+      {/* 🏛️ LINS-NY FULL ELECTED BOARD 2026-2028 */}
+<div className="container mx-auto w-full md:w-[95%] my-12 px-4 font-sans">
+  <div className="bg-white rounded-[3rem] shadow-2xl border border-gray-100 overflow-hidden">
+    
+    {/* Professional Header Section */}
+    <div className="bg-slate-900 py-12 px-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6">
+      <div>
+        <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase italic">
+          Executive Leadership
+        </h2>
+      </div>
+      <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-2xl">
+        <span className="text-yellow-400 font-black text-lg tracking-widest uppercase">Term: 2026 - 2028</span>
+      </div>
+    </div>
+
+    <div className="p-6 md:p-12">
+      {/* 1. EXECUTIVE OFFICERS GRID (Increased Font & Visibility) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+        {[
+          { role: "President", name: "Sabitra Siwakoti", nep: "अध्यक्ष", color: "bg-blue-600" },
+          { role: "Senior VP", name: "Gokul Sapkota", nep: "वरिष्ठ उपाध्यक्ष", color: "bg-purple-600" },
+          { role: "VP Nassau", name: "Yam Raj Giri", nep: "उपाध्यक्ष", color: "bg-slate-700" },
+          { role: "VP Suffolk", name: "Gyanu Chand", nep: "उपाध्यक्ष", color: "bg-slate-700" },
+          { role: "Women VP", name: "Indira Simkhada", nep: "महिला उपाध्यक्ष", color: "bg-pink-600" },
+          { role: "Gen. Secretary", name: "Bishal Regmi", nep: "महासचिव", color: "bg-orange-600" },
+          { role: "Secretary", name: "Milan Chhetri", nep: "सचिव", color: "bg-slate-700" },
+          { role: "Women Secretary", name: "Namita Poudel", nep: "महिला सचिव", color: "bg-pink-600" },
+          { role: "Treasurer", name: "Purushottam Sapkota", nep: "कोषाध्यक्ष", color: "bg-emerald-600" },
+          { role: "Women Co-Treasurer", name: "Shushmita Pandit", nep: "महिला सह–कोषाध्यक्ष", color: "bg-purple-600" },
+        ].map((m, i) => (
+          <div key={i} className={`group p-6 rounded-[2rem] shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${m.color.includes('border') ? m.color : m.color + ' text-white'}`}>
+            <span className={`text-sm font-black mb-2 block ${m.color.includes('text-pink') ? 'text-black' : 'opacity-80'}`}>{m.nep}</span>
+            <h3 className="text-xl md:text-2xl font-black leading-tight mb-1">{m.name}</h3>
+            <p className={`text-xs font-bold uppercase tracking-tighter ${m.color.includes('text-pink') ? 'text-slate-500' : 'text-white/80'}`}>{m.role}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* 2. BOARD OF DIRECTORS - FULL POST CARDS */}
+      <div className="pt-12 border-t-2 border-dashed border-slate-100">
+        <div className="flex items-center gap-4 mb-10">
+          <div className="h-10 w-2 bg-blue-600 rounded-full"></div>
+          <h4 className="text-2xl font-black text-slate-900 uppercase tracking-tight">Board of Directors</h4>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {[
+            { name: "Mandip Prajapati" },
+            { name: "Om Kumari Dahal (Ashika)" },
+            { name: "Prabhakar Pande" },
+            { name: "Pushpa Raj Regmi" },
+            { name: "Ramu Lamichhane" },
+            { name: "Surendra Bikram Basnet" },
+            { name: "Tulasi Kumari Paudel Timililsina" },
+            { name: "Neelima Pradhan" },
+            { name: "Unika Chaulagain" },
+            { name: "Pratima Khanal Sigdel" },
+            { name: "Anuj Lamichhane" }
+          ].map((dir, idx) => (
+            <div key={idx} className="flex flex-col p-5 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-white hover:border-blue-500 hover:shadow-md transition-all">
+              <span className="text-[9px] font-black text-blue-600 uppercase tracking-widest mb-1">कार्यसमिति सदस्य</span>
+              <h5 className="text-lg font-extrabold text-slate-800 leading-tight">{dir.name}</h5>
+              <span className="text-[10px] font-bold text-slate-400 uppercase mt-1">Board of Directors</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* Footer Branding */}
+    <div className="bg-slate-50 py-6 px-8 text-center border-t border-gray-100">
+      <p className="text-slate-400 font-bold text-[10px] uppercase tracking-[0.4em]">Long Island Nepalese Society New York • Unity • Progress • Culture</p>
+    </div>
+  </div>
+</div>
+
 
 
 
