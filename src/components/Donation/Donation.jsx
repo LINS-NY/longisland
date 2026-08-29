@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import banner from "/public/banner.png"; // Place your uploaded image in /public folder
+import banner from "/public/banner.png";
 
 const DonatePage = () => {
   const [formData, setFormData] = useState({
@@ -23,14 +23,18 @@ const DonatePage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const formUrl = "https://script.google.com/macros/s/AKfycbw1BhqxAj2gsq7cAI_pzPQypnPVNUkeEo74WSPdnsLvpy-8qq9hZXry6XPWJF794Q/exec";
+    const formUrl =
+      "https://script.google.com/macros/s/AKfycbw1BhqxAj2gsq7cAI_pzPQypnPVNUkeEo74WSPdnsLvpy-8qq9hZXry6XPWJF794Q/exec";
 
     try {
       const queryParams = new URLSearchParams(formData).toString();
@@ -38,26 +42,26 @@ const DonatePage = () => {
 
       await fetch(fullUrl, {
         method: "GET",
-        mode: "no-cors"
+        mode: "no-cors",
       });
 
       alert("Thank you for your donation!");
-      // ✅ Clear the form
-  setFormData({
-    member: "",
-    resident: "",
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    phone: "",
-    contactEmail: "",
-    contactMethod: "",
-    address: "",
-    state: "",
-    zip: "",
-    amount: ""
-  });
 
+      // Clear the form
+      setFormData({
+        member: "",
+        resident: "",
+        firstName: "",
+        middleName: "",
+        lastName: "",
+        phone: "",
+        contactEmail: "",
+        contactMethod: "",
+        address: "",
+        state: "",
+        zip: "",
+        amount: "",
+      });
     } catch (error) {
       console.error("Fetch error:", error);
       alert("Network error. Please check your connection.");
@@ -68,38 +72,140 @@ const DonatePage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-700 via-blue-600 to-indigo-700 text-white p-6 flex flex-col items-center">
+
+      {/* ===================================================== */}
       {/* Banner */}
+      {/* ===================================================== */}
+
       <div className="w-full max-w-4xl mb-6">
         <Image
           src={banner}
           alt="LINS-NY Banner"
-          className="rounded-lg shadow-xl w-full"
+          className="rounded-lg shadow-xl w-full h-auto"
         />
       </div>
 
+      {/* ===================================================== */}
+      {/* Donation Section */}
+      {/* ===================================================== */}
+
+      <div className="w-full flex justify-center mt-10">
+        <div
+          className="
+            relative
+            w-full
+            max-w-[1200px]
+            rounded-2xl
+            overflow-hidden
+            shadow-2xl
+            border-2
+            border-white
+            transition-transform
+            duration-300
+            hover:scale-[1.03]
+            bg-gradient-to-br
+            from-red-700
+            via-pink-600
+            to-red-800
+            p-4
+          "
+        >
+
+          {/* Decorative Background Pattern */}
+          <div
+            className="
+              absolute
+              inset-0
+              opacity-20
+              bg-[url('/patterns/mandala.svg')]
+              bg-cover
+              bg-center
+            "
+          ></div>
+
+          {/* Soft Vignette */}
+          <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>
+
+          {/* Vigil Image */}
+          <Image
+            src="/images/2026/donation.jpeg"
+            alt="Nepali Lok Sanjh Vigil"
+            width={1200}
+            height={675}
+            className="
+              relative
+              z-10
+              w-full
+              h-auto
+              rounded-xl
+              shadow-xl
+            "
+            priority
+          />
+
+          {/* Glow Border */}
+          <div
+            className="
+              absolute
+              inset-0
+              rounded-2xl
+              border-2
+              border-yellow-300/60
+              shadow-[0_0_25px_5px_rgba(255,215,0,0.4)]
+              pointer-events-none
+            "
+          ></div>
+
+        </div>
+      </div>
+
+      {/* ===================================================== */}
       {/* Title */}
-      <div className="text-center mb-6">
-        <h1 className="text-4xl font-bold mb-2">LINS-NY Donation Form</h1>
-        
+      {/* ===================================================== */}
+
+      <div className="text-center mb-6 mt-10">
+        <h1 className="text-4xl font-bold mb-2">
+          LINS-NY Donation Form
+        </h1>
+
         <h2 className="text-4xl font-bold mb-2 text-yellow-100">
           This page is currently under construction !!!
         </h2>
+
         <p className="text-lg opacity-90">
           Please fill out this form to complete your donation.
         </p>
       </div>
 
-      {/* Form */}
+      {/* ===================================================== */}
+      {/* Donation Form */}
+      {/* ===================================================== */}
+
       <form
         onSubmit={handleSubmit}
-        className="bg-white text-black p-8 rounded-xl shadow-2xl w-full max-w-3xl space-y-8"
+        className="
+          bg-white
+          text-black
+          p-8
+          rounded-xl
+          shadow-2xl
+          w-full
+          max-w-3xl
+          space-y-8
+        "
       >
+
+        {/* ================================================= */}
         {/* Membership Section */}
+        {/* ================================================= */}
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
           <div>
             <label className="block mb-2 font-medium text-gray-700">
               Are you a current member of LINS-NY? *
             </label>
+
             <select
               name="member"
               required
@@ -112,10 +218,12 @@ const DonatePage = () => {
               <option value="No">No</option>
             </select>
           </div>
+
           <div>
             <label className="block mb-2 font-medium text-gray-700">
               If not a member, are you a NY resident?
             </label>
+
             <select
               name="resident"
               value={formData.resident}
@@ -127,13 +235,22 @@ const DonatePage = () => {
               <option value="No">No</option>
             </select>
           </div>
+
         </div>
 
-        {/* Personal Info */}
+        {/* ================================================= */}
+        {/* Personal Information */}
+        {/* ================================================= */}
+
         <hr className="my-6 border-gray-300" />
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
           <div>
-            <label className="block mb-2 font-medium text-gray-700">First Name *</label>
+            <label className="block mb-2 font-medium text-gray-700">
+              First Name *
+            </label>
+
             <input
               type="text"
               name="firstName"
@@ -143,8 +260,12 @@ const DonatePage = () => {
               className="w-full p-3 border rounded-md"
             />
           </div>
+
           <div>
-            <label className="block mb-2 font-medium text-gray-700">Middle Name</label>
+            <label className="block mb-2 font-medium text-gray-700">
+              Middle Name
+            </label>
+
             <input
               type="text"
               name="middleName"
@@ -153,8 +274,12 @@ const DonatePage = () => {
               className="w-full p-3 border rounded-md"
             />
           </div>
+
           <div>
-            <label className="block mb-2 font-medium text-gray-700">Last Name *</label>
+            <label className="block mb-2 font-medium text-gray-700">
+              Last Name *
+            </label>
+
             <input
               type="text"
               name="lastName"
@@ -164,15 +289,28 @@ const DonatePage = () => {
               className="w-full p-3 border rounded-md"
             />
           </div>
+
         </div>
 
+        {/* ================================================= */}
+        {/* Contact Information */}
+        {/* ================================================= */}
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
           {/* Phone Number */}
           <div className="relative">
+
             <label className="block mb-2 font-medium text-gray-700">
               Phone Number *
-              <span className="ml-1 text-gray-400 cursor-help" title="Enter a 10-digit number (e.g., 1234567890)">📞</span>
+              <span
+                className="ml-1 text-gray-400 cursor-help"
+                title="Enter a 10-digit number (e.g., 1234567890)"
+              >
+                📞
+              </span>
             </label>
+
             <input
               type="tel"
               name="phone"
@@ -183,14 +321,22 @@ const DonatePage = () => {
               onChange={handleChange}
               className="w-full p-3 border rounded-md"
             />
+
           </div>
 
           {/* Email Address */}
           <div className="relative">
+
             <label className="block mb-2 font-medium text-gray-700">
               Email Address *
-              <span className="ml-1 text-gray-400 cursor-help" title="We'll use this to send your receipt">📧</span>
+              <span
+                className="ml-1 text-gray-400 cursor-help"
+                title="We'll use this to send your receipt"
+              >
+                📧
+              </span>
             </label>
+
             <input
               type="email"
               name="contactEmail"
@@ -201,14 +347,22 @@ const DonatePage = () => {
               onChange={handleChange}
               className="w-full p-3 border rounded-md"
             />
+
           </div>
 
           {/* Preferred Contact Method */}
           <div>
+
             <label className="block mb-2 font-medium text-gray-700">
               Preferred Contact Method *
-              <span className="ml-1 text-gray-400 cursor-help" title="How should we reach you if needed?">💬</span>
+              <span
+                className="ml-1 text-gray-400 cursor-help"
+                title="How should we reach you if needed?"
+              >
+                💬
+              </span>
             </label>
+
             <select
               name="contactMethod"
               value={formData.contactMethod}
@@ -220,14 +374,24 @@ const DonatePage = () => {
               <option value="Phone">Phone</option>
               <option value="Email">Email</option>
             </select>
+
           </div>
+
         </div>
 
+        {/* ================================================= */}
         {/* Address */}
+        {/* ================================================= */}
+
         <hr className="my-6 border-gray-300" />
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
           <div>
-            <label className="block mb-2 font-medium text-gray-700">Street Address *</label>
+            <label className="block mb-2 font-medium text-gray-700">
+              Street Address *
+            </label>
+
             <input
               type="text"
               name="address"
@@ -237,8 +401,12 @@ const DonatePage = () => {
               className="w-full p-3 border rounded-md"
             />
           </div>
+
           <div>
-            <label className="block mb-2 font-medium text-gray-700">State *</label>
+            <label className="block mb-2 font-medium text-gray-700">
+              State *
+            </label>
+
             <input
               type="text"
               name="state"
@@ -248,8 +416,12 @@ const DonatePage = () => {
               className="w-full p-3 border rounded-md"
             />
           </div>
+
           <div>
-            <label className="block mb-2 font-medium text-gray-700">Zip Code *</label>
+            <label className="block mb-2 font-medium text-gray-700">
+              Zip Code *
+            </label>
+
             <input
               type="text"
               name="zip"
@@ -259,12 +431,34 @@ const DonatePage = () => {
               className="w-full p-3 border rounded-md"
             />
           </div>
+
         </div>
 
-        {/* Donation Section */}
-        <div className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-6 rounded-lg shadow-lg mt-6">
-          <h2 className="text-2xl font-bold mb-4 text-center">💖 Donation Amount</h2>
-          <label className="block mb-2 font-medium text-white">Enter donation amount ($$) *</label>
+        {/* ================================================= */}
+        {/* Donation Amount */}
+        {/* ================================================= */}
+
+        <div
+          className="
+            bg-gradient-to-r
+            from-pink-500
+            to-purple-600
+            text-white
+            p-6
+            rounded-lg
+            shadow-lg
+            mt-6
+          "
+        >
+
+          <h2 className="text-2xl font-bold mb-4 text-center">
+            💖 Donation Amount
+          </h2>
+
+          <label className="block mb-2 font-medium text-white">
+            Enter donation amount ($$) *
+          </label>
+
           <input
             type="text"
             name="amount"
@@ -273,24 +467,59 @@ const DonatePage = () => {
             onChange={handleChange}
             className="w-full p-4 text-lg border rounded-md text-black"
           />
+
         </div>
 
+        {/* ================================================= */}
         {/* Spinner */}
+        {/* ================================================= */}
+
         {isSubmitting && (
           <div className="flex justify-center items-center mt-4">
-            <div className="animate-spin rounded-full h-8 w-8 border-t-4 border-purple-600"></div>
-            <span className="ml-3 text-purple-700 font-medium">Processing your donation...</span>
+
+            <div
+              className="
+                animate-spin
+                rounded-full
+                h-8
+                w-8
+                border-t-4
+                border-purple-600
+              "
+            ></div>
+
+            <span className="ml-3 text-purple-700 font-medium">
+              Processing your donation...
+            </span>
+
           </div>
         )}
 
-        {/* Submit */}
+        {/* ================================================= */}
+        {/* Submit Button */}
+        {/* ================================================= */}
+
         <button
-    type="submit"
-    className="w-full bg-purple-700 text-white py-3 rounded-md font-semibold hover:bg-purple-800 transition"
-  >
-    Submit Donation
-  </button>
-</form>
+          type="submit"
+          disabled={isSubmitting}
+          className="
+            w-full
+            bg-purple-700
+            text-white
+            py-3
+            rounded-md
+            font-semibold
+            hover:bg-purple-800
+            transition
+            disabled:opacity-50
+            disabled:cursor-not-allowed
+          "
+        >
+          {isSubmitting ? "Processing..." : "Submit Donation"}
+        </button>
+
+      </form>
+
     </div>
   );
 };
