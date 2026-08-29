@@ -195,7 +195,7 @@ export default function ContactUs() {
               aria-haspopup="menu"
             >
               <MdPhone size={16} className="text-white" />
-              <span style={{ fontWeight: 600 }}>+1 (718) 974-7252</span>
+              <span style={{ fontWeight: 600 }}>+1 (516) 242-6345</span>
             </PrimaryButton>
 
             {showOptions && (
@@ -252,7 +252,7 @@ export default function ContactUs() {
             <MdPhone size={28} color="#0f172a" />
             <CardText>
               <div className="title">Phone</div>
-              <div className="sub"><a href="tel:+17189747252" style={{ color:'#007BFF', textDecoration:'none' }}>+1 (718) 974-7252</a></div>
+              <div className="sub"><a href="tel:+17189747252" style={{ color:'#007BFF', textDecoration:'none' }}>+1 (516) 242-6345</a></div>
             </CardText>
           </ContactCard>
 

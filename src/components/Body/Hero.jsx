@@ -20,25 +20,24 @@ const Hero = () => {
 
     <div className="flex flex-col gap-4">
 
-                {/* Concert Flyer Section */}
-            {/* Concert Flyer Section */}
-            {/* Concert Flyer Section - Attractive Version */}
+  {/* Concert Flyer Section */}
 <div className="w-full flex justify-center mt-10">
   <div
     className="
-      relative 
-      max-w-[750px] 
-      rounded-2xl 
-      overflow-hidden 
-      shadow-2xl 
-      border-4 
-      border-yellow-300 
-      transition-transform 
-      duration-300 
+      relative
+      w-full
+      max-w-[1200px]
+      rounded-2xl
+      overflow-hidden
+      shadow-2xl
+      border-2
+      border-white-300
+      transition-transform
+      duration-300
       hover:scale-[1.03]
-      bg-gradient-to-br 
-      from-red-700 
-      via-pink-600 
+      bg-gradient-to-br
+      from-red-700
+      via-pink-600
       to-red-800
       p-4
     "
@@ -52,16 +51,17 @@ const Hero = () => {
 
     {/* Flyer Image */}
     <Image
-      src="/images/2026/concert.jpg"
+      src="/images/2026/vigil.jpeg"
       alt="Nepali Lok Sanjh Event Poster"
-      width={800}
-      height={500}
-      className="relative z-10 rounded-xl object-cover shadow-xl"
+      width={1200}
+      height={675}
+      className="relative z-10 w-full h-auto rounded-xl shadow-xl"
       priority
     />
 
     {/* Glow Border */}
     <div className="absolute inset-0 rounded-2xl border-2 border-yellow-300/60 shadow-[0_0_25px_5px_rgba(255,215,0,0.4)]"></div>
+
   </div>
 </div>
 
