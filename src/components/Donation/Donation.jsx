@@ -128,8 +128,8 @@ const DonatePage = () => {
 
           {/* Vigil Image */}
           <Image
-            src="/images/2026/donation.jpeg"
-            alt="Nepali Lok Sanjh Vigil"
+            src="/images/2026/donation.JPEG"
+            alt="Donation"
             width={1200}
             height={675}
             className="
