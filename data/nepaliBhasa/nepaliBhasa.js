@@ -38,7 +38,7 @@ export const zoomSchedules = [
   { id: 'Advance-Class', level: 'Advance Class', day: 'Saturday', time: '9:00 AM', 
     zoom: 'https://us02web.zoom.us/j/85850067503?pwd=zEsTNKzhqknBRpCIJE0G8l2h74iy6X.1' },
   { id: 'Medium-High-Class', level: 'Medium High Class', day: 'Saturday', time: '9:00 AM', 
-    zoom: 'https://us02web.zoom.us/j/81177770716?pwd=iEbWKh1T0P83VZz3bjM0blJTFb9hZV.1' },
+    zoom: 'https://us02web.zoom.us/j/81301341141?pwd=x9flnON51ISqF9c40F3bc0Jgd3hITj.1' },
   { id: 'Medium-Class', level: 'Medium Class', day: 'Sunday', time: '9:00 AM', 
     zoom: 'https://us02web.zoom.us/j/88390354400?pwd=h5AS7e0Bk6uXTCkZwtEfbknfEZUTcs.1' },
 ];
@@ -188,8 +188,8 @@ export const classDetails = {
     attendanceLink: 'https://docs.google.com/spreadsheets/d/1FuBZDi2oPbC8Ap9b2nnVRHt0_PCF8w-DRFSmALiWndg/edit?gid=186001220#gid=186001220',
     loginEmail: 'lins.teacher1@gmail.com',
     teachers: [
-      { name: 'Sunita Khanal Poudel', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sunita Khanal.JPG', zoom: 'https://us02web.zoom.us/j/81177770716?pwd=iEbWKh1T0P83VZz3bjM0blJTFb9hZV.1' },
-      { name: 'Indira Simkhada', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Indira Simkhada.JPG', zoom: 'https://us02web.zoom.us/j/81177770716?pwd=iEbWKh1T0P83VZz3bjM0blJTFb9hZV.1' },
+      { name: 'Sunita Khanal Poudel', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sunita Khanal.JPG', zoom: 'https://us02web.zoom.us/j/81301341141?pwd=x9flnON51ISqF9c40F3bc0Jgd3hITj.1' },
+      { name: 'Indira Simkhada', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Indira Simkhada.JPG', zoom: 'https://us02web.zoom.us/j/81301341141?pwd=x9flnON51ISqF9c40F3bc0Jgd3hITj.1' },
     ],
     substitutes: [
     'Rajan Gouli',
