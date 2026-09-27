@@ -66,8 +66,7 @@ export const classCards = [
     'Deepak Adhikari',
     'Rabin Sangraula'
   ],
-  img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Mamata Chhetri.JPG',
-  img2: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG',
+ // img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Jharna Sharma.JPG',
   tag: '🌈 Beginner'
 },
 
