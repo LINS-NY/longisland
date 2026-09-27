@@ -5,13 +5,13 @@ export const years = ['All', '2025', '2024'];
 /** Teachers list (ensure images exist in public/images/2025/NepaliBhasaClass/Teachers/) */
 export const teachers = [
   { name: 'Sabitra Siwakoti', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG', role: 'Coordinator/Teacher' },
+  { name: 'Narendra Subedi', img: '/images/2026/NepaliBhasaClass/Teachers/Teacher - Narendra Subedi.JPG' },
   { name: 'Medani P Sangroula', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Medani Sangroula.JPG' },
   { name: 'Indira Simkhada', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Indira Simkhada.JPG' },
   { name: 'Sunita Khanal Poudel', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sunita Khanal.JPG' },
   { name: 'Rupa Bhandari', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Rupa Bhandari.JPG' },
-  { name: 'Manisha Khatri', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Manisha Khatri.JPG' },
-  { name: 'Jharana Sharma', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Jharna Sharma.JPG' },
-  { name: 'Samjhana Khadka', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Samjhana Khadka Neupane.JPG' },
+  //{ name: 'Manisha Khatri', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Manisha Khatri.JPG' },
+  { name: 'Mamata Chhetri ', img: '/images/2026/NepaliBhasaClass/Teachers/Teacher - Mamata Chhetri.JPG' },
 ];
 
 export const substitutes = [
@@ -22,6 +22,9 @@ export const substitutes = [
   { name: 'Rajan Gouli', img: '/RajanGouli.jpg' },
   { name: 'Susmita Bhandari', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Susmita Bhandari.JPG' },
   { name: 'Shobha P Shrestha', img: '/images/2025/NepaliBhasaClass/Teachers/Volunteer - Shobha Pokharel Shrestha.JPG' },
+  { name: 'Jharana Sharma', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Jharna Sharma.JPG' },
+  { name: 'Samjhana Khadka', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Samjhana Khadka Neupane.JPG' },
+
   { name: 'Raveena KC', img: '' },
 ];
 
@@ -34,13 +37,13 @@ export const volunteers = [
 /** Zoom schedules (keeps existing links) */
 export const zoomSchedules = [
   { id: 'Beginners-Class', level: 'Beginning Class', day: 'Friday', time: '7:00 PM', 
-    zoom: 'https://us02web.zoom.us/j/87251619528?pwd=CUIj42ratCCbKs901kXIGDi7xRfeS7.1' },
+    zoom: 'https://us02web.zoom.us/j/81539732054?pwd=tko5aPgflbaJ6TH39ouFHArs8skPJ3.1' },
   { id: 'Advance-Class', level: 'Advance Class', day: 'Saturday', time: '9:00 AM', 
-    zoom: 'https://us02web.zoom.us/j/85850067503?pwd=zEsTNKzhqknBRpCIJE0G8l2h74iy6X.1' },
+    zoom: 'https://us02web.zoom.us/j/88274108499?pwd=Yw3u734qMEl34NVvMytCwsbFpyJ6d0.1' },
   { id: 'Medium-High-Class', level: 'Medium High Class', day: 'Saturday', time: '9:00 AM', 
     zoom: 'https://us02web.zoom.us/j/81301341141?pwd=x9flnON51ISqF9c40F3bc0Jgd3hITj.1' },
   { id: 'Medium-Class', level: 'Medium Class', day: 'Sunday', time: '9:00 AM', 
-    zoom: 'https://us02web.zoom.us/j/88390354400?pwd=h5AS7e0Bk6uXTCkZwtEfbknfEZUTcs.1' },
+    zoom: 'https://us02web.zoom.us/j/84930483234?pwd=wK8aM3xiFTUCt9CCHywmqR1k4bdNPs.1' },
 ];
 
 /** Landing cards (one card per class instance) */
@@ -53,7 +56,7 @@ export const classCards = [
   attendanceLink: 'https://docs.google.com/spreadsheets/d/1NMtdxR4s_EqDX7H4R6bdVR5t4-0LI2_cMvJxTqhL7S4/edit?gid=186001220#gid=186001220',
   loginEmail: 'lins.teacher2@gmail.com',
   year: '2026',
-  teachers: ['Samjhana Khadka', 'Jharana Sharma'],
+  teachers: ['Mamata Chhetri','Sabitra Siwakoti'],
   substitutes: [
     'Shobha Pokhrel Shrestha',
     'Raveena KC',
@@ -63,7 +66,7 @@ export const classCards = [
     'Deepak Adhikari',
     'Rabin Sangraula'
   ],
-  img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Jharna Sharma.JPG',
+ // img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Jharna Sharma.JPG',
   tag: '🌈 Beginner'
 },
 
@@ -75,7 +78,7 @@ export const classCards = [
   attendanceLink: 'https://docs.google.com/spreadsheets/d/1RIqm11cS4593z9y55zoD0fsuckXVF6FFmLE5PJsr4rU/edit?gid=186001220#gid=186001220',
   year: '2026',
   loginEmail: 'lins.teacher2@gmail.com',
-  teachers: ['Medani P Sangroula', 'Sabitra Siwakoti'],
+  teachers: ['Narendra Subedi', 'Sabitra Siwakoti', 'Medani P Sangroula'],
   substitutes: [
     'Kedar Katel',
     'Ambika Phuyal'
@@ -110,7 +113,7 @@ export const classCards = [
   attendanceLink: 'https://docs.google.com/spreadsheets/d/1-IkbUr6XDzRIJ3ocYcihr2WaV4T57fO8tbzP-m_lxfc/edit?gid=186001220#gid=186001220',
   year: '2026',
   loginEmail: 'lins.teacher2@gmail.com',
-  teachers: ['Manisha Khatri', 'Rupa Bhandari'],
+  teachers: ['Rupa Bhandari'],
   substitutes: [
     'Anu Phuyal Katel',
     'Sushmita Bhandari'
@@ -128,8 +131,8 @@ export const classDetails = {
     attendanceLink: 'https://docs.google.com/spreadsheets/d/1NMtdxR4s_EqDX7H4R6bdVR5t4-0LI2_cMvJxTqhL7S4/edit?gid=186001220#gid=186001220',
     loginEmail: 'lins.teacher2@gmail.com',
     teachers: [
-      { name: 'Jharana Sharma', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Jharna Sharma.JPG', zoom: 'https://us02web.zoom.us/j/81539732054?pwd=tko5aPgflbaJ6TH39ouFHArs8skPJ3.1' },
-      { name: 'Samjhana Khadka', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Samjhana Khadka Neupane.JPG', zoom: 'https://us02web.zoom.us/j/81539732054?pwd=tko5aPgflbaJ6TH39ouFHArs8skPJ3.1' },
+      { name: 'Mamata Chhetri', img: '/images/2026/NepaliBhasaClass/Teachers/Teacher - Mamata Chhetri.JPG', zoom: 'https://us02web.zoom.us/j/81539732054?pwd=tko5aPgflbaJ6TH39ouFHArs8skPJ3.1' },
+      {name: 'Sabitra Siwakoti', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG', zoom: 'https://us02web.zoom.us/j/81539732054?pwd=tko5aPgflbaJ6TH39ouFHArs8skPJ3.1' }
     ],substitutes: [
     'Shobha Pokhrel Shrestha',
     'Raveena KC',
@@ -158,6 +161,7 @@ export const classDetails = {
     loginEmail: 'lins.teacher2@gmail.com',
     teachers: [
       { name: 'Sabitra Siwakoti', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG', zoom: 'https://us02web.zoom.us/j/88274108499?pwd=Yw3u734qMEl34NVvMytCwsbFpyJ6d0.1' },
+      { name: 'Narendra Subedi', img: '/images/2026/NepaliBhasaClass/Teachers/Teacher - Narendra Subedi.JPG', zoom: 'https://us02web.zoom.us/j/88274108499?pwd=Yw3u734qMEl34NVvMytCwsbFpyJ6d0.1' },
       { name: 'Medani P Sangroula', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Medani Sangroula.JPG', zoom: 'https://us02web.zoom.us/j/88274108499?pwd=Yw3u734qMEl34NVvMytCwsbFpyJ6d0.1' },
     ],
     substitutes: [
@@ -217,7 +221,6 @@ export const classDetails = {
     loginEmail: 'lins.teacher2@gmail.com',
     teachers: [
       { name: 'Rupa Bhandari', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Rupa Bhandari.JPG', zoom: 'https://us02web.zoom.us/j/84930483234?pwd=wK8aM3xiFTUCt9CCHywmqR1k4bdNPs.1' },
-      { name: 'Manisha Khatri', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Manisha Khatri.JPG', zoom: 'https://us02web.zoom.us/j/84930483234?pwd=wK8aM3xiFTUCt9CCHywmqR1k4bdNPs.1' },
     ],
     substitutes: [
     'Anu Phuyal Katel',
