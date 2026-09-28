@@ -10,7 +10,7 @@ export const teachers = [
   { name: 'Indira Simkhada', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Indira Simkhada.JPG' },
   { name: 'Sunita Khanal Poudel', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sunita Khanal.JPG' },
   { name: 'Rupa Bhandari', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Rupa Bhandari.JPG' },
-  //{ name: 'Manisha Khatri', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Manisha Khatri.JPG' },
+  { name: 'Muskan KC', img: '/images/2026/NepaliBhasaClass/Teachers/Teacher - Muskan KC.JPG' },
   { name: 'Mamata Chhetri ', img: '/images/2026/NepaliBhasaClass/Teachers/Teacher - Mamata Chhetri.JPG' },
 ];
 
@@ -116,12 +116,13 @@ export const classCards = [
   attendanceLink: 'https://docs.google.com/spreadsheets/d/1-IkbUr6XDzRIJ3ocYcihr2WaV4T57fO8tbzP-m_lxfc/edit?gid=186001220#gid=186001220',
   year: '2026',
   loginEmail: 'lins.teacher2@gmail.com',
-  teachers: ['Rupa Bhandari'],
+  teachers: ['Rupa Bhandari', 'Muskan KC'],
   substitutes: [
     'Anu Phuyal Katel',
     'Sushmita Bhandari'
   ],
   img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Rupa Bhandari.JPG',
+  img2: '/images/2026/NepaliBhasaClass/Teachers/Teacher - Muskan KC.JPG',
   tag: '⭐ Mid'
 }];
 
@@ -224,6 +225,7 @@ export const classDetails = {
     loginEmail: 'lins.teacher2@gmail.com',
     teachers: [
       { name: 'Rupa Bhandari', img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Rupa Bhandari.JPG', zoom: 'https://us02web.zoom.us/j/84930483234?pwd=wK8aM3xiFTUCt9CCHywmqR1k4bdNPs.1' },
+      {name: 'Muskan KC', img: '/images/2026/NepaliBhasaClass/Teachers/Teacher - Muskan KC.JPG', zoom: 'https://us02web.zoom.us/j/84930483234?pwd=wK8aM3xiFTUCt9CCHywmqR1k4bdNPs.1' }
     ],
     substitutes: [
     'Anu Phuyal Katel',
