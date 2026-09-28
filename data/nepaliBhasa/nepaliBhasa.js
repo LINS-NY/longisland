@@ -83,7 +83,9 @@ export const classCards = [
     'Kedar Katel',
     'Ambika Phuyal'
   ],
-  img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Medani Sangroula.JPG',
+  img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Narendra Subedi.JPG',
+  img2: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG',
+  img3: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Medani Sangroula.JPG',
   tag: '🚀 Advance'
 },
 
@@ -102,6 +104,7 @@ export const classCards = [
     'Kristina Dahal'
   ],
   img: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Sunita Khanal.JPG',
+  img2: '/images/2025/NepaliBhasaClass/Teachers/Teacher - Indira Simkhada.JPG',
   tag: '⭐ Mid High'
 },
 
