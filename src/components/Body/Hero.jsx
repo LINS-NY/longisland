@@ -881,48 +881,71 @@ const Hero = () => {
 
 
 {/* Featured Nepali Bhasa Class card (paste where you want the single card) */}
-<div className="mx-auto max-w-6xl px-4">
-  <Link href="/NepaliBhasaClass" className="block mx-auto w-full max-w-3xl">
-    <div
-      className="relative rounded-2xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-105 cursor-pointer h-36 sm:h-40 md:h-44 bg-cover bg-center"
-      style={{
-        backgroundImage:
-          "linear-gradient(90deg, rgba(99,102,241,0.85), rgba(236,72,153,0.85)), url('/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG')",
-      }}
-      aria-label="Open Nepali Bhasa Class"
-    >
-      <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-black/10"></div>
+<div className="mx-auto max-w-6xl px-4 py-6">
+      <Link href="/NepaliBhasaClass" className="group block w-full">
+        <div className="relative overflow-hidden rounded-2xl bg-slate-900 shadow-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-2xl border border-slate-100/10">
+          
+          {/* Background Image with Dark Overlay Gradient */}
+          <div
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+            style={{
+              backgroundImage:
+                "url('/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG')",
+            }}
+          />
+          {/* Gradient Overlay for Optimal Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-950/90 via-purple-900/80 to-pink-900/70" />
 
-      <div className="relative z-10 flex items-center justify-between p-4 h-full text-white">
-        <div className="flex items-center gap-4 min-w-0">
-          <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white/30 shadow-md flex-shrink-0">
-            <Image
-              src="/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG"
-              width={56}
-              height={56}
-              alt="Nepali Bhasa teacher"
-              className="object-cover"
-            />
-          </div>
+          {/* Content Container */}
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between p-6 sm:p-8 gap-6 text-white">
+            
+            {/* Left Section: Avatar + Text */}
+            <div className="flex items-center gap-4 sm:gap-6 min-w-0">
+              <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-full border-2 border-white/40 overflow-hidden shadow-lg flex-shrink-0 bg-white/10 backdrop-blur-sm">
+                <Image
+                  src="/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG"
+                  alt="Nepali Bhasa Teacher"
+                  fill
+                  className="object-cover"
+                />
+              </div>
 
-          <div className="min-w-0">
-            <h3 className="text-lg font-extrabold truncate">Nepali Bhasa Class</h3>
-            <p className="text-sm text-gray-100/90 truncate">
-              Language classes for kids & adults — teachers, schedules, and Zoom links.
-            </p>
+              <div className="min-w-0 space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-white/20 px-2.5 py-0.5 rounded-full text-white backdrop-blur-md">
+                    Featured Class
+                  </span>
+                  <span className="text-xs font-medium text-pink-200">2025</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white group-hover:text-pink-100 transition-colors">
+                  Nepali Bhasa Class
+                </h3>
+                <p className="text-sm text-slate-100/90 line-clamp-2 max-w-xl">
+                  Language classes for kids & adults — teachers, schedules, and Zoom links.
+                </p>
+              </div>
+            </div>
+
+            {/* Right Section: Call to Action Button */}
+            <div className="flex items-center justify-end flex-shrink-0">
+              <span className="inline-flex items-center gap-2 bg-white text-purple-900 group-hover:bg-pink-500 group-hover:text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-md transition-all duration-300">
+                View Class
+                <svg
+                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </div>
+
           </div>
         </div>
-
-        <div className="flex items-center gap-3">
-          <span className="text-xs bg-white/20 px-3 py-1 rounded-full">2025</span>
-          <span className="inline-flex items-center gap-2 bg-white/90 text-purple-700 px-3 py-1 rounded-full font-semibold shadow">
-            View Class
-          </span>
-        </div>
-      </div>
+      </Link>
     </div>
-  </Link>
-</div>
 
       {/* Featured Nepali Bhasa Class card end */}
 
