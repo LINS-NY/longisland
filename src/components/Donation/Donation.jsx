@@ -127,7 +127,7 @@ const DonatePage = () => {
           <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>
 
           {/* Vigil Image */}
-          <Image
+{/*           <Image
             src="/images/2026/donation.JPEG"
             alt="Donation"
             width={1200}
@@ -142,7 +142,7 @@ const DonatePage = () => {
             "
             priority
           />
-
+ */}
           {/* Glow Border */}
           <div
             className="
