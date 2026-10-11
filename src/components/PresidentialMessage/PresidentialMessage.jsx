@@ -14,10 +14,10 @@ const PresidentialMessage = () => {
             <div className="flex justify-center mb-8">
                 <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
                     <Image
-                        src="/Members/RajanGouli.png"
+                        src="/Members/SabitraSiwakoti.png"
                         width={200}
                         height={200}
-                        alt="Rajan Gouli"
+                        alt="Sabitra Siwakoti"
                         className="rounded-full border-4 border-white dark:border-gray-800 shadow-md"
                     />
                 </div>
@@ -25,87 +25,86 @@ const PresidentialMessage = () => {
 
             {/* Message Content */}
             <div className="max-w-3xl text-center sm:text-left">
-                <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-                    आदरणिय मेरा सम्मानित लँगआईल्यान्ड नेपाली समाजका सदस्य ज्युहरु,
-                    <br /><br />
-                    अमेरिकाको एक सम्मानित र पुरानो नेपाली सँस्थाः ‘लङ्ग आईल्यान्ड नेपाली समाज’ न्यूयोर्कको निर्वाचित अध्यक्षको पदिय 
-                    हैसियतले यहाँहरू समक्ष कृतज्ञता ब्यक्त गर्दै विनम्रताको साथ म केहिकुरा सम्बोधन गर्दैछु।सर्बप्रथम प्रत्यक्ष चुनामा भागलिएर 
-                    होस् वा महत्वपुर्ण छलफल र योजनामा सहयोग साथ दिनुहुने तपाईं हरेक प्रत्येक सदस्यप्रति हार्दिक आभार व्यक्त गर्न चाहन्छु ।
-                    <br /><br />
-                    हामी सबै मिलेर यो यात्रामा अघि बढ्दै गर्दा, मलाई तपाईहरुले दिनुभएको जिम्मेवारीलाई अत्यन्तै महत्वपूर्ण रुपमा लिई भविष्यमा 
-                    हुने समाजका हरेक अवसरहरू प्रति ठूलो आशाबादि भएको छु। नेपाली संस्कृति, परम्परा, मूल्य र मान्यताहरुको जगेर्ना र 
-                    विकास गर्नु हाम्रो सँस्थाको प्राथमिकतामा राख्दै नेपाली हित र भाईचाराको बिकास गर्ने प्रतिनिधित्व मुलक सँस्था हो। बिदेसमा 
-                    रहेर पनि यी अमूल्य नेपाली साँस्कृतिक परम्पराहरुलाई जोगाउनु र उत्सव मनाउनु हाम्रो साझा कर्तव्य हो। सामाजिक दायित्वको 
-                    रुपमा समाज अगाडि बढ्नका लागि आउने सबै अवसरहरू र चुनैतीलाई आत्मसात् गर्नु पनि उत्तिकै महत्त्वपूर्ण रुपमा मैले लिनेछु ।
-                    <br /><br />
-                    मेरो कार्यकालको प्रमुख लक्ष्यमध्ये एक ‘नेपाली समुदाय तथा सांस्कृतिक केन्द्र’ हाम्रो घर स्थापनाको पहल गर्नु हो। यो केन्द्र हाम्रो 
-                    समुदायका सबै सदस्यहरू जमधटहुने हुने स्थल मात्र नभई, हाम्रो सांस्कृतिक धरोहर संरक्षण गर्ने, चाडपर्वहरू मनाउने, र 
-                    आवश्यक पर्दा एक-अर्कालाई सहयोग पुर्याउने थलो बन्नेछ। यसले हाम्रो भविष्यका पुस्ताहरूलाई आफ्ना पुर्खा र पहिचानसँग 
-                    जोडिराख्ने प्रेरणाको स्रोतका रूपमा काम गर्नेछ साथै अमेरिकामा हाम्रो नेपाली एकता र सामूहिकबलको प्रतीक पनि बन्नेछ।
-                    <br /><br />
-                    यो महान् लक्ष्यलाई साकार पार्न म हाम्रो कार्यसमिती र मेरो तर्फबाट तपाईंहरु सबैलाई एकताबद्द भई सहयोग, र 
-                    समर्थनका लागि सामुहिक आह्वान गर्दछौ। हामीलाई प्रत्येक व्यक्तिहरुले आर्थिक सहयोग गरेर , समय दिएर होस 
-                    वा अन्य कुनै न कुनै तबरको योगदान आवश्यकको जरुरत रहन्छ। एक्लो ब्यक्तीको प्रयासले मात्र यो महान योजना 
-                    सफल नहुने र यस अभियानको सफलता तपाईहाम्रो सामूहिक प्रतिबद्धता र सहयोगमा निर्भर रहेको हुन्छ। तर यसको 
-                    नेतृत्व लिने र सकेको आर्थिक, प्राबिधीक  तथा तपाईहरुले लगाएको काम पुरा गर्ने सारथी भने पक्कै बन्ने छु।
-                    <br /><br />
-                    म पुन दृढ विश्वास राख्छु कि हाम्रो विविधता नै हाम्रो बल हो। हामी एकअर्काको परस्पर सम्मान, माया र 
-                    समझदारीका साथ एकजुट भएमात्र हामी जुनसकै चुनौती पनि पार गर्न सक्छौं र हाम्रा सामूहिक उद्देश्य हासिल 
-                    गर्न सक्छौं। आउनुहोस्, हामी हाम्रो लँगआईल्यान्ड नेपाली समुदायभित्र मात्र नभई सबै समुदायहरूसँग मित्रता र 
-                    सहकार्यका हातेमालो र सहकार्य गरौँ।
-                    <br /><br />
-                    आगामी दिनहरूमा तपाईंहरूसँग संवाद गर्ने, यहाँहरूको सुझाव सुन्ने, र यहाँहरुसंग हातेमालो गरी हाम्रो समुदायको 
-                    उज्ज्वल भविष्य निर्माण गर्न म आतुर छु।
-                    <br /><br />
-                    हामी सबै मिलेर, हाम्रा साहस, दृढता, र अटल संकल्पकोसाथ एउटा असल समाज निर्माण गर्ने यात्राको अर्को अध्याय लेखौँ।
-                    <br />
-                    धन्यवाद तथा नमस्ते! 
-                    <br /><br />
-                    जय लिन्स!
-                    <br /><strong>कुल प्र. गौली (राजन)<br /></strong>
-                    अध्यक्ष (कार्यकाल 2024-2026)
-                    <br /><strong>लङ्ग आईल्यान्ड नेपाली समाज, न्यूयोर्क</strong>
-                    <br /><br />
-                    <br /><br />
+<p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+    आदरणीय संस्थापकज्यूहरू, पूर्व अध्यक्षज्यूहरू, सल्लाहकारज्यूहरू, आजीवन सदस्यज्यूहरू, साधारण सदस्यज्यूहरू, स्वयंसेवकज्यूहरू तथा नेपाली समुदायका सम्पूर्ण आदरणीय सदस्यज्यूहरू,
+    <br /><br />
+    नमस्कार!
+    <br /><br />
+    सन् २०२६–२०२८ कार्यकालका लागि न्युयोर्कस्थित लङ आइल्याण्ड नेपाली समाजको अध्यक्षका रूपमा सेवा गर्ने अवसर प्राप्त भएकोमा म आफूलाई अत्यन्त गौरवान्वित र कृतज्ञ महसुस गर्दछु। तपाईंहरूले मप्रति व्यक्त गर्नुभएको विश्वासलाई म व्यक्तिगत उपलब्धिका रूपमा नभई हाम्रो समुदायको सेवामा अझ बढी समर्पण र जिम्मेवारीका साथ लाग्ने अवसरका रूपमा लिएकी छु।
+    <br /><br />
+    सन् २०१० मा दूरदर्शी सोच भएका केही नेपालीहरूको पहलमा स्थापना भएको लङ आइल्याण्ड नेपाली समाज आज लङ आइल्याण्डभरि छरिएर रहेका नेपाली समुदायलाई जोड्ने एक महत्वपूर्ण संस्थाका रूपमा विकसित भएको छ। नेपालीहरूलाई एकताबद्ध गर्ने, आफ्ना परम्पराहरू मनाउने तथा सुखदुःखका समयमा एकअर्कालाई सहयोग गर्ने उद्देश्यबाट सुरु भएको यो प्रयास क्रमशः भाषा शिक्षा, सांस्कृतिक संरक्षण, स्वास्थ्य, खेलकुद तथा विभिन्न सामुदायिक सेवाका क्षेत्रमा क्रियाशील संस्थाका रूपमा अघि बढेको छ।
+    <br /><br />
+    यो यात्रा सधैँ सहज भने रहेन। हाम्रा संस्थापकहरूको दूरदृष्टि, विगतका नेतृत्वहरूको अथक प्रयास, स्वयंसेवकहरूको निःस्वार्थ योगदान तथा सदस्यहरूको निरन्तर सहयोगले नै हाम्रो समाजलाई आजको अवस्थामा पुर्‍याएको हो। यस गौरवपूर्ण यात्रामा योगदान पुर्‍याउनुहुने सम्पूर्ण व्यक्तित्वहरूप्रति म यस अवसरमा हार्दिक आभार तथा सम्मान व्यक्त गर्न चाहन्छु।
+    <br /><br />
+    दशैँ, तिहार, तीज, नेपाली नयाँ वर्षलगायत विभिन्न सांस्कृतिक पर्वहरूको उत्सवले आफ्नो मातृभूमिबाट हजारौँ माइल टाढा रहँदा पनि हाम्रो नेपाली पहिचानलाई जीवन्त राख्न महत्वपूर्ण भूमिका खेलेको छ। नेपाली भाषा कक्षाहरू, सामुदायिक स्वास्थ्य शिविरहरू, खेलकुद प्रतियोगिताहरू, महिलाको सहभागिता अभिवृद्धिसम्बन्धी कार्यक्रमहरू, घुम्ती राहदानी सेवा तथा विभिन्न सामाजिक गतिविधिजस्ता पहलहरूले हाम्रो समाजलाई मुख्यतः सांस्कृतिक पर्वहरू मनाउन केन्द्रित संस्थाबाट विकसित गर्दै हाम्रो बढ्दो समुदायका व्यावहारिक आवश्यकताहरूलाई समेत सम्बोधन गर्ने संस्थाका रूपमा अगाडि बढाएका छन्।
+    <br /><br />
+    अब हाम्रो जिम्मेवारी विगतका उपलब्धिहरूको संरक्षण र निरन्तरतालाई कायम राख्नुमा मात्र सीमित छैन। बदलिँदो सामुदायिक आवश्यकताअनुरूप अझ व्यवस्थित, समावेशी र उत्तरदायी संस्था बनाउन हाम्रो संस्थागत संरचनालाई थप सुदृढ गर्नु पनि उत्तिकै आवश्यक छ।
+    <br /><br />
+    मेरो विशेष प्राथमिकतामध्ये एक भनेको हाम्रा बालबालिका तथा युवा पुस्ताले अमेरिकी समाजका आत्मविश्वासी र सफल सदस्यका रूपमा आफ्नो भविष्य निर्माण गर्दै गर्दा नेपाली भाषा, संस्कृति र सम्पदासँगको अर्थपूर्ण सम्बन्ध पनि कायम राख्न सकून् भन्ने सुनिश्चित गर्न सहयोग गर्नु हो। यसका लागि हामी नेपाली भाषा शिक्षालाई थप सुदृढ बनाउने, नेतृत्व तथा स्वयंसेवी गतिविधिहरूमा युवाहरूको सहभागिता बढाउन प्रोत्साहित गर्ने र समुदायका सदस्यहरूले शैक्षिक, व्यावसायिक तथा सामाजिक क्षेत्रमा एकअर्कालाई सहयोग गर्न सक्ने अवसरहरू सिर्जना गर्ने दिशामा काम गर्नेछौँ।
+    <br /><br />
+    हाम्रो समाजको अर्को महत्वपूर्ण साझा आकाङ्क्षा स्थायी नेपाली सामुदायिक तथा सांस्कृतिक केन्द्रको स्थापना गर्नु हो। विगतका नेतृत्व तथा समुदायका सदस्यहरूले अघि बढाउनुभएका प्रयासहरूलाई आधार बनाउँदै आर्थिक पारदर्शिता, सामूहिक सहभागिता र व्यावहारिक योजनाका माध्यमबाट यस पहललाई निरन्तर अगाडि बढाउनुपर्छ। हाम्रो परिकल्पना यो केन्द्रलाई एउटा भौतिक भवनमा मात्र सीमित नराख्ने हो। हामी चाहन्छौँ, यो यस्तो साझा घर बनोस् जहाँ हाम्रा बालबालिकाले आफ्नो भाषा सिक्न सकून्, युवा पुस्ताले आफ्नो सांस्कृतिक सम्पदालाई नजिकबाट चिन्न सकून्, ज्येष्ठ नागरिकहरूले आत्मीय साथ र सहचर्य पाउन सकून् तथा सम्पूर्ण समुदायले अपनत्वको अनुभूतिसहित एकै ठाउँमा भेला हुन सकून्।
+    <br /><br />
+    त्यत्तिकै महत्वपूर्ण कुरा, म हाम्रो समाजलाई आवश्यक परेको बेला सहयोगका लागि भरोसा गर्न सकिने संस्थाका रूपमा विकास गर्न चाहन्छु। नवआगन्तुक नेपाली परिवारहरूले उचित मार्गदर्शन पाउन सक्ने, महिला, ज्येष्ठ नागरिक तथा युवाहरूले अर्थपूर्ण रूपमा सहभागी हुने अवसर पाउने र हरेक पृष्ठभूमिबाट आएका नेपालीहरूले समान रूपमा स्वागत, सम्मान र महत्व पाएको अनुभूति गर्ने संस्था निर्माण गर्नु हाम्रो साझा लक्ष्य हुनुपर्छ।
+    <br /><br />
+    हाम्रो समाजको सफलता अध्यक्ष वा कार्यसमितिको प्रयासले मात्र सम्भव हुँदैन। यो संस्था हामी सबैको हो र यसको भविष्यप्रतिको जिम्मेवारी पनि हामी सबैको साझा जिम्मेवारी हो। त्यसैले म यहाँहरू सबैका विचार, रचनात्मक सुझाव तथा आलोचना, अनुभव, समय, प्रतिभा र सक्रिय सहभागितालाई हार्दिक स्वागत गर्दछु। पारदर्शिता, आपसी सम्मान, सहकार्य र जवाफदेहिता हाम्रा आगामी कार्यदिशाका प्रमुख आधारका रूपमा रहनेछन्।
+    <br /><br />
+    हामी नेपालका विभिन्न भूभागबाट आएका छौँ र विविध भाषा, जातजाति, संस्कृति तथा परम्पराहरूको प्रतिनिधित्व गर्दछौँ। यो विविधता हाम्रो सामूहिक शक्तिको सबैभन्दा महत्वपूर्ण आधारहरूमध्ये एक हो। हाम्रा दृष्टिकोण र पृष्ठभूमिमा भिन्नता हुँदाहुँदै पनि साझा हितका लागि एकजुट हुन सक्ने हाम्रो क्षमताले नै हाम्रो समाजको सफलतालाई सबैभन्दा अर्थपूर्ण रूपमा प्रतिबिम्बित गर्नेछ।
+    <br /><br />
+    यो जिम्मेवारी सम्हाल्दै गर्दा मेरो हार्दिक आशा छ—हामीभन्दा अघि यस संस्थाको जग बसाल्नुहुने अग्रजहरूले स्थापित गर्नुभएको आधारलाई अझ मजबुत बनाउँदै, हाम्रो सामूहिक प्रयासबाट यसलाई थप सुदृढ गर्नेछौँ र भावी पुस्ताका लागि अर्थपूर्ण तथा दीर्घकालीन महत्व राख्ने विरासत छोडेर जानेछौँ।
+    <br /><br />
+    आउनुहोस्, विगतका उपलब्धिहरूप्रति गर्व गरौँ, वर्तमानका जिम्मेवारीहरूलाई आत्मसात् गरौँ र भोलिका सम्भावनाहरूलाई वास्तविकतामा रूपान्तरण गर्न मिलेर अघि बढौँ।
+    <br /><br />
+    यहाँहरूबाट आगामी दिनहरूमा पनि निरन्तर विश्वास, हौसला, सहकार्य र सहयोग प्राप्त हुने अपेक्षा गर्दछु।
+    <br /><br />
+    धन्यवाद।
+    <br /><br />
+    नमस्कार!
+    <br /><br />
+    <strong>श्रीमती सबित्रा सिवाकोटी</strong>
+    <br />अध्यक्ष (कार्यकाल २०२६–२०२८)
+    <br /><strong>लङ आइल्याण्ड नेपाली समाज</strong>
+    <br /><strong>न्युयोर्क</strong>
+    <br /><br /><br /><br />
 
-                    Dear Valuable and Respected Members of the Long-island Nepalese Society New York,
-                    <br /><br />
-                    It is with immense gratitude and humility that I address you as the elected President of
-                    our Nepali community, the <strong>Long Island Nepalese Society</strong>, here in New York. First and foremost,
-                    I extend my heartfelt appreciation to each and every one of you who participated in the democratic process,
-                    whether through casting your vote or contributing to the vibrant discussions that shape our community.
-                    <br /><br />
-                    As we embark on this journey together, I am filled with a deep sense of responsibility and optimism for
-                    what we can achieve collectively. Our community represents the rich variety of Nepali culture, tradition,
-                    and values, and it is our shared duty to preserve and celebrate these treasures while also embracing the
-                    opportunities that lie ahead.
-                    <br /><br />
-                    One of the primary goals during my tenure is to initiate the establishment of a <strong>Nepali Community and
-                        Cultural Center</strong>. This center will serve as a place for us to come together, share our heritage, celebrate
-                    festivals, and provide support for each other in times of need. It will be a beacon for our future generations
-                    to stay connected with their roots and a symbol of our unity and strength here in the USA.
-                    <br /><br />
-                    To bring this vision to life, I am calling on all of you for collaboration, unity, and support. Whether
-                    through financial contributions, volunteering your time, or sharing your expertise, we need every hand on
-                    deck to make this dream a reality. The success of this endeavor depends on our collective commitment and
-                    dedication.
-                    <br /><br />
-                    I firmly believe that our diversity is our strength, and by coming together with respect, compassion,
-                    and understanding, we can overcome any challenge and achieve our collective aspirations. Let us build
-                    bridges of friendship and cooperation, not only within our Nepali community but also with our fellow
-                    citizens and neighbors from all walks of life.
-                    <br /><br />
-                    In the days and months ahead, I look forward to engaging with each of you, listening to your ideas,
-                    and working hand in hand to build a brighter future for our community and generations to come.
-                    <br /><br />
-                    Together, let us write the next chapter of our journey with courage, resilience, and unwavering determination.
-                    <br /><br />
-                    Thank You and Namaste,
-                    <br /><strong>Kul P Gouli (Rajan)</strong>
-                    <br />President
-                    <br />(Term 2024-2026)
-                    <br /><strong>Long Island Nepalese Society New York</strong>
-                </p>
+    Dear Founders, Former Presidents, Advisors, Life Members, General Members, Volunteers, and Members of the Nepali Community,
+    <br /><br />
+    Namaste!
+    <br /><br />
+    I am deeply honored and grateful for the opportunity to serve as President of the Long Island Nepalese Society, New York, for the 2026–2028 term. I regard the trust you have placed in me not as a personal achievement, but as an opportunity to serve our community with greater dedication and responsibility.
+    <br /><br />
+    Since its establishment in 2010 through the initiative of a small group of visionary Nepalis, the Long Island Nepalese Society has grown into an important organization connecting the Nepali community across Long Island. What began as an effort to bring people together, celebrate our traditions, and support one another in times of joy and difficulty has gradually evolved into an institution engaged in cultural preservation, language education, health, sports, and various community services.
+    <br /><br />
+    This journey has not always been easy. The vision of our founders, the tireless efforts of past leadership, the selfless contributions of volunteers, and the continued support of our members have brought our society to where it stands today. I take this opportunity to express my sincere appreciation and respect for everyone who has contributed to this remarkable journey.
+    <br /><br />
+    Our celebrations of Dashain, Tihar, Teej, Nepali New Year, and other cultural festivals have helped keep our Nepali identity alive, even thousands of miles from our homeland. Initiatives such as Nepali language classes, community health camps, sports tournaments, women's participation programs, mobile passport services, and various social activities have gradually transformed our society from an organization primarily focused on cultural celebrations into one that also addresses the practical needs of our growing community.
+    <br /><br />
+    Our responsibility now is not only to preserve and continue these achievements, but also to strengthen our institution so that it becomes more organized, inclusive, and responsive to the changing needs of our community.
+    <br /><br />
+    One of my particular priorities is to help our children and younger generations maintain a meaningful connection with the Nepali language, culture, and heritage while growing into confident and successful members of American society. We will work toward strengthening Nepali language education, encouraging greater youth participation in leadership and volunteer activities, and creating opportunities for our community members to support one another in their educational, professional, and social endeavors.
+    <br /><br />
+    Another important shared aspiration of our society is the establishment of a permanent Nepali Community and Cultural Center. Building upon the efforts already undertaken by previous leadership and community members, we must continue moving this initiative forward through financial transparency, collective participation, and practical planning. Our vision is for this center to become much more than a physical building. We hope it will serve as a shared home where our children can learn their language, younger generations can discover their cultural heritage, our elders can find companionship, and the entire community can come together with a sense of belonging.
+    <br /><br />
+    Equally important, I hope to help develop our society into an organization that people can turn to when they need support, where newly arrived Nepali families can find guidance, where women, senior citizens, and young people have meaningful opportunities to participate, and where Nepalis from every background feel equally welcomed and valued.
+    <br /><br />
+    The success of our society cannot depend on the efforts of its president or executive committee alone. This organization belongs to all of us, and its future is our shared responsibility. I therefore warmly welcome your ideas, constructive criticism, experiences, time, talents, and active participation. Transparency, mutual respect, collaboration, and accountability will remain central to how we move forward.
+    <br /><br />
+    We come from different regions of Nepal and represent diverse languages, ethnicities, cultures, and traditions. This diversity is one of our greatest collective strengths. Our ability to come together for the common good, despite differences in our perspectives and backgrounds, will be among the most meaningful measures of our society's success.
+    <br /><br />
+    As I begin this responsibility, my sincere hope is that we can build upon the foundation established by those who came before us, strengthen it through our collective efforts, and leave something meaningful and lasting for the generations that follow.
+    <br /><br />
+    Let us take pride in our past achievements, embrace the responsibilities of the present, and work together to turn the possibilities of tomorrow into reality.
+    <br /><br />
+    I look forward to your continued trust, encouragement, cooperation, and support.
+    <br /><br />
+    Thank you.
+    <br /><br />
+    Namaste!
+    <br /><br />
+    <strong>Mrs. Sabitra Siwakoti</strong>
+    <br />President (Term 2026–2028)
+    <br /><strong>Long Island Nepalese Society</strong>
+    <br /><strong>New York</strong>
+</p>
             </div>
         </section>
     );

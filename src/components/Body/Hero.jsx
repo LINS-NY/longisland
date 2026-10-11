@@ -20,6 +20,83 @@ const Hero = () => {
 
     <div className="flex flex-col gap-4">
 
+      {/* Featured Nepali Bhasa Class card */}
+<div className="mx-auto max-w-7xl px-4 py-8">
+  <Link href="/NepaliBhasaClass" className="group block w-full">
+    <div className="relative overflow-hidden rounded-3xl bg-slate-900 shadow-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-2xl border border-slate-100/10">
+
+      {/* Background Image with Dark Overlay Gradient */}
+      <div
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+        style={{
+          backgroundImage:
+            "url('/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG')",
+        }}
+      />
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-indigo-950/90 via-purple-900/80 to-pink-900/70" />
+
+      {/* Content Container */}
+      <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between p-8 sm:p-10 md:p-12 gap-8 text-white">
+
+        {/* Left Section: Avatar + Text */}
+        <div className="flex items-center gap-5 sm:gap-7 min-w-0">
+          <div className="relative h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 rounded-full border-2 border-white/40 overflow-hidden shadow-lg flex-shrink-0 bg-white/10 backdrop-blur-sm">
+            <Image
+              src="/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG"
+              alt="Nepali Bhasa Teacher"
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          <div className="min-w-0 space-y-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full text-white backdrop-blur-md">
+                Featured Class
+              </span>
+              <span className="text-sm font-medium text-pink-200">
+                2026
+              </span>
+            </div>
+
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white group-hover:text-pink-100 transition-colors">
+              Nepali Bhasa Class
+            </h3>
+
+            <p className="text-base sm:text-lg text-slate-100/90 max-w-2xl">
+              Language classes for kids &amp; adults — teachers, schedules, and Zoom links.
+            </p>
+          </div>
+        </div>
+
+        {/* Right Section: Call to Action Button */}
+        <div className="flex items-center justify-start sm:justify-end flex-shrink-0">
+          <span className="inline-flex items-center gap-3 bg-white text-purple-900 group-hover:bg-pink-500 group-hover:text-white px-7 py-3.5 rounded-full font-bold text-base shadow-md transition-all duration-300">
+            View Class
+            <svg
+              className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2.5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </Link>
+</div>
+{/* Featured Nepali Bhasa Class card end */}
+
   {/* Concert Flyer Section */}
 <div className="w-full flex justify-center mt-10">
   <div
@@ -71,62 +148,6 @@ const Hero = () => {
 
       
       {/* 🎊 NEWLY ELECTED MEMBERS CELEBRATION CARD - TOP SECTION */}
-      <div className="container mx-auto w-[90%] mt-8">
-        <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-[2.5rem] shadow-2xl border-2 border-yellow-600/50 p-6 md:p-10 flex flex-col md:flex-row gap-8 items-center group transition-all duration-500 hover:shadow-yellow-500/10">
-          
-          {/* Injecting the flashing shimmer animation */}
-          <style>{`
-            @keyframes flashShimmer {
-              0% { background-position: -200% center; }
-              100% { background-position: 200% center; }
-            }
-            .animate-shimmer {
-              background: linear-gradient(to right, #FBBF24 20%, #FFFBEB 40%, #FFFBEB 60%, #FBBF24 80%);
-              background-size: 200% auto;
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              animation: flashShimmer 3s linear infinite;
-            }
-          `}</style>
-
-          {/* Picture Section */}
-          <div className="relative w-full md:w-2/5 flex-shrink-0">
-            <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border-4 border-yellow-600 shadow-xl relative">
-              <Image 
-                src="/Members/ElectedMembers2026.jpg"
-                alt="LINS Newly Elected Members"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            {/* Corner Logo Decoration */}
-            <div className="absolute -top-3 -left-3 w-14 h-14 bg-white rounded-full p-1 shadow-lg border-2 border-yellow-600 z-20">
-              <Image src="/LINS.png" alt="LINS Logo" width={50} height={50} className="rounded-full" />
-            </div>
-          </div>
-
-          {/* Text Section */}
-          <div className="w-full md:w-3/5 text-center md:text-left">
-            <h1 className="text-3xl md:text-7xl font-black mb-4 animate-shimmer leading-tight">
-              Congratulations!
-            </h1>
-            <h2 className="text-xl md:text-2xl font-bold text-blue-900 dark:text-white mb-4 leading-snug">
-              निर्वाचित हुनुभएकोमा सम्पूर्ण टिमलाई हार्दिक बधाई तथा शुभकामना !
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-6 font-medium">
-              Congratulations to the newly elected board members of the Long Island Nepalese Society, New York. We wish the entire team a successful tenure filled with progress and community unity.
-            </p>
-            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-              <span className="px-4 py-1.5 bg-yellow-100 text-yellow-800 rounded-full text-xs font-bold uppercase tracking-wider border border-yellow-200">
-                New Leadership 2026
-              </span>
-              <span className="px-4 py-1.5 bg-blue-100 text-blue-800 rounded-full text-xs font-bold uppercase tracking-wider border border-blue-200">
-                LINS-NY Official
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
       </div>
 
 
@@ -880,108 +901,44 @@ const Hero = () => {
         <ForumThumbnails />
 
 
-{/* Featured Nepali Bhasa Class card (paste where you want the single card) */}
-<div className="mx-auto max-w-6xl px-4 py-6">
-      <Link href="/NepaliBhasaClass" className="group block w-full">
-        <div className="relative overflow-hidden rounded-2xl bg-slate-900 shadow-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-2xl border border-slate-100/10">
-          
-          {/* Background Image with Dark Overlay Gradient */}
-          <div
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-            style={{
-              backgroundImage:
-                "url('/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG')",
-            }}
-          />
-          {/* Gradient Overlay for Optimal Text Readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-950/90 via-purple-900/80 to-pink-900/70" />
 
-          {/* Content Container */}
-          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between p-6 sm:p-8 gap-6 text-white">
-            
-            {/* Left Section: Avatar + Text */}
-            <div className="flex items-center gap-4 sm:gap-6 min-w-0">
-              <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-full border-2 border-white/40 overflow-hidden shadow-lg flex-shrink-0 bg-white/10 backdrop-blur-sm">
-                <Image
-                  src="/images/2025/NepaliBhasaClass/Teachers/Teacher - Sabitra Siwakoti.JPG"
-                  alt="Nepali Bhasa Teacher"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="min-w-0 space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-white/20 px-2.5 py-0.5 rounded-full text-white backdrop-blur-md">
-                    Featured Class
-                  </span>
-                  <span className="text-xs font-medium text-pink-200">2025</span>
-                </div>
-                <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white group-hover:text-pink-100 transition-colors">
-                  Nepali Bhasa Class
-                </h3>
-                <p className="text-sm text-slate-100/90 line-clamp-2 max-w-xl">
-                  Language classes for kids & adults — teachers, schedules, and Zoom links.
-                </p>
-              </div>
-            </div>
-
-            {/* Right Section: Call to Action Button */}
-            <div className="flex items-center justify-end flex-shrink-0">
-              <span className="inline-flex items-center gap-2 bg-white text-purple-900 group-hover:bg-pink-500 group-hover:text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-md transition-all duration-300">
-                View Class
-                <svg
-                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-            </div>
-
-          </div>
-        </div>
-      </Link>
-    </div>
-
-      {/* Featured Nepali Bhasa Class card end */}
 
 
       {/* President's & Gen. Sec Message Section */}
    {
-//   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto w-[90%] my-12">
-//     {/* President's Message */}
-//     <Link href="/PresidentialMessages">
-//       <div
-//         className="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer h-[22rem] bg-cover bg-center"
-//         style={{ backgroundImage: "url('/nepal-mountain-bg.jpg')" }}
-//       >
-//         {/* Darker Gradient Overlay */}
-//         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/85 backdrop-blur-md"></div>
 
-//         {/* Content */}
-//         <div className="relative z-10 flex flex-col items-center justify-center p-6 text-white text-center h-full">
-//           <div className="bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/30 shadow-md">
-//             <Image
-//               src="/RajanGouli.jpg"
-//               width={110}
-//               height={110}
-//               alt="Rajan Gouli"
-//               className="rounded-full border-4 border-white"
-//             />
-//           </div>
-//           <h2 className="text-xl sm:text-2xl font-extrabold mt-4 drop-shadow-md">
-//             President's Message
-//           </h2>
-//           <p className="text-gray-200 text-sm mt-2 max-w-sm drop-shadow-sm">
-//             Dear Valuable and Respected Members of the Long-Island Nepalese Society New York...
-//           </p>
-//         </div>
-//       </div>
-//     </Link>
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto w-[90%] my-12">
+  {/* President's Message */}
+  <Link href="/PresidentialMessages">
+    <div
+      className="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer h-[22rem] bg-cover bg-center"
+      style={{ backgroundImage: "url('/nepal-mountain-bg.jpg')" }}
+    >
+      {/* Darker Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/85 backdrop-blur-md"></div>
+
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center p-6 text-white text-center h-full">
+        <div className="bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/30 shadow-md">
+          <Image
+            src="/SabitraSiwakoti.png"
+            width={220}
+            height={220}
+            alt="Sabitra Siwakoti"
+            className="rounded-full border-4 border-white"
+          />
+        </div>
+        <h2 className="text-xl sm:text-2xl font-extrabold mt-4 drop-shadow-md">
+          President's Message
+        </h2>
+        <p className="text-gray-200 text-sm mt-2 max-w-sm drop-shadow-sm">
+          Dear Valuable and Respected Members of the Long-Island Nepalese Society New York...
+        </p>
+      </div>
+    </div>
+  </Link>
+</div>
 
 //     {/* General Secretary's Message */}
 //     <Link href="/GeneralSecretaryMessages">
